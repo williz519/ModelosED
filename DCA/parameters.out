@@ -1,0 +1,4 @@
+gevStopFileName = STOP
+gevScreenPrintLevel = 1
+gevLogFilePrintLevel = 2
+gevStoreDataOnFile = 0
