@@ -18,20 +18,45 @@ library(corrr)
 
 #Leer la dataset
 
-indicators <- readRDS(file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBModoConduccion.rds")
+ModoCond <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
 
-indicators1 <- indicators[ ,!colnames(indicators)=="ViajeId"]
+names(ModoCond)
+
+#Renombrar las Variables
+ModoCond <- rename(ModoCond, replace =c(CinturonDeSeguridad = "CinSeg",
+                                    PasoPeatones = "PasPeat",
+                                    UsaPito = "UsPito",
+                                    FrenoRapidoBrusco = "FRbr",
+                                    UsaDireccionales = "UsDirec",
+                                    EnfadoConOtroConductor = "EnfCond",
+                                    AceleraFrenaBruscamenteSemaforo = "AFrSem",
+                                    CulebreaConFrecuencia = "CulFr",
+                                    OmiteLimiteVelocidad = "OmLmVel",
+                                    IgnoraSenhalPare = "IgPare",
+                                    UsoCelular = "UsCel"))
+
+
+names(ModoCond)
+
+ModoCond1 <- ModoCond[ ,!colnames(ModoCond)=="ViajeId"]
+
+ModoCond1 <- ModoCond1[ ,!colnames(ModoCond1)=="UsPito"]
+ModoCond1 <- ModoCond1[ ,!colnames(ModoCond1)=="PasPeat"]
+
 
 # Estadisticas descriptivas
 
-summary(indicators1)
+summary(ModoCond1)
 
-cor(na.omit(indicators1), use = "pairwise.complete.obs")
+cor(na.omit(ModoCond1), use = "pairwise.complete.obs")
 
-Rcor <- cor(na.omit(indicators1))
+Rcor <- cor(na.omit(ModoCond1))
 
 # Gráfico de las Correlaciones
 corrplot(Rcor, order = "hclust", tl.col = "black", tl.cex = 1)
+
+corrplot.mixed(Rcor,lower.col = "black",number.cex=.7)
+
 
 # Determinante de la Matriz de correlaciones
 det(Rcor)
@@ -62,7 +87,7 @@ print(A)
 # muestral es pequeño. 
 
 #Test de esfericidad de Bartlett
-print(cortest.bartlett(Rcor, n=nrow(indicators1)))
+print(cortest.bartlett(Rcor, n=nrow(ModoCond1)))
 
 
 # Como última prueba de multicolinealidad antes de comenzar probar modelos, analizaremos el
@@ -87,7 +112,7 @@ print(kmo)
 
 
 #Analisis de Componentes Principales
-pca1 <- princomp(na.omit(indicators1), scores = TRUE, cor = TRUE)
+pca1 <- princomp(na.omit(ModoCond1), scores = TRUE, cor = TRUE)
 summary(pca1)
 
 #Cargar los componentes principales
@@ -112,17 +137,17 @@ pca1$scores[1:10,]
 #Analisis Factorial
 
 
-fa <-factanal(na.omit(indicators1), factor=2, rotation = "varimax", na.rm = TRUE)
-print(fa,cutoff=0.4, sort=FALSE)
+fa <-factanal(na.omit(ModoCond1), factor=3, rotation = "varimax", na.rm = TRUE)
+print(fa,cutoff=0.3, sort=FALSE)
 
 #sink()
 
-factores <- factanal(na.omit(indicators1), factor=2, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+factores <- factanal(na.omit(ModoCond1), factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 
 #Normalizamos los valores que podran tomarse como el peso para el cálculo de un indice que
 # explica por cada i-esima fila la variabilidad de todo el conjunto de datos
 
-indicators2 <- cbind(na.omit(indicators), factores)
+indicators2 <- cbind(na.omit(ModoCond), factores)
 indicators2$Factor1 <- round(((indicators2$Factor1 - min(indicators2$Factor1))/(max(indicators2$Factor1)-min(indicators2$Factor1))),3)
 indicators2$Factor2 <- round(((indicators2$Factor2 - min(indicators2$Factor2))/(max(indicators2$Factor2)-min(indicators2$Factor2))),3)
 indicators2$Factor3 <- round(((indicators2$Factor3 - min(indicators2$Factor3))/(max(indicators2$Factor3)-min(indicators2$Factor3))),3)
@@ -130,20 +155,21 @@ indicators2$Factor3 <- round(((indicators2$Factor3 - min(indicators2$Factor3))/(
 indicators2
 
 indicators2 <- rename(indicators2, replace =c(Factor1 = "ActitudAgresiva",
-                                    Factor2 = "ViolacionNormas"))
+                                              Factor2 = "ConduccionSegura",
+                                              Factor3 = "ViolacionNormas"))
 
 
 
 par(mfrow=c(1,3))
-hist(indicators2$Factor1, freq = TRUE, main = "Distribución del Factor 1",
-     xlab = "Factor 1", ylab = "Frecuencia", col = "4")
-hist(indicators2$Factor2, freq = TRUE, main = "Distribución del Factor 2",
-     xlab = "Factor 2", ylab = "Frecuencia", col = "blue")
-hist(indicators2$Factor3, freq = TRUE, main = "Distribución del Factor 3",
-     xlab = "Factor 3", ylab = "Frecuencia", col = "green")
+hist(indicators2$ActitudAgresiva, freq = TRUE, main = "Distribución del Factor 1",
+     xlab = "Actitud Agresiva", ylab = "Frecuencia", col = "red")
+hist(indicators2$ConduccionSegura, freq = TRUE, main = "Distribución del Factor 2",
+     xlab = "Conducción Segura", ylab = "Frecuencia", col = "blue")
+hist(indicators2$ViolacionNormas, freq = TRUE, main = "Distribución del Factor 3",
+     xlab = "Violación Normas", ylab = "Frecuencia", col = "green")
 
 
-saveRDS(indicators2, file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DAFModoConduccion.rds")
+saveRDS(indicators2, file="/Users/williz/Desktop/ModelosED/Database/AFModoConduccion.rds")
 
 
 

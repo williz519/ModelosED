@@ -19,13 +19,11 @@ library(corrr)
 
 #Leer la dataset
 
-DBPersonalidad <- readRDS(file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBPersonalidad.rds")
+DBPersonalidad <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBPersonalidad.rds")
 
 names(DBPersonalidad)
 
 DBPers <- DBPersonalidad
-
-
 
 # Estadisticas descriptivas
 
@@ -41,9 +39,19 @@ view(DBPers)
 
 DBPers <- DBPers[ ,!colnames(DBPers)=="ViajeId"]
 DBPers <- DBPers[ ,!colnames(DBPers)=="NivelEducativo"]
-DBPers <- DBPers[ ,!colnames(DBPers)=="IdViaje"]
 DBPers <- DBPers[ ,!colnames(DBPers)=="DispMobiles"]
 DBPers <- DBPers[ ,!colnames(DBPers)=="SatisfDispMob"]
+
+names(DBPers)
+
+#Renombrar las Variables
+DBPers <- rename(DBPers, replace =c(ComunicVerbal = "ComVrb",
+                                                    Ansiedad = "Ans",
+                                                    ComunicAfectiva = "ComAfec",
+                                                    PresPersonal = "PrPers",
+                                                    AmbTrabajo = "AmbT",
+                                                    StressAlCond = "StrC",
+                                                    ConsidCliente = "ConsCl"))
 
 names(DBPers)
 
@@ -135,7 +143,7 @@ pca1$scores[1:10,]
 #Analisis Factorial
 
 fa <-factanal(na.omit(DBPers), factor=3, rotation = "varimax", na.rm = TRUE)
-print(fa,cutoff=0.4, sort=FALSE)
+print(fa,cutoff=0.3, sort=FALSE)
 
 #sink()
 
@@ -152,21 +160,23 @@ DBPers1$Factor3 <- round(((DBPers1$Factor3 - min(DBPers1$Factor3))/(max(DBPers1$
 
 DBPers1
 
-DBPers1 <- rename(DBPers1, replace =c(Factor1 = "AmbLaboral",
+DBPers1 <- rename(DBPers1, replace =c(Factor1 = "AmbLab",
                                     Factor2 = "Stress",
-                                    Factor3 = "HabComunAfectiva"))
+                                    Factor3 = "HabPros"))
+
+DBPers1
 
 
 par(mfrow=c(1,3))
-hist(DBPers1$Factor1, freq = TRUE, main = "Distribución del Factor 1",
-     xlab = "Factor 1", ylab = "Frecuencia", col = "4")
-hist(DBPers1$Factor2, freq = TRUE, main = "Distribución del Factor 2",
-     xlab = "Factor 2", ylab = "Frecuencia", col = "blue")
-hist(DBPers1$Factor3, freq = TRUE, main = "Distribución del Factor 3",
-     xlab = "Factor 3", ylab = "Frecuencia", col = "green")
+hist(DBPers1$AmbLab, freq = TRUE, main = "Distribución del Factor 1",
+     xlab = "Ambiente Laboral", ylab = "Frecuencia", col = "4")
+hist(DBPers1$Stress, freq = TRUE, main = "Distribución del Factor 2",
+     xlab = "Stress al Conducir", ylab = "Frecuencia", col = "red")
+hist(DBPers1$HabPros, freq = TRUE, main = "Distribución del Factor 3",
+     xlab = "Habilidades Prosociales", ylab = "Frecuencia", col = "green")
 
 
 saveRDS(DBPers1, 
-        file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/AFPersonalidad.rds")
+        file="/Users/williz/Desktop/ModelosED/Database/AFPersonalidad.rds")
 
 

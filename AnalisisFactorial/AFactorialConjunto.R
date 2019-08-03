@@ -18,57 +18,67 @@ library(corrr)
 
 #Leer la dataset 
 
-#Leer la dataset Personalidad
+#Leer los dataset Personalidad y Modo Conduccion
 
-DBPersonalidad <- readRDS(file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBPersonalidad.rds")
+DBPersonalidad <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBPersonalidad.rds")
 
-DBPers <- DBPersonalidad
+DBModoConduccion <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
 
-summary(na.omit(DBPers))
+names(DBPersonalidad)
 
-view(DBPers)
+names(DBModoConduccion)
+
+DB <- DBPersonalidad %>%
+  select_all() %>%
+  # DBModoConducción
+  inner_join(DBModoConduccion %>%
+               select(ViajeId:UsoCelular),
+             by = "ViajeId") 
+
+#view(DBConjunta)  
+names(DB)
+
+DB <- DBConjunta
+
+#Renombrar las Variables
+DBConjunta <- rename(DBConjunta, replace =c(ComunicVerbal = "ComVrb",
+                                            Ansiedad = "Ans",
+                                            ComunicAfectiva = "ComAfec",
+                                            PresPersonal = "PrPers",
+                                            AmbTrabajo = "AmbT",
+                                            StressAlCond = "StrC",
+                                            ConsidCliente = "ConsCl",
+                                            CinturonDeSeguridad = "CinSeg",
+                                            FrenoRapidoBrusco = "FRbr",
+                                            UsaDireccionales = "UsDirec",
+                                            EnfadoConOtroConductor = "EnfCond",
+                                            AceleraFrenaBruscamenteSemaforo = "AFrSem",
+                                            CulebreaConFrecuencia = "CulFr",
+                                            OmiteLimiteVelocidad = "OmLmVel",
+                                            IgnoraSenhalPare = "IgPare",
+                                            UsoCelular = "UsCel"))
 
 #Eliminar Variables que no entran en el analisis factorial
 
-#DBPers <- DBPers[ ,!colnames(DBPers)=="ViajeId"]
-DBPers <- DBPers[ ,!colnames(DBPers)=="NivelEducativo"]
-DBPers <- DBPers[ ,!colnames(DBPers)=="IdViaje"]
-DBPers <- DBPers[ ,!colnames(DBPers)=="DispMobiles"]
-DBPers <- DBPers[ ,!colnames(DBPers)=="SatisfDispMob"]
+DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="ViajeId"]
+DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="NivelEducativo"]
+DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="DispMobiles"]
+DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="SatisfDispMob"]
+DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="PasoPeatones"]
+DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="UsaPito"]
 
-names(DBPers)
-
-#Leer la dataset Conduccion
-
-conduccion <- readRDS(file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBModoConduccion.rds")
-
-names(conduccion)
-
-
-DB <- DBPers %>%
-  select_all() %>%
-  # Modo conducción
-  inner_join(conduccion %>%
-               select(ViajeId:UsoCelular),
-             by = "ViajeId") 
-view(DB)  
-
-DBF <- DB[ ,!colnames(DB)=="ViajeId"]
-
-names(DBF)
+names(DBConjunta)
 
 
 #Correlacion
-cor(na.omit(DBF), use = "pairwise.complete.obs")
+cor(na.omit(DBConjunta), use = "pairwise.complete.obs")
 
-Rcor <- cor(na.omit(DBF))
+Rcor <- cor(na.omit(DBConjunta))
 
 # Gráfico de las Correlaciones
 corrplot(Rcor, method = "shade", type="upper", order = "hclust", tl.col = "black", tl.cex = 1)
 
-corrplot.mixed(Rcor,lower.col = "black",number.cex=.7)
-
-
+corrplot.mixed(Rcor,lower.col = "black",number.cex=.6)
 
 # Determinante de la Matriz de correlaciones
 det(Rcor)
@@ -99,7 +109,7 @@ print(A)
 # muestral es pequeño. 
 
 #Test de esfericidad de Bartlett
-print(cortest.bartlett(Rcor, n=nrow(DBPers)))
+print(cortest.bartlett(Rcor, n=nrow(DBConjunta)))
 
 
 # Como última prueba de multicolinealidad antes de comenzar probar modelos, analizaremos el
@@ -123,7 +133,7 @@ print(kmo)
 
 
 #Analisis de Componentes Principales
-pca1 <- princomp(na.omit(DBF), scores = TRUE, cor = TRUE)
+pca1 <- princomp(na.omit(DBConjunta), scores = TRUE, cor = TRUE)
 summary(pca1)
 
 #Cargar los componentes principales
@@ -145,73 +155,58 @@ pca1$scores[1:10,]
 
 #Analisis Factorial
 
-fa <-factanal(na.omit(DBF), factor=5, rotation = "varimax", na.rm = TRUE)
+fa <-factanal(na.omit(DBConjunta), factor=5, rotation = "varimax", na.rm = TRUE)
 print(fa,cutoff=0.35, sort=FALSE)
 
 #sink()
-#fa2 <-factanal(na.omit(DB), factor=4, rotation = "varimax", na.rm = TRUE)
+#fa2 <-factanal(na.omit(DBConjunta), factor=4, rotation = "varimax", na.rm = TRUE)
 #print(fa2,cutoff=0.3, sort=FALSE)
 
 
 
-factores <- factanal(na.omit(DBF), factor=5, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+factores <- factanal(na.omit(DBConjunta), factor=5, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 print(factores,cutoff=0.35, sort=FALSE)
 
 #Normalizamos los valores que podran tomarse como el peso para el cálculo de un indice que
 # explica por cada i-esima fila la variabilidad de todo el conjunto de datos
 
-DBFAC <- cbind(na.omit(DB), factores)
+DBFAC <- cbind(na.omit(DBConjunta), factores)
 
 DBFAC$Factor1 <- round(((DBFAC$Factor1 - min(DBFAC$Factor1))/(max(DBFAC$Factor1)-min(DBFAC$Factor1))),5)
 DBFAC$Factor2 <- round(((DBFAC$Factor2 - min(DBFAC$Factor2))/(max(DBFAC$Factor2)-min(DBFAC$Factor2))),5)
-DBFAC$Factor3 <- round(((DBFAC$Factor3 - min(DBFAC$Factor3))/(max(DBFAC$Factor3)-min(DBPFAC$Factor3))),5)
-DBFAC$Factor4 <- round(((DBFAC$Factor4 - min(DBFAC$Factor4))/(max(DBFAC$Factor4)-min(DBPFAC$Factor4))),5)
-DBFAC$Factor5 <- round(((DBFAC$Factor5 - min(DBFAC$Factor5))/(max(DBFAC$Factor5)-min(DBPFAC$Factor5))),5)
+DBFAC$Factor3 <- round(((DBFAC$Factor3 - min(DBFAC$Factor3))/(max(DBFAC$Factor3)-min(DBFAC$Factor3))),5)
+DBFAC$Factor4 <- round(((DBFAC$Factor4 - min(DBFAC$Factor4))/(max(DBFAC$Factor4)-min(DBFAC$Factor4))),5)
+DBFAC$Factor5 <- round(((DBFAC$Factor5 - min(DBFAC$Factor5))/(max(DBFAC$Factor5)-min(DBFAC$Factor5))),5)
 
 
 DBFAC
 
-par(mfrow=c(1,5))
-hist(DBFAC$Factor1, freq = TRUE, main = "Distribución del Factor 1",
-     xlab = "Factor 1", ylab = "Frecuencia", col = "4")
-hist(DBFAC$Factor2, freq = TRUE, main = "Distribución del Factor 2",
-     xlab = "Factor 2", ylab = "Frecuencia", col = "blue")
-hist(DBFAC$Factor3, freq = TRUE, main = "Distribución del Factor 3",
-     xlab = "Factor 3", ylab = "Frecuencia", col = "green")
-hist(DBFAC$Factor4, freq = TRUE, main = "Distribución del Factor 4",
-     xlab = "Factor 3", ylab = "Frecuencia", col = "3")
-hist(DBFAC$Factor5, freq = TRUE, main = "Distribución del Factor 5",
-     xlab = "Factor 3", ylab = "Frecuencia", col = "red")
-
-
-DBFAC <- rename(DBFAC, replace = c(Factor1 = "ConduccionAgresiva",
+DBFAC <- rename(DBFAC, replace = c(Factor1 = "CondAgresiva",
                                    Factor2 = "Stress",
                                    Factor3 = "AmbienteLaboral",
-                                   Factor4 = "Seguridad",
-                                   Factor5 = "ComunicacionVerbal"))
+                                   Factor4 = "CondSegura",
+                                   Factor5 = "HabProsoc"))
+
+
+
+par(mfrow=c(2,3))
+
+hist(DBFAC$CondAgresiva, freq = TRUE, main = "Distribución del Factor 1",
+     xlab = "Cond Agresiva", ylab = "Frecuencia", col = "red")
+hist(DBFAC$Stress, freq = TRUE, main = "Distribución del Factor 2",
+     xlab = "Stress al Cond", ylab = "Frecuencia", col = "red")
+hist(DBFAC$AmbienteLaboral, freq = TRUE, main = "Distribución del Factor 3",
+     xlab = "Ambiente Laboral", ylab = "Frecuencia", col = "green")
+hist(DBFAC$CondSegura, freq = TRUE, main = "Distribución del Factor 4",
+     xlab = "Cond Segura", ylab = "Frecuencia", col = "3")
+hist(DBFAC$HabProsoc, freq = TRUE, main = "Distribución del Factor 5",
+     xlab = "Hab Prosociales", ylab = "Frecuencia", col = "blue")
+
 
 
 saveRDS(DBFAC, 
-        file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/AFConjunto.rds")
+        file="/Users/williz/Desktop/ModelosED/Database/AFConjunto.rds")
 
-DBMLogit <- readRDS("/Users/williz/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/Analisis en R/Modelo Logit DB/DBModLog1.rds")
-head(DBMLogit)
-str(DBMLogit)
-
-DBML <- DBMLogit %>%
-  select_all() %>%
-  # Base de datos Conjunta
-  inner_join(DB %>%
-               select(ViajeId:UsoCelular),
-             by = "ViajeId") 
-view(DBML)  
-
-
-saveRDS(DBML, 
-        file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBMLConjunto.rds")
-
-
-  
 
 
 

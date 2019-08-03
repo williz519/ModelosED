@@ -1,6 +1,6 @@
 
 #Installing the Psych package and loading it
-install.packages("psych")
+#install.packages("psych")
 library(psych)
 library(tidyverse)
 library(readxl)
@@ -18,7 +18,7 @@ library(corrr)
 
 #Leer la dataset
 
-DB_file <- "/Users/williz/Desktop/rutasviajes/DB_Viajes.xlsx"
+DB_file <- "/Users/williz/Desktop/ModelosED/Database/DB_Viajes.xlsx"
 
 DB <- DB_file %>%
   excel_sheets() %>%
@@ -143,9 +143,10 @@ table(X$OmiteLimiteVelocidad)
 table(X$IgnoraSenhalPare)
 table(X$UsoCelular)
 
+summary(X)
+describe(X)
 
-
-saveRDS(DBPersonalidad, file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBModoConduccion.rds")
+saveRDS(X, file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
 
                        
                        
