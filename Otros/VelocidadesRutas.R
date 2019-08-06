@@ -69,12 +69,10 @@ DBCarac <- DB$Viajes %>%
 
 
 #Cargar datos desde DROPBOX
-Rutas200 <-readRDS("/Users/williz/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Base de datos/RutasVelocidades/Rutas200.rds")
-
-#Rutas200 <-readRDS("C:/Users/sin definir/Desktop/Rutas/Rutas200.rds")
+Rutas200 <-readRDS("/Users/williz/Desktop/ModelosED/Database/RutasVelocidades/Rutas200.rds")
 
 
-Google <-read_xlsx("/Users/williz/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/Analisis en R/DBRutasGoogle.xlsx")
+Google <-read_xlsx("/Users/williz/Desktop/ModelosED/Database/DBRutasGoogle.xlsx")
 
 RutasGoogle <- Google %>%
   # Filtrar viajes Eliminados en la primera revisión
@@ -183,14 +181,15 @@ str(DBModLog)
 View(DBModLog)
 
 
+saveRDS(DBModLog, file = "/Users/williz/Desktop/ModelosED/Database/DBModLog1.rds")
 
 
-saveRDS(DBModLog, file = "/Users/williz/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/Analisis en R/Modelo Logit DB/DBModLog1.rds")
+#Para guardar la DB para el modelo MLN
 
 #write.csv2(DBModeloLogit, file = "C:/Users/sin definir/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/Analisis en R/DBModeloLogit.csv",
 #           sheetName = "Rutas", col.names=TRUE, row.names=TRUE, append=FALSE)
 
-write.table(DBModLog,file="/Users/williz/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/Analisis en R/Modelo Logit DB/DBModLog.csv", sep="\t", dec=".")
+#write.table(DBModLog,file="/Users/williz/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/Analisis en R/Modelo Logit DB/DBModLog.csv", sep="\t", dec=".")
 
 
 #write.xlsx(RutasComparadas, file = "C:/Users/sin definir/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/Analisis en R/RutasComparadas.xlsx",

@@ -20,6 +20,8 @@ library(semPlot)
 
 # Cargar Datos desde MAC
 DBVL <- readRDS("/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBModeloLogitVL.rds")
+names(DBVL)
+
 
 #Cargar datos desde PC UdeA
 #DB <- readRDS("/Users/sin definir/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBModeloLogitVL.rds")
