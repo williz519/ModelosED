@@ -87,6 +87,8 @@ DBModLogitVL<- data.frame(DBModLogitVL %>%
 
 view(DBModLogitVL)
 
+table(DBModLogitVL$GENERO)
+
 # Base de datos con sin Cambiar escala
 #write.table(DBModLogitVL,file="/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBModLogitVL2.csv", sep="\t", dec=".")
 
