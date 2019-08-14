@@ -1,0 +1,382 @@
+
+MODELO 4
+
+model4 <- " #Variables Latentes
+      ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare
+STRESS =~ Ans + ComAfec + StrC + ConsCl
+AMBLABOR =~ PrPers + AmbT + ConsCl
+CONDSEG =~  CinSeg + UsDirec
+HABPROSOC =~ ComVrb
+
+# Regresiones
+ACTAGR ~ EDUBASICA + JOVEN + ADULTO + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF
+STRESS ~ EDUBASICA + JOVEN + ADULTO + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF
+AMBLABOR ~ EDUBASICA + JOVEN + ADULTO + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + ACTAGR + STRESS
+CONDSEG ~ EDUBASICA + JOVEN + ADULTO + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF 
+HABPROSOC ~ EDUBASICA + JOVEN + ADULTO + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF  
+
+# Varianzas - Covarianzas
+ACTAGR ~~ STRESS
+
+# Interceptos"
+
+
+lavaan 0.6-3 ended normally after 112 iterations
+
+  Optimization method                           NLMINB
+  Number of free parameters                         83
+
+  Number of observations                           346
+
+  Estimator                                         ML
+  Model Fit Test Statistic                     670.195
+  Degrees of freedom                               187
+  P-value (Chi-square)                           0.000
+
+Model test baseline model:
+
+  Minimum Function Test Statistic             2611.035
+  Degrees of freedom                               255
+  P-value                                        0.000
+
+User model versus baseline model:
+
+  Comparative Fit Index (CFI)                    0.795
+  Tucker-Lewis Index (TLI)                       0.720
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)              -5577.865
+  Loglikelihood unrestricted model (H1)      -5242.767
+
+  Number of free parameters                         83
+  Akaike (AIC)                               11321.729
+  Bayesian (BIC)                             11640.984
+  Sample-size adjusted Bayesian (BIC)        11377.684
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.086
+  90 Percent Confidence Interval          0.079  0.094
+  P-value RMSEA <= 0.05                          0.000
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.080
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  ACTAGR =~                                                             
+    FRbr              0.402    0.024   16.723    0.000    0.427    0.787
+    EnfCond           0.245    0.018   13.603    0.000    0.261    0.675
+    AFrSem            0.433    0.021   20.423    0.000    0.461    0.903
+    CulFr             0.277    0.033    8.337    0.000    0.295    0.447
+    OmLmVel           0.218    0.022   10.110    0.000    0.232    0.530
+    IgPare            0.210    0.017   12.708    0.000    0.223    0.640
+  STRESS =~                                                             
+    Ans               1.225    0.080   15.327    0.000    1.296    0.761
+    ComAfec           1.301    0.082   15.809    0.000    1.377    0.779
+    StrC              1.126    0.084   13.486    0.000    1.192    0.689
+    ConsCl            0.635    0.060   10.591    0.000    0.672    0.612
+  AMBLABOR =~                                                           
+    PrPers            1.075    0.066   16.170    0.000    1.319    0.963
+    AmbT              1.029    0.065   15.902    0.000    1.262    0.786
+    ConsCl            0.169    0.048    3.519    0.000    0.208    0.189
+  CONDSEG =~                                                            
+    CinSeg            0.231    0.037    6.227    0.000    0.255    0.629
+    UsDirec           0.285    0.046    6.227    0.000    0.315    0.529
+  HABPROSOC =~                                                          
+    ComVrb            2.804    0.107   26.306    0.000    2.892    1.000
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  ACTAGR ~                                                              
+    EDUBASICA         0.312    0.129    2.420    0.016    0.294    0.135
+    JOVEN             0.231    0.279    0.827    0.408    0.217    0.058
+    ADULTO            0.211    0.177    1.191    0.234    0.199    0.081
+    TIEMPO_PROFESI    0.004    0.006    0.688    0.492    0.004    0.040
+    HORASTRABAJO     -0.063    0.021   -3.024    0.002   -0.059   -0.167
+    HPICO             0.178    0.121    1.478    0.139    0.168    0.081
+    CSECO            -0.057    0.149   -0.383    0.702   -0.054   -0.021
+    CONG_CD           0.285    0.139    2.046    0.041    0.268    0.116
+    CONG_EF           0.667    0.171    3.897    0.000    0.627    0.228
+    SININFOTRF       -0.389    0.144   -2.710    0.007   -0.366   -0.148
+  STRESS ~                                                              
+    EDUBASICA         0.056    0.134    0.415    0.678    0.053    0.024
+    JOVEN            -0.142    0.291   -0.488    0.626   -0.134   -0.036
+    ADULTO            0.020    0.185    0.106    0.916    0.019    0.008
+    TIEMPO_PROFESI    0.005    0.007    0.815    0.415    0.005    0.050
+    HORASTRABAJO     -0.093    0.022   -4.220    0.000   -0.088   -0.248
+    HPICO             0.179    0.126    1.421    0.155    0.169    0.082
+    CSECO            -0.211    0.156   -1.346    0.178   -0.199   -0.078
+    CONG_CD           0.084    0.145    0.581    0.561    0.080    0.035
+    CONG_EF           0.336    0.177    1.896    0.058    0.317    0.115
+    SININFOTRF       -0.308    0.150   -2.058    0.040   -0.291   -0.118
+  AMBLABOR ~                                                            
+    EDUBASICA         0.171    0.132    1.287    0.198    0.139    0.064
+    JOVEN            -0.056    0.284   -0.198    0.843   -0.046   -0.012
+    ADULTO           -0.415    0.181   -2.285    0.022   -0.338   -0.138
+    TIEMPO_PROFESI   -0.002    0.006   -0.322    0.748   -0.002   -0.016
+    HORASTRABAJO      0.005    0.022    0.213    0.832    0.004    0.011
+    HPICO             0.046    0.122    0.373    0.709    0.037    0.018
+    CSECO            -0.041    0.152   -0.268    0.789   -0.033   -0.013
+    CONG_CD           0.266    0.142    1.867    0.062    0.217    0.094
+    CONG_EF          -0.067    0.176   -0.383    0.702   -0.055   -0.020
+    SININFOTRF        0.099    0.146    0.679    0.497    0.081    0.033
+    ACTAGR            0.296    0.094    3.152    0.002    0.257    0.257
+    STRESS            0.406    0.103    3.950    0.000    0.350    0.350
+  CONDSEG ~                                                             
+    EDUBASICA        -0.772    0.194   -3.982    0.000   -0.699   -0.321
+    JOVEN            -0.378    0.387   -0.976    0.329   -0.342   -0.092
+    ADULTO            0.249    0.246    1.014    0.311    0.226    0.092
+    TIEMPO_PROFESI    0.001    0.009    0.130    0.896    0.001    0.010
+    HORASTRABAJO      0.027    0.029    0.960    0.337    0.025    0.070
+    HPICO            -0.188    0.167   -1.121    0.262   -0.170   -0.083
+    CSECO             0.467    0.211    2.208    0.027    0.423    0.165
+    CONG_CD          -0.003    0.191   -0.014    0.989   -0.002   -0.001
+    CONG_EF           0.139    0.233    0.596    0.551    0.126    0.046
+    SININFOTRF        0.181    0.198    0.918    0.359    0.164    0.067
+  HABPROSOC ~                                                           
+    EDUBASICA         0.033    0.120    0.274    0.784    0.032    0.015
+    JOVEN            -0.458    0.262   -1.747    0.081   -0.444   -0.119
+    ADULTO           -0.239    0.166   -1.438    0.151   -0.232   -0.095
+    TIEMPO_PROFESI   -0.003    0.006   -0.577    0.564   -0.003   -0.032
+    HORASTRABAJO      0.031    0.019    1.604    0.109    0.030    0.085
+    HPICO             0.127    0.113    1.121    0.262    0.123    0.060
+    CSECO            -0.000    0.140   -0.002    0.999   -0.000   -0.000
+    CONG_CD          -0.254    0.130   -1.948    0.051   -0.246   -0.107
+    CONG_EF          -0.570    0.160   -3.569    0.000   -0.553   -0.201
+    SININFOTRF       -0.112    0.134   -0.835    0.404   -0.108   -0.044
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+ .ACTAGR ~~                                                             
+   .STRESS            0.653    0.042   15.545    0.000    0.653    0.653
+ .AMBLABOR ~~                                                           
+   .CONDSEG           0.000                               0.000    0.000
+   .HABPROSOC         0.000                               0.000    0.000
+ .CONDSEG ~~                                                            
+   .HABPROSOC         0.000                               0.000    0.000
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .FRbr              0.113    0.011   10.568    0.000    0.113    0.381
+   .EnfCond           0.081    0.007   11.882    0.000    0.081    0.544
+   .AFrSem            0.048    0.007    6.531    0.000    0.048    0.185
+   .CulFr             0.348    0.027   12.785    0.000    0.348    0.800
+   .OmLmVel           0.138    0.011   12.575    0.000    0.138    0.719
+   .IgPare            0.072    0.006   12.108    0.000    0.072    0.590
+   .Ans               1.222    0.125    9.803    0.000    1.222    0.421
+   .ComAfec           1.226    0.131    9.383    0.000    1.226    0.393
+   .StrC              1.569    0.143   10.975    0.000    1.569    0.525
+   .ConsCl            0.567    0.051   11.067    0.000    0.567    0.470
+   .PrPers            0.137    0.108    1.277    0.202    0.137    0.073
+   .AmbT              0.987    0.123    7.994    0.000    0.987    0.383
+   .CinSeg            0.100    0.018    5.436    0.000    0.100    0.605
+   .UsDirec           0.254    0.032    7.970    0.000    0.254    0.720
+   .ComVrb            0.000                               0.000    0.000
+   .ACTAGR            1.000                               0.883    0.883
+   .STRESS            1.000                               0.893    0.893
+   .AMBLABOR          1.000                               0.665    0.665
+   .CONDSEG           1.000                               0.821    0.821
+   .HABPROSOC         1.000                               0.940    0.940
+
+          lhs op     rhs     mi    epc sepc.lv sepc.all sepc.nox
+200 HABPROSOC =~ ComAfec 41.104 -0.425  -0.438   -0.248   -0.248
+166    STRESS =~ UsDirec 33.291 -0.180  -0.190   -0.320   -0.320
+333 HABPROSOC  ~  STRESS 33.003 -0.339  -0.348   -0.348   -0.348
+167    STRESS =~  ComVrb 33.003 -0.950  -1.006   -0.348   -0.348
+196 HABPROSOC =~   CulFr 31.678 -0.176  -0.181   -0.274   -0.274
+248     CulFr ~~     Ans 31.610 -0.225  -0.225   -0.344   -0.344
+290   ComAfec ~~  ComVrb 30.167 -1.047  -1.047       NA       NA
+295      StrC ~~ UsDirec 29.151 -0.217  -0.217   -0.343   -0.343
+155    ACTAGR =~ UsDirec 29.066 -0.163  -0.173   -0.291   -0.291
+329   CONDSEG  ~  STRESS 28.203 -0.461  -0.442   -0.442   -0.442
+lavaan 0.6-3 ended normally after 154 iterations
+
+  Optimization method                           NLMINB
+  Number of free parameters                         83
+
+  Number of observations                           346
+
+  Estimator                                         ML
+  Model Fit Test Statistic                     670.195
+  Degrees of freedom                               187
+  P-value (Chi-square)                           0.000
+
+Model test baseline model:
+
+  Minimum Function Test Statistic             2611.035
+  Degrees of freedom                               255
+  P-value                                        0.000
+
+User model versus baseline model:
+
+  Comparative Fit Index (CFI)                    0.795
+  Tucker-Lewis Index (TLI)                       0.720
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)              -5577.865
+  Loglikelihood unrestricted model (H1)      -5242.767
+
+  Number of free parameters                         83
+  Akaike (AIC)                               11321.729
+  Bayesian (BIC)                             11640.984
+  Sample-size adjusted Bayesian (BIC)        11377.684
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.086
+  90 Percent Confidence Interval          0.079  0.094
+  P-value RMSEA <= 0.05                          0.000
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.080
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  ACTAGR =~                                                             
+    FRbr              1.000                               0.427    0.787
+    EnfCond           0.610    0.047   12.909    0.000    0.261    0.675
+    AFrSem            1.078    0.061   17.759    0.000    0.461    0.903
+    CulFr             0.691    0.085    8.170    0.000    0.295    0.447
+    OmLmVel           0.543    0.055    9.816    0.000    0.232    0.530
+    IgPare            0.523    0.043   12.138    0.000    0.223    0.640
+  STRESS =~                                                             
+    Ans               1.000                               1.297    0.761
+    ComAfec           1.062    0.078   13.563    0.000    1.377    0.779
+    StrC              0.919    0.076   12.082    0.000    1.192    0.689
+    ConsCl            0.518    0.053    9.759    0.000    0.672    0.612
+  AMBLABOR =~                                                           
+    PrPers            1.000                               1.319    0.963
+    AmbT              0.957    0.072   13.281    0.000    1.262    0.786
+    ConsCl            0.158    0.045    3.513    0.000    0.208    0.189
+  CONDSEG =~                                                            
+    CinSeg            1.000                               0.255    0.629
+    UsDirec           1.232    0.317    3.889    0.000    0.315    0.529
+  HABPROSOC =~                                                          
+    ComVrb            1.000                               2.892    1.000
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  ACTAGR ~                                                              
+    EDUBASICA         0.125    0.052    2.421    0.015    0.294    0.135
+    JOVEN             0.093    0.112    0.827    0.408    0.217    0.058
+    ADULTO            0.085    0.071    1.191    0.234    0.199    0.081
+    TIEMPO_PROFESI    0.002    0.003    0.688    0.492    0.004    0.040
+    HORASTRABAJO     -0.025    0.008   -3.025    0.002   -0.059   -0.167
+    HPICO             0.072    0.048    1.478    0.139    0.168    0.081
+    CSECO            -0.023    0.060   -0.383    0.702   -0.054   -0.021
+    CONG_CD           0.114    0.056    2.046    0.041    0.268    0.116
+    CONG_EF           0.268    0.069    3.901    0.000    0.627    0.228
+    SININFOTRF       -0.156    0.058   -2.712    0.007   -0.366   -0.148
+  STRESS ~                                                              
+    EDUBASICA         0.068    0.164    0.415    0.678    0.053    0.024
+    JOVEN            -0.174    0.357   -0.488    0.626   -0.134   -0.036
+    ADULTO            0.024    0.227    0.106    0.916    0.019    0.008
+    TIEMPO_PROFESI    0.007    0.008    0.815    0.415    0.005    0.050
+    HORASTRABAJO     -0.114    0.027   -4.231    0.000   -0.088   -0.248
+    HPICO             0.219    0.154    1.421    0.155    0.169    0.082
+    CSECO            -0.258    0.191   -1.347    0.178   -0.199   -0.078
+    CONG_CD           0.103    0.178    0.581    0.561    0.080    0.035
+    CONG_EF           0.411    0.217    1.897    0.058    0.317    0.115
+    SININFOTRF       -0.377    0.183   -2.059    0.039   -0.291   -0.118
+  AMBLABOR ~                                                            
+    EDUBASICA         0.183    0.142    1.291    0.197    0.139    0.064
+    JOVEN            -0.060    0.305   -0.198    0.843   -0.046   -0.012
+    ADULTO           -0.446    0.193   -2.304    0.021   -0.338   -0.138
+    TIEMPO_PROFESI   -0.002    0.007   -0.322    0.748   -0.002   -0.016
+    HORASTRABAJO      0.005    0.023    0.213    0.832    0.004    0.011
+    HPICO             0.049    0.131    0.373    0.709    0.037    0.018
+    CSECO            -0.044    0.163   -0.268    0.789   -0.033   -0.013
+    CONG_CD           0.286    0.152    1.878    0.060    0.217    0.094
+    CONG_EF          -0.072    0.189   -0.383    0.702   -0.055   -0.020
+    SININFOTRF        0.107    0.157    0.680    0.497    0.081    0.033
+    ACTAGR            0.793    0.250    3.167    0.002    0.257    0.257
+    STRESS            0.356    0.087    4.067    0.000    0.350    0.350
+  CONDSEG ~                                                             
+    EDUBASICA        -0.178    0.044   -4.017    0.000   -0.699   -0.321
+    JOVEN            -0.087    0.089   -0.977    0.329   -0.342   -0.092
+    ADULTO            0.058    0.057    1.014    0.311    0.226    0.092
+    TIEMPO_PROFESI    0.000    0.002    0.130    0.896    0.001    0.010
+    HORASTRABAJO      0.006    0.007    0.961    0.337    0.025    0.070
+    HPICO            -0.043    0.039   -1.122    0.262   -0.170   -0.083
+    CSECO             0.108    0.049    2.214    0.027    0.423    0.165
+    CONG_CD          -0.001    0.044   -0.014    0.989   -0.002   -0.001
+    CONG_EF           0.032    0.054    0.597    0.551    0.126    0.046
+    SININFOTRF        0.042    0.046    0.918    0.359    0.164    0.067
+  HABPROSOC ~                                                           
+    EDUBASICA         0.092    0.337    0.274    0.784    0.032    0.015
+    JOVEN            -1.283    0.733   -1.751    0.080   -0.444   -0.119
+    ADULTO           -0.671    0.466   -1.440    0.150   -0.232   -0.095
+    TIEMPO_PROFESI   -0.010    0.017   -0.577    0.564   -0.003   -0.032
+    HORASTRABAJO      0.087    0.054    1.607    0.108    0.030    0.085
+    HPICO             0.355    0.316    1.122    0.262    0.123    0.060
+    CSECO            -0.001    0.393   -0.002    0.999   -0.000   -0.000
+    CONG_CD          -0.712    0.365   -1.953    0.051   -0.246   -0.107
+    CONG_EF          -1.598    0.444   -3.603    0.000   -0.553   -0.201
+    SININFOTRF       -0.313    0.375   -0.836    0.403   -0.108   -0.044
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+ .ACTAGR ~~                                                             
+   .STRESS            0.321    0.041    7.848    0.000    0.653    0.653
+ .AMBLABOR ~~                                                           
+   .CONDSEG           0.000                               0.000    0.000
+   .HABPROSOC         0.000                               0.000    0.000
+ .CONDSEG ~~                                                            
+   .HABPROSOC         0.000                               0.000    0.000
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .FRbr              0.113    0.011   10.568    0.000    0.113    0.381
+   .EnfCond           0.081    0.007   11.882    0.000    0.081    0.544
+   .AFrSem            0.048    0.007    6.531    0.000    0.048    0.185
+   .CulFr             0.348    0.027   12.785    0.000    0.348    0.800
+   .OmLmVel           0.138    0.011   12.575    0.000    0.138    0.719
+   .IgPare            0.072    0.006   12.108    0.000    0.072    0.590
+   .Ans               1.222    0.125    9.803    0.000    1.222    0.421
+   .ComAfec           1.226    0.131    9.383    0.000    1.226    0.393
+   .StrC              1.569    0.143   10.975    0.000    1.569    0.525
+   .ConsCl            0.567    0.051   11.067    0.000    0.567    0.470
+   .PrPers            0.137    0.108    1.277    0.201    0.137    0.073
+   .AmbT              0.987    0.123    7.994    0.000    0.987    0.383
+   .CinSeg            0.100    0.018    5.436    0.000    0.100    0.605
+   .UsDirec           0.254    0.032    7.970    0.000    0.254    0.720
+   .ComVrb            0.000                               0.000    0.000
+   .ACTAGR            0.161    0.019    8.362    0.000    0.883    0.883
+   .STRESS            1.501    0.196    7.663    0.000    0.893    0.893
+   .AMBLABOR          1.155    0.143    8.085    0.000    0.665    0.665
+   .CONDSEG           0.053    0.017    3.113    0.002    0.821    0.821
+   .HABPROSOC         7.864    0.598   13.153    0.000    0.940    0.940
+
+          lhs op     rhs     mi    epc sepc.lv sepc.all sepc.nox
+200 HABPROSOC =~ ComAfec 41.104 -0.151  -0.438   -0.248   -0.248
+166    STRESS =~ UsDirec 33.291 -0.147  -0.190   -0.320   -0.320
+167    STRESS =~  ComVrb 33.003 -0.776  -1.006   -0.348   -0.348
+333 HABPROSOC  ~  STRESS 33.003 -0.776  -0.348   -0.348   -0.348
+196 HABPROSOC =~   CulFr 31.678 -0.063  -0.181   -0.274   -0.274
+248     CulFr ~~     Ans 31.610 -0.225  -0.225   -0.344   -0.344
+290   ComAfec ~~  ComVrb 30.167 -1.047  -1.047       NA       NA
+295      StrC ~~ UsDirec 29.151 -0.217  -0.217   -0.343   -0.343
+155    ACTAGR =~ UsDirec 29.066 -0.405  -0.173   -0.291   -0.291
+329   CONDSEG  ~  STRESS 28.203 -0.087  -0.442   -0.442   -0.442
