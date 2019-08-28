@@ -1,0 +1,430 @@
+%% This file is designed to be included into a LaTeX document
+%% See http://www.latex-project.org/ for information about LaTeX
+%% biogeme 3.1.2 [Today, 2019]
+%% Version entirely written in Python
+%% Home page: http://biogeme.epfl.ch
+%% Submit questions to https://groups.google.com/d/forum/biogeme
+%% Michel Bierlaire, Transport and Mobility Laboratory, Ecole Polytechnique Fédérale de Lausanne (EPFL)
+
+%% File 02LVMedellinOrdered~06.tex
+%% This file has automatically been generated on 2019-08-28 01:07:48.630879</p>
+
+%%Database name: DBModLogitVLCE
+
+%% General statistics
+\section{General statistics}
+\begin{tabular}{ll}
+Number of estimated parameters & 27 \\
+Sample size & 348 \\
+Excluded observations & 0 \\
+Init log likelihood & -5870.026 \\
+Final log likelihood & -2719.133 \\
+Likelihood ratio test for the init. model & 6301.785 \\
+Rho-square for the init. model & 0.537 \\
+Rho-square-bar for the init. model & 0.532 \\
+Akaike Information Criterion & 5492.266 \\
+Bayesian Information Criterion & 5596.276 \\
+Final gradient norm & 1.1650E-01 \\
+Diagnostic & b'CONVERGENCE: NORM\_OF\_PROJECTED\_GRADIENT\_<=\_PGTOL' \\
+Database readings & 376 \\
+Iterations & 332 \\
+Data processing time & 0:00:00.000015 \\
+Optimization time & 0:00:06.257152 \\
+Nbr of threads & 4 \\
+\end{tabular}
+
+%%Parameter estimates
+\section{Parameter estimates}
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &  Value &  Std err &  t-test &  p-value &  Rob. Std err &  Rob. t-test &  Rob. p-value \\
+\midrule
+BETA\_AFrSemF1      &   1.35 &     0.64 &    2.11 &   0.0349 &         0.358 &         3.77 &       0.00016 \\
+BETA\_CulFrF1       &   1.68 &     0.86 &    1.96 &   0.0502 &           1.3 &         1.29 &         0.195 \\
+BETA\_EnfCondF1     &   1.14 &    0.551 &    2.07 &   0.0381 &         0.483 &         2.37 &        0.0179 \\
+BETA\_IgPareF1      &  0.621 &     0.45 &    1.38 &    0.168 &         0.527 &         1.18 &         0.239 \\
+BETA\_OmLmVelF1     &   1.04 &    0.545 &    1.91 &   0.0555 &         0.597 &         1.75 &        0.0803 \\
+BETA\_UsoCelF1      &  0.257 &    0.409 &   0.629 &    0.529 &         0.443 &        0.582 &         0.561 \\
+COEF\_CONGCD        &   1.79 &    0.745 &     2.4 &   0.0162 &          0.89 &         2.01 &        0.0443 \\
+COEF\_CONGEF        &   2.89 &     1.19 &    2.44 &   0.0148 &          1.44 &          2.0 &         0.045 \\
+COEF\_EDUC\_BASICA   &   1.12 &    0.617 &    1.81 &     0.07 &          1.02 &          1.1 &         0.272 \\
+COEF\_HORAPICO      &  0.649 &    0.487 &    1.33 &    0.183 &         0.988 &        0.658 &         0.511 \\
+COEF\_HORASTRAB     & -0.288 &    0.145 &   -1.99 &   0.0466 &         0.253 &        -1.14 &         0.255 \\
+COEF\_INTER         &  -8.68 &     1.73 &   -5.03 & 4.91e-07 &          3.31 &        -2.62 &       0.00871 \\
+COEF\_SININFO       &   -1.1 &    0.689 &   -1.59 &    0.111 &          1.37 &       -0.801 &         0.423 \\
+INTER\_AFrSem       &   3.08 &     7.16 &    0.43 &    0.667 &           4.0 &        0.769 &         0.442 \\
+INTER\_CulFr        &   14.3 &     9.62 &    1.48 &    0.138 &          14.5 &        0.986 &         0.324 \\
+INTER\_EnfCond      & -0.178 &     6.16 & -0.0289 &    0.977 &          5.48 &      -0.0325 &         0.974 \\
+INTER\_IgPare       &  -6.96 &     5.13 &   -1.36 &    0.175 &          6.05 &        -1.15 &          0.25 \\
+INTER\_OmLmVel      &  -1.04 &     6.09 &  -0.171 &    0.864 &          6.76 &       -0.154 &         0.878 \\
+INTER\_UsoCel       &  -9.95 &     4.62 &   -2.15 &   0.0312 &          4.93 &        -2.02 &        0.0436 \\
+SIGMA\_STAR\_AFrSem  &   9.16 &    0.721 &    12.7 &      0.0 &         0.488 &         18.8 &           0.0 \\
+SIGMA\_STAR\_CulFr   &   10.1 &    0.751 &    13.4 &      0.0 &         0.696 &         14.5 &           0.0 \\
+SIGMA\_STAR\_EnfCond &   7.28 &    0.598 &    12.2 &      0.0 &         0.567 &         12.8 &           0.0 \\
+SIGMA\_STAR\_IgPare  &   5.14 &    0.603 &    8.52 &      0.0 &         0.538 &         9.55 &           0.0 \\
+SIGMA\_STAR\_OmLmVel &   8.33 &    0.664 &    12.5 &      0.0 &         0.738 &         11.3 &           0.0 \\
+SIGMA\_STAR\_UsoCel  &   9.69 &    0.766 &    12.6 &      0.0 &          0.82 &         11.8 &           0.0 \\
+delta\_1            &    5.6 &    0.373 &    15.0 &      0.0 &          0.39 &         14.3 &           0.0 \\
+delta\_2            &   8.95 &     0.53 &    16.9 &      0.0 &         0.658 &         13.6 &           0.0 \\
+\bottomrule
+\end{tabular}
+
+%%Correlation
+\section{Correlation}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+{} &  Covariance &  Correlation &  t-test &  p-value &  Rob. cov. &  Rob. corr. &  Rob. t-test &  Rob. p-value \\
+\midrule
+BETA\_CulFrF1-BETA\_AFrSemF1            &        0.35 &        0.637 &   0.497 &    0.619 &      0.247 &       0.531 &        0.289 &         0.772 \\
+BETA\_EnfCondF1-BETA\_AFrSemF1          &       0.232 &        0.658 &  -0.417 &    0.677 &      0.111 &       0.644 &       -0.559 &         0.576 \\
+BETA\_EnfCondF1-BETA\_CulFrF1           &       0.327 &        0.689 &  -0.866 &    0.387 &       0.48 &       0.765 &       -0.551 &         0.582 \\
+BETA\_IgPareF1-BETA\_AFrSemF1           &       0.131 &        0.455 &   -1.23 &    0.217 &     0.0681 &       0.361 &        -1.41 &          0.16 \\
+BETA\_IgPareF1-BETA\_CulFrF1            &       0.165 &        0.426 &   -1.36 &    0.174 &    -0.0277 &     -0.0404 &       -0.747 &         0.455 \\
+BETA\_IgPareF1-BETA\_EnfCondF1          &       0.111 &        0.445 &  -0.978 &    0.328 &     0.0167 &      0.0657 &       -0.756 &          0.45 \\
+BETA\_OmLmVelF1-BETA\_AFrSemF1          &       0.209 &          0.6 &  -0.572 &    0.567 &       0.14 &       0.655 &       -0.679 &         0.497 \\
+BETA\_OmLmVelF1-BETA\_CulFrF1           &       0.288 &        0.615 &  -0.944 &    0.345 &      0.404 &       0.521 &       -0.575 &         0.565 \\
+BETA\_OmLmVelF1-BETA\_EnfCondF1         &       0.183 &        0.609 &  -0.204 &    0.838 &      0.147 &       0.512 &       -0.183 &         0.855 \\
+BETA\_OmLmVelF1-BETA\_IgPareF1          &       0.116 &        0.471 &   0.816 &    0.414 &      0.179 &       0.569 &        0.805 &         0.421 \\
+BETA\_UsoCelF1-BETA\_AFrSemF1           &      0.0487 &        0.186 &   -1.58 &    0.115 &   0.000221 &     0.00139 &        -1.92 &        0.0545 \\
+BETA\_UsoCelF1-BETA\_CulFrF1            &      0.0522 &        0.148 &   -1.59 &    0.111 &     -0.168 &      -0.292 &       -0.957 &         0.339 \\
+BETA\_UsoCelF1-BETA\_EnfCondF1          &      0.0408 &        0.181 &   -1.42 &    0.156 &    -0.0151 &     -0.0707 &        -1.31 &         0.191 \\
+BETA\_UsoCelF1-BETA\_IgPareF1           &      0.0225 &        0.122 &  -0.637 &    0.524 &     0.0635 &       0.272 &       -0.617 &         0.538 \\
+BETA\_UsoCelF1-BETA\_OmLmVelF1          &      0.0353 &        0.158 &   -1.25 &     0.21 &   -0.00333 &     -0.0126 &        -1.05 &         0.293 \\
+COEF\_CONGCD-BETA\_AFrSemF1             &      -0.344 &       -0.722 &   0.342 &    0.733 &    -0.0941 &      -0.295 &        0.417 &         0.677 \\
+COEF\_CONGCD-BETA\_CulFrF1              &      -0.387 &       -0.605 &   0.074 &    0.941 &     -0.146 &      -0.126 &       0.0639 &         0.949 \\
+COEF\_CONGCD-BETA\_EnfCondF1            &        -0.3 &       -0.731 &   0.536 &    0.592 &     -0.178 &      -0.413 &        0.551 &         0.582 \\
+COEF\_CONGCD-BETA\_IgPareF1             &      -0.152 &       -0.454 &    1.13 &    0.256 &      0.121 &       0.257 &         1.28 &         0.199 \\
+COEF\_CONGCD-BETA\_OmLmVelF1            &      -0.243 &       -0.599 &   0.645 &    0.519 &    -0.0174 &     -0.0328 &        0.686 &         0.493 \\
+COEF\_CONGCD-BETA\_UsoCelF1             &     -0.0717 &       -0.235 &    1.65 &   0.0995 &    0.00319 &     0.00811 &         1.55 &         0.122 \\
+COEF\_CONGEF-BETA\_AFrSemF1             &      -0.582 &       -0.767 &   0.892 &    0.372 &     -0.361 &        -0.7 &          0.9 &         0.368 \\
+COEF\_CONGEF-BETA\_CulFrF1              &      -0.748 &       -0.733 &   0.633 &    0.527 &      -1.06 &      -0.564 &        0.498 &         0.618 \\
+COEF\_CONGEF-BETA\_EnfCondF1            &      -0.486 &       -0.742 &    1.07 &    0.285 &     -0.367 &      -0.527 &          1.0 &         0.316 \\
+COEF\_CONGEF-BETA\_IgPareF1             &      -0.311 &       -0.582 &    1.52 &    0.128 &     -0.223 &      -0.293 &         1.36 &         0.175 \\
+COEF\_CONGEF-BETA\_OmLmVelF1            &      -0.481 &       -0.745 &    1.13 &    0.258 &     -0.627 &      -0.728 &        0.962 &         0.336 \\
+COEF\_CONGEF-BETA\_UsoCelF1             &      -0.106 &       -0.218 &    1.97 &   0.0487 &     0.0805 &       0.126 &         1.81 &        0.0702 \\
+COEF\_CONGEF-COEF\_CONGCD               &       0.684 &        0.775 &    1.43 &    0.152 &      0.402 &       0.313 &        0.766 &         0.444 \\
+COEF\_EDUC\_BASICA-BETA\_AFrSemF1        &      -0.239 &       -0.605 &  -0.208 &    0.835 &     -0.195 &      -0.535 &       -0.188 &         0.851 \\
+COEF\_EDUC\_BASICA-BETA\_CulFrF1         &      -0.358 &       -0.674 &  -0.418 &    0.676 &     -0.789 &      -0.597 &       -0.273 &         0.785 \\
+COEF\_EDUC\_BASICA-BETA\_EnfCondF1       &      -0.238 &       -0.699 & -0.0241 &    0.981 &     -0.362 &      -0.737 &      -0.0184 &         0.985 \\
+COEF\_EDUC\_BASICA-BETA\_IgPareF1        &      -0.134 &       -0.481 &   0.538 &     0.59 &    -0.0815 &      -0.152 &        0.409 &         0.683 \\
+COEF\_EDUC\_BASICA-BETA\_OmLmVelF1       &      -0.212 &        -0.63 &  0.0697 &    0.944 &     -0.321 &      -0.529 &       0.0513 &         0.959 \\
+COEF\_EDUC\_BASICA-BETA\_UsoCelF1        &     -0.0376 &       -0.149 &    1.09 &    0.276 &     0.0642 &       0.143 &         0.82 &         0.412 \\
+COEF\_EDUC\_BASICA-COEF\_CONGCD          &       0.297 &        0.647 &   -1.15 &    0.249 &       0.34 &       0.377 &        -0.63 &         0.529 \\
+COEF\_EDUC\_BASICA-COEF\_CONGEF          &       0.511 &        0.699 &   -2.03 &   0.0423 &      0.761 &       0.519 &        -1.41 &         0.159 \\
+COEF\_HORAPICO-BETA\_AFrSemF1           &      -0.136 &       -0.435 &  -0.732 &    0.464 &     -0.103 &      -0.291 &       -0.613 &          0.54 \\
+COEF\_HORAPICO-BETA\_CulFrF1            &      -0.249 &       -0.595 &  -0.851 &    0.395 &     -0.875 &      -0.681 &       -0.492 &         0.623 \\
+COEF\_HORAPICO-BETA\_EnfCondF1          &       -0.14 &       -0.521 &  -0.545 &    0.586 &     -0.278 &      -0.584 &       -0.372 &          0.71 \\
+COEF\_HORAPICO-BETA\_IgPareF1           &     -0.0386 &       -0.176 &    0.04 &    0.968 &      0.175 &       0.337 &       0.0303 &         0.976 \\
+COEF\_HORAPICO-BETA\_OmLmVelF1          &     -0.0976 &       -0.367 &  -0.462 &    0.644 &     -0.103 &      -0.174 &       -0.318 &          0.75 \\
+COEF\_HORAPICO-BETA\_UsoCelF1           &     -0.0277 &       -0.139 &   0.577 &    0.564 &     0.0508 &       0.116 &        0.379 &         0.705 \\
+COEF\_HORAPICO-COEF\_CONGCD             &       0.164 &        0.451 &   -1.67 &   0.0943 &      0.269 &       0.307 &        -1.03 &         0.303 \\
+COEF\_HORAPICO-COEF\_CONGEF             &       0.303 &        0.524 &    -2.2 &   0.0278 &      0.542 &        0.38 &         -1.6 &          0.11 \\
+COEF\_HORAPICO-COEF\_EDUC\_BASICA        &       0.134 &        0.445 &   -0.79 &    0.429 &      0.391 &       0.389 &       -0.422 &         0.673 \\
+COEF\_HORASTRAB-BETA\_AFrSemF1          &        0.06 &        0.647 &   -2.94 &  0.00329 &     0.0443 &       0.488 &        -5.09 &      3.58e-07 \\
+COEF\_HORASTRAB-BETA\_CulFrF1           &      0.0972 &        0.781 &   -2.62 &  0.00876 &      0.263 &       0.797 &        -1.78 &        0.0753 \\
+COEF\_HORASTRAB-BETA\_EnfCondF1         &      0.0535 &        0.671 &   -3.07 &  0.00216 &     0.0753 &       0.616 &        -3.74 &      0.000185 \\
+COEF\_HORASTRAB-BETA\_IgPareF1          &      0.0259 &        0.396 &   -2.19 &   0.0285 &      -0.02 &      -0.149 &        -1.47 &         0.142 \\
+COEF\_HORASTRAB-BETA\_OmLmVelF1         &      0.0451 &        0.571 &   -2.79 &  0.00527 &     0.0495 &       0.328 &        -2.35 &        0.0188 \\
+COEF\_HORASTRAB-BETA\_UsoCelF1          &     0.00768 &         0.13 &   -1.31 &     0.19 &    -0.0405 &      -0.362 &       -0.934 &          0.35 \\
+COEF\_HORASTRAB-COEF\_CONGCD            &     -0.0648 &       -0.601 &   -2.47 &   0.0133 &    -0.0346 &      -0.153 &        -2.16 &        0.0307 \\
+COEF\_HORASTRAB-COEF\_CONGEF            &       -0.12 &       -0.699 &   -2.46 &   0.0138 &     -0.167 &      -0.456 &        -2.02 &        0.0434 \\
+COEF\_HORASTRAB-COEF\_EDUC\_BASICA       &      -0.057 &       -0.638 &   -1.96 &   0.0502 &     -0.128 &      -0.495 &        -1.21 &         0.227 \\
+COEF\_HORASTRAB-COEF\_HORAPICO          &      -0.032 &       -0.454 &   -1.65 &   0.0988 &     -0.104 &      -0.414 &        -0.84 &         0.401 \\
+COEF\_INTER-BETA\_AFrSemF1              &      -0.515 &       -0.466 &   -4.77 & 1.82e-06 &     -0.457 &      -0.386 &         -2.9 &       0.00377 \\
+COEF\_INTER-BETA\_CulFrF1               &      -0.944 &       -0.636 &   -4.38 &  1.2e-05 &       -3.2 &      -0.743 &        -2.38 &        0.0175 \\
+COEF\_INTER-BETA\_EnfCondF1             &      -0.453 &       -0.476 &    -4.8 & 1.58e-06 &     -0.795 &      -0.498 &        -2.75 &       0.00599 \\
+COEF\_INTER-BETA\_IgPareF1              &      -0.224 &       -0.289 &   -4.88 & 1.05e-06 &      0.168 &      0.0963 &        -2.82 &       0.00483 \\
+COEF\_INTER-BETA\_OmLmVelF1             &      -0.398 &       -0.423 &   -4.82 & 1.44e-06 &     -0.657 &      -0.333 &        -2.74 &        0.0062 \\
+COEF\_INTER-BETA\_UsoCelF1              &     -0.0455 &      -0.0644 &   -4.97 & 6.78e-07 &      0.531 &       0.363 &        -2.81 &       0.00488 \\
+COEF\_INTER-COEF\_CONGCD                &       0.446 &        0.347 &   -6.44 & 1.18e-10 &    -0.0662 &     -0.0225 &        -3.04 &       0.00238 \\
+COEF\_INTER-COEF\_CONGEF                &       0.919 &        0.449 &   -7.25 & 4.13e-13 &       1.63 &       0.342 &         -3.7 &      0.000213 \\
+COEF\_INTER-COEF\_EDUC\_BASICA           &       0.384 &        0.361 &   -6.09 & 1.16e-09 &      0.991 &       0.295 &         -3.1 &       0.00195 \\
+COEF\_INTER-COEF\_HORAPICO              &       0.174 &        0.207 &   -5.51 & 3.59e-08 &      0.782 &       0.239 &         -2.9 &       0.00375 \\
+COEF\_INTER-COEF\_HORASTRAB             &      -0.207 &       -0.829 &   -4.54 & 5.57e-06 &     -0.763 &       -0.91 &        -2.37 &        0.0178 \\
+COEF\_SININFO-BETA\_AFrSemF1            &       0.232 &        0.526 &   -3.78 & 0.000159 &      0.213 &       0.435 &        -1.95 &        0.0512 \\
+COEF\_SININFO-BETA\_CulFrF1             &       0.433 &        0.732 &   -4.72 & 2.36e-06 &       1.47 &       0.823 &        -3.49 &      0.000487 \\
+COEF\_SININFO-BETA\_EnfCondF1           &       0.228 &        0.601 &   -3.95 & 7.94e-05 &      0.437 &       0.662 &        -2.02 &        0.0437 \\
+COEF\_SININFO-BETA\_IgPareF1            &       0.127 &        0.409 &   -2.64 &  0.00831 &     0.0437 &      0.0605 &         -1.2 &         0.232 \\
+COEF\_SININFO-BETA\_OmLmVelF1           &        0.22 &        0.587 &   -3.72 & 0.000199 &      0.478 &       0.585 &         -1.9 &         0.058 \\
+COEF\_SININFO-BETA\_UsoCelF1            &       0.032 &        0.113 &   -1.78 &   0.0748 &     -0.116 &      -0.192 &       -0.893 &         0.372 \\
+COEF\_SININFO-COEF\_CONGCD              &      -0.275 &       -0.536 &    -2.3 &   0.0216 &     -0.235 &      -0.193 &        -1.63 &         0.103 \\
+COEF\_SININFO-COEF\_CONGEF              &      -0.519 &       -0.635 &   -2.33 &   0.0196 &      -1.04 &      -0.526 &        -1.62 &         0.104 \\
+COEF\_SININFO-COEF\_EDUC\_BASICA         &      -0.249 &       -0.587 &    -1.9 &    0.057 &     -0.694 &      -0.499 &        -1.07 &         0.285 \\
+COEF\_SININFO-COEF\_HORAPICO            &      -0.152 &       -0.452 &   -1.73 &   0.0831 &     -0.681 &      -0.503 &       -0.851 &         0.395 \\
+COEF\_SININFO-COEF\_HORASTRAB           &      0.0582 &        0.583 &   -1.31 &    0.189 &      0.181 &       0.522 &       -0.644 &         0.519 \\
+COEF\_SININFO-COEF\_INTER               &      -0.654 &        -0.55 &    3.48 &  0.00051 &      -2.65 &      -0.586 &         1.78 &         0.075 \\
+INTER\_AFrSem-BETA\_AFrSemF1            &        4.54 &        0.991 &   0.264 &    0.792 &       1.42 &       0.993 &        0.473 &         0.636 \\
+INTER\_AFrSem-BETA\_CulFrF1             &        3.88 &         0.63 &   0.209 &    0.834 &       2.72 &       0.523 &        0.398 &         0.691 \\
+INTER\_AFrSem-BETA\_EnfCondF1           &        2.57 &        0.652 &   0.284 &    0.777 &       1.24 &       0.645 &        0.522 &         0.602 \\
+INTER\_AFrSem-BETA\_IgPareF1            &        1.46 &        0.452 &   0.352 &    0.725 &      0.757 &       0.359 &        0.639 &         0.523 \\
+INTER\_AFrSem-BETA\_OmLmVelF1           &        2.32 &        0.594 &   0.297 &    0.767 &       1.57 &       0.658 &        0.559 &         0.576 \\
+INTER\_AFrSem-BETA\_UsoCelF1            &        0.54 &        0.184 &   0.397 &    0.691 &    -0.0118 &    -0.00665 &          0.7 &         0.484 \\
+INTER\_AFrSem-COEF\_CONGCD              &       -3.82 &       -0.716 &   0.167 &    0.868 &      -1.03 &       -0.29 &        0.296 &         0.767 \\
+INTER\_AFrSem-COEF\_CONGEF              &       -6.46 &        -0.76 &  0.0226 &    0.982 &      -4.01 &      -0.696 &       0.0359 &         0.971 \\
+INTER\_AFrSem-COEF\_EDUC\_BASICA         &       -2.65 &         -0.6 &    0.26 &    0.795 &      -2.14 &      -0.528 &        0.424 &         0.671 \\
+INTER\_AFrSem-COEF\_HORAPICO            &        -1.5 &       -0.431 &   0.329 &    0.742 &      -1.11 &      -0.281 &        0.554 &          0.58 \\
+INTER\_AFrSem-COEF\_HORASTRAB           &       0.665 &        0.641 &   0.476 &    0.634 &      0.488 &       0.482 &        0.866 &         0.386 \\
+INTER\_AFrSem-COEF\_INTER               &       -6.15 &       -0.498 &    1.44 &    0.149 &      -5.34 &      -0.404 &         1.92 &        0.0553 \\
+INTER\_AFrSem-COEF\_SININFO             &        2.57 &        0.521 &   0.612 &    0.541 &       2.36 &       0.432 &         1.15 &          0.25 \\
+INTER\_CulFr-BETA\_AFrSemF1             &        3.89 &        0.632 &     1.4 &    0.161 &       2.75 &        0.53 &        0.904 &         0.366 \\
+INTER\_CulFr-BETA\_CulFrF1              &         8.2 &        0.991 &    1.44 &    0.151 &       18.8 &       0.997 &        0.955 &         0.339 \\
+INTER\_CulFr-BETA\_EnfCondF1            &        3.62 &        0.683 &    1.42 &    0.156 &       5.36 &       0.768 &        0.931 &         0.352 \\
+INTER\_CulFr-BETA\_IgPareF1             &        1.83 &        0.422 &    1.45 &    0.148 &     -0.302 &     -0.0395 &        0.941 &         0.347 \\
+INTER\_CulFr-BETA\_OmLmVelF1            &         3.2 &         0.61 &    1.42 &    0.155 &       4.53 &       0.525 &        0.934 &         0.351 \\
+INTER\_CulFr-BETA\_UsoCelF1             &        0.58 &        0.147 &    1.46 &    0.143 &       -1.9 &      -0.297 &        0.959 &         0.337 \\
+INTER\_CulFr-COEF\_CONGCD               &       -4.26 &       -0.594 &    1.24 &    0.216 &       -1.6 &      -0.124 &        0.854 &         0.393 \\
+INTER\_CulFr-COEF\_CONGEF               &       -8.21 &        -0.72 &    1.08 &    0.279 &      -11.8 &      -0.564 &        0.742 &         0.458 \\
+INTER\_CulFr-COEF\_EDUC\_BASICA          &       -3.93 &       -0.662 &    1.31 &     0.19 &      -8.76 &      -0.596 &        0.871 &         0.384 \\
+INTER\_CulFr-COEF\_HORAPICO             &       -2.74 &       -0.585 &    1.37 &    0.169 &      -9.65 &      -0.675 &        0.899 &         0.369 \\
+INTER\_CulFr-COEF\_HORASTRAB            &        1.07 &        0.768 &    1.53 &    0.126 &       2.91 &       0.794 &         1.02 &         0.308 \\
+INTER\_CulFr-COEF\_INTER                &       -11.2 &       -0.676 &    2.11 &   0.0346 &      -36.2 &      -0.756 &         1.34 &          0.18 \\
+INTER\_CulFr-COEF\_SININFO              &        4.77 &        0.719 &    1.68 &   0.0925 &       16.3 &       0.821 &         1.15 &          0.25 \\
+INTER\_CulFr-INTER\_AFrSem              &        43.9 &        0.637 &     1.5 &    0.135 &       30.6 &       0.529 &        0.874 &         0.382 \\
+INTER\_EnfCond-BETA\_AFrSemF1           &        2.57 &        0.652 &  -0.265 &    0.791 &       1.24 &       0.634 &       -0.291 &         0.771 \\
+INTER\_EnfCond-BETA\_CulFrF1            &        3.62 &        0.684 &  -0.332 &     0.74 &        5.4 &       0.758 &       -0.407 &         0.684 \\
+INTER\_EnfCond-BETA\_EnfCondF1          &        3.36 &        0.991 &  -0.235 &    0.814 &       2.63 &       0.996 &       -0.264 &         0.792 \\
+INTER\_EnfCond-BETA\_IgPareF1           &        1.23 &        0.442 &  -0.134 &    0.894 &      0.164 &      0.0567 &       -0.146 &         0.884 \\
+INTER\_EnfCond-BETA\_OmLmVelF1          &        2.03 &        0.603 &  -0.209 &    0.834 &       1.66 &       0.506 &       -0.235 &         0.814 \\
+INTER\_EnfCond-BETA\_UsoCelF1           &       0.452 &        0.179 & -0.0714 &    0.943 &     -0.182 &     -0.0749 &      -0.0788 &         0.937 \\
+INTER\_EnfCond-COEF\_CONGCD             &       -3.34 &       -0.728 &  -0.293 &     0.77 &      -2.01 &      -0.413 &       -0.334 &         0.739 \\
+INTER\_EnfCond-COEF\_CONGEF             &        -5.4 &        -0.74 &  -0.434 &    0.665 &      -4.13 &      -0.522 &       -0.483 &         0.629 \\
+INTER\_EnfCond-COEF\_EDUC\_BASICA        &       -2.65 &       -0.697 &  -0.196 &    0.845 &      -4.05 &      -0.728 &       -0.207 &         0.836 \\
+INTER\_EnfCond-COEF\_HORAPICO           &       -1.56 &       -0.519 &  -0.129 &    0.898 &      -3.12 &      -0.577 &       -0.136 &         0.892 \\
+INTER\_EnfCond-COEF\_HORASTRAB          &       0.596 &        0.668 &  0.0181 &    0.986 &      0.848 &       0.611 &       0.0207 &         0.984 \\
+INTER\_EnfCond-COEF\_INTER              &       -5.35 &       -0.503 &    1.18 &    0.237 &      -9.15 &      -0.505 &          1.1 &         0.269 \\
+INTER\_EnfCond-COEF\_SININFO            &        2.54 &        0.599 &   0.159 &    0.873 &       4.92 &       0.655 &        0.196 &         0.845 \\
+INTER\_EnfCond-INTER\_AFrSem            &        29.0 &        0.659 &  -0.583 &     0.56 &       14.1 &       0.642 &        -0.77 &         0.441 \\
+INTER\_EnfCond-INTER\_CulFr             &        40.7 &        0.687 &   -2.06 &    0.039 &       60.6 &       0.764 &        -1.33 &         0.184 \\
+INTER\_IgPare-BETA\_AFrSemF1            &        1.45 &        0.441 &    -1.7 &   0.0889 &      0.752 &       0.347 &         -1.4 &         0.162 \\
+INTER\_IgPare-BETA\_CulFrF1             &        1.82 &        0.413 &   -1.78 &   0.0743 &     -0.375 &     -0.0476 &        -1.38 &         0.167 \\
+INTER\_IgPare-BETA\_EnfCondF1           &        1.22 &        0.432 &   -1.65 &   0.0997 &      0.161 &       0.055 &        -1.34 &          0.18 \\
+INTER\_IgPare-BETA\_IgPareF1            &        2.29 &        0.989 &   -1.62 &    0.106 &       3.18 &       0.997 &        -1.37 &          0.17 \\
+INTER\_IgPare-BETA\_OmLmVelF1           &        1.28 &        0.459 &   -1.63 &    0.103 &       2.02 &        0.56 &        -1.39 &         0.163 \\
+INTER\_IgPare-BETA\_UsoCelF1            &       0.248 &        0.118 &   -1.41 &    0.157 &      0.718 &       0.268 &        -1.21 &         0.225 \\
+INTER\_IgPare-COEF\_CONGCD              &       -1.72 &        -0.45 &   -1.59 &    0.112 &       1.39 &       0.257 &        -1.49 &         0.137 \\
+INTER\_IgPare-COEF\_CONGEF              &       -3.52 &       -0.578 &   -1.67 &    0.095 &      -2.51 &      -0.287 &        -1.49 &         0.136 \\
+INTER\_IgPare-COEF\_EDUC\_BASICA         &       -1.52 &       -0.479 &   -1.48 &    0.139 &     -0.895 &      -0.146 &        -1.29 &         0.199 \\
+INTER\_IgPare-COEF\_HORAPICO            &      -0.433 &       -0.173 &   -1.45 &    0.147 &       2.03 &        0.34 &        -1.31 &         0.189 \\
+INTER\_IgPare-COEF\_HORASTRAB           &       0.293 &        0.394 &   -1.31 &    0.189 &     -0.232 &      -0.151 &        -1.09 &         0.274 \\
+INTER\_IgPare-COEF\_INTER               &       -2.54 &       -0.286 &   0.294 &    0.769 &       2.09 &       0.104 &        0.261 &         0.794 \\
+INTER\_IgPare-COEF\_SININFO             &        1.44 &        0.408 &    -1.2 &    0.231 &       0.45 &      0.0543 &       -0.955 &         0.339 \\
+INTER\_IgPare-INTER\_AFrSem             &        16.4 &        0.446 &    -1.5 &    0.134 &       8.37 &       0.346 &        -1.67 &        0.0941 \\
+INTER\_IgPare-INTER\_CulFr              &        20.4 &        0.412 &    -2.4 &   0.0164 &      -4.22 &     -0.0481 &        -1.33 &         0.183 \\
+INTER\_IgPare-INTER\_EnfCond            &        13.9 &        0.438 &   -1.12 &    0.262 &       1.63 &      0.0492 &       -0.851 &         0.395 \\
+INTER\_OmLmVel-BETA\_AFrSemF1           &        2.32 &        0.594 &  -0.417 &    0.677 &       1.57 &       0.647 &       -0.366 &         0.714 \\
+INTER\_OmLmVel-BETA\_CulFrF1            &         3.2 &         0.61 &  -0.486 &    0.627 &       4.54 &       0.517 &        -0.44 &          0.66 \\
+INTER\_OmLmVel-BETA\_EnfCondF1          &        2.03 &        0.603 &  -0.378 &    0.706 &       1.66 &       0.508 &       -0.335 &         0.738 \\
+INTER\_OmLmVel-BETA\_IgPareF1           &        1.28 &        0.467 &  -0.282 &    0.778 &       1.99 &        0.56 &       -0.256 &         0.798 \\
+INTER\_OmLmVel-BETA\_OmLmVelF1          &        3.29 &        0.991 &  -0.375 &    0.707 &       4.02 &       0.997 &       -0.338 &         0.735 \\
+INTER\_OmLmVel-BETA\_UsoCelF1           &       0.391 &        0.157 &  -0.215 &     0.83 &    -0.0536 &     -0.0179 &       -0.191 &         0.848 \\
+INTER\_OmLmVel-COEF\_CONGCD             &       -2.71 &       -0.597 &  -0.431 &    0.666 &     -0.222 &     -0.0369 &       -0.413 &         0.679 \\
+INTER\_OmLmVel-COEF\_CONGEF             &       -5.37 &       -0.743 &   -0.56 &    0.575 &      -7.08 &      -0.726 &         -0.5 &         0.617 \\
+INTER\_OmLmVel-COEF\_EDUC\_BASICA        &       -2.36 &       -0.628 &  -0.332 &     0.74 &       -3.6 &      -0.525 &       -0.294 &         0.769 \\
+INTER\_OmLmVel-COEF\_HORAPICO           &       -1.09 &       -0.366 &  -0.269 &    0.788 &      -1.17 &      -0.175 &       -0.241 &         0.809 \\
+INTER\_OmLmVel-COEF\_HORASTRAB          &       0.503 &         0.57 &  -0.125 &      0.9 &      0.561 &       0.328 &       -0.113 &          0.91 \\
+INTER\_OmLmVel-COEF\_INTER              &       -4.69 &       -0.446 &    1.09 &    0.277 &      -7.57 &      -0.339 &        0.902 &         0.367 \\
+INTER\_OmLmVel-COEF\_SININFO            &        2.46 &        0.586 &  0.0101 &    0.992 &       5.38 &       0.581 &      0.00949 &         0.992 \\
+INTER\_OmLmVel-INTER\_AFrSem            &        26.2 &          0.6 &  -0.685 &    0.493 &       17.7 &       0.656 &       -0.804 &         0.421 \\
+INTER\_OmLmVel-INTER\_CulFr             &        35.9 &        0.613 &   -2.01 &    0.044 &       51.1 &       0.523 &        -1.24 &         0.216 \\
+INTER\_OmLmVel-INTER\_EnfCond           &        22.9 &         0.61 &  -0.159 &    0.873 &       18.8 &       0.508 &        -0.14 &         0.889 \\
+INTER\_OmLmVel-INTER\_IgPare            &        14.6 &        0.466 &    1.01 &    0.313 &       22.7 &       0.554 &        0.973 &         0.331 \\
+INTER\_UsoCel-BETA\_AFrSemF1            &       0.533 &         0.18 &   -2.49 &    0.013 &    -0.0165 &    -0.00933 &        -2.28 &        0.0224 \\
+INTER\_UsoCel-BETA\_CulFrF1             &        0.58 &        0.146 &   -2.54 &    0.011 &      -1.86 &       -0.29 &        -2.13 &        0.0329 \\
+INTER\_UsoCel-BETA\_EnfCondF1           &       0.449 &        0.176 &   -2.44 &   0.0149 &     -0.168 &     -0.0706 &        -2.22 &        0.0262 \\
+INTER\_UsoCel-BETA\_IgPareF1            &       0.247 &        0.119 &    -2.3 &   0.0212 &      0.694 &       0.267 &        -2.19 &        0.0282 \\
+INTER\_UsoCel-BETA\_OmLmVelF1           &        0.39 &        0.155 &   -2.41 &   0.0161 &    -0.0451 &     -0.0153 &        -2.21 &        0.0271 \\
+INTER\_UsoCel-BETA\_UsoCelF1            &        1.86 &        0.983 &   -2.42 &   0.0155 &       2.16 &       0.991 &        -2.27 &        0.0231 \\
+INTER\_UsoCel-COEF\_CONGCD              &      -0.837 &       -0.243 &   -2.42 &   0.0156 &     0.0226 &     0.00516 &        -2.35 &         0.019 \\
+INTER\_UsoCel-COEF\_CONGEF              &       -1.25 &       -0.229 &   -2.56 &   0.0106 &      0.858 &       0.121 &        -2.58 &       0.00974 \\
+INTER\_UsoCel-COEF\_EDUC\_BASICA         &      -0.456 &        -0.16 &   -2.33 &     0.02 &      0.673 &       0.134 &        -2.26 &        0.0239 \\
+INTER\_UsoCel-COEF\_HORAPICO            &      -0.331 &       -0.147 &   -2.25 &   0.0246 &      0.534 &        0.11 &        -2.15 &        0.0313 \\
+INTER\_UsoCel-COEF\_HORASTRAB           &      0.0941 &        0.141 &    -2.1 &   0.0357 &     -0.447 &      -0.357 &        -1.92 &        0.0546 \\
+INTER\_UsoCel-COEF\_INTER               &      -0.393 &      -0.0493 &  -0.254 &    0.799 &       6.23 &       0.381 &       -0.267 &          0.79 \\
+INTER\_UsoCel-COEF\_SININFO             &       0.397 &        0.125 &   -1.93 &   0.0535 &      -1.27 &      -0.187 &        -1.65 &        0.0985 \\
+INTER\_UsoCel-INTER\_AFrSem             &        6.04 &        0.182 &   -1.67 &    0.094 &     -0.422 &     -0.0214 &        -2.03 &        0.0423 \\
+INTER\_UsoCel-INTER\_CulFr              &        6.26 &        0.141 &   -2.41 &   0.0161 &      -21.5 &      -0.301 &        -1.46 &         0.145 \\
+INTER\_UsoCel-INTER\_EnfCond            &        5.17 &        0.182 &    -1.4 &    0.162 &       -2.0 &     -0.0738 &        -1.28 &         0.201 \\
+INTER\_UsoCel-INTER\_IgPare             &        3.05 &        0.129 &  -0.465 &    0.642 &       8.05 &       0.269 &       -0.447 &         0.655 \\
+INTER\_UsoCel-INTER\_OmLmVel            &        4.53 &        0.161 &   -1.27 &    0.205 &     -0.626 &     -0.0188 &        -1.06 &         0.291 \\
+SIGMA\_STAR\_AFrSem-BETA\_AFrSemF1       &       0.018 &        0.039 &    8.26 & 2.22e-16 &     0.0486 &       0.278 &         15.0 &           0.0 \\
+SIGMA\_STAR\_AFrSem-BETA\_CulFrF1        &      0.0134 &       0.0215 &    6.74 & 1.64e-11 &     0.0323 &      0.0509 &         5.48 &      4.36e-08 \\
+SIGMA\_STAR\_AFrSem-BETA\_EnfCondF1      &     0.00836 &        0.021 &    8.93 &      0.0 &     0.0224 &       0.095 &         12.3 &           0.0 \\
+SIGMA\_STAR\_AFrSem-BETA\_IgPareF1       &     0.00444 &       0.0137 &    10.1 &      0.0 &     0.0467 &       0.181 &         13.1 &           0.0 \\
+SIGMA\_STAR\_AFrSem-BETA\_OmLmVelF1      &     0.00644 &       0.0164 &    9.05 &      0.0 &     0.0389 &       0.134 &         11.3 &           0.0 \\
+SIGMA\_STAR\_AFrSem-BETA\_UsoCelF1       &     0.00138 &      0.00466 &    10.8 &      0.0 &   -0.00842 &      -0.039 &         13.3 &           0.0 \\
+SIGMA\_STAR\_AFrSem-COEF\_CONGCD         &      0.0386 &       0.0718 &    7.38 & 1.57e-13 &     0.0339 &      0.0781 &         7.51 &      5.84e-14 \\
+SIGMA\_STAR\_AFrSem-COEF\_CONGEF         &      0.0631 &       0.0738 &    4.67 & 2.99e-06 &    -0.0434 &     -0.0615 &         4.04 &      5.34e-05 \\
+SIGMA\_STAR\_AFrSem-COEF\_EDUC\_BASICA    &      0.0233 &       0.0524 &    8.71 &      0.0 &    -0.0451 &     -0.0909 &          6.9 &      5.37e-12 \\
+SIGMA\_STAR\_AFrSem-COEF\_HORAPICO       &      0.0116 &        0.033 &    9.93 &      0.0 &     0.0223 &      0.0462 &         7.87 &      3.55e-15 \\
+SIGMA\_STAR\_AFrSem-COEF\_HORASTRAB      &    -0.00614 &      -0.0588 &    12.7 &      0.0 &    0.00677 &      0.0547 &         17.6 &           0.0 \\
+SIGMA\_STAR\_AFrSem-COEF\_INTER          &      -0.189 &       -0.152 &    9.06 &      0.0 &     -0.138 &     -0.0853 &         5.27 &      1.37e-07 \\
+SIGMA\_STAR\_AFrSem-COEF\_SININFO        &     -0.0182 &      -0.0367 &    10.1 &      0.0 &    -0.0171 &     -0.0255 &          7.0 &      2.61e-12 \\
+SIGMA\_STAR\_AFrSem-INTER\_AFrSem        &       0.116 &       0.0225 &   0.848 &    0.397 &       0.56 &       0.287 &         1.57 &         0.117 \\
+SIGMA\_STAR\_AFrSem-INTER\_CulFr         &       0.426 &       0.0614 &  -0.532 &    0.594 &      0.456 &      0.0645 &       -0.354 &         0.724 \\
+SIGMA\_STAR\_AFrSem-INTER\_EnfCond       &     0.00471 &      0.00106 &    1.51 &    0.132 &      0.229 &      0.0855 &         1.71 &        0.0871 \\
+SIGMA\_STAR\_AFrSem-INTER\_IgPare        &      -0.191 &      -0.0516 &    3.09 &  0.00202 &      0.462 &       0.156 &         2.69 &        0.0072 \\
+SIGMA\_STAR\_AFrSem-INTER\_OmLmVel       &     -0.0337 &     -0.00766 &    1.66 &   0.0967 &      0.411 &       0.125 &         1.52 &         0.129 \\
+SIGMA\_STAR\_AFrSem-INTER\_UsoCel        &      -0.282 &      -0.0847 &    4.04 & 5.45e-05 &       -0.2 &      -0.083 &         3.83 &      0.000131 \\
+SIGMA\_STAR\_CulFr-BETA\_AFrSemF1        &     0.00303 &       0.0063 &    8.86 &      0.0 &    -0.0143 &     -0.0576 &         10.9 &           0.0 \\
+SIGMA\_STAR\_CulFr-BETA\_CulFrF1         &     -0.0335 &       -0.052 &    7.16 & 7.98e-13 &     -0.337 &      -0.373 &         4.97 &      6.83e-07 \\
+SIGMA\_STAR\_CulFr-BETA\_EnfCondF1       &    -0.00657 &      -0.0159 &    9.51 &      0.0 &    -0.0798 &      -0.238 &         9.53 &           0.0 \\
+SIGMA\_STAR\_CulFr-BETA\_IgPareF1        &     0.00296 &      0.00875 &    10.8 &      0.0 &     0.0565 &       0.154 &         11.7 &           0.0 \\
+SIGMA\_STAR\_CulFr-BETA\_OmLmVelF1       &    -0.00465 &      -0.0114 &    9.67 &      0.0 &    -0.0119 &     -0.0286 &         9.71 &           0.0 \\
+SIGMA\_STAR\_CulFr-BETA\_UsoCelF1        &     0.00433 &       0.0141 &    11.5 &      0.0 &     0.0427 &       0.139 &         12.7 &           0.0 \\
+SIGMA\_STAR\_CulFr-COEF\_CONGCD          &      0.0289 &       0.0517 &    8.04 & 8.88e-16 &     0.0455 &      0.0734 &          7.6 &      2.93e-14 \\
+SIGMA\_STAR\_CulFr-COEF\_CONGEF          &      0.0811 &        0.091 &    5.33 & 9.59e-08 &      0.137 &       0.136 &         4.74 &      2.16e-06 \\
+SIGMA\_STAR\_CulFr-COEF\_EDUC\_BASICA     &      0.0493 &        0.106 &    9.73 &      0.0 &      0.148 &       0.209 &          8.1 &      4.44e-16 \\
+SIGMA\_STAR\_CulFr-COEF\_HORAPICO        &      0.0436 &        0.119 &    11.1 &      0.0 &      0.229 &       0.333 &         9.41 &           0.0 \\
+SIGMA\_STAR\_CulFr-COEF\_HORASTRAB       &     -0.0154 &       -0.142 &    13.2 &      0.0 &    -0.0607 &      -0.344 &         12.7 &           0.0 \\
+SIGMA\_STAR\_CulFr-COEF\_INTER           &     -0.0978 &      -0.0755 &     9.7 &      0.0 &      0.469 &       0.204 &         5.79 &      7.21e-09 \\
+SIGMA\_STAR\_CulFr-COEF\_SININFO         &     -0.0755 &       -0.146 &    10.2 &      0.0 &       -0.3 &      -0.315 &         6.49 &      8.69e-11 \\
+SIGMA\_STAR\_CulFr-INTER\_AFrSem         &      0.0233 &      0.00433 &   0.972 &    0.331 &    -0.0711 &     -0.0255 &         1.72 &        0.0863 \\
+SIGMA\_STAR\_CulFr-INTER\_CulFr          &     -0.0785 &      -0.0109 &  -0.436 &    0.663 &      -3.48 &      -0.345 &       -0.286 &         0.775 \\
+SIGMA\_STAR\_CulFr-INTER\_EnfCond        &      -0.169 &      -0.0366 &    1.64 &      0.1 &     -0.893 &      -0.234 &          1.8 &        0.0714 \\
+SIGMA\_STAR\_CulFr-INTER\_IgPare         &      -0.232 &      -0.0602 &    3.25 &  0.00114 &      0.527 &       0.125 &         2.83 &        0.0046 \\
+SIGMA\_STAR\_CulFr-INTER\_OmLmVel        &      -0.168 &      -0.0367 &     1.8 &   0.0717 &     -0.121 &     -0.0256 &         1.63 &         0.103 \\
+SIGMA\_STAR\_CulFr-INTER\_UsoCel         &      -0.286 &      -0.0825 &    4.22 & 2.42e-05 &      0.266 &      0.0774 &         4.06 &      4.86e-05 \\
+SIGMA\_STAR\_CulFr-SIGMA\_STAR\_AFrSem    &       0.281 &        0.519 &    1.25 &     0.21 &     0.0533 &       0.157 &         1.15 &         0.249 \\
+SIGMA\_STAR\_EnfCond-BETA\_AFrSemF1      &     0.00559 &       0.0146 &    6.82 & 9.23e-12 &     0.0393 &       0.194 &         9.73 &           0.0 \\
+SIGMA\_STAR\_EnfCond-BETA\_CulFrF1       &    -0.00113 &      -0.0022 &    5.34 &  9.4e-08 &     0.0499 &      0.0676 &         4.05 &      5.21e-05 \\
+SIGMA\_STAR\_EnfCond-BETA\_EnfCondF1     &      0.0122 &       0.0371 &    7.69 & 1.47e-14 &     0.0171 &      0.0623 &         8.51 &           0.0 \\
+SIGMA\_STAR\_EnfCond-BETA\_IgPareF1      &     0.00494 &       0.0183 &    8.98 &      0.0 &     0.0688 &        0.23 &         9.79 &           0.0 \\
+SIGMA\_STAR\_EnfCond-BETA\_OmLmVelF1     &      0.0039 &        0.012 &    7.75 & 8.88e-15 &     0.0596 &       0.176 &         8.34 &           0.0 \\
+SIGMA\_STAR\_EnfCond-BETA\_UsoCelF1      &     0.00146 &      0.00598 &    9.72 &      0.0 &    0.00139 &     0.00553 &         9.79 &           0.0 \\
+SIGMA\_STAR\_EnfCond-COEF\_CONGCD        &      0.0331 &       0.0744 &    5.97 & 2.38e-09 &      0.078 &       0.154 &         5.61 &      2.04e-08 \\
+SIGMA\_STAR\_EnfCond-COEF\_CONGEF        &      0.0455 &       0.0642 &    3.39 & 0.000695 &     -0.132 &      -0.161 &         2.69 &       0.00722 \\
+SIGMA\_STAR\_EnfCond-COEF\_EDUC\_BASICA   &      0.0305 &       0.0827 &    7.49 & 6.73e-14 &   -0.00458 &    -0.00795 &         5.28 &       1.3e-07 \\
+SIGMA\_STAR\_EnfCond-COEF\_HORAPICO      &      0.0188 &       0.0644 &    8.88 &      0.0 &     0.0333 &      0.0594 &         5.98 &      2.27e-09 \\
+SIGMA\_STAR\_EnfCond-COEF\_HORASTRAB     &    -0.00595 &      -0.0688 &    12.1 &      0.0 &    0.00787 &      0.0548 &         12.4 &           0.0 \\
+SIGMA\_STAR\_EnfCond-COEF\_INTER         &      -0.139 &       -0.135 &    8.39 &      0.0 &     -0.295 &      -0.157 &         4.63 &      3.59e-06 \\
+SIGMA\_STAR\_EnfCond-COEF\_SININFO       &     -0.0258 &      -0.0626 &    8.91 &      0.0 &     0.0336 &      0.0432 &         5.74 &      9.56e-09 \\
+SIGMA\_STAR\_EnfCond-INTER\_AFrSem       &      0.0515 &        0.012 &   0.586 &    0.558 &      0.485 &       0.214 &         1.07 &         0.283 \\
+SIGMA\_STAR\_EnfCond-INTER\_CulFr        &       0.205 &       0.0357 &  -0.727 &    0.467 &      0.732 &      0.0892 &       -0.484 &         0.628 \\
+SIGMA\_STAR\_EnfCond-INTER\_EnfCond      &      0.0121 &      0.00329 &    1.21 &    0.228 &      0.178 &      0.0574 &         1.36 &         0.173 \\
+SIGMA\_STAR\_EnfCond-INTER\_IgPare       &      -0.137 &      -0.0445 &    2.74 &  0.00613 &      0.683 &       0.199 &         2.39 &         0.017 \\
+SIGMA\_STAR\_EnfCond-INTER\_OmLmVel      &     -0.0407 &      -0.0112 &    1.36 &    0.175 &      0.649 &       0.169 &         1.24 &         0.213 \\
+SIGMA\_STAR\_EnfCond-INTER\_UsoCel       &      -0.219 &      -0.0792 &    3.66 &  0.00025 &     -0.136 &     -0.0484 &         3.45 &      0.000557 \\
+SIGMA\_STAR\_EnfCond-SIGMA\_STAR\_AFrSem  &       0.205 &        0.475 &   -2.75 &  0.00593 &      0.116 &       0.419 &        -3.28 &       0.00103 \\
+SIGMA\_STAR\_EnfCond-SIGMA\_STAR\_CulFr   &       0.224 &        0.499 &   -4.05 & 5.11e-05 &     0.0978 &       0.248 &        -3.57 &      0.000362 \\
+SIGMA\_STAR\_IgPare-BETA\_AFrSemF1       &     0.00613 &       0.0159 &    4.34 &  1.4e-05 &     0.0207 &       0.108 &         6.18 &      6.46e-10 \\
+SIGMA\_STAR\_IgPare-BETA\_CulFrF1        &    -0.00202 &     -0.00389 &    3.29 &  0.00101 &      -0.15 &      -0.215 &         2.29 &         0.022 \\
+SIGMA\_STAR\_IgPare-BETA\_EnfCondF1      &      0.0037 &       0.0111 &    4.92 & 8.63e-07 &    -0.0395 &      -0.152 &         5.16 &      2.53e-07 \\
+SIGMA\_STAR\_IgPare-BETA\_IgPareF1       &      0.0614 &        0.226 &    6.78 & 1.17e-11 &       0.18 &       0.635 &         9.93 &           0.0 \\
+SIGMA\_STAR\_IgPare-BETA\_OmLmVelF1      &     0.00601 &       0.0183 &    5.09 & 3.65e-07 &     0.0512 &       0.159 &         5.56 &      2.73e-08 \\
+SIGMA\_STAR\_IgPare-BETA\_UsoCelF1       &     0.00137 &      0.00555 &    6.72 & 1.86e-11 &     0.0403 &       0.169 &         7.68 &      1.64e-14 \\
+SIGMA\_STAR\_IgPare-COEF\_CONGCD         &      0.0189 &       0.0422 &    3.57 & 0.000354 &      0.155 &       0.322 &         3.81 &      0.000137 \\
+SIGMA\_STAR\_IgPare-COEF\_CONGEF         &      0.0272 &        0.038 &    1.72 &   0.0859 &     0.0637 &       0.082 &          1.5 &         0.133 \\
+SIGMA\_STAR\_IgPare-COEF\_EDUC\_BASICA    &      0.0152 &       0.0409 &    4.76 & 1.89e-06 &     0.0798 &       0.146 &         3.73 &      0.000189 \\
+SIGMA\_STAR\_IgPare-COEF\_HORAPICO       &      0.0211 &       0.0716 &    6.01 &  1.9e-09 &      0.198 &       0.372 &         4.82 &      1.44e-06 \\
+SIGMA\_STAR\_IgPare-COEF\_HORASTRAB      &    -0.00398 &      -0.0456 &    8.66 &      0.0 &    -0.0283 &      -0.207 &         8.47 &           0.0 \\
+SIGMA\_STAR\_IgPare-COEF\_INTER          &     -0.0979 &       -0.094 &    7.35 & 2.01e-13 &      0.141 &      0.0793 &         4.18 &      2.97e-05 \\
+SIGMA\_STAR\_IgPare-COEF\_SININFO        &     -0.0169 &      -0.0407 &    6.68 & 2.41e-11 &     -0.139 &      -0.189 &         3.99 &      6.59e-05 \\
+SIGMA\_STAR\_IgPare-INTER\_AFrSem        &      0.0597 &       0.0138 &   0.288 &    0.773 &      0.274 &       0.127 &        0.521 &         0.602 \\
+SIGMA\_STAR\_IgPare-INTER\_CulFr         &       0.128 &       0.0221 &  -0.948 &    0.343 &      -1.55 &      -0.199 &       -0.626 &         0.531 \\
+SIGMA\_STAR\_IgPare-INTER\_EnfCond       &     -0.0101 &      -0.0027 &   0.859 &     0.39 &     -0.457 &      -0.155 &        0.952 &         0.341 \\
+SIGMA\_STAR\_IgPare-INTER\_IgPare        &       0.542 &        0.175 &    2.39 &   0.0168 &       2.03 &       0.622 &         2.11 &        0.0349 \\
+SIGMA\_STAR\_IgPare-INTER\_OmLmVel       &     0.00738 &      0.00201 &    1.01 &    0.313 &       0.56 &       0.154 &        0.923 &         0.356 \\
+SIGMA\_STAR\_IgPare-INTER\_UsoCel        &      -0.148 &      -0.0532 &    3.22 &  0.00129 &      0.342 &       0.129 &         3.09 &       0.00203 \\
+SIGMA\_STAR\_IgPare-SIGMA\_STAR\_AFrSem   &       0.145 &        0.334 &   -5.22 & 1.83e-07 &     0.0942 &       0.358 &        -6.89 &      5.56e-12 \\
+SIGMA\_STAR\_IgPare-SIGMA\_STAR\_CulFr    &       0.156 &        0.345 &   -6.28 & 3.41e-10 &      0.116 &        0.31 &        -6.69 &      2.24e-11 \\
+SIGMA\_STAR\_IgPare-SIGMA\_STAR\_EnfCond  &       0.122 &        0.338 &   -3.09 &  0.00199 &      0.139 &       0.457 &         -3.7 &      0.000212 \\
+SIGMA\_STAR\_OmLmVel-BETA\_AFrSemF1      &     0.00527 &       0.0124 &    7.61 & 2.71e-14 &     0.0222 &      0.0843 &         8.81 &           0.0 \\
+SIGMA\_STAR\_OmLmVel-BETA\_CulFrF1       &     -0.0016 &      -0.0028 &    6.11 &  1e-09.0 &     0.0563 &      0.0587 &         4.56 &      5.05e-06 \\
+SIGMA\_STAR\_OmLmVel-BETA\_EnfCondF1     &     0.00379 &       0.0103 &    8.37 &      0.0 &     0.0338 &      0.0949 &         8.53 &           0.0 \\
+SIGMA\_STAR\_OmLmVel-BETA\_IgPareF1      &    -0.00116 &     -0.00388 &    9.59 &      0.0 &     0.0218 &       0.056 &         8.74 &           0.0 \\
+SIGMA\_STAR\_OmLmVel-BETA\_OmLmVelF1     &     0.00632 &       0.0175 &    8.55 &      0.0 &     0.0335 &       0.076 &         7.98 &      1.33e-15 \\
+SIGMA\_STAR\_OmLmVel-BETA\_UsoCelF1      &     0.00199 &       0.0073 &    10.4 &      0.0 &    0.00514 &      0.0158 &         9.45 &           0.0 \\
+SIGMA\_STAR\_OmLmVel-COEF\_CONGCD        &      0.0288 &       0.0582 &    6.75 & 1.46e-11 &    -0.0112 &     -0.0171 &         5.61 &      2.01e-08 \\
+SIGMA\_STAR\_OmLmVel-COEF\_CONGEF        &      0.0717 &       0.0911 &    4.16 & 3.12e-05 &    -0.0176 &     -0.0165 &         3.33 &      0.000857 \\
+SIGMA\_STAR\_OmLmVel-COEF\_EDUC\_BASICA   &      0.0336 &        0.082 &    8.31 &      0.0 &    -0.0083 &     -0.0111 &         5.72 &      1.09e-08 \\
+SIGMA\_STAR\_OmLmVel-COEF\_HORAPICO      &      0.0125 &       0.0387 &     9.5 &      0.0 &    -0.0457 &     -0.0627 &         6.05 &      1.43e-09 \\
+SIGMA\_STAR\_OmLmVel-COEF\_HORASTRAB     &    -0.00607 &      -0.0631 &    12.5 &      0.0 &   -0.00231 &     -0.0124 &         11.0 &           0.0 \\
+SIGMA\_STAR\_OmLmVel-COEF\_INTER         &      -0.159 &       -0.139 &     8.8 &      0.0 &     -0.191 &     -0.0781 &         4.94 &      7.97e-07 \\
+SIGMA\_STAR\_OmLmVel-COEF\_SININFO       &     -0.0383 &      -0.0838 &    9.46 &      0.0 &       0.07 &      0.0693 &         6.24 &      4.29e-10 \\
+SIGMA\_STAR\_OmLmVel-INTER\_AFrSem       &      0.0473 &      0.00994 &   0.732 &    0.464 &      0.316 &       0.107 &         1.32 &         0.188 \\
+SIGMA\_STAR\_OmLmVel-INTER\_CulFr        &       0.234 &       0.0367 &  -0.618 &    0.537 &      0.909 &      0.0851 &       -0.412 &          0.68 \\
+SIGMA\_STAR\_OmLmVel-INTER\_EnfCond      &     -0.0387 &     -0.00945 &    1.37 &     0.17 &      0.373 &      0.0924 &         1.56 &         0.119 \\
+SIGMA\_STAR\_OmLmVel-INTER\_IgPare       &      -0.234 &      -0.0685 &    2.93 &  0.00341 &      0.116 &      0.0259 &         2.51 &        0.0119 \\
+SIGMA\_STAR\_OmLmVel-INTER\_OmLmVel      &     -0.0905 &      -0.0224 &    1.53 &    0.127 &      0.365 &      0.0733 &         1.39 &         0.165 \\
+SIGMA\_STAR\_OmLmVel-INTER\_UsoCel       &      -0.249 &      -0.0811 &    3.87 & 0.000108 &     -0.129 &     -0.0355 &         3.65 &      0.000265 \\
+SIGMA\_STAR\_OmLmVel-SIGMA\_STAR\_AFrSem  &       0.234 &        0.488 &   -1.18 &    0.237 &     0.0855 &       0.237 &        -1.06 &         0.288 \\
+SIGMA\_STAR\_OmLmVel-SIGMA\_STAR\_CulFr   &       0.258 &        0.517 &   -2.48 &   0.0131 &      0.203 &       0.395 &         -2.2 &        0.0278 \\
+SIGMA\_STAR\_OmLmVel-SIGMA\_STAR\_EnfCond &       0.188 &        0.474 &    1.62 &    0.106 &      0.147 &       0.352 &         1.39 &         0.165 \\
+SIGMA\_STAR\_OmLmVel-SIGMA\_STAR\_IgPare  &       0.134 &        0.335 &    4.35 & 1.35e-05 &      0.133 &       0.335 &         4.23 &      2.35e-05 \\
+SIGMA\_STAR\_UsoCel-BETA\_AFrSemF1       &     0.00702 &       0.0143 &     8.4 &      0.0 &   -0.00117 &    -0.00399 &          9.3 &           0.0 \\
+SIGMA\_STAR\_UsoCel-BETA\_CulFrF1        &     -0.0013 &     -0.00197 &    6.94 & 3.93e-12 &     -0.146 &      -0.137 &         4.91 &      9.11e-07 \\
+SIGMA\_STAR\_UsoCel-BETA\_EnfCondF1      &     0.00378 &      0.00895 &    9.09 &      0.0 &    -0.0296 &     -0.0749 &          8.7 &           0.0 \\
+SIGMA\_STAR\_UsoCel-BETA\_IgPareF1       &       0.003 &      0.00868 &    10.2 &      0.0 &     0.0361 &      0.0835 &         9.67 &           0.0 \\
+SIGMA\_STAR\_UsoCel-BETA\_OmLmVelF1      &     0.00208 &      0.00497 &    9.21 &      0.0 &    -0.0055 &     -0.0112 &         8.47 &           0.0 \\
+SIGMA\_STAR\_UsoCel-BETA\_UsoCelF1       &     0.00463 &       0.0148 &    10.9 &      0.0 &     0.0314 &      0.0865 &         10.5 &           0.0 \\
+SIGMA\_STAR\_UsoCel-COEF\_CONGCD         &      0.0377 &       0.0661 &    7.64 & 2.09e-14 &     0.0591 &       0.081 &          6.8 &      1.02e-11 \\
+SIGMA\_STAR\_UsoCel-COEF\_CONGEF         &      0.0721 &       0.0793 &    4.99 & 5.92e-07 &     0.0821 &      0.0694 &         4.22 &      2.43e-05 \\
+SIGMA\_STAR\_UsoCel-COEF\_EDUC\_BASICA    &      0.0352 &       0.0745 &    9.05 &      0.0 &     0.0987 &       0.119 &         6.98 &      2.96e-12 \\
+SIGMA\_STAR\_UsoCel-COEF\_HORAPICO       &       0.021 &       0.0561 &    10.2 &      0.0 &     0.0784 &      0.0968 &          7.4 &      1.36e-13 \\
+SIGMA\_STAR\_UsoCel-COEF\_HORASTRAB      &    -0.00806 &      -0.0727 &    12.6 &      0.0 &    -0.0259 &      -0.125 &         11.2 &           0.0 \\
+SIGMA\_STAR\_UsoCel-COEF\_INTER          &       -0.18 &       -0.136 &    9.27 &      0.0 &      0.057 &       0.021 &         5.41 &      6.18e-08 \\
+SIGMA\_STAR\_UsoCel-COEF\_SININFO        &     -0.0378 &      -0.0716 &    10.1 &      0.0 &     -0.177 &      -0.157 &         6.33 &      2.47e-10 \\
+SIGMA\_STAR\_UsoCel-INTER\_AFrSem        &      0.0658 &        0.012 &   0.919 &    0.358 &     0.0698 &      0.0213 &         1.63 &         0.104 \\
+SIGMA\_STAR\_UsoCel-INTER\_CulFr         &       0.281 &       0.0381 &  -0.477 &    0.634 &      -1.33 &      -0.112 &       -0.314 &         0.753 \\
+SIGMA\_STAR\_UsoCel-INTER\_EnfCond       &     -0.0513 &      -0.0109 &    1.59 &    0.113 &      -0.33 &     -0.0735 &         1.76 &        0.0781 \\
+SIGMA\_STAR\_UsoCel-INTER\_IgPare        &      -0.222 &      -0.0563 &    3.18 &  0.00147 &      0.277 &      0.0559 &         2.74 &       0.00606 \\
+SIGMA\_STAR\_UsoCel-INTER\_OmLmVel       &     -0.0884 &      -0.0189 &    1.74 &   0.0815 &    -0.0731 &     -0.0132 &         1.57 &         0.116 \\
+SIGMA\_STAR\_UsoCel-INTER\_UsoCel        &      -0.358 &       -0.101 &    4.13 & 3.69e-05 &        0.2 &      0.0495 &         3.96 &      7.52e-05 \\
+SIGMA\_STAR\_UsoCel-SIGMA\_STAR\_AFrSem   &       0.272 &        0.492 &   0.699 &    0.485 &     0.0335 &      0.0836 &        0.571 &         0.568 \\
+SIGMA\_STAR\_UsoCel-SIGMA\_STAR\_CulFr    &       0.302 &        0.525 &  -0.515 &    0.606 &      0.181 &       0.316 &       -0.427 &         0.669 \\
+SIGMA\_STAR\_UsoCel-SIGMA\_STAR\_EnfCond  &       0.217 &        0.474 &    3.37 & 0.000763 &      0.125 &       0.269 &         2.79 &       0.00528 \\
+SIGMA\_STAR\_UsoCel-SIGMA\_STAR\_IgPare   &       0.154 &        0.332 &    5.66 & 1.52e-08 &      0.114 &       0.259 &          5.3 &      1.13e-07 \\
+SIGMA\_STAR\_UsoCel-SIGMA\_STAR\_OmLmVel  &       0.248 &        0.488 &    1.86 &   0.0632 &       0.13 &       0.215 &         1.39 &         0.166 \\
+delta\_1-BETA\_AFrSemF1                 &     0.00329 &       0.0138 &    5.77 & 7.99e-09 &  -0.000151 &    -0.00108 &         8.02 &      1.11e-15 \\
+delta\_1-BETA\_CulFrF1                  &    -0.00026 &    -0.000813 &    4.18 & 2.96e-05 &    -0.0351 &     -0.0691 &         2.83 &       0.00464 \\
+delta\_1-BETA\_EnfCondF1                &    -0.00129 &      -0.0063 &    6.68 & 2.43e-11 &   -0.00792 &      -0.042 &         7.04 &      1.99e-12 \\
+delta\_1-BETA\_IgPareF1                 &    -0.00145 &     -0.00862 &    8.48 &      0.0 &    0.00768 &      0.0373 &         7.73 &      1.11e-14 \\
+delta\_1-BETA\_OmLmVelF1                &    -0.00107 &     -0.00525 &    6.88 & 5.93e-12 &  -0.000439 &    -0.00188 &         6.38 &      1.75e-10 \\
+delta\_1-BETA\_UsoCelF1                 &    0.000607 &      0.00398 &    9.67 &      0.0 &    0.00336 &      0.0195 &         9.14 &           0.0 \\
+delta\_1-COEF\_CONGCD                   &      0.0243 &       0.0876 &    4.74 &  2.1e-06 &     0.0264 &       0.076 &         4.03 &      5.49e-05 \\
+delta\_1-COEF\_CONGEF                   &      0.0465 &        0.105 &    2.25 &   0.0247 &     0.0585 &       0.104 &         1.86 &        0.0628 \\
+delta\_1-COEF\_EDUC\_BASICA              &      0.0224 &       0.0976 &    6.51 & 7.53e-11 &     0.0459 &       0.116 &         4.29 &       1.8e-05 \\
+delta\_1-COEF\_HORAPICO                 &       0.013 &       0.0713 &    8.36 &      0.0 &     0.0464 &        0.12 &         4.87 &      1.14e-06 \\
+delta\_1-COEF\_HORASTRAB                &    -0.00507 &       -0.094 &    14.3 &      0.0 &    -0.0087 &      -0.088 &         12.2 &           0.0 \\
+delta\_1-COEF\_INTER                    &      -0.114 &       -0.178 &    7.81 & 5.77e-15 &     -0.136 &      -0.105 &         4.23 &       2.3e-05 \\
+delta\_1-COEF\_SININFO                  &     -0.0244 &      -0.0948 &    8.23 & 2.22e-16 &    -0.0357 &     -0.0667 &         4.62 &      3.82e-06 \\
+delta\_1-INTER\_AFrSem                  &      0.0343 &       0.0129 &   0.352 &    0.725 &     0.0473 &      0.0303 &         0.63 &         0.529 \\
+delta\_1-INTER\_CulFr                   &       0.183 &        0.051 &  -0.903 &    0.367 &     -0.161 &     -0.0285 &       -0.599 &         0.549 \\
+delta\_1-INTER\_EnfCond                 &     -0.0648 &      -0.0282 &   0.935 &     0.35 &      -0.11 &     -0.0512 &         1.05 &         0.295 \\
+delta\_1-INTER\_IgPare                  &      -0.162 &      -0.0847 &    2.42 &   0.0153 &    -0.0339 &     -0.0143 &         2.07 &        0.0387 \\
+delta\_1-INTER\_OmLmVel                 &     -0.0754 &      -0.0332 &    1.09 &    0.278 &     -0.045 &     -0.0171 &         0.98 &         0.327 \\
+delta\_1-INTER\_UsoCel                  &      -0.186 &       -0.108 &    3.33 &  0.00088 &     -0.147 &     -0.0763 &         3.12 &       0.00178 \\
+delta\_1-SIGMA\_STAR\_AFrSem             &       0.155 &        0.577 &   -6.03 & 1.63e-09 &     0.0381 &         0.2 &        -6.35 &      2.19e-10 \\
+delta\_1-SIGMA\_STAR\_CulFr              &       0.186 &        0.667 &   -7.78 & 7.11e-15 &       0.13 &       0.477 &        -7.27 &      3.63e-13 \\
+delta\_1-SIGMA\_STAR\_EnfCond            &       0.113 &        0.506 &   -3.23 &  0.00124 &     0.0682 &       0.308 &        -2.89 &       0.00385 \\
+delta\_1-SIGMA\_STAR\_IgPare             &      0.0687 &        0.306 &   0.755 &     0.45 &      0.051 &       0.243 &        0.783 &         0.434 \\
+delta\_1-SIGMA\_STAR\_OmLmVel            &       0.137 &        0.554 &   -4.94 &  7.9e-07 &     0.0867 &       0.301 &        -3.78 &      0.000159 \\
+delta\_1-SIGMA\_STAR\_UsoCel             &       0.167 &        0.583 &   -6.52 & 7.15e-11 &      0.132 &       0.411 &        -5.45 &      4.96e-08 \\
+delta\_2-BETA\_AFrSemF1                 &     0.00692 &       0.0204 &    9.23 &      0.0 &    0.00872 &       0.037 &         10.3 &           0.0 \\
+delta\_2-BETA\_CulFrF1                  &    -0.00353 &     -0.00776 &    7.17 & 7.71e-13 &    -0.0377 &     -0.0441 &          4.9 &      9.71e-07 \\
+delta\_2-BETA\_EnfCondF1                &     0.00617 &       0.0211 &    10.3 &      0.0 &    -0.0042 &     -0.0132 &          9.5 &           0.0 \\
+delta\_2-BETA\_IgPareF1                 &     0.00515 &       0.0216 &    12.1 &      0.0 &     0.0312 &        0.09 &         10.3 &           0.0 \\
+delta\_2-BETA\_OmLmVelF1                &     0.00319 &       0.0111 &    10.5 &      0.0 &    0.00896 &      0.0228 &          9.0 &           0.0 \\
+delta\_2-BETA\_UsoCelF1                 &     0.00266 &       0.0123 &    13.1 &      0.0 &    0.00637 &      0.0219 &         11.1 &           0.0 \\
+delta\_2-COEF\_CONGCD                   &      0.0317 &       0.0803 &    8.15 & 4.44e-16 &     0.0558 &      0.0953 &         6.78 &      1.19e-11 \\
+delta\_2-COEF\_CONGEF                   &      0.0633 &        0.101 &    4.85 & 1.27e-06 &     0.0291 &      0.0307 &         3.86 &      0.000112 \\
+delta\_2-COEF\_EDUC\_BASICA              &      0.0318 &       0.0976 &    10.1 &      0.0 &     0.0195 &      0.0292 &         6.56 &       5.5e-11 \\
+delta\_2-COEF\_HORAPICO                 &      0.0184 &       0.0714 &    12.0 &      0.0 &     0.0445 &      0.0685 &         7.22 &      5.05e-13 \\
+delta\_2-COEF\_HORASTRAB                &    -0.00744 &       -0.097 &    16.4 &      0.0 &    -0.0128 &     -0.0766 &         12.8 &           0.0 \\
+delta\_2-COEF\_INTER                    &      -0.152 &       -0.167 &    9.34 &      0.0 &     -0.142 &      -0.065 &         5.16 &      2.46e-07 \\
+delta\_2-COEF\_SININFO                  &      -0.035 &       -0.096 &    11.1 &      0.0 &    -0.0448 &     -0.0497 &         6.48 &      8.91e-11 \\
+delta\_2-INTER\_AFrSem                  &      0.0614 &       0.0162 &   0.819 &    0.413 &      0.169 &      0.0644 &         1.46 &         0.143 \\
+delta\_2-INTER\_CulFr                   &       0.221 &       0.0433 &  -0.554 &    0.579 &    -0.0965 &     -0.0101 &       -0.368 &         0.713 \\
+delta\_2-INTER\_EnfCond                 &     -0.0208 &     -0.00637 &    1.48 &     0.14 &    -0.0698 &     -0.0194 &         1.65 &         0.099 \\
+delta\_2-INTER\_IgPare                  &       -0.18 &      -0.0661 &    3.06 &  0.00221 &       0.18 &      0.0451 &         2.62 &       0.00869 \\
+delta\_2-INTER\_OmLmVel                 &     -0.0685 &      -0.0212 &    1.63 &    0.103 &     0.0664 &      0.0149 &         1.47 &         0.141 \\
+delta\_2-INTER\_UsoCel                  &      -0.254 &       -0.104 &    4.02 &  5.9e-05 &     -0.153 &     -0.0473 &         3.77 &       0.00016 \\
+delta\_2-SIGMA\_STAR\_AFrSem             &       0.253 &        0.662 &  -0.396 &    0.692 &      0.092 &       0.286 &       -0.308 &         0.758 \\
+delta\_2-SIGMA\_STAR\_CulFr              &       0.269 &        0.678 &   -2.03 &   0.0425 &      0.231 &       0.504 &        -1.66 &         0.097 \\
+delta\_2-SIGMA\_STAR\_EnfCond            &       0.212 &        0.669 &     3.6 & 0.000317 &      0.156 &       0.418 &          2.5 &        0.0123 \\
+delta\_2-SIGMA\_STAR\_IgPare             &        0.16 &          0.5 &    6.67 & 2.56e-11 &      0.127 &       0.359 &         5.56 &      2.76e-08 \\
+delta\_2-SIGMA\_STAR\_OmLmVel            &       0.235 &        0.669 &    1.23 &    0.219 &      0.189 &        0.39 &        0.796 &         0.426 \\
+delta\_2-SIGMA\_STAR\_UsoCel             &       0.267 &        0.657 &   -1.28 &    0.201 &      0.181 &       0.336 &       -0.858 &         0.391 \\
+delta\_2-delta\_1                       &       0.116 &        0.589 &    7.74 & 9.55e-15 &      0.108 &       0.422 &         5.51 &       3.5e-08 \\
+\bottomrule
+\end{tabular}

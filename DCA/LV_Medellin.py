@@ -18,8 +18,8 @@ import biogeme.loglikelihood as ll
 
 #Cargar DataBase
 
-pandas = pd.read_csv('/Users/williz/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/Analisis en R/Modelo Logit DB/DBModLogitVL.csv', sep='\t')
-database = db.Database("DBModLogitVL",pandas)
+pandas = pd.read_csv('/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVL1.csv', sep='\t')
+database = db.Database("DBModLogitVL1",pandas)
 
 from headers import *
 
@@ -28,38 +28,43 @@ database.remove(exclude)
 
 
 #Variables
-EDAD0 = DefineVariable('EDAD0',EDAD == 0, database)
-EDAD1 = DefineVariable('EDAD1',EDAD == 1, database)
-EDAD2 = DefineVariable('EDAD2',EDAD == 2, database)
-EDAD3 = DefineVariable('EDAD3',EDAD == 3, database)
-EDAD4 = DefineVariable('EDAD4',EDAD == 4, database)
-
-EDUCAC0 = DefineVariable('EDUCAC0', NIVELEDUCATIVO == 0, database)
-EDUCAC1 = DefineVariable('EDUCAC1', NIVELEDUCATIVO == 1, database)
-EDUCAC2 = DefineVariable('EDUCAC2', NIVELEDUCATIVO == 2, database)
-EDUCAC3 = DefineVariable('EDUCAC3', NIVELEDUCATIVO == 3, database)
-EDUCAC4 = DefineVariable('EDUCAC4', NIVELEDUCATIVO == 4, database)
-
+JOVEN = DefineVariable('JOVEN', JOVEN, database)
+ADULTO = DefineVariable('ADULTO', ADULTO, database)
+MAYOR_60 = DefineVariable('MAYOR_60', MAYOR_60, database)
+EDUC_BASICA = DefineVariable('EDUC_BASICA', EDUBASICA, database)
+EDUC_SUPERIOR = DefineVariable('EDUC_SUPERIOR', EDUSUP, database)
 TPROF = DefineVariable('TPROF', TIEMPO_PROFESION, database)
 HORASTRAB = DefineVariable('HORASTRAB', HORASTRABAJO, database)
+HPICO = DefineVariable('HPICO', HPICOHVALLE, database)
+HVALLE = DefineVariable('HVALLE', HVALLE, database)
+CSECO = DefineVariable('CSECO', CSECO, database)
+CLLUVIA = DefineVariable('CLLUVIA', CLLUVIA, database)
+CONG_AB = DefineVariable('CONG_AB', CONG_AB, database)
+CONG_CD = DefineVariable('CONG_CD', CONG_CD, database)
+CONG_EF = DefineVariable('CONG_EF', CONG_EF, database)
+SININFOTR = DefineVariable('SININFOTR', SININFOTR, database)
+CONINFOTR = DefineVariable('CONINFOTR', CONINFOTR, database)
+
 
 
 # Coeficientes
 COEF_INTER = Beta('COEF_INTER',0,None,None,0)
-COEF_EDAD0 = Beta('COEF_EDAD0',0,None,None,0)
-COEF_EDAD1 = Beta('COEF_EDAD1',0,None,None,0)
-COEF_EDAD2 = Beta('COEF_EDAD2',0,None,None,0)
-COEF_EDAD3 = Beta('COEF_EDAD3',0,None,None,0)
-COEF_EDAD4 = Beta('COEF_EDAD4',0,None,None,0)
-
-COEF_EDUCAC0 = Beta('COEF_EDUCAC0',0,None,None,0)
-COEF_EDUCAC1 = Beta('COEF_EDUCAC1',0,None,None,0)
-COEF_EDUCAC2 = Beta('COEF_EDUCAC2',0,None,None,0)
-COEF_EDUCAC3 = Beta('COEF_EDUCAC3',0,None,None,0)
-COEF_EDUCAC4 = Beta('COEF_EDUCAC4',0,None,None,0)
-
+COEF_JOVEN = Beta('COEF_JOVEN',0,None,None,0)
+COEF_ADULTO = Beta('COEF_ADULTO',0,None,None,0)
+COEF_MAYOR_60 = Beta('COEF_MAYOR_60',0,None,None,0)
+COEF_EDUC_BASICA = Beta('COEF_EDUC_BASICA',0,None,None,0)
+COEF_EDUC_SUPERIOR = Beta('COEF_EDUC_SUPERIOR',0,None,None,0)
 COEF_TPROF = Beta('COEF_TPROF',0,None,None,0)
 COEF_HORASTRAB = Beta('COEF_HORASTRAB',0,None,None,0)
+COEF_HPICO = Beta('COEF_HPICO',0,None,None,0)
+COEF_HVALLE = Beta('COEF_HVALLE',0,None,None,0)
+COEF_CSECO = Beta('COEF_CSECO',0,None,None,0)
+COEF_CLLUVIA = Beta('COEF_CLLUVIA',0,None,None,0)
+COEF_CONG_AB = Beta('COEF_CONG_AB',0,None,None,0)
+COEF_CONG_CD = Beta('COEF_CONG_CD',0,None,None,0)
+COEF_CONG_EF = Beta('COEF_CONG_EF',0,None,None,0)
+COEF_SININFOTR = Beta('COEF_SININFOTR',0,None,None,0)
+COEF_CONINFOTR = Beta('COEF_CONINFOTR',0,None,None,0)
 
 
 # Ecuacion Estructural Variable Latente
@@ -68,16 +73,23 @@ omega = RandomVariable('omega')
 density = dist.normalpdf(omega) 
 sigma_s = Beta('sigma_s',1,None,None,0)
 
-EXTROVERSION = \
-COEF_INTER+\
-COEF_EDAD1*EDAD1+\
+ACTAGR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA + COEF_HORASTRAB*HORASTRAB+\
+    COEF_CONG_CD*CONG_CD + COEF_CONG_EF*CONG_EF+COEF_SININFOTR*SININFOTR
+
+STRESS = COEF_INTER + COEF_JOVEN*JOVEN + COEF_HORASTRAB*HORASTRAB + COEF_HPICO*HPICO +\
+    COEF_SININFOTR*SININFOTR
+
+AMBLABOR = COEF_INTER + COEF_ADULTO*ADULTO + COEF_CONG_CD*CONG_CD + COEF_ACTAGR*ACTAGR+\
+    COEF_STRESS*STRESS
+
+
 COEF_EDAD2*EDAD2+\
 COEF_EDAD3*EDAD3+\
 COEF_EDUCAC1*EDUCAC1+\
 COEF_EDUCAC2*EDUCAC2+\
 COEF_EDUCAC3*EDUCAC3+\
 COEF_EDAD4*EDAD4+COEF_TPROF*TPROF+\
-COEF_HORASTRAB*HORASTRAB
+
 
 
 ### ECUACIONES DE MEDIDA

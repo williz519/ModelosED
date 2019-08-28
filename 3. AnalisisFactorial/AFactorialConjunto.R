@@ -20,60 +20,24 @@ library(corrr)
 
 #Leer los dataset Personalidad y Modo Conduccion
 
-DBPersonalidad <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBPersonalidad.rds")
+# Analisis Factorial con datos escalados a una escala likert 1 - 5
 
-DBModoConduccion <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+DB <- read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv", header = TRUE, sep = "\t")
 
-names(DBPersonalidad)
-
-names(DBModoConduccion)
-
-DB <- DBPersonalidad %>%
-  select_all() %>%
-  # DBModoConducción
-  inner_join(DBModoConduccion %>%
-               select(ViajeId:UsoCelular),
-             by = "ViajeId") 
-
-#view(DBConjunta)  
 names(DB)
 
-DB <- DBConjunta
-
-#Renombrar las Variables
-DBConjunta <- rename(DBConjunta, replace =c(ComunicVerbal = "ComVrb",
-                                            Ansiedad = "Ans",
-                                            ComunicAfectiva = "ComAfec",
-                                            PresPersonal = "PrPers",
-                                            AmbTrabajo = "AmbT",
-                                            StressAlCond = "StrC",
-                                            ConsidCliente = "ConsCl",
-                                            CinturonDeSeguridad = "CinSeg",
-                                            FrenoRapidoBrusco = "FRbr",
-                                            UsaDireccionales = "UsDirec",
-                                            EnfadoConOtroConductor = "EnfCond",
-                                            AceleraFrenaBruscamenteSemaforo = "AFrSem",
-                                            CulebreaConFrecuencia = "CulFr",
-                                            OmiteLimiteVelocidad = "OmLmVel",
-                                            IgnoraSenhalPare = "IgPare",
-                                            UsoCelular = "UsCel"))
-
-#Eliminar Variables que no entran en el analisis factorial
-
-DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="ViajeId"]
-DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="NivelEducativo"]
-DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="DispMobiles"]
-DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="SatisfDispMob"]
-DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="PasoPeatones"]
-DBConjunta <- DBConjunta[ ,!colnames(DBConjunta)=="UsaPito"]
+DBConjunta <- select(DB, -("GENERO":"UsaPito"))
 
 names(DBConjunta)
 
+summary(DBConjunta)
+
+sink("AnalisisFactorialConjuntoCE.txt")
 
 #Correlacion
-cor(na.omit(DBConjunta), use = "pairwise.complete.obs")
+cor(DBConjunta, use = "pairwise.complete.obs")
 
-Rcor <- cor(na.omit(DBConjunta))
+Rcor <- cor(DBConjunta)
 
 # Gráfico de las Correlaciones
 corrplot(Rcor, method = "shade", type="upper", order = "hclust", tl.col = "black", tl.cex = 1)
@@ -133,7 +97,7 @@ print(kmo)
 
 
 #Analisis de Componentes Principales
-pca1 <- princomp(na.omit(DBConjunta), scores = TRUE, cor = TRUE)
+pca1 <- princomp(DBConjunta, scores = TRUE, cor = TRUE)
 summary(pca1)
 
 #Cargar los componentes principales
@@ -155,22 +119,21 @@ pca1$scores[1:10,]
 
 #Analisis Factorial
 
-fa <-factanal(na.omit(DBConjunta), factor=5, rotation = "varimax", na.rm = TRUE)
+fa <-factanal(DBConjunta, factor=5, rotation = "varimax", na.rm = TRUE)
 print(fa,cutoff=0.35, sort=FALSE)
 
-#sink()
-#fa2 <-factanal(na.omit(DBConjunta), factor=4, rotation = "varimax", na.rm = TRUE)
-#print(fa2,cutoff=0.3, sort=FALSE)
+fa2 <-factanal(DBConjunta, factor=4, rotation = "varimax", na.rm = TRUE)
+print(fa2,cutoff=0.3, sort=FALSE)
 
 
 
-factores <- factanal(na.omit(DBConjunta), factor=5, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+factores <- factanal(DBConjunta, factor=5, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 print(factores,cutoff=0.35, sort=FALSE)
 
 #Normalizamos los valores que podran tomarse como el peso para el cálculo de un indice que
 # explica por cada i-esima fila la variabilidad de todo el conjunto de datos
 
-DBFAC <- cbind(na.omit(DBConjunta), factores)
+DBFAC <- cbind(DBConjunta, factores)
 
 DBFAC$Factor1 <- round(((DBFAC$Factor1 - min(DBFAC$Factor1))/(max(DBFAC$Factor1)-min(DBFAC$Factor1))),5)
 DBFAC$Factor2 <- round(((DBFAC$Factor2 - min(DBFAC$Factor2))/(max(DBFAC$Factor2)-min(DBFAC$Factor2))),5)
@@ -202,7 +165,7 @@ hist(DBFAC$CondSegura, freq = TRUE, main = "Distribución del Factor 4",
 hist(DBFAC$HabProsoc, freq = TRUE, main = "Distribución del Factor 5",
      xlab = "Hab Prosociales", ylab = "Frecuencia", col = "blue")
 
-
+sink()
 
 saveRDS(DBFAC, 
         file="/Users/williz/Desktop/ModelosED/Database/AFConjunto.rds")

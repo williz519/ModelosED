@@ -17,91 +17,130 @@ import biogeme.loglikelihood as ll
 
 
 
-#Cargar DataBase
-
-pandas = pd.read_csv('/Users/williz/Dropbox/Doctorado/Resultados Tesis/BasesDatos/DBModeloLogitVL1.csv', sep='\t')
-database = db.Database("DBModeloLogitVL1.csv",pandas)
+pandas = pd.read_csv('/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv', sep='\t')
+database = db.Database("DBModLogitVLCE",pandas)
 
 from headers import *
 
-#exclude = (CHOICE == -1.0)
-#database.remove(exclude)
+exclude = (CHOICE == -1.0)
+database.remove(exclude)
 
 
 #Variables
-MENOR60 = DefineVariable('MENOR60', MENOR_60, database)
-EDU_BASICA = DefineVariable('EDU_BASICA', EDUBASICA, database)
-TPROF = DefineVariable('TPROF', TIEMPO_PROFESION, database)
+TIME1_SC = DefineVariable('TIME1_SC', TIEMPOAlt1/100, database)
+TIME2_SC = DefineVariable('TIME2_SC', TIEMPOAlt2/100, database)
+TIME3_SC = DefineVariable('TIME3_SC', TIEMPOAlt3/100, database)
+TIME4_SC = DefineVariable('TIME4_SC', TIEMPOEC/100, database)
+DIST1_SC = DefineVariable('DIST1_SC', DISTAlt1/100, database)
+DIST2_SC = DefineVariable('DIST2_SC', DISTAlt2/100, database)
+DIST3_SC = DefineVariable('DIST3_SC', DISTAlt3/100, database)
+DIST4_SC = DefineVariable('DIST4_SC', DISTEC/100, database)
+JOVEN30 = DefineVariable('JOVEN30', EDAD == 1, database)
+ADULTO40 = DefineVariable('ADULTO40', EDAD == 2, database)
+ADULTO60 = DefineVariable('ADULTO60', EDAD == 3, database)
+ADULTOMAYOR = DefineVariable('ADULTOMAYOR', EDAD == 4, database)
+EDUC_BASICA = DefineVariable('EDUC_BASICA', NIVELEDUCATIVO == 1, database)
+EDUC_SUPERIOR = DefineVariable('EDUC_SUPERIOR', NIVELEDUCATIVO >= 2, database)
+TPROF = DefineVariable('TPROF', TIEMPO_PROFESION*12, database)
 HORASTRAB = DefineVariable('HORASTRAB', HORASTRABAJO, database)
+HORAPICO = DefineVariable('HORAPICO', HPICOHVALLE == 1, database)
+HORAVALLE = DefineVariable('HORAVALLE', HPICOHVALLE == 2, database)
+CLIMASECO = DefineVariable('CLIMASECO', CLIMA == 1, database)
+CLIMALLUVIA = DefineVariable('CLIMALLUVIA', CLIMA == 2, database)
+CONGAB = DefineVariable('CONGAB', CONGESTION <= 2, database)
+CONGCD = DefineVariable('CONGCD', (CONGESTION == 3)+(CONGESTION == 4), database)
+CONGEF = DefineVariable('CONGEF', CONGESTION > 4, database)
+SININFO = DefineVariable('SININFO', INFOTRAFICO == 1, database)
+CONINFO = DefineVariable('CONINFO', INFOTRAFICO == 2, database)
+USOCINTURON = DefineVariable ('USOCINTURON', CinSeg == 2, database)
+
 
 
 # Coeficientes
 COEF_INTER = Beta('COEF_INTER',0,None,None,0)
-COEF_MENOR60 = Beta('MENOR_60',0,None,None,0)
-COEF_EDU_BASICA = Beta('EDUBASICA',0,None,None,0)
+COEF_JOVEN30 = Beta('COEF_JOVEN30',0,None,None,0)
+COEF_ADULTO40 = Beta('COEF_ADULTO40',0,None,None,0)
+COEF_ADULTO60 = Beta('COEF_ADULTO60',0,None,None,0)
+COEF_ADULTOMAYOR = Beta('COEF_ADULTOMAYOR',0,None,None,0)
+COEF_EDUC_BASICA = Beta('COEF_EDUC_BASICA',0.207,None,None,0)
+COEF_EDUC_SUPERIOR = Beta('COEF_EDUC_SUPERIOR',0,None,None,0)
 COEF_TPROF = Beta('COEF_TPROF',0,None,None,0)
-COEF_HORASTRAB = Beta('COEF_HORASTRAB',0,None,None,0)
+COEF_HORASTRAB = Beta('COEF_HORASTRAB',-0.049,None,None,1)
+COEF_HORAPICO = Beta('COEF_HORAPICO',0,None,None,0)
+COEF_HVALLE = Beta('COEF_HVALLE',0,None,None,0)
+COEF_CLIMASECO = Beta('COEF_CLIMASECO',0,None,None,0)
+COEF_CLIMALLUVIA = Beta('COEF_CLIMALLUVIA',0,None,None,0)
+COEF_CONGAB = Beta('COEF_CONGAB',0,None,None,0)
+COEF_CONGCD = Beta('COEF_CONGCD',0.193,None,None,1)
+COEF_CONGEF = Beta('COEF_CONGEF',0.415,None,None,1)
+COEF_SININFO = Beta('COEF_SININFO',-0.255,None,None,1)
+COEF_CONINFO = Beta('COEF_CONINFO',0,None,None,0)
+COEF_USOCINTRURON = Beta('COEF_USOCINTURON',0,None,None,0)
 
 
 # Ecuacion Estructural Variable Latente
 
-sigma_s = Beta('sigma_s',1,0.001,None,1)
+sigma_s = Beta('sigma_s',1,-10000,10000,1)
 
-ACTAGRE = \
-COEF_INTER + COEF_MENOR_60*MENOR_60 + COEF_EDUBASICA*EDUBASICA +COEF_TPROF*TIEMPO_PROFESION+\
-COEF_HORASTRAB*HORASTRABAJO
+ACTAGR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA + COEF_HORASTRAB*HORASTRAB+\
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO
 
 
 ### ECUACIONES DE MEDIDA
-INTER_FRB = Beta('INTER_FRB',0,None,None,1)
-INTER_AFRB = Beta('INTER_AFRB',0,None,None,0)
-INTER_CCF = Beta('INTER_CCF',0,None,None,0)
-INTER_ISP = Beta('INTER_ISP',0,None,None,0)
-INTER_OLV = Beta('INTER_OLV',0,None,None,0)
+INTER_FRbr= Beta('INTER_FRbr',1,None,None,1)
+INTER_EnfCond = Beta('INTER_EnfCond',0,None,None,0)
+INTER_AFrSem = Beta('INTER_AFrSem',0,None,None,0)
+INTER_CulFr = Beta('INTER_CulFr',0,None,None,0)
+INTER_OmLmVel = Beta('INTER_OmLmVel',0,None,None,1)
+INTER_IgPare = Beta('INTER_IgPare',0,None,None,0)
+
+BETA_FRbrF1 = Beta('BETA_FRbrF1',0,None,None,1)
+BETA_EnfCondF1 = Beta('BETA_EnfCondF1',0,None,None,0)
+BETA_AFrSemF1 = Beta('BETA_AFrSemF1',0,None,None,0)
+BETA_CulFrF1 = Beta('BETA_CulFrF1',0,None,None,0)
+BETA_OmLmVelF1 = Beta('BETA_OmLmVelF1',0,None,None,0)
+BETA_IgPareF1 = Beta('BETA_IgPareF1',0,None,None,0)
+
+MODEL_FRbr = INTER_FRbr + BETA_FRbrF1 * ACTAGR
+MODEL_EnfCond = INTER_EnfCond + BETA_EnfCondF1 * ACTAGR
+MODEL_AFrSem = INTER_AFrSem + BETA_AFrSemF1 * ACTAGR
+MODEL_CulFr = INTER_CulFr + BETA_CulFrF1 * ACTAGR
+MODEL_OmLmVel = INTER_OmLmVel + BETA_OmLmVelF1 * ACTAGR
+MODEL_IgPare = INTER_IgPare + BETA_IgPareF1 * ACTAGR
 
 
-BETA_FRB_F1 = Beta('BETA_FRB_F1',-1,None,None,1)
-BETA_AFRB_F1 = Beta('BETA_AFRB_F1',-1,None,None,0)
-BETA_CCF_F1 = Beta('BETA_CCF_F1',0,None,None,0)
-BETA_ISP_F1 = Beta('BETA_ISP_F1',0,None,None,0)
-BETA_OLV_F1 = Beta('BETA_OLV_F1',0,None,None,0)
-
-
-MODEL_FRB = INTER_FRB + BETA_FRB_F1 * ACTAGRE
-MODEL_AFRB = INTER_AFRB + BETA_AFRB_F1 * ACTAGRE
-MODEL_CCF = INTER_CCF + BETA_CCF_F1 * ACTAGRE
-MODEL_ISP = INTER_ISP + BETA_ISP_F1 * ACTAGRE
-MODEL_OLV = INTER_OLV + BETA_OLV_F1 * ACTAGRE
-
-
-SIGMA_STAR_FRB = Beta('SIGMA_STAR_FRB', 10,None,None,1)
-SIGMA_STAR_AFRB = Beta('SIGMA_STAR_AFRB', 10,None,None,0)
-SIGMA_STAR_CCF = Beta('SIGMA_STAR_CCF', 10,None,None,0)
-SIGMA_STAR_ISP = Beta('SIGMA_STAR_ISP', 10,None,None,0)
-SIGMA_STAR_OLV = Beta('SIGMA_STAR_OLV', 10,None,None,0)
+SIGMA_STAR_FRbr = Beta('SIGMA_STAR_FRbr', 10,0.001,10000,1)
+SIGMA_STAR_EnfCond = Beta('SIGMA_STAR_EnfCond',10,0.001,10000,0)
+SIGMA_STAR_AFrSem = Beta('SIGMA_STAR_AFrSem', 10,0.001,10000,0)
+SIGMA_STAR_CulFr = Beta('SIGMA_STAR_CulFr', 10,0.001,10000,0)
+SIGMA_STAR_OmLmVel = Beta('SIGMA_STAR_OmLmVel', 10,0.001,10000,0)
+SIGMA_STAR_IgPare = Beta('SIGMA_STAR_IgPare', 10,0.001,10000,0)
 
 
 F = {}
-F['FrenoRapidoBrusco'] = Elem({0:0, \
- 1:ll.loglikelihoodregression(FrenoRapidoBrusco,MODEL_FRB,SIGMA_STAR_FRB)},\
-  (FrenoRapidoBrusco > 0)*(FrenoRapidoBrusco < 6))
-F['AceleraFrenaBruscamenteSemaforo'] = Elem({0:0, \
- 1:ll.loglikelihoodregression(AceleraFrenaBruscamenteSemaforo,MODEL_AFRB,SIGMA_STAR_AFRB)},\
-  (AceleraFrenaBruscamenteSemaforo > 0)*(AceleraFrenaBruscamenteSemaforo < 6))
-F['CulebreaConFrecuencia'] = Elem({0:0, \
- 1:ll.loglikelihoodregression(CulebreaConFrecuencia,MODEL_CCF,SIGMA_STAR_CCF)},\
-  (CulebreaConFrecuencia > 0)*(CulebreaConFrecuencia < 6))
-F['IgnoraSenhalPare'] = Elem({0:0, \
- 1:ll.loglikelihoodregression(IgnoraSenhalPare,MODEL_ISP,SIGMA_STAR_ISP)},\
-  (IgnoraSenhalPare > 0)*(IgnoraSenhalPare < 6))
-F['OmiteLimiteVelocidad'] = Elem({0:0, \
- 1:ll.loglikelihoodregression(OmiteLimiteVelocidad,MODEL_OLV,SIGMA_STAR_OLV)},\
-  (OmiteLimiteVelocidad > 0)*(OmiteLimiteVelocidad< 6))
+F['FRbr'] = Elem({0:0, \
+ 1:ll.loglikelihoodregression(FRbr,MODEL_FRbr,SIGMA_STAR_FRbr)},\
+  (FRbr > 0)*(FRbr < 6))
+F['EnfCond'] = Elem({0:0, \
+ 1:ll.loglikelihoodregression(EnfCond,MODEL_EnfCond,SIGMA_STAR_EnfCond)},\
+  (EnfCond > 0)*(EnfCond < 6))
+F['AFrSem'] = Elem({0:0, \
+ 1:ll.loglikelihoodregression(AFrSem,MODEL_AFrSem,SIGMA_STAR_AFrSem)},\
+  (AFrSem > 0)*(AFrSem < 6))
+F['CulFr'] = Elem({0:0, \
+ 1:ll.loglikelihoodregression(CulFr,MODEL_CulFr,SIGMA_STAR_CulFr)},\
+  (CulFr > 0)*(CulFr < 6))
+F['IgPare'] = Elem({0:0, \
+ 1:ll.loglikelihoodregression(IgPare,MODEL_IgPare,SIGMA_STAR_IgPare)},\
+  (IgPare > 0)*(IgPare < 6))
+F['OmLmVel'] = Elem({0:0, \
+ 1:ll.loglikelihoodregression(OmLmVel,MODEL_OmLmVel,SIGMA_STAR_OmLmVel)},\
+  (OmLmVel > 0)*(OmLmVel< 6))
 
 loglike = bioMultSum(F)
 
 biogeme  = bio.BIOGEME(database,loglike)
-biogeme.modelName = "01oneLatentRegression"
+biogeme.modelName = "01LVMedellin"
 results = biogeme.estimate()
 print(f"Estimated betas: {len(results.data.betaValues)}")
 print(f"final log likelihood: {results.data.logLike:.3f}")

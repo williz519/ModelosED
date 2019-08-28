@@ -38,8 +38,14 @@ ModoCond <- rename(ModoCond, replace =c(CinturonDeSeguridad = "CinSeg",
 
 names(ModoCond)
 
-ModoCond1 <- ModoCond[ ,!colnames(ModoCond)=="ViajeId"]
+summary(ModoCond)
 
+
+tibble::as_tibble(ModoCond) 
+
+
+
+ModoCond1 <- ModoCond[ ,!colnames(ModoCond)=="ViajeId"]
 ModoCond1 <- ModoCond1[ ,!colnames(ModoCond1)=="UsPito"]
 ModoCond1 <- ModoCond1[ ,!colnames(ModoCond1)=="PasPeat"]
 
@@ -48,9 +54,10 @@ ModoCond1 <- ModoCond1[ ,!colnames(ModoCond1)=="PasPeat"]
 
 summary(ModoCond1)
 
-cor(na.omit(ModoCond1), use = "pairwise.complete.obs")
 
-Rcor <- cor(na.omit(ModoCond1))
+cor(ModoCond1, use = "pairwise.complete.obs")
+
+Rcor <- cor(ModoCond1)
 
 # Gráfico de las Correlaciones
 corrplot(Rcor, order = "hclust", tl.col = "black", tl.cex = 1)
@@ -112,7 +119,7 @@ print(kmo)
 
 
 #Analisis de Componentes Principales
-pca1 <- princomp(na.omit(ModoCond1), scores = TRUE, cor = TRUE)
+pca1 <- princomp(ModoCond1, scores = TRUE, cor = TRUE)
 summary(pca1)
 
 #Cargar los componentes principales
@@ -137,17 +144,17 @@ pca1$scores[1:10,]
 #Analisis Factorial
 
 
-fa <-factanal(na.omit(ModoCond1), factor=3, rotation = "varimax", na.rm = TRUE)
+fa <-factanal(ModoCond1, factor=3, rotation = "varimax", na.rm = TRUE)
 print(fa,cutoff=0.3, sort=FALSE)
 
 #sink()
 
-factores <- factanal(na.omit(ModoCond1), factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+factores <- factanal(ModoCond1, factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 
 #Normalizamos los valores que podran tomarse como el peso para el cálculo de un indice que
 # explica por cada i-esima fila la variabilidad de todo el conjunto de datos
 
-indicators2 <- cbind(na.omit(ModoCond), factores)
+indicators2 <- cbind(ModoCond, factores)
 indicators2$Factor1 <- round(((indicators2$Factor1 - min(indicators2$Factor1))/(max(indicators2$Factor1)-min(indicators2$Factor1))),3)
 indicators2$Factor2 <- round(((indicators2$Factor2 - min(indicators2$Factor2))/(max(indicators2$Factor2)-min(indicators2$Factor2))),3)
 indicators2$Factor3 <- round(((indicators2$Factor3 - min(indicators2$Factor3))/(max(indicators2$Factor3)-min(indicators2$Factor3))),3)

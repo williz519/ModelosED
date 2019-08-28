@@ -143,6 +143,10 @@ table(X$OmiteLimiteVelocidad)
 table(X$IgnoraSenhalPare)
 table(X$UsoCelular)
 
+X$UsaDireccionales[X$UsaDireccionales == 4] <- 1
+X$CulebreaConFrecuencia[X$CulebreaConFrecuencia == 4] <- 3
+
+
 summary(X)
 describe(X)
 
