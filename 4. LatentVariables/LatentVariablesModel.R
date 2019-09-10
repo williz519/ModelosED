@@ -23,6 +23,9 @@ DBVL <- read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv
 
 names(DBVL)
 
+DBVL <- DBVL[ ,!colnames(DBVL)=="ViajeId"]
+
+names(DBVL)
 # ORGANIZACION DE VARIABLES DUMMY
 
 # EDAD JOVEN - ADULTO - MAYOR_60
@@ -62,16 +65,21 @@ DBVL$CONINFOTRF <- (ifelse((DBVL$INFOTRAFICO == 2),1,0))
 
 head(DBVL)
 
+
 # ?Quiero orden!
 tibble::as_tibble(DBVL) 
 
 names(DBVL) 
+view(DBVL)
 
 # Listado y propiedades de variables
 
 dplyr::glimpse(DBVL)   
 
 summary(DBVL)
+
+write.table(DBVL, 
+            file="/Users/williz/Desktop/ModelosED/Database/DBVL.csv", sep="\t", dec=".")
 
 
 # ESPECIFICACION DEL MODELO DE VARIABLES LATENTES.
@@ -90,9 +98,9 @@ sink("ResultadosMODELO1CE.txt")
 
 model1 <- " #Variables Latentes
       ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
-      AMBLABOR =~ PrPers + AmbT 
-      HABPROSOC =~ ComVrb + ComAfec + ConsCl
-      STRESS =~ Ans + StrC + UsDirec
+      AMBLABOR =~ PrPer + AmbTr
+      HABPROSOC =~ ComVrb + ComAfec + ConCl
+      STRESS =~ Ans + StrC + UsoDirec
       
       # Regresiones
       ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
@@ -142,22 +150,25 @@ sink("ResultadosMODELO2CE.txt")
 
 model2 <- " #Variables Latentes
       ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
-AMBLABOR =~ PrPers + AmbT 
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
-STRESS =~ Ans + StrC + UsDirec
+AMBLABOR =~ PrPer + AmbTr
+HABPROSOC =~ ComVrb + ComAfec + ConCl + Ans
+STRESS =~ Ans + StrC + UsoDirec
 
 # Regresiones
 ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF
+
 STRESS ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
 AMBLABOR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF 
+
 HABPROSOC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF 
 
 # Varianza Covarianza
-HABPROSOC ~~ STRESS
+
 
 # Interceptos"
 
@@ -184,22 +195,26 @@ sink("ResultadosMODELO3CE.txt")
 
 model3 <- " #Variables Latentes
       ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
-AMBLABOR =~ PrPers + AmbT 
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
-STRESS =~ Ans + StrC + UsDirec
+AMBLABOR =~ PrPer + AmbTr
+HABPROSOC =~ ComVrb + ComAfec + ConCl + Ans
+STRESS =~ Ans + StrC + UsoDirec
 
 # Regresiones
 ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + STRESS
-STRESS ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF
+
+STRESS ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
 AMBLABOR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF 
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
 HABPROSOC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF 
 
 # Varianza Covarianza
-HABPROSOC ~~ STRESS
+FRbr ~~ AFrSem
+
 
 # Interceptos"
 
@@ -225,22 +240,25 @@ sink("ResultadosMODELO4CE.txt")
 
 model4 <- " #Variables Latentes
       ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
-AMBLABOR =~ PrPers + AmbT 
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
-STRESS =~ Ans + StrC + UsDirec
+AMBLABOR =~ PrPer + AmbTr
+HABPROSOC =~ ComVrb + ComAfec + ConCl + Ans
+STRESS =~ Ans + StrC + UsoDirec
 
 # Regresiones
 ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + STRESS
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
 STRESS ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
 AMBLABOR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + HABPROSOC 
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
 HABPROSOC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF 
 
 # Varianza Covarianza
-HABPROSOC ~~ STRESS
+FRbr ~~ AFrSem
 
 # Interceptos"
 
@@ -262,24 +280,32 @@ modindices(fit41, sort = TRUE, maximum.number = 10)
 sink()
 
 
-sink("ResultadosMODELO5CE.txt")
+sink("ResultadosMODELO5CE2.txt")
 
 # MODELO 5
 
 model5 <- " #Variables Latentes
       ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
-AMBLABOR =~ PrPers + AmbT 
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
-STRESS =~ Ans + StrC + UsDirec
+AMBLABOR =~ PrPer + AmbTr
+HABPROSOC =~ ComVrb + ComAfec + ConCl + Ans
+STRESS =~ Ans + StrC + UsoDirec
 
 # Regresiones
-ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + CSECO + CONG_CD + CONG_EF  + STRESS
-STRESS ~  JOVEN30 + ADULTO40 + ADULTO60 + HORASTRABAJO + HPICO + CSECO + SININFOTRF
-AMBLABOR ~ EDUBASICA + ADULTO40 + ADULTO60 + CONG_CD + HABPROSOC 
-HABPROSOC ~ ADULTO60  + HORASTRABAJO + CONG_CD + CONG_EF
+ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
+STRESS ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
+AMBLABOR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
+HABPROSOC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF 
 
 # Varianza Covarianza
-HABPROSOC ~~ STRESS
+FRbr ~~ AFrSem
+CulFr ~~ ComVrb
 
 # Interceptos"
 
@@ -301,28 +327,39 @@ modindices(fit51, sort = TRUE, maximum.number = 10)
 sink()
 
 
-sink("ResulMODELO6CE.txt")
+sink("MODELO1CEInter.txt")
 
-# MODELO 6
+# MODELO 1 Con interseptos
 
 model6 <- " #Variables Latentes
       ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
-AMBLABOR =~ PrPers + AmbT 
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
-STRESS =~ Ans + StrC + UsDirec
+AMBLABOR =~ PrPer + AmbTr
+HABPROSOC =~ ComVrb + ComAfec + ConCl + Ans
+STRESS =~ Ans + StrC + UsoDirec
 
 # Regresiones
-ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + CSECO + CONG_CD + CONG_EF  + STRESS
-STRESS ~  JOVEN30 + ADULTO40 + ADULTO60 + HORASTRABAJO + HPICO + CSECO + SININFOTRF
-AMBLABOR ~ EDUBASICA + ADULTO40 + ADULTO60 + CONG_CD + HABPROSOC 
-HABPROSOC ~ ADULTO60  + HORASTRABAJO + CONG_CD + CONG_EF
+ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
+STRESS ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
+AMBLABOR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + HABPROSOC
+
+HABPROSOC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORASTRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF 
 
 # Varianza Covarianza
-HABPROSOC ~~ STRESS
 FRbr ~~ AFrSem
-OmLmVel ~~ IgPare
+CulFr ~~ ComVrb
 
-# Interceptos"
+# Interceptos
+ACTAGR ~ 1
+STRESS ~ 1
+AMBLABOR ~ 1
+HABPROSOC ~ 1 "
+
 
 fit6 <- cfa(model6, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
 summary(fit6, fit.measures=TRUE, standardized = TRUE)
@@ -347,25 +384,23 @@ sink("ResulMODELO_7.txt")
 # MODELO 7
 
 model7 <- " #Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare
-STRESS =~ Ans + ComAfec + StrC + ConsCl + UsDirec
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec
-HABPROSOC =~ ComVrb + ComAfec
+      ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
+AMBLABOR =~ PrPer + AmbTr
+HABPROSOC =~ ComVrb + ComAfec + ConCl + Ans
+STRESS =~ Ans + StrC + UsoDirec
 
 # Regresiones
-ACTAGR ~ EDUBASICA + HORASTRABAJO + HPICO + CONG_CD + CONG_EF + SININFOTRF
+ACTAGR ~ EDUBASICA + ADULTO60 + SININFOTRF + HABPROSOC
 
-STRESS ~ JOVEN + HORASTRABAJO + HPICO + CSECO + SININFOTRF
+AMBLABOR ~ EDUBASICA  + ADULTO40 + ADULTO60 + HPICO + CONG_CD  + HABPROSOC
 
-AMBLABOR ~ EDUBASICA + ADULTO + CONG_CD + ACTAGR + STRESS
+STRESS ~ EDUBASICA + JOVEN30 + ADULTO40  + CSECO  + SININFOTRF
 
-CONDSEG ~ EDUBASICA + CSECO + STRESS
+HABPROSOC ~ ADULTO60 + HORASTRABAJO + HPICO + CSECO + CONG_CD + CONG_EF
 
-HABPROSOC ~ JOVEN + ADULTO + HORASTRABAJO + HPICO + CONG_CD + CONG_EF + SININFOTRF  
-
-# Varianzas - Covarianzas
-ACTAGR ~~ STRESS
+# Varianza Covarianza
+HABPROSOC ~~ STRESS
+FRbr ~~ AFrSem
 
 # Interceptos"
 
@@ -385,6 +420,38 @@ semPaths(fit71, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
 modindices(fit71, sort = TRUE, maximum.number = 10) 
 
 sink()
+
+sink("ComparacionModelos.txt")
+
+# TABLA COMPARATIVA DE TODOS LOS MODELOS
+
+fit_index01 <- broom::glance(fit1) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+fit_index02 <- broom::glance(fit2) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+fit_index03 <- broom::glance(fit3) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+fit_index04 <- broom::glance(fit4) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+fit_index05 <- broom::glance(fit5) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+fit_index06 <- broom::glance(fit6) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+fit_index07 <- broom::glance(fit7) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+# Uniendo 
+bind_rows(fit_index01, fit_index02, fit_index03, fit_index04, fit_index05, fit_index06, 
+          fit_index07, .id = "Modelo")
+
+sink()
+
 
 
 sink("ResulMODELO_8.txt")
@@ -476,42 +543,6 @@ modindices(fit91, sort = TRUE, maximum.number = 10)
 sink()
 
 
-sink("ComparacionModelos.txt")
-
-# TABLA COMPARATIVA DE TODOS LOS MODELOS
-
-fit_index01 <- broom::glance(fit1) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index02 <- broom::glance(fit2) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index03 <- broom::glance(fit3) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index04 <- broom::glance(fit4) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index05 <- broom::glance(fit5) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index06 <- broom::glance(fit6) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index07 <- broom::glance(fit7) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index08 <- broom::glance(fit8) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index09 <- broom::glance(fit9) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-# Uniendo 
-bind_rows(fit_index01, fit_index02, fit_index03, fit_index04, fit_index05, fit_index06, 
-          fit_index07, fit_index08, fit_index09, .id = "Modelo")
-
-sink()
 
 
 

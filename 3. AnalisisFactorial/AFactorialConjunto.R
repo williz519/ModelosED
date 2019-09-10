@@ -22,11 +22,18 @@ library(corrr)
 
 # Analisis Factorial con datos escalados a una escala likert 1 - 5
 
-DB <- read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv", header = TRUE, sep = "\t")
+DB1 <- read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv", header = TRUE, sep = "\t")
 
-names(DB)
+names(DB1)
 
-DBConjunta <- select(DB, -("GENERO":"UsaPito"))
+DB2 <- select(DB1, -("CinSeg":"ConCl"))
+names(DB2)
+
+DB3 <- select(DB1, -("GENERO":"UsaPito"))
+names(DB3)
+
+DBConjunta <- select(DB3, -("ViajeId"))
+
 
 names(DBConjunta)
 
@@ -127,50 +134,126 @@ print(fa2,cutoff=0.3, sort=FALSE)
 
 
 
-factores <- factanal(DBConjunta, factor=5, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+factores <- factanal(DBConjunta, factor=4, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 print(factores,cutoff=0.35, sort=FALSE)
 
 #Normalizamos los valores que podran tomarse como el peso para el cálculo de un indice que
 # explica por cada i-esima fila la variabilidad de todo el conjunto de datos
+names(DB1)
 
-DBFAC <- cbind(DBConjunta, factores)
+DBFAC <- cbind(DB1, factores)
 
 DBFAC$Factor1 <- round(((DBFAC$Factor1 - min(DBFAC$Factor1))/(max(DBFAC$Factor1)-min(DBFAC$Factor1))),5)
 DBFAC$Factor2 <- round(((DBFAC$Factor2 - min(DBFAC$Factor2))/(max(DBFAC$Factor2)-min(DBFAC$Factor2))),5)
 DBFAC$Factor3 <- round(((DBFAC$Factor3 - min(DBFAC$Factor3))/(max(DBFAC$Factor3)-min(DBFAC$Factor3))),5)
 DBFAC$Factor4 <- round(((DBFAC$Factor4 - min(DBFAC$Factor4))/(max(DBFAC$Factor4)-min(DBFAC$Factor4))),5)
-DBFAC$Factor5 <- round(((DBFAC$Factor5 - min(DBFAC$Factor5))/(max(DBFAC$Factor5)-min(DBFAC$Factor5))),5)
 
 
 DBFAC
 
-DBFAC <- rename(DBFAC, replace = c(Factor1 = "CondAgresiva",
-                                   Factor2 = "Stress",
-                                   Factor3 = "AmbienteLaboral",
-                                   Factor4 = "CondSegura",
-                                   Factor5 = "HabProsoc"))
+DBFAC <- rename(DBFAC, replace = c(Factor1 = "CondAgres",
+                                   Factor2 = "AmbienteLaboral",
+                                   Factor3 = "HabProsoc",
+                                   Factor4 = "Stress"))
+
+names(DBFAC)
+
+#Normalizamos las variables continuas
+DBFAC$TIEMPO_PROFESION <- round(((DBFAC$TIEMPO_PROFESION -min(DBFAC$TIEMPO_PROFESION))/(max(DBFAC$TIEMPO_PROFESION)-min(DBFAC$TIEMPO_PROFESION))),5)
+DBFAC$HORASTRABAJO <- round(((DBFAC$HORASTRABAJO -min(DBFAC$HORASTRABAJO))/(max(DBFAC$HORASTRABAJO)-min(DBFAC$HORASTRABAJO))),5)
+DBFAC$TIEMPOAlt1 <- round(((DBFAC$TIEMPOAlt1 -min(DBFAC$TIEMPOAlt1))/(max(DBFAC$TIEMPOAlt1)-min(DBFAC$TIEMPOAlt1))),5)
+DBFAC$DISTAlt1 <- round(((DBFAC$DISTAlt1 -min(DBFAC$DISTAlt1))/(max(DBFAC$DISTAlt1)-min(DBFAC$DISTAlt1))),5)
+DBFAC$TIEMPOAlt2 <- round(((DBFAC$TIEMPOAlt2 -min(DBFAC$TIEMPOAlt2))/(max(DBFAC$TIEMPOAlt2)-min(DBFAC$TIEMPOAlt2))),5)
+DBFAC$DISTAlt2 <- round(((DBFAC$DISTAlt2 -min(DBFAC$DISTAlt2))/(max(DBFAC$DISTAlt2)-min(DBFAC$DISTAlt2))),5)
+DBFAC$TIEMPOAlt3 <- round(((DBFAC$TIEMPOAlt3 -min(DBFAC$TIEMPOAlt3))/(max(DBFAC$TIEMPOAlt3)-min(DBFAC$TIEMPOAlt3))),5)
+DBFAC$DISTAlt3 <- round(((DBFAC$DISTAlt3 -min(DBFAC$DISTAlt3))/(max(DBFAC$DISTAlt3)-min(DBFAC$DISTAlt3))),5)
+DBFAC$TIEMPOEC <- round(((DBFAC$TIEMPOEC -min(DBFAC$TIEMPOEC))/(max(DBFAC$TIEMPOEC)-min(DBFAC$TIEMPOEC))),5)
+DBFAC$DISTEC <- round(((DBFAC$DISTEC -min(DBFAC$DISTEC))/(max(DBFAC$DISTEC)-min(DBFAC$DISTEC))),5)
+
+View(DBFAC)
+
+names(DBFAC)
 
 
+#GRAFICOS
+par(mfrow=c(2,2))
 
-par(mfrow=c(2,3))
-
-hist(DBFAC$CondAgresiva, freq = TRUE, main = "Distribución del Factor 1",
+hist(DBFAC$CondAgres, freq = TRUE, main = "Distr del Factor 1",
      xlab = "Cond Agresiva", ylab = "Frecuencia", col = "red")
-hist(DBFAC$Stress, freq = TRUE, main = "Distribución del Factor 2",
-     xlab = "Stress al Cond", ylab = "Frecuencia", col = "red")
-hist(DBFAC$AmbienteLaboral, freq = TRUE, main = "Distribución del Factor 3",
+hist(DBFAC$AmbienteLaboral, freq = TRUE, main = "Distr del Factor 2",
      xlab = "Ambiente Laboral", ylab = "Frecuencia", col = "green")
-hist(DBFAC$CondSegura, freq = TRUE, main = "Distribución del Factor 4",
-     xlab = "Cond Segura", ylab = "Frecuencia", col = "3")
-hist(DBFAC$HabProsoc, freq = TRUE, main = "Distribución del Factor 5",
+hist(DBFAC$HabProsoc, freq = TRUE, main = "Distr del Factor 3",
      xlab = "Hab Prosociales", ylab = "Frecuencia", col = "blue")
+hist(DBFAC$Stress, freq = TRUE, main = "Distr del Factor 4",
+     xlab = "Stress al Cond", ylab = "Frecuencia", col = "red")
+
 
 sink()
 
-saveRDS(DBFAC, 
-        file="/Users/williz/Desktop/ModelosED/Database/AFConjunto.rds")
+
+DBMuestra <- DBFAC %>%
+  # Filtrar 54 viajes para validacion del modelo Logit
+  filter(!(ViajeId %in% c("{F6DF6FDC-3F7A-E811-B124-74867AD5B714}",
+                          "{0B431AE3-7DBE-E811-914C-74867AD5B714}",
+                          "{708DBE38-3DC0-E811-914C-74867AD5B714}",
+                          "{04857B76-DDC0-E811-914C-74867AD5B714}",
+                          "{0E557454-B5C1-E811-914C-74867AD5B714}",
+                          "{EF25C87F-90C2-E811-914C-74867AD5B714}",
+                          "{5528961E-D7C5-E811-914C-74867AD5B714}",
+                          "{CD4C129D-8BC6-E811-914C-74867AD5B714}",
+                          "{7FD68364-DEC7-E811-914C-74867AD5B714}",
+                          "{56FF6CE7-E9C8-E811-914C-74867AD5B714}",
+                          "{8549CD86-9DC9-E811-914C-74867AD5B714}",
+                          "{7F5B9070-42CB-E811-914C-74867AD5B714}",
+                          "{60D70C69-4FCB-E811-914C-74867AD5B714}",
+                          "{29758F97-06CC-E811-914C-74867AD5B714}",
+                          "{A91D3981-1ACC-E811-914C-74867AD5B714}",
+                          "{F77E8A2C-97CC-E811-914C-74867AD5B714}",
+                          "{15FA02A6-ADCC-E811-914C-74867AD5B714}",
+                          "{4A9D79A1-82CD-E811-914C-74867AD5B714}",
+                          "{93260574-3CCE-E811-914C-74867AD5B714}",
+                          "{72BC66FC-06D2-E811-8FB7-74867AD5B714}",
+                          "{09CAC4F7-D8D2-E811-8FB7-74867AD5B714}",
+                          "{D72D0A96-9CD3-E811-8FB7-74867AD5B714}",
+                          "{A0CE2445-6AD4-E811-8FB7-74867AD5B714}",
+                          "{2A8FA3E1-FFD5-E811-8FB7-74867AD5B714}",
+                          "{D918DCC0-1AD7-E811-8FB7-74867AD5B714}",
+                          "{4FDFB32F-B0D7-E811-8FB7-74867AD5B714}",
+                          "{B687E395-CFDB-E811-8FB7-74867AD5B714}",
+                          "{A83D77D6-44DC-E811-8FB7-74867AD5B714}",
+                          "{A9DAA2D0-CDDE-E811-8FB7-74867AD5B714}",
+                          "{0C1D8C2A-12E2-E811-8FB7-74867AD5B714}",
+                          "{DFA93A62-93E2-E811-8FB7-74867AD5B714}",
+                          "{D9845004-43E4-E811-8FB7-74867AD5B714}",
+                          "{0D4FE76E-4AE4-E811-8FB7-74867AD5B714}",
+                          "{3CFD12ED-BAE6-E811-8FB7-74867AD5B714}",
+                          "{08C503A7-58E8-E811-8FB7-74867AD5B714}",
+                          "{FDC01CA6-F4E8-E811-8FB7-74867AD5B714}",
+                          "{BB9B2829-A0E9-E811-8FB7-74867AD5B714}",
+                          "{707EA9A3-FEEB-E811-8FB7-74867AD5B714}",
+                          "{6C4E58BF-A7E3-E811-8FB7-74867AD5B714}",
+                          "{C0E06776-9DE2-E811-8FB7-74867AD5B714}",
+                          "{ABA9B7BC-06E2-E811-8FB7-74867AD5B714}",
+                          "{653E753C-29DE-E811-8FB7-74867AD5B714}",
+                          "{AA6A7427-7FDC-E811-8FB7-74867AD5B714}",
+                          "{BE04651F-E1D7-E811-8FB7-74867AD5B714}",
+                          "{B286DAF7-02D6-E811-8FB7-74867AD5B714}",
+                          "{54F72912-A0D4-E811-8FB7-74867AD5B714}",
+                          "{0C97D2B2-DCD3-E811-8FB7-74867AD5B714}",
+                          "{6113CA0C-0CD2-E811-8FB7-74867AD5B714}",
+                          "{0C1FF5E1-42CE-E811-914C-74867AD5B714}",
+                          "{BD29DDF5-27DA-E811-8FB7-74867AD5B714}",
+                          "{6DB46E7C-DFDE-E811-8FB7-74867AD5B714}",
+                          "{1DA55572-BD69-E811-95E4-74867AD5B714}",
+                          "{968C85AE-09B2-E811-BDF0-74867AD5B714}",
+                          "{AE8170B6-E6C7-E811-914C-74867AD5B714}")))
 
 
+DBMuestra <- DBMuestra[ ,!colnames(DBMuestra)=="ViajeId"]
+names(DBMuestra)
+
+write.table(DBMuestra, 
+            file="/Users/williz/Desktop/ModelosED/Database/DBModLogitMuestraVLCE.csv", sep="\t", dec=".")
 
 
 

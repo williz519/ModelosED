@@ -133,8 +133,8 @@ X <- Datos1 %>%
          "DispMob", "SatDispMob", "PasoPeatones", "UsaPito",
          "CinSeg","FRbr", "UsoDirec",
          "EnfCond", "AFrSem", "CulFr",
-         "OmLmVel" , "IgPare", "StrC","ConCl", "UsoCel",
-         "ComVrb", "Ans", "ComAfec", "PrPer", "AmbTr")
+         "OmLmVel" , "IgPare", "UsoCel",
+         "ComVrb", "Ans", "ComAfec", "PrPer", "AmbTr","StrC","ConCl")
 
 
 
@@ -145,6 +145,8 @@ names(X)
 View(X)
 
 str(X)
+
+
 
 # Cinturon de Seguridad
 # Datos$CinturonDeSeguridad[X$CinturonDeSeguridad == 2] <-3
@@ -209,8 +211,6 @@ X$NIVELEDUCATIVO[X$NIVELEDUCATIVO == 4 & X$TIEMPO_PROFESION > 15] <- 1
 X$NIVELEDUCATIVO[X$NIVELEDUCATIVO == 0 | X$NIVELEDUCATIVO == 4] <- 2
 
 
-
-
 str(X)
 summary(X, na.rm = TRUE)
 
@@ -241,20 +241,28 @@ levels(X$HPICOHVALLE) <- c('1','2')
 
 X <- X[ ,!colnames(X)=="ViajeId"]
 
+names(X)
 View(X)
 
+CEscala1 <- select(X,-("FRbr":"ConCl"))
+
+CEscala <- select(X, -("GENERO":"CinSeg"))
+
+
+
+
+names(CEscala)
+names(CEscala1)
+
+# Aqui se debe hacer e cambio de escala en Excel y luego continuar nuevamente
+
 #Creacion de la base de datos para el modelo logit multivariado
-write.table(X, 
-            file="/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVL2.csv", sep="\t", dec=".")
+write.table(CEscala, 
+            file="/Users/williz/Desktop/ModelosED/Database/DBCEscala.csv", sep="\t", dec=".")
+
 
 names(X)
 
-
-
-# Cambio de escala
-X1 <- select(X, -("FRbr":"AmbTr"))
-
-names(X1)
 
 CEscalaPerso <-read_xlsx("/Users/williz/Desktop/ModelosED/Database/CambioEscalaVL.xlsx", 
                          sheet = "Personalidad")
@@ -262,8 +270,28 @@ CEscalaPerso <-read_xlsx("/Users/williz/Desktop/ModelosED/Database/CambioEscalaV
 CEscalaCond <-read_xlsx("/Users/williz/Desktop/ModelosED/Database/CambioEscalaVL.xlsx", 
                          sheet = "ModoCond")
 
-CEscala <- cbind(X1,CEscalaPerso,CEscalaCond)
+names(CEscalaCond)
 
-write.table(CEscala, 
+names(CEscalaPerso)
+
+DBModelo <- CEscala1 %>%
+  select(ViajeId) %>%
+  inner_join(CEscala1 %>%
+                         select(ViajeId:CinSeg),
+                       by = "ViajeId") %>%
+  # CEscalaCond
+  inner_join(CEscalaCond %>%
+               select(ViajeId:UsoCel),
+             by ="ViajeId") %>%
+  # CEscalaPerso
+  inner_join(CEscalaPerso %>%
+               select(ViajeId:ConCl),
+             by = "ViajeId")
+
+names(DBModelo)
+
+write.table(DBModelo, 
             file="/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv", sep="\t", dec=".")
+
+
 
