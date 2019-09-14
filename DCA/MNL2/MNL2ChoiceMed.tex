@@ -1,0 +1,118 @@
+%% This file is designed to be included into a LaTeX document
+%% See http://www.latex-project.org/ for information about LaTeX
+%% biogeme 3.1.2 [Today, 2019]
+%% Version entirely written in Python
+%% Home page: http://biogeme.epfl.ch
+%% Submit questions to https://groups.google.com/d/forum/biogeme
+%% Michel Bierlaire, Transport and Mobility Laboratory, Ecole Polytechnique Fédérale de Lausanne (EPFL)
+
+%% File MNL2ChoiceMed.tex
+%% This file has automatically been generated on 2019-09-14 10:30:13.473803</p>
+
+%%Database name: DBModLogitMuestraVLCE
+
+%% General statistics
+\section{General statistics}
+\begin{tabular}{ll}
+Number of estimated parameters & 11 \\
+Sample size & 294 \\
+Excluded observations & 0 \\
+Init log likelihood & -407.5705 \\
+Final log likelihood & -323.6648 \\
+Likelihood ratio test for the init. model & 167.8115 \\
+Rho-square for the init. model & 0.206 \\
+Rho-square-bar for the init. model & 0.179 \\
+Akaike Information Criterion & 669.3296 \\
+Bayesian Information Criterion & 709.849 \\
+Final gradient norm & 4.4913E-03 \\
+Diagnostic & b'CONVERGENCE: NORM\_OF\_PROJECTED\_GRADIENT\_<=\_PGTOL' \\
+Database readings & 29 \\
+Iterations & 25 \\
+Data processing time & 0:00:00.000019 \\
+Optimization time & 0:00:00.181020 \\
+Nbr of threads & 4 \\
+\end{tabular}
+
+%%Parameter estimates
+\section{Parameter estimates}
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &    Value &  Std err &   t-test &  p-value &  Rob. Std err &  Rob. t-test &  Rob. p-value \\
+\midrule
+ASC\_ALT1        &    -0.94 &    0.447 &     -2.1 &   0.0355 &          0.44 &        -2.14 &        0.0327 \\
+ASC\_ALT2        &    -1.87 &    0.479 &     -3.9 & 9.64e-05 &         0.496 &        -3.77 &      0.000163 \\
+ASC\_ALT3        &    -2.47 &    0.499 &    -4.95 & 7.49e-07 &         0.495 &        -4.99 &      6.17e-07 \\
+B\_DIST          &    -3.24 &     1.09 &    -2.97 &  0.00296 &          0.97 &        -3.34 &      0.000851 \\
+B\_TIME          &     3.91 &     1.04 &     3.75 &  0.00018 &          1.02 &         3.85 &      0.000118 \\
+COEF\_CLIMASECO  &   0.0742 &    0.319 &    0.232 &    0.816 &         0.323 &         0.23 &         0.818 \\
+COEF\_CONGCD     & 0.000148 &    0.296 & 0.000499 &      1.0 &         0.296 &     0.000499 &           1.0 \\
+COEF\_CONGEF     &    0.528 &    0.352 &      1.5 &    0.134 &         0.363 &         1.45 &         0.146 \\
+COEF\_HORAPICO   &  -0.0663 &    0.251 &   -0.264 &    0.792 &         0.253 &       -0.262 &         0.793 \\
+COEF\_SININFO    &   -0.386 &    0.296 &     -1.3 &    0.193 &         0.294 &        -1.31 &         0.189 \\
+COEF\_USODISPMOB &  -0.0791 &    0.267 &   -0.296 &    0.767 &         0.273 &        -0.29 &         0.772 \\
+\bottomrule
+\end{tabular}
+
+%%Correlation
+\section{Correlation}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+{} &  Covariance &  Correlation &  t-test &  p-value &  Rob. cov. &  Rob. corr. &  Rob. t-test &  Rob. p-value \\
+\midrule
+ASC\_ALT2-ASC\_ALT1              &       0.191 &         0.89 &   -4.23 & 2.33e-05 &      0.198 &       0.907 &        -4.45 &      8.67e-06 \\
+ASC\_ALT3-ASC\_ALT1              &       0.191 &        0.856 &   -5.91 & 3.47e-09 &      0.188 &       0.861 &        -6.07 &      1.31e-09 \\
+ASC\_ALT3-ASC\_ALT2              &       0.198 &        0.826 &   -2.07 &    0.038 &      0.204 &       0.829 &        -2.07 &        0.0384 \\
+B\_DIST-ASC\_ALT1                &      0.0468 &       0.0962 &   -2.02 &   0.0434 &     0.0234 &      0.0549 &         -2.2 &        0.0277 \\
+B\_DIST-ASC\_ALT2                &     -0.0338 &      -0.0648 &   -1.12 &    0.262 &    -0.0261 &     -0.0543 &        -1.23 &          0.22 \\
+B\_DIST-ASC\_ALT3                &    -0.00679 &      -0.0125 &  -0.638 &    0.524 &      0.027 &      0.0562 &       -0.721 &         0.471 \\
+B\_TIME-ASC\_ALT1                &      -0.112 &        -0.24 &    3.94 & 8.09e-05 &    -0.0733 &      -0.164 &         4.14 &      3.45e-05 \\
+B\_TIME-ASC\_ALT2                &      -0.107 &       -0.213 &    4.67 & 3.06e-06 &    -0.0573 &      -0.114 &          4.9 &      9.65e-07 \\
+B\_TIME-ASC\_ALT3                &      -0.108 &       -0.206 &    5.12 & 3.11e-07 &     -0.102 &      -0.202 &         5.24 &      1.58e-07 \\
+B\_TIME-B\_DIST                  &      -0.695 &       -0.611 &    3.73 & 0.000189 &     -0.761 &      -0.772 &         3.82 &      0.000132 \\
+COEF\_CLIMASECO-ASC\_ALT1        &      0.0843 &        0.591 &    2.78 &  0.00543 &     0.0873 &       0.613 &         2.88 &       0.00393 \\
+COEF\_CLIMASECO-ASC\_ALT2        &      0.0862 &        0.563 &    4.87 & 1.13e-06 &     0.0992 &       0.618 &         4.98 &      6.23e-07 \\
+COEF\_CLIMASECO-ASC\_ALT3        &      0.0857 &        0.538 &     6.0 & 1.94e-09 &     0.0898 &       0.561 &         6.16 &      7.12e-10 \\
+COEF\_CLIMASECO-B\_DIST          &     -0.0127 &      -0.0365 &    2.89 &  0.00386 &    -0.0266 &     -0.0848 &         3.16 &       0.00159 \\
+COEF\_CLIMASECO-B\_TIME          &     -0.0133 &      -0.0399 &   -3.48 &  0.00051 &    0.00516 &      0.0157 &        -3.62 &        0.0003 \\
+COEF\_CONGCD-ASC\_ALT1           &       0.026 &        0.197 &    1.94 &   0.0526 &     0.0269 &       0.207 &         1.97 &        0.0485 \\
+COEF\_CONGCD-ASC\_ALT2           &      0.0271 &        0.191 &    3.64 & 0.000269 &     0.0258 &       0.176 &         3.52 &      0.000425 \\
+COEF\_CONGCD-ASC\_ALT3           &      0.0266 &         0.18 &    4.64 &  3.5e-06 &     0.0244 &       0.167 &         4.64 &      3.57e-06 \\
+COEF\_CONGCD-B\_DIST             &     -0.0133 &      -0.0412 &    2.84 &  0.00453 &   -0.00315 &      -0.011 &         3.18 &       0.00147 \\
+COEF\_CONGCD-B\_TIME             &     -0.0071 &       -0.023 &   -3.58 & 0.000341 &    -0.0126 &      -0.042 &        -3.66 &      0.000256 \\
+COEF\_CONGCD-COEF\_CLIMASECO     &     -0.0028 &      -0.0296 &  -0.168 &    0.867 &   0.000495 &     0.00518 &        -0.17 &         0.865 \\
+COEF\_CONGEF-ASC\_ALT1           &      0.0409 &         0.26 &    2.99 &  0.00283 &     0.0397 &       0.249 &         2.96 &       0.00309 \\
+COEF\_CONGEF-ASC\_ALT2           &      0.0429 &        0.254 &    4.63 & 3.63e-06 &     0.0343 &        0.19 &         4.31 &      1.62e-05 \\
+COEF\_CONGEF-ASC\_ALT3           &      0.0423 &        0.241 &    5.58 & 2.37e-08 &     0.0238 &       0.132 &         5.22 &      1.79e-07 \\
+COEF\_CONGEF-B\_DIST             &    -0.00252 &     -0.00657 &    3.28 &  0.00103 &    -0.0224 &     -0.0635 &         3.56 &      0.000371 \\
+COEF\_CONGEF-B\_TIME             &      -0.034 &      -0.0925 &   -2.99 &  0.00281 &    0.00714 &      0.0193 &        -3.16 &        0.0016 \\
+COEF\_CONGEF-COEF\_CLIMASECO     &     0.00537 &       0.0477 &   0.978 &    0.328 &    0.00145 &      0.0123 &        0.939 &         0.348 \\
+COEF\_CONGEF-COEF\_CONGCD        &      0.0247 &        0.238 &    1.31 &     0.19 &     0.0252 &       0.235 &         1.28 &         0.199 \\
+COEF\_HORAPICO-ASC\_ALT1         &      0.0382 &         0.34 &    2.02 &   0.0431 &     0.0397 &       0.357 &         2.07 &        0.0384 \\
+COEF\_HORAPICO-ASC\_ALT2         &      0.0377 &        0.313 &    3.86 & 0.000111 &     0.0415 &       0.331 &         3.79 &      0.000153 \\
+COEF\_HORAPICO-ASC\_ALT3         &      0.0387 &        0.308 &    4.96 & 7.11e-07 &     0.0428 &       0.342 &         5.08 &      3.75e-07 \\
+COEF\_HORAPICO-B\_DIST           &    -0.00899 &      -0.0328 &    2.82 &  0.00486 &   -0.00573 &     -0.0234 &         3.14 &       0.00167 \\
+COEF\_HORAPICO-B\_TIME           &      0.0201 &       0.0765 &   -3.77 & 0.000164 &    0.00977 &       0.038 &        -3.83 &      0.000126 \\
+COEF\_HORAPICO-COEF\_CLIMASECO   &    -0.00421 &      -0.0524 &  -0.337 &    0.736 &   -0.00201 &     -0.0245 &       -0.338 &         0.735 \\
+COEF\_HORAPICO-COEF\_CONGCD      &     0.00344 &       0.0463 &  -0.175 &    0.861 &    0.00222 &      0.0297 &       -0.173 &         0.862 \\
+COEF\_HORAPICO-COEF\_CONGEF      &      0.0122 &        0.138 &   -1.47 &    0.141 &     0.0171 &       0.187 &        -1.48 &          0.14 \\
+COEF\_SININFO-ASC\_ALT1          &      0.0737 &        0.556 &    1.48 &    0.139 &     0.0684 &       0.529 &         1.46 &         0.143 \\
+COEF\_SININFO-ASC\_ALT2          &      0.0729 &        0.513 &    3.58 & 0.000348 &     0.0728 &         0.5 &         3.44 &      0.000591 \\
+COEF\_SININFO-ASC\_ALT3          &      0.0731 &        0.494 &    4.77 & 1.83e-06 &      0.065 &       0.447 &         4.64 &      3.48e-06 \\
+COEF\_SININFO-B\_DIST            &      0.0238 &       0.0737 &    2.57 &     0.01 &    0.00925 &      0.0325 &         2.84 &       0.00455 \\
+COEF\_SININFO-B\_TIME            &     -0.0247 &      -0.0797 &   -3.88 & 0.000105 &  -0.000241 &   -0.000809 &        -4.06 &      4.85e-05 \\
+COEF\_SININFO-COEF\_CLIMASECO    &   -4.14e-05 &    -0.000437 &   -1.06 &    0.291 &     0.0013 &      0.0137 &        -1.06 &         0.289 \\
+COEF\_SININFO-COEF\_CONGCD       &     0.00268 &       0.0305 &  -0.936 &    0.349 &   -0.00037 &    -0.00427 &       -0.925 &         0.355 \\
+COEF\_SININFO-COEF\_CONGEF       &    0.000387 &      0.00371 &   -1.99 &   0.0466 &   -0.00178 &     -0.0167 &        -1.94 &        0.0523 \\
+COEF\_SININFO-COEF\_HORAPICO     &     0.00111 &       0.0149 &  -0.829 &    0.407 &  -0.000472 &    -0.00635 &       -0.822 &         0.411 \\
+COEF\_USODISPMOB-ASC\_ALT1       &      0.0272 &        0.228 &    1.85 &   0.0644 &     0.0346 &       0.289 &         1.93 &        0.0534 \\
+COEF\_USODISPMOB-ASC\_ALT2       &      0.0257 &        0.201 &    3.58 & 0.000339 &     0.0336 &       0.249 &         3.56 &      0.000371 \\
+COEF\_USODISPMOB-ASC\_ALT3       &      0.0266 &          0.2 &    4.63 & 3.74e-06 &      0.039 &       0.289 &         4.86 &      1.16e-06 \\
+COEF\_USODISPMOB-B\_DIST         &    -0.00285 &     -0.00982 &    2.81 &  0.00496 &      0.015 &      0.0567 &         3.18 &       0.00147 \\
+COEF\_USODISPMOB-B\_TIME         &      0.0278 &       0.0996 &   -3.79 & 0.000148 &     0.0127 &      0.0459 &        -3.84 &      0.000124 \\
+COEF\_USODISPMOB-COEF\_CLIMASECO &     0.00366 &        0.043 &  -0.376 &    0.707 &    0.00863 &       0.098 &       -0.381 &         0.703 \\
+COEF\_USODISPMOB-COEF\_CONGCD    &    -0.00311 &      -0.0393 &  -0.195 &    0.845 &    -0.0029 &      -0.036 &       -0.194 &         0.847 \\
+COEF\_USODISPMOB-COEF\_CONGEF    &     0.00263 &       0.0281 &   -1.39 &    0.163 &    0.00404 &      0.0408 &        -1.36 &         0.173 \\
+COEF\_USODISPMOB-COEF\_HORAPICO  &     0.00506 &       0.0754 & -0.0363 &    0.971 &    0.00774 &       0.112 &      -0.0365 &         0.971 \\
+COEF\_USODISPMOB-COEF\_SININFO   &     0.00359 &       0.0454 &   0.788 &    0.431 &    0.00545 &      0.0681 &        0.793 &         0.428 \\
+\bottomrule
+\end{tabular}

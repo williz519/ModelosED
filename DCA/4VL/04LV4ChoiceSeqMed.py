@@ -22,6 +22,7 @@ import biogeme.results as res
 
 pandas = pd.read_csv('/Users/williz/Desktop/ModelosED/Database/DBModLogitMuestraVLCE.csv', sep='\t')
 
+
 # normalizar variables continuas para evitar zero log-likelihood 
 pandas["TIEMPO_PROFESION"]=(pandas["TIEMPO_PROFESION"]-pandas["TIEMPO_PROFESION"].min())/(pandas["TIEMPO_PROFESION"].max()-pandas["TIEMPO_PROFESION"].min())
 pandas["HORASTRABAJO"]=(pandas["HORASTRABAJO"]-pandas["HORASTRABAJO"].min())/(pandas["HORASTRABAJO"].max()-pandas["HORASTRABAJO"].min())
@@ -35,7 +36,7 @@ pandas["TIEMPOAlt3"]=(pandas["TIEMPOAlt3"]-pandas["TIEMPOAlt3"].min())/(pandas["
 pandas["TIEMPOEC"]=(pandas["TIEMPOEC"]-pandas["TIEMPOEC"].min())/(pandas["TIEMPOEC"].max()-pandas["TIEMPOEC"].min())
 
 
-database = db.Database("DBModLogitMuestraVLCE1",pandas)
+database = db.Database("DBModLogitMuestraVLCE",pandas)
 
 from headers import *
 
@@ -67,92 +68,134 @@ CLIMALLUVIA = DefineVariable('CLIMALLUVIA', CLIMA == 2, database)
 CONGAB = DefineVariable('CONGAB', CONGESTION <= 2, database)
 CONGCD = DefineVariable('CONGCD', (CONGESTION == 3)+(CONGESTION == 4), database)
 CONGEF = DefineVariable('CONGEF', CONGESTION > 4, database)
-SININFO = DefineVariable('SININFO', INFOTRAFICO == 1, database)
+SININFO = DefineVariable('SININFO', (INFOTRAFICO == 0)+(INFOTRAFICO == 1), database)
 CONINFO = DefineVariable('CONINFO', INFOTRAFICO == 2, database)
 USOCINTURON = DefineVariable ('USOCINTURON', CinSeg == 2, database)
-USODISPMOB = DefineVariable('USODISPMOB',(DispMob==2)+(DispMob==3)+(DispMob==4)+(DispMob==5)+(DispMob==6),database)
 CONDAGREF1 = DefineVariable('CONDAGRESF1', CondAgres, database)
 AMBLABORF2 = DefineVariable('AMBLABORF2', AmbienteLaboral, database)
 HABPROSOCF3 = DefineVariable('HABPROSOCF3', HabProsoc, database)
 STRESSF4 = DefineVariable('STRESSF4', Stress, database)
 
 
-### Coefficientes
-structResults = res.bioResults(pickleFile='02LVMedellinOrdered.pickle')
+# Coeficientes
+# Read the estimates from the structural equation estimation
+structResults = res.bioResults(pickleFile='02LV4MedellinOrdered.pickle')
 structBetas = structResults.getBetaValues()
 
 
-# Coeficientes
-COEF_INTER = Beta('COEF_INTER',structBetas['COEF_INTER'],None,None,0)
-COEF_EDUC_BASICA = Beta('COEF_EDUC_BASICA',structBetas['COEF_EDUC_BASICA'],None,None,0)
-COEF_JOVEN30 = Beta('COEF_JOVEN30',structBetas['COEF_JOVEN30'],None,None,0)
-COEF_ADULTO40 = Beta('COEF_ADULTO40',structBetas['COEF_ADULTO40'],None,None,0)
-COEF_ADULTO60 = Beta('COEF_ADULTO60',structBetas['COEF_ADULTO60'],None,None,0)
-#COEF_ADULTOMAYOR = Beta('COEF_ADULTOMAYOR',structBetas['COEF_ADULTOMAYOR'],None,None,0)
-#COEF_EDUC_SUPERIOR = Beta('COEF_EDUC_SUPERIOR',structBetas['COEF_EDUC_SUPERIOR'],None,None,0)
-COEF_TPROF = Beta('COEF_TPROF',structBetas['COEF_TPROF'],None,None,0)
-COEF_HORASTRAB = Beta('COEF_HORASTRAB',structBetas['COEF_HORASTRAB'],None,None,0)
-COEF_HORAPICO = Beta('COEF_HORAPICO',structBetas['COEF_HORAPICO'],None,None,0)
-#COEF_HVALLE = Beta('COEF_HVALLE',structBetas['COEF_HVALLE'],None,None,0)
-COEF_CLIMASECO = Beta('COEF_CLIMASECO',structBetas['COEF_CLIMASECO'],None,None,0)
-#COEF_CLIMALLUVIA = Beta('COEF_CLIMALLUVIA',structBetas['COEF_CLIMALLUVIA'],None,None,0)
-#COEF_CONGAB = Beta('COEF_CONGAB',structBetas['COEF_CONGAB'],None,None,0)
-COEF_CONGCD = Beta('COEF_CONGCD',structBetas['COEF_CONGCD'],None,None,0)
-COEF_CONGEF = Beta('COEF_CONGEF',structBetas['COEF_CONGEF'],None,None,0)
-COEF_SININFO = Beta('COEF_SININFO',structBetas['COEF_SININFO'],None,None,0)
-#COEF_CONINFO = Beta('COEF_CONINFO',structBetas['COEF_CONINFO'],None,None,0)
-COEF_USOCINTRURON = Beta('COEF_USOCINTURON',structBetas['COEF_USOCINTURON'],None,None,0)
-COEF_USODISPMOB = Beta('COEF_USODISPMOB',structBetas['COEF_USODISPMOB'],None,None,0)
-#COEF_CONDAGREF1 = Beta('COEF_CONDAGREF1',structBetas['COEF_CONDAGREF1'],None,None,0)
-#COEF_AMBLABORF2 = Beta('COEF_AMBLABORF2',structBetas['COEF_AMBLABORF2'],None,None,0)
-COEF_HABPROSOCF3 = Beta('COEF_HABPROSOCF3',structBetas['COEF_HABPROSOCF3'],None,None,0)
-#COEF_STRESSF4 = Beta('COEF_STRESSF4',structBetas['COEF_STRESSF4'],None,None,0)
+COEF_INTER = Beta('COEF_INTER',structBetas['COEF_INTER'],-1000,1000,0)
+COEF_EDUC_BASICA = Beta('COEF_EDUC_BASICA',structBetas['COEF_EDUC_BASICA'],-1000,1000,0) 
+COEF_JOVEN30 = Beta('COEF_JOVEN30',structBetas['COEF_JOVEN30'],-1000,1000,1)
+COEF_ADULTO40 = Beta('COEF_ADULTO40',structBetas['COEF_ADULTO40'],-1000,1000,0)
+COEF_ADULTO60 = Beta('COEF_ADULTO60',structBetas['COEF_ADULTO60'],-1000,1000,0)
+#COEF_ADULTOMAYOR = Beta('COEF_ADULTOMAYOR',0,None,None,1)
+#COEF_EDUC_SUPERIOR = Beta('COEF_EDUC_SUPERIOR',0,None,None,1)
+COEF_TPROF = Beta('COEF_TPROF',structBetas['COEF_TPROF'],-1000,1000,0)
+COEF_HORASTRAB = Beta('COEF_HORASTRAB',structBetas['COEF_HORASTRAB'],-1000,1000,0)
+COEF_HORAPICO = Beta('COEF_HORAPICO',structBetas['COEF_HORAPICO'],-1000,1000,0)
+#COEF_HVALLE = Beta('COEF_HVALLE',0,None,None,1)
+COEF_CLIMASECO = Beta('COEF_CLIMASECO',structBetas['COEF_CLIMASECO'],-1000,1000,0)
+#COEF_CLIMALLUVIA = Beta('COEF_CLIMALLUVIA',0,None,None,1)
+#COEF_CONGAB = structBetas['COEF_CONGAB']
+COEF_CONGCD = Beta('COEF_CONGCD',structBetas['COEF_CONGCD'],-1000,1000,0)
+COEF_CONGEF = Beta('COEF_CONGEF',structBetas['COEF_CONGEF'],-1000,1000,0)
+COEF_SININFO = Beta('COEF_SININFO',structBetas['COEF_SININFO'],-1000,1000,0)
+#COEF_CONINFO = Beta('COEF_CONINFO',0,None,None,1)
+#COEF_USOCINTRURON = Beta('COEF_USOCINTURON',0,None,None,1)
+#COEF_CONDAGREF1 = Beta('COEF_CONDAGREF1',0,None,None,1)
+#COEF_AMBLABORF2 = Beta('COEF_AMBLABORF2',0,None,None,1)
+COEF_HABPROSOCF3 = Beta('COEF_HABPROSOCF3',structBetas['COEF_HABPROSOCF3'],-1000,1000,0)
+#COEF_STRESSF4 = Beta('COEF_STRESSF4',0,None,None,1)
 
 
 
 # Ecuacion Estructural Variable Latente
 
 omega_LV1 = bioDraws('omega_LV1','NORMAL')
-#density = dist.normalpdf(omega) 
-Beta_sigma_s = Beta('Beta_sigma_s',10,None,None,0)
+Beta_sigma_LV1 = Beta('Beta_sigma_LV1',10,0.01,None,0)
+
+omega_LV2 = bioDraws('omega_LV2','NORMAL')
+Beta_sigma_LV2 = Beta('Beta_sigma_LV2',10,0.01,None,0)
+
+omega_LV3 = bioDraws('omega_LV3','NORMAL')
+Beta_sigma_LV3 = Beta('Beta_sigma_LV3',10,0.01,None,0)
+
+omega_LV4 = bioDraws('omega_LV4','NORMAL')
+Beta_sigma_LV4 = Beta('Beta_sigma_LV4',10,0.01,None,0)
 
 
-ACTAGR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+\
-    COEF_JOVEN30*JOVEN30 + COEF_ADULTO40*ADULTO40+\
-    COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
-    COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+\
-    COEF_CLIMASECO*CLIMASECO+COEF_CONGCD*CONGCD + \
-    COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+COEF_USOCINTRURON*USOCINTURON+\
-    COEF_USODISPMOB*USODISPMOB + COEF_HABPROSOCF3*HABPROSOCF3+Beta_sigma_s * omega_LV1
+ACTAGR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
+    COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
+    COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
+    COEF_HABPROSOCF3*HABPROSOCF3 + Beta_sigma_LV1 * omega_LV1
 
+AMBLABOR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
+    COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
+    COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
+    COEF_HABPROSOCF3*HABPROSOCF3 + Beta_sigma_LV2 * omega_LV2
 
-# Modelo de Elección
+HABPROSOC = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
+    COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
+    COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+\
+    COEF_SININFO*SININFO + Beta_sigma_LV3 * omega_LV3
+
+STRESS = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
+    COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
+    COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
+    COEF_HABPROSOCF3*HABPROSOCF3 + Beta_sigma_LV4 * omega_LV4
 
 #Coeficientes Variables Latentes
 B_ACTAGRE = Beta('B_ACTAGRE',0,None,None,0)
+B_AMBLABOR = Beta('B_AMBLABOR',0,None,None,0)
+B_HABPROSOC = Beta('B_HABPROSOC',0,None,None,0)
+B_STRESS = Beta('B_STRESS',0,None,None,0)
 
 
-ASC_ALT1 = Beta('ASC_ALT1',0,None,None,0)
+ASC_ALT1 = Beta('ASC_ALT1',1,None,None,1)
 ASC_ALT2 = Beta('ASC_ALT2',0,None,None,0)
 ASC_ALT3 = Beta('ASC_ALT3',0,None,None,0)
-ASC_EC = Beta('ASC_ALT4',0,None,None,1)
-B_TIME = Beta('B_TIME_ALT1',0,None,None,0)
+ASC_EC = Beta('ASC_ALT4',0,None,None,0)
+B_TIME = Beta('B_TIME',0,None,None,0)
 B_DIST = Beta('B_DIST',0,None,None,0)
 
 
 #Especificacion de las Funciones de Utilidad
 
-
-V1 = ASC_ALT1+\
+V1 = ASC_ALT1*1+\
     B_TIME*TIME1_SC+\
-    B_DIST*DIST1_SC
+    B_DIST*DIST1_SC+\
+    B_ACTAGRE*ACTAGR+\
+    B_AMBLABOR*AMBLABOR+\
+    B_HABPROSOC*HABPROSOC+\
+    B_STRESS*STRESS
     
-V2 = ASC_ALT2+B_TIME*TIME2_SC+B_DIST*DIST2_SC
+V2 = ASC_ALT2+\
+    B_TIME*TIME2_SC+\
+    B_DIST*DIST2_SC+\
+    B_ACTAGRE*ACTAGR+\
+    B_AMBLABOR*AMBLABOR+\
+    B_HABPROSOC*HABPROSOC+\
+    B_STRESS*STRESS
 
-V3 = ASC_ALT3+B_TIME * TIME3_SC + B_DIST*DIST3_SC
+V3 = ASC_ALT3+\
+    B_TIME * TIME3_SC +\
+    B_DIST*DIST3_SC +\
+    B_ACTAGRE*ACTAGR+\
+    B_AMBLABOR*AMBLABOR+\
+    B_HABPROSOC*HABPROSOC+\
+    B_STRESS*STRESS
 
-V4 = ASC_EC+B_TIME*TIME4_SC+B_DIST*DIST4_SC+\
-    B_ACTAGRE * ACTAGR+\
+
+V4 = ASC_EC+B_TIME*TIME4_SC+\
+    B_DIST*DIST4_SC+\
+    B_ACTAGRE*ACTAGR+\
+    B_AMBLABOR*AMBLABOR+\
+    B_HABPROSOC*HABPROSOC+\
+    B_STRESS*STRESS+\
     COEF_JOVEN30*JOVEN30 +\
     COEF_ADULTO40*ADULTO40+\
     COEF_ADULTO60*ADULTO60+\
@@ -162,8 +205,6 @@ V4 = ASC_EC+B_TIME*TIME4_SC+B_DIST*DIST4_SC+\
     COEF_CLIMASECO*CLIMASECO+\
     COEF_CONGCD*CONGCD+\
     COEF_CONGEF*CONGEF+\
-    COEF_USODISPMOB*USODISPMOB+\
-    COEF_USOCINTRURON*USOCINTURON+\
     COEF_SININFO*SININFO
 
 
@@ -181,10 +222,10 @@ condprob = models.logit(V,AV,CHOICE)
 
 loglike = log(MonteCarlo(condprob))
 
-biogeme  = bio.BIOGEME(database,loglike, numberOfDraws=1000)
-biogeme.DRAWS = {'omega_LV1': ('NORMAL')}
+biogeme  = bio.BIOGEME(database,loglike, numberOfDraws=500)
+biogeme.DRAWS = {'omega_LV1': ('NORMAL'), 'omega_LV2': ('NORMAL'), 'omega_LV3': ('NORMAL'), 'omega_LV4': ('NORMAL')}
 
-biogeme.modelName = "04LVMedellinSeq"
+biogeme.modelName = "04LV4ChoiceSeqMed"
 results = biogeme.estimate()
 # Get the results in a pandas table
 pandasResults = results.getEstimatedParameters()
@@ -194,8 +235,6 @@ print(f"LL(0) =    {results.data.initLogLike:.3f}")
 print(f"LL(beta) = {results.data.logLike:.3f}")
 print(f"rho bar square = {results.data.rhoBarSquare:.3g}")
 print(f"Output file: {results.data.htmlFileName}")
-results.writeLaTeX()
-print(f"LaTeX file: {results.data.latexFileName}")
 
 
 

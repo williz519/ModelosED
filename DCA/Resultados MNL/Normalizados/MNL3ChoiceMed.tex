@@ -1,0 +1,143 @@
+%% This file is designed to be included into a LaTeX document
+%% See http://www.latex-project.org/ for information about LaTeX
+%% biogeme 3.1.2 [Today, 2019]
+%% Version entirely written in Python
+%% Home page: http://biogeme.epfl.ch
+%% Submit questions to https://groups.google.com/d/forum/biogeme
+%% Michel Bierlaire, Transport and Mobility Laboratory, Ecole Polytechnique Fédérale de Lausanne (EPFL)
+
+%% File MNL3ChoiceMed.tex
+%% This file has automatically been generated on 2019-09-14 10:29:06.610889</p>
+
+%%Database name: DBModLogitMuestraVLCE
+
+%% General statistics
+\section{General statistics}
+\begin{tabular}{ll}
+Number of estimated parameters & 13 \\
+Sample size & 294 \\
+Excluded observations & 0 \\
+Init log likelihood & -407.5705 \\
+Final log likelihood & -323.8106 \\
+Likelihood ratio test for the init. model & 167.5198 \\
+Rho-square for the init. model & 0.206 \\
+Rho-square-bar for the init. model & 0.174 \\
+Akaike Information Criterion & 673.6213 \\
+Bayesian Information Criterion & 721.5078 \\
+Final gradient norm & 5.7333E-03 \\
+Diagnostic & b'CONVERGENCE: NORM\_OF\_PROJECTED\_GRADIENT\_<=\_PGTOL' \\
+Database readings & 56 \\
+Iterations & 48 \\
+Data processing time & 0:00:00.000021 \\
+Optimization time & 0:00:00.258454 \\
+Nbr of threads & 4 \\
+\end{tabular}
+
+%%Parameter estimates
+\section{Parameter estimates}
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &    Value &  Std err &  t-test &  p-value &  Rob. Std err &  Rob. t-test &  Rob. p-value \\
+\midrule
+ASC\_ALT1         &    -1.47 &    0.794 &   -1.85 &   0.0647 &         0.801 &        -1.83 &        0.0671 \\
+ASC\_ALT2         &     -2.4 &     0.81 &   -2.97 &    0.003 &         0.812 &        -2.96 &       0.00307 \\
+ASC\_ALT3         &     -3.0 &     0.82 &   -3.66 & 0.000257 &         0.826 &        -3.63 &      0.000283 \\
+B\_DIST           &    -3.27 &      1.1 &   -2.97 &  0.00293 &         0.978 &        -3.34 &      0.000832 \\
+B\_TIME           &     4.18 &     1.05 &     4.0 &  6.4e-05 &          1.04 &         4.03 &      5.46e-05 \\
+COEF\_ADULTO40    &   -0.372 &    0.437 &  -0.852 &    0.394 &         0.437 &       -0.853 &         0.394 \\
+COEF\_ADULTO60    &   -0.467 &     0.38 &   -1.23 &     0.22 &         0.384 &        -1.22 &         0.224 \\
+COEF\_EDUC\_BASICA &   0.0359 &    0.273 &   0.131 &    0.896 &          0.27 &        0.133 &         0.894 \\
+COEF\_HORASTRAB   &   -0.224 &     1.02 &   -0.22 &    0.826 &          1.01 &        -0.22 &         0.826 \\
+COEF\_JOVEN30     &     -1.0 &    0.611 &   -1.64 &    0.102 &         0.603 &        -1.66 &         0.097 \\
+COEF\_TPROF       &  -0.0335 &    0.634 & -0.0529 &    0.958 &         0.642 &      -0.0522 &         0.958 \\
+COEF\_USOCINTURON &   -0.223 &    0.299 &  -0.746 &    0.456 &         0.305 &       -0.732 &         0.464 \\
+COEF\_USODISPMOB  & -0.00633 &    0.279 & -0.0227 &    0.982 &         0.281 &      -0.0225 &         0.982 \\
+\bottomrule
+\end{tabular}
+
+%%Correlation
+\section{Correlation}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+{} &  Covariance &  Correlation &   t-test &  p-value &  Rob. cov. &  Rob. corr. &  Rob. t-test &  Rob. p-value \\
+\midrule
+ASC\_ALT2-ASC\_ALT1                 &       0.619 &        0.962 &    -4.24 & 2.26e-05 &      0.629 &       0.966 &        -4.46 &      8.02e-06 \\
+ASC\_ALT3-ASC\_ALT1                 &       0.618 &        0.949 &    -5.89 &  3.8e-09 &       0.63 &       0.952 &        -6.04 &      1.53e-09 \\
+ASC\_ALT3-ASC\_ALT2                 &       0.623 &        0.937 &    -2.05 &   0.0401 &      0.629 &       0.937 &        -2.05 &        0.0408 \\
+B\_DIST-ASC\_ALT1                   &       0.129 &        0.148 &    -1.43 &    0.151 &      0.125 &        0.16 &        -1.55 &         0.121 \\
+B\_DIST-ASC\_ALT2                   &      0.0441 &       0.0495 &   -0.649 &    0.516 &     0.0722 &      0.0909 &       -0.713 &         0.476 \\
+B\_DIST-ASC\_ALT3                   &      0.0716 &       0.0795 &   -0.207 &    0.836 &      0.128 &       0.158 &       -0.232 &         0.817 \\
+B\_TIME-ASC\_ALT1                   &      -0.206 &       -0.248 &     3.86 & 0.000112 &     -0.191 &      -0.231 &          3.9 &      9.67e-05 \\
+B\_TIME-ASC\_ALT2                   &      -0.201 &       -0.237 &     4.49 & 7.15e-06 &     -0.172 &      -0.205 &         4.57 &      4.92e-06 \\
+B\_TIME-ASC\_ALT3                   &      -0.202 &       -0.236 &     4.87 &  1.1e-06 &     -0.223 &      -0.261 &         4.84 &      1.31e-06 \\
+B\_TIME-B\_DIST                     &      -0.693 &       -0.603 &     3.88 & 0.000104 &     -0.782 &      -0.772 &         3.93 &      8.53e-05 \\
+COEF\_ADULTO40-ASC\_ALT1            &       0.127 &        0.367 &     1.45 &    0.146 &       0.14 &         0.4 &         1.47 &         0.141 \\
+COEF\_ADULTO40-ASC\_ALT2            &       0.125 &        0.352 &     2.63 &   0.0086 &      0.134 &       0.377 &         2.66 &        0.0078 \\
+COEF\_ADULTO40-ASC\_ALT3            &       0.125 &        0.348 &     3.35 & 0.000806 &      0.135 &       0.375 &         3.38 &      0.000718 \\
+COEF\_ADULTO40-B\_DIST              &      0.0199 &       0.0415 &     2.48 &    0.013 &     0.0214 &      0.0501 &         2.76 &       0.00585 \\
+COEF\_ADULTO40-B\_TIME              &     0.00787 &       0.0172 &    -4.04 &  5.3e-05 &   -0.00691 &     -0.0153 &        -4.03 &      5.64e-05 \\
+COEF\_ADULTO60-ASC\_ALT1            &        0.11 &        0.366 &     1.34 &    0.179 &       0.12 &        0.39 &         1.35 &         0.177 \\
+COEF\_ADULTO60-ASC\_ALT2            &       0.108 &        0.352 &     2.54 &   0.0112 &      0.115 &       0.369 &         2.55 &        0.0107 \\
+COEF\_ADULTO60-ASC\_ALT3            &       0.108 &        0.347 &     3.26 &  0.00109 &      0.114 &       0.359 &         3.26 &        0.0011 \\
+COEF\_ADULTO60-B\_DIST              &      0.0149 &       0.0356 &     2.44 &   0.0148 &     0.0127 &      0.0339 &          2.7 &       0.00697 \\
+COEF\_ADULTO60-B\_TIME              &     0.00221 &      0.00555 &    -4.18 & 2.87e-05 &   -0.00784 &     -0.0197 &        -4.18 &      2.93e-05 \\
+COEF\_ADULTO60-COEF\_ADULTO40       &       0.123 &        0.738 &   -0.314 &    0.754 &      0.124 &        0.74 &       -0.315 &         0.753 \\
+COEF\_EDUC\_BASICA-ASC\_ALT1         &      0.0295 &        0.136 &     1.87 &   0.0616 &     0.0216 &         0.1 &         1.83 &        0.0667 \\
+COEF\_EDUC\_BASICA-ASC\_ALT2         &      0.0295 &        0.133 &     2.98 &  0.00291 &     0.0245 &       0.112 &         2.95 &       0.00316 \\
+COEF\_EDUC\_BASICA-ASC\_ALT3         &      0.0294 &        0.131 &     3.66 & 0.000256 &     0.0254 &       0.114 &         3.62 &        0.0003 \\
+COEF\_EDUC\_BASICA-B\_DIST           &    -0.00874 &      -0.0291 &      2.9 &  0.00375 &    0.00201 &     0.00762 &         3.26 &        0.0011 \\
+COEF\_EDUC\_BASICA-B\_TIME           &      0.0233 &       0.0815 &    -3.91 &  9.1e-05 &     0.0181 &      0.0647 &        -3.93 &      8.37e-05 \\
+COEF\_EDUC\_BASICA-COEF\_ADULTO40    &    -0.00457 &      -0.0382 &    0.779 &    0.436 &    -0.0058 &     -0.0492 &        0.778 &         0.437 \\
+COEF\_EDUC\_BASICA-COEF\_ADULTO60    &    0.000294 &      0.00283 &     1.07 &    0.283 &    0.00129 &      0.0124 &         1.08 &         0.282 \\
+COEF\_HORASTRAB-ASC\_ALT1           &       0.607 &        0.753 &     1.86 &   0.0635 &      0.608 &       0.747 &         1.84 &        0.0658 \\
+COEF\_HORASTRAB-ASC\_ALT2           &       0.608 &        0.738 &     3.17 &  0.00153 &      0.599 &       0.726 &         3.11 &       0.00188 \\
+COEF\_HORASTRAB-ASC\_ALT3           &       0.607 &        0.728 &     3.96 & 7.63e-05 &      0.602 &       0.719 &          3.9 &      9.73e-05 \\
+COEF\_HORASTRAB-B\_DIST             &       0.116 &        0.104 &     2.15 &   0.0317 &      0.129 &        0.13 &         2.32 &        0.0206 \\
+COEF\_HORASTRAB-B\_TIME             &      -0.201 &       -0.189 &    -2.77 &  0.00561 &     -0.179 &      -0.171 &        -2.81 &         0.005 \\
+COEF\_HORASTRAB-COEF\_ADULTO40      &     -0.0254 &      -0.0573 &    0.132 &    0.895 &    -0.0125 &     -0.0282 &        0.133 &         0.894 \\
+COEF\_HORASTRAB-COEF\_ADULTO60      &     -0.0257 &      -0.0666 &    0.219 &    0.827 &    -0.0251 &     -0.0643 &        0.219 &         0.826 \\
+COEF\_HORASTRAB-COEF\_EDUC\_BASICA   &     -0.0167 &      -0.0602 &   -0.243 &    0.808 &    -0.0316 &      -0.115 &        -0.24 &          0.81 \\
+COEF\_JOVEN30-ASC\_ALT1             &       0.176 &        0.364 &    0.577 &    0.564 &      0.177 &       0.367 &        0.578 &         0.563 \\
+COEF\_JOVEN30-ASC\_ALT2             &       0.174 &         0.35 &      1.7 &   0.0894 &      0.176 &       0.359 &         1.71 &        0.0866 \\
+COEF\_JOVEN30-ASC\_ALT3             &       0.174 &        0.346 &     2.39 &   0.0169 &      0.178 &       0.358 &         2.41 &        0.0162 \\
+COEF\_JOVEN30-B\_DIST               &       0.017 &       0.0253 &     1.82 &   0.0682 &    -0.0293 &     -0.0497 &         1.93 &        0.0534 \\
+COEF\_JOVEN30-B\_TIME               &    -0.00276 &     -0.00432 &    -4.27 & 1.96e-05 &    0.00892 &      0.0143 &        -4.35 &      1.37e-05 \\
+COEF\_JOVEN30-COEF\_ADULTO40        &       0.154 &        0.576 &    -1.24 &    0.215 &      0.156 &       0.591 &        -1.27 &         0.202 \\
+COEF\_JOVEN30-COEF\_ADULTO60        &       0.128 &        0.548 &    -1.04 &    0.298 &      0.131 &       0.564 &        -1.07 &         0.285 \\
+COEF\_JOVEN30-COEF\_EDUC\_BASICA     &    0.000486 &      0.00291 &    -1.55 &    0.121 &    0.00587 &       0.036 &        -1.59 &         0.112 \\
+COEF\_JOVEN30-COEF\_HORASTRAB       &     0.00485 &      0.00781 &   -0.657 &    0.511 &   1.59e-06 &     2.6e-06 &       -0.658 &          0.51 \\
+COEF\_TPROF-ASC\_ALT1               &         0.1 &        0.199 &     1.57 &    0.116 &      0.108 &       0.211 &         1.57 &         0.117 \\
+COEF\_TPROF-ASC\_ALT2               &       0.099 &        0.193 &     2.56 &   0.0106 &      0.118 &       0.227 &         2.59 &       0.00947 \\
+COEF\_TPROF-ASC\_ALT3               &      0.0987 &         0.19 &     3.16 &  0.00155 &      0.111 &        0.21 &         3.18 &       0.00149 \\
+COEF\_TPROF-B\_DIST                 &    -0.00677 &     -0.00971 &     2.54 &   0.0111 &    -0.0543 &     -0.0864 &         2.66 &       0.00777 \\
+COEF\_TPROF-B\_TIME                 &      0.0141 &       0.0213 &    -3.48 & 0.000504 &     0.0367 &      0.0551 &        -3.55 &      0.000391 \\
+COEF\_TPROF-COEF\_ADULTO40          &      0.0962 &        0.347 &    0.535 &    0.593 &     0.0978 &       0.349 &        0.531 &         0.595 \\
+COEF\_TPROF-COEF\_ADULTO60          &      0.0458 &         0.19 &    0.642 &    0.521 &       0.05 &       0.203 &        0.639 &         0.523 \\
+COEF\_TPROF-COEF\_EDUC\_BASICA       &     -0.0476 &       -0.275 &  -0.0917 &    0.927 &    -0.0402 &      -0.232 &      -0.0923 &         0.926 \\
+COEF\_TPROF-COEF\_HORASTRAB         &     -0.0693 &       -0.107 &    0.152 &     0.88 &     -0.057 &     -0.0876 &        0.152 &         0.879 \\
+COEF\_TPROF-COEF\_JOVEN30           &       0.139 &        0.359 &     1.37 &    0.171 &       0.14 &       0.362 &         1.37 &         0.169 \\
+COEF\_USOCINTURON-ASC\_ALT1         &      0.0637 &        0.268 &     1.62 &    0.106 &      0.066 &        0.27 &          1.6 &         0.109 \\
+COEF\_USOCINTURON-ASC\_ALT2         &      0.0645 &        0.266 &     2.78 &  0.00548 &     0.0684 &       0.276 &         2.78 &       0.00545 \\
+COEF\_USOCINTURON-ASC\_ALT3         &      0.0642 &        0.261 &     3.48 & 0.000492 &     0.0624 &       0.248 &         3.44 &       0.00058 \\
+COEF\_USOCINTURON-B\_DIST           &     0.00399 &       0.0121 &     2.68 &  0.00731 &    0.00239 &     0.00799 &         2.98 &       0.00289 \\
+COEF\_USOCINTURON-B\_TIME           &     -0.0183 &      -0.0585 &    -3.99 & 6.68e-05 &    -0.0139 &      -0.044 &        -4.03 &      5.59e-05 \\
+COEF\_USOCINTURON-COEF\_ADULTO40    &    -0.00179 &      -0.0137 &     0.28 &     0.78 &    0.00107 &     0.00799 &        0.281 &         0.779 \\
+COEF\_USOCINTURON-COEF\_ADULTO60    &    -0.00388 &      -0.0341 &    0.495 &    0.621 &    0.00171 &      0.0146 &          0.5 &         0.617 \\
+COEF\_USOCINTURON-COEF\_EDUC\_BASICA &     0.00984 &         0.12 &   -0.681 &    0.496 &     0.0113 &       0.137 &       -0.684 &         0.494 \\
+COEF\_USOCINTURON-COEF\_HORASTRAB   &     -0.0225 &      -0.0738 & 0.000363 &      1.0 &    -0.0297 &      -0.096 &     0.000361 &           1.0 \\
+COEF\_USOCINTURON-COEF\_JOVEN30     &     0.00803 &       0.0439 &     1.16 &    0.245 &    0.00812 &      0.0442 &         1.17 &         0.241 \\
+COEF\_USOCINTURON-COEF\_TPROF       &     0.00207 &       0.0109 &   -0.272 &    0.786 &  -0.000475 &    -0.00243 &       -0.267 &          0.79 \\
+COEF\_USODISPMOB-ASC\_ALT1          &     0.00379 &       0.0171 &     1.74 &    0.081 &      0.008 &      0.0355 &         1.74 &         0.082 \\
+COEF\_USODISPMOB-ASC\_ALT2          &     0.00273 &       0.0121 &     2.81 &  0.00496 &    0.00684 &      0.0299 &         2.82 &       0.00486 \\
+COEF\_USODISPMOB-ASC\_ALT3          &     0.00338 &       0.0148 &     3.47 & 0.000522 &     0.0105 &      0.0451 &         3.48 &      0.000506 \\
+COEF\_USODISPMOB-B\_DIST            &    -0.00629 &      -0.0205 &     2.86 &  0.00419 &     0.0141 &      0.0514 &         3.25 &       0.00115 \\
+COEF\_USODISPMOB-B\_TIME            &      0.0275 &       0.0945 &    -3.96 &  7.4e-05 &     0.0128 &      0.0439 &        -3.94 &      8.02e-05 \\
+COEF\_USODISPMOB-COEF\_ADULTO40     &      -0.023 &       -0.189 &    0.653 &    0.514 &    -0.0243 &      -0.198 &        0.649 &         0.517 \\
+COEF\_USODISPMOB-COEF\_ADULTO60     &    -0.00371 &       -0.035 &     0.96 &    0.337 &   -0.00452 &     -0.0419 &        0.948 &         0.343 \\
+COEF\_USODISPMOB-COEF\_EDUC\_BASICA  &    -0.00321 &      -0.0421 &   -0.106 &    0.916 &  -0.000439 &    -0.00578 &       -0.108 &         0.914 \\
+COEF\_USODISPMOB-COEF\_HORASTRAB    &     -0.0077 &      -0.0272 &    0.205 &    0.838 &    0.00146 &      0.0051 &        0.207 &         0.836 \\
+COEF\_USODISPMOB-COEF\_JOVEN30      &      -0.033 &       -0.194 &     1.38 &    0.167 &     -0.039 &       -0.23 &         1.38 &         0.168 \\
+COEF\_USODISPMOB-COEF\_TPROF        &   -0.000818 &     -0.00463 &   0.0392 &    0.969 &   -0.00723 &     -0.0401 &       0.0382 &         0.969 \\
+COEF\_USODISPMOB-COEF\_USOCINTURON  &     0.00188 &       0.0225 &    0.537 &    0.592 &    0.00113 &      0.0131 &        0.526 &         0.599 \\
+\bottomrule
+\end{tabular}

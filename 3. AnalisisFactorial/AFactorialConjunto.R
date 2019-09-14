@@ -39,7 +39,7 @@ names(DBConjunta)
 
 summary(DBConjunta)
 
-sink("AnalisisFactorialConjuntoCE.txt")
+#sink("AnalisisFactorialConjuntoCE.txt")
 
 #Correlacion
 cor(DBConjunta, use = "pairwise.complete.obs")
@@ -158,21 +158,6 @@ DBFAC <- rename(DBFAC, replace = c(Factor1 = "CondAgres",
 
 names(DBFAC)
 
-#Normalizamos las variables continuas
-DBFAC$TIEMPO_PROFESION <- round(((DBFAC$TIEMPO_PROFESION -min(DBFAC$TIEMPO_PROFESION))/(max(DBFAC$TIEMPO_PROFESION)-min(DBFAC$TIEMPO_PROFESION))),5)
-DBFAC$HORASTRABAJO <- round(((DBFAC$HORASTRABAJO -min(DBFAC$HORASTRABAJO))/(max(DBFAC$HORASTRABAJO)-min(DBFAC$HORASTRABAJO))),5)
-DBFAC$TIEMPOAlt1 <- round(((DBFAC$TIEMPOAlt1 -min(DBFAC$TIEMPOAlt1))/(max(DBFAC$TIEMPOAlt1)-min(DBFAC$TIEMPOAlt1))),5)
-DBFAC$DISTAlt1 <- round(((DBFAC$DISTAlt1 -min(DBFAC$DISTAlt1))/(max(DBFAC$DISTAlt1)-min(DBFAC$DISTAlt1))),5)
-DBFAC$TIEMPOAlt2 <- round(((DBFAC$TIEMPOAlt2 -min(DBFAC$TIEMPOAlt2))/(max(DBFAC$TIEMPOAlt2)-min(DBFAC$TIEMPOAlt2))),5)
-DBFAC$DISTAlt2 <- round(((DBFAC$DISTAlt2 -min(DBFAC$DISTAlt2))/(max(DBFAC$DISTAlt2)-min(DBFAC$DISTAlt2))),5)
-DBFAC$TIEMPOAlt3 <- round(((DBFAC$TIEMPOAlt3 -min(DBFAC$TIEMPOAlt3))/(max(DBFAC$TIEMPOAlt3)-min(DBFAC$TIEMPOAlt3))),5)
-DBFAC$DISTAlt3 <- round(((DBFAC$DISTAlt3 -min(DBFAC$DISTAlt3))/(max(DBFAC$DISTAlt3)-min(DBFAC$DISTAlt3))),5)
-DBFAC$TIEMPOEC <- round(((DBFAC$TIEMPOEC -min(DBFAC$TIEMPOEC))/(max(DBFAC$TIEMPOEC)-min(DBFAC$TIEMPOEC))),5)
-DBFAC$DISTEC <- round(((DBFAC$DISTEC -min(DBFAC$DISTEC))/(max(DBFAC$DISTEC)-min(DBFAC$DISTEC))),5)
-
-View(DBFAC)
-
-names(DBFAC)
 
 
 #GRAFICOS
@@ -188,7 +173,7 @@ hist(DBFAC$Stress, freq = TRUE, main = "Distr del Factor 4",
      xlab = "Stress al Cond", ylab = "Frecuencia", col = "red")
 
 
-sink()
+#sink()
 
 
 DBMuestra <- DBFAC %>%
@@ -250,6 +235,10 @@ DBMuestra <- DBFAC %>%
 
 
 DBMuestra <- DBMuestra[ ,!colnames(DBMuestra)=="ViajeId"]
+DBMuestra <-select(DBMuestra, -("DispMob"),-("SatDispMob"), -("VELAlt1"),
+                   -("VELAlt2"), -("VELAlt3"),-("VELPROMEC"),-("VELTOTALEC"),-("PasoPeatones"),
+                   -("UsaPito"))
+
 names(DBMuestra)
 
 write.table(DBMuestra, 
