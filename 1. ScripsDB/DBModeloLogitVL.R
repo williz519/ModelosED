@@ -210,6 +210,10 @@ X$NIVELEDUCATIVO[X$NIVELEDUCATIVO == 4 & X$TIEMPO_PROFESION > 15] <- 1
 
 X$NIVELEDUCATIVO[X$NIVELEDUCATIVO == 0 | X$NIVELEDUCATIVO == 4] <- 2
 
+X$DispMob[X$DispMob == 0 & X$SatDispMob !=0] <-3
+X$DispMob[X$DispMob == 1 & X$SatDispMob !=0] <-3
+X$DispMob[X$DispMob == 0] <-2
+
 
 str(X)
 summary(X, na.rm = TRUE)
@@ -289,6 +293,8 @@ DBModelo <- CEscala1 %>%
              by = "ViajeId")
 
 names(DBModelo)
+
+view(DBModelo)
 
 write.table(DBModelo, 
             file="/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv", sep="\t", dec=".")

@@ -235,11 +235,12 @@ DBMuestra <- DBFAC %>%
 
 
 DBMuestra <- DBMuestra[ ,!colnames(DBMuestra)=="ViajeId"]
-DBMuestra <-select(DBMuestra, -("DispMob"),-("SatDispMob"), -("VELAlt1"),
+DBMuestra <-select(DBMuestra, -("SatDispMob"), -("VELAlt1"),
                    -("VELAlt2"), -("VELAlt3"),-("VELPROMEC"),-("VELTOTALEC"),-("PasoPeatones"),
                    -("UsaPito"))
 
 names(DBMuestra)
+view(DBMuestra)
 
 write.table(DBMuestra, 
             file="/Users/williz/Desktop/ModelosED/Database/DBModLogitMuestraVLCE.csv", sep="\t", dec=".")
