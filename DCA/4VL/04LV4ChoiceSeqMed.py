@@ -59,7 +59,7 @@ ADULTO60 = DefineVariable('ADULTO60', EDAD == 3, database)
 ADULTOMAYOR = DefineVariable('ADULTOMAYOR', EDAD == 4, database)
 EDUC_BASICA = DefineVariable('EDUC_BASICA', NIVELEDUCATIVO == 1, database)
 EDUC_SUPERIOR = DefineVariable('EDUC_SUPERIOR', NIVELEDUCATIVO >= 2, database)
-TPROF = DefineVariable('TPROF', TIEMPO_PROFESION, database)
+TPROF = DefineVariable('TPROF', TIEMPO_PROFESION*12, database)
 HORASTRAB = DefineVariable('HORASTRAB', HORASTRABAJO, database)
 HORAPICO = DefineVariable('HORAPICO', HPICOHVALLE == 1, database)
 HORAVALLE = DefineVariable('HORAVALLE', HPICOHVALLE == 2, database)
@@ -68,9 +68,10 @@ CLIMALLUVIA = DefineVariable('CLIMALLUVIA', CLIMA == 2, database)
 CONGAB = DefineVariable('CONGAB', CONGESTION <= 2, database)
 CONGCD = DefineVariable('CONGCD', (CONGESTION == 3)+(CONGESTION == 4), database)
 CONGEF = DefineVariable('CONGEF', CONGESTION > 4, database)
-SININFO = DefineVariable('SININFO', (INFOTRAFICO == 0)+(INFOTRAFICO == 1), database)
+SININFO = DefineVariable('SININFO', INFOTRAFICO == 1, database)
 CONINFO = DefineVariable('CONINFO', INFOTRAFICO == 2, database)
 USOCINTURON = DefineVariable ('USOCINTURON', CinSeg == 2, database)
+USODISPMOB = DefineVariable('USODISPMOB',(DispMob==2)+(DispMob==3)+(DispMob==4)+(DispMob==5)+(DispMob==6),database)
 CONDAGREF1 = DefineVariable('CONDAGRESF1', CondAgres, database)
 AMBLABORF2 = DefineVariable('AMBLABORF2', AmbienteLaboral, database)
 HABPROSOCF3 = DefineVariable('HABPROSOCF3', HabProsoc, database)
@@ -83,69 +84,74 @@ structResults = res.bioResults(pickleFile='02LV4MedellinOrdered.pickle')
 structBetas = structResults.getBetaValues()
 
 
-COEF_INTER = Beta('COEF_INTER',structBetas['COEF_INTER'],-1000,1000,0)
-COEF_EDUC_BASICA = Beta('COEF_EDUC_BASICA',structBetas['COEF_EDUC_BASICA'],-1000,1000,0) 
-COEF_JOVEN30 = Beta('COEF_JOVEN30',structBetas['COEF_JOVEN30'],-1000,1000,0)
-COEF_ADULTO40 = Beta('COEF_ADULTO40',structBetas['COEF_ADULTO40'],-1000,1000,0)
-COEF_ADULTO60 = Beta('COEF_ADULTO60',structBetas['COEF_ADULTO60'],-1000,1000,0)
-#COEF_ADULTOMAYOR = Beta('COEF_ADULTOMAYOR',0,None,None,1)
-#COEF_EDUC_SUPERIOR = Beta('COEF_EDUC_SUPERIOR',0,None,None,1)
-COEF_TPROF = Beta('COEF_TPROF',structBetas['COEF_TPROF'],-1000,1000,0)
-COEF_HORASTRAB = Beta('COEF_HORASTRAB',structBetas['COEF_HORASTRAB'],-1000,1000,0)
-COEF_HORAPICO = Beta('COEF_HORAPICO',structBetas['COEF_HORAPICO'],-1000,1000,0)
-#COEF_HVALLE = Beta('COEF_HVALLE',0,None,None,1)
-COEF_CLIMASECO = Beta('COEF_CLIMASECO',structBetas['COEF_CLIMASECO'],-1000,1000,0)
-#COEF_CLIMALLUVIA = Beta('COEF_CLIMALLUVIA',0,None,None,1)
-#COEF_CONGAB = structBetas['COEF_CONGAB']
-COEF_CONGCD = Beta('COEF_CONGCD',structBetas['COEF_CONGCD'],-1000,1000,0)
-COEF_CONGEF = Beta('COEF_CONGEF',structBetas['COEF_CONGEF'],-1000,1000,0)
-COEF_SININFO = Beta('COEF_SININFO',structBetas['COEF_SININFO'],-1000,1000,0)
-#COEF_CONINFO = Beta('COEF_CONINFO',0,None,None,1)
-#COEF_USOCINTRURON = Beta('COEF_USOCINTURON',0,None,None,1)
-#COEF_CONDAGREF1 = Beta('COEF_CONDAGREF1',0,None,None,1)
-#COEF_AMBLABORF2 = Beta('COEF_AMBLABORF2',0,None,None,1)
-COEF_HABPROSOCF3 = Beta('COEF_HABPROSOCF3',structBetas['COEF_HABPROSOCF3'],-1000,1000,0)
-#COEF_STRESSF4 = Beta('COEF_STRESSF4',0,None,None,1)
+# Coeficientes
+COEF_INTER = Beta('COEF_INTER',structBetas['COEF_INTER'],None,None,1)
+COEF_EDUC_BASICA = Beta('COEF_EDUC_BASICA',structBetas['COEF_EDUC_BASICA'],None,None,1)
+COEF_JOVEN30 = Beta('COEF_JOVEN30',structBetas['COEF_JOVEN30'],None,None,1)
+COEF_ADULTO40 = Beta('COEF_ADULTO40',structBetas['COEF_ADULTO40'],None,None,1)
+COEF_ADULTO60 = Beta('COEF_ADULTO60',structBetas['COEF_ADULTO60'],None,None,1)
+COEF_ADULTOMAYOR = Beta('COEF_ADULTOMAYOR',0,None,None,0)
+COEF_EDUC_SUPERIOR = Beta('COEF_EDUC_SUPERIOR',0,None,None,1)
+COEF_TPROF = Beta('COEF_TPROF',structBetas['COEF_TPROF'],None,None,1)
+COEF_HORASTRAB = Beta('COEF_HORASTRAB',structBetas['COEF_HORASTRAB'],None,None,1)
+COEF_HORAPICO = Beta('COEF_HORAPICO',structBetas['COEF_HORAPICO'],None,None,1)
+COEF_HVALLE = Beta('COEF_HVALLE',0,None,None,0)
+COEF_CLIMASECO = Beta('COEF_CLIMASECO',structBetas['COEF_CLIMASECO'],None,None,1)
+COEF_CLIMALLUVIA = Beta('COEF_CLIMALLUVIA',0,None,None,0)
+COEF_CONGAB = Beta('COEF_CONGAB',0,None,None,0)
+COEF_CONGCD = Beta('COEF_CONGCD',structBetas['COEF_CONGCD'],None,None,1)
+COEF_CONGEF = Beta('COEF_CONGEF',structBetas['COEF_CONGEF'],None,None,1)
+COEF_SININFO = Beta('COEF_SININFO',structBetas['COEF_SININFO'],None,None,1)
+COEF_CONINFO = Beta('COEF_CONINFO',0,None,None,0)
+COEF_USOCINTURON = Beta('COEF_USOCINTURON',structBetas['COEF_USOCINTURON'],None,None,1)
+COEF_USODISPMOB = Beta('COEF_USODISPMOB',structBetas['COEF_USODISPMOB'],None,None,1)
+COEF_CONDAGREF1 = Beta('COEF_CONDAGREF1',0,None,None,0)
+COEF_AMBLABORF2 = Beta('COEF_AMBLABORF2',structBetas['COEF_AMBLABORF2'],None,None,1)
+COEF_HABPROSOCF3 = Beta('COEF_HABPROSOCF3',structBetas['COEF_HABPROSOCF3'],None,None,1)
+COEF_STRESSF4 = Beta('COEF_STRESSF4',structBetas['COEF_STRESSF4'],None,None,1)
 
 
 
 # Ecuacion Estructural Variable Latente
 
 omega_LV1 = bioDraws('omega_LV1','NORMAL')
-Beta_sigma_LV1 = Beta('Beta_sigma_LV1',10,0.01,None,0)
+Beta_sigma_LV1 = Beta('Beta_sigma_LV1',0,None,None,0)
 
 omega_LV2 = bioDraws('omega_LV2','NORMAL')
-Beta_sigma_LV2 = Beta('Beta_sigma_LV2',10,0.01,None,0)
+Beta_sigma_LV2 = Beta('Beta_sigma_LV2',0,None,None,0)
 
 omega_LV3 = bioDraws('omega_LV3','NORMAL')
-Beta_sigma_LV3 = Beta('Beta_sigma_LV3',10,0.01,None,0)
+Beta_sigma_LV3 = Beta('Beta_sigma_LV3',0,None,None,0)
 
 omega_LV4 = bioDraws('omega_LV4','NORMAL')
-Beta_sigma_LV4 = Beta('Beta_sigma_LV4',10,0.01,None,0)
+Beta_sigma_LV4 = Beta('Beta_sigma_LV4',0,None,None,0)
 
 
 ACTAGR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
     COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
     COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
     COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
-    COEF_HABPROSOCF3*HABPROSOCF3 + Beta_sigma_LV1 * omega_LV1
+    COEF_USOCINTURON*USOCINTURON +COEF_USODISPMOB*USODISPMOB +\
+    COEF_STRESSF4*STRESSF4 + Beta_sigma_LV1 * omega_LV1
 
 AMBLABOR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
     COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
     COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
     COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
-    COEF_HABPROSOCF3*HABPROSOCF3 + Beta_sigma_LV2 * omega_LV2
+    COEF_USOCINTURON*USOCINTURON +COEF_USODISPMOB*USODISPMOB + Beta_sigma_LV2 * omega_LV2
 
 HABPROSOC = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
     COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
     COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
-    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+\
-    COEF_SININFO*SININFO + Beta_sigma_LV3 * omega_LV3
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
+    COEF_USOCINTURON*USOCINTURON +COEF_USODISPMOB*USODISPMOB +\
+    COEF_AMBLABORF2*AMBLABORF2 + Beta_sigma_LV3 * omega_LV3
 
 STRESS = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
     COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
     COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
     COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
+    COEF_USOCINTURON*USOCINTURON +COEF_USODISPMOB*USODISPMOB +\
     COEF_HABPROSOCF3*HABPROSOCF3 + Beta_sigma_LV4 * omega_LV4
 
 #Coeficientes Variables Latentes
@@ -155,17 +161,18 @@ B_HABPROSOC = Beta('B_HABPROSOC',0,None,None,0)
 B_STRESS = Beta('B_STRESS',0,None,None,0)
 
 
-ASC_ALT1 = Beta('ASC_ALT1',1,None,None,1)
-ASC_ALT2 = Beta('ASC_ALT2',0,None,None,0)
-ASC_ALT3 = Beta('ASC_ALT3',0,None,None,0)
-ASC_EC = Beta('ASC_ALT4',0,None,None,0)
-B_TIME = Beta('B_TIME',0,None,None,0)
-B_DIST = Beta('B_DIST',0,None,None,0)
+# Valores de la estimacion MNL1
+ASC_ALT1 = Beta('ASC_ALT1',-0.734,None,None,0)
+ASC_ALT2 = Beta('ASC_ALT2',-1.68,None,None,0)
+ASC_ALT3 = Beta('ASC_ALT3',-2.27,None,None,0)
+ASC_EC = Beta('ASC_ALT4',0,None,None,1)
+B_TIME = Beta('B_TIME',4.1,None,None,0)
+B_DIST = Beta('B_DIST',-3.19,None,None,0)
 
 
 #Especificacion de las Funciones de Utilidad
 
-V1 = ASC_ALT1*1+\
+V1 = ASC_ALT1+\
     B_TIME*TIME1_SC+\
     B_DIST*DIST1_SC+\
     B_ACTAGRE*ACTAGR+\
@@ -195,17 +202,7 @@ V4 = ASC_EC+B_TIME*TIME4_SC+\
     B_ACTAGRE*ACTAGR+\
     B_AMBLABOR*AMBLABOR+\
     B_HABPROSOC*HABPROSOC+\
-    B_STRESS*STRESS+\
-    COEF_JOVEN30*JOVEN30 +\
-    COEF_ADULTO40*ADULTO40+\
-    COEF_ADULTO60*ADULTO60+\
-    COEF_TPROF*TPROF+\
-    COEF_HORASTRAB*HORASTRAB+\
-    COEF_HORAPICO*HORAPICO+\
-    COEF_CLIMASECO*CLIMASECO+\
-    COEF_CONGCD*CONGCD+\
-    COEF_CONGEF*CONGEF+\
-    COEF_SININFO*SININFO
+    B_STRESS*STRESS
 
 
 # Asociacion de las funciones de utilidad con el numero de alternativas
@@ -222,10 +219,10 @@ condprob = models.logit(V,AV,CHOICE)
 
 loglike = log(MonteCarlo(condprob))
 
-biogeme  = bio.BIOGEME(database,loglike, numberOfDraws=500)
+biogeme  = bio.BIOGEME(database,loglike, numberOfDraws=1000)
 biogeme.DRAWS = {'omega_LV1': ('NORMAL'), 'omega_LV2': ('NORMAL'), 'omega_LV3': ('NORMAL'), 'omega_LV4': ('NORMAL')}
 
-biogeme.modelName = "04LV4ChoiceSeqMed"
+biogeme.modelName = "04LV4ChoiceSeqMedV1"
 results = biogeme.estimate()
 # Get the results in a pandas table
 pandasResults = results.getEstimatedParameters()
@@ -235,6 +232,8 @@ print(f"LL(0) =    {results.data.initLogLike:.3f}")
 print(f"LL(beta) = {results.data.logLike:.3f}")
 print(f"rho bar square = {results.data.rhoBarSquare:.3g}")
 print(f"Output file: {results.data.htmlFileName}")
+results.writeLaTeX()
+print(f"LaTeX file: {results.data.latexFileName}")
 
 
 

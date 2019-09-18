@@ -1,3 +1,31 @@
+
+# MODELO 7
+
+model7 <- " #Variables Latentes
+      ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
+AMBLABOR =~ PrPer + AmbTr
+HABPROSOC =~ ComVrb + ComAfec + ConCl
+STRESS =~ Ans + StrC + UsoDirec 
+
+# Regresiones
+ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + HORASTRABAJO  + CSECO +
+CONG_CD + CONG_EF + USOCINTURON  + STRESS
+
+STRESS ~ JOVEN30 + ADULTO40 + ADULTO60 + HORASTRABAJO + CONG_CD + CONG_EF + 
+SININFOTRF + USODISPMOB + HABPROSOC
+
+AMBLABOR ~ EDUBASICA + ADULTO40 + ADULTO60 + HORASTRABAJO + HPICO +
+CONG_CD + CONG_EF + USOCINTURON + USODISPMOB
+
+HABPROSOC ~ ADULTO40 + ADULTO60 + HORASTRABAJO + CSECO + CONG_EF +
+USOCINTURON + AMBLABOR
+
+#Varianzas-Covarianzas
+FRbr ~~ AFrSem
+CulFr ~~ ComVrb
+
+# Interceptos"
+
 lavaan 0.6-3 ended normally after 83 iterations
 
   Optimization method                           NLMINB
