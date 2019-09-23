@@ -1,6 +1,10 @@
 
+<<<<<<< HEAD
 
 Modelo7
+=======
+# MODELO 7
+>>>>>>> 5cfd435099f69525cdaeeb0920bb97cb7c36f35f
 
 model7 <- " #Variables Latentes
       ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + UsoCel
@@ -27,9 +31,12 @@ CulFr ~~ ComVrb
 
 # Interceptos"
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 5cfd435099f69525cdaeeb0920bb97cb7c36f35f
 lavaan 0.6-3 ended normally after 83 iterations
 
   Optimization method                           NLMINB

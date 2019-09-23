@@ -21,6 +21,20 @@ import biogeme.results as res
 #Cargar DataBase
 
 pandas = pd.read_csv('/Users/williz/Desktop/ModelosED/Database/DBModLogitMuestraVLCE.csv', sep='\t')
+
+# normalizar variables continuas para evitar zero log-likelihood 
+pandas["TIEMPO_PROFESION"]=(pandas["TIEMPO_PROFESION"]-pandas["TIEMPO_PROFESION"].min())/(pandas["TIEMPO_PROFESION"].max()-pandas["TIEMPO_PROFESION"].min())
+pandas["HORASTRABAJO"]=(pandas["HORASTRABAJO"]-pandas["HORASTRABAJO"].min())/(pandas["HORASTRABAJO"].max()-pandas["HORASTRABAJO"].min())
+pandas["DISTAlt1"]=(pandas["DISTAlt1"]-pandas["DISTAlt1"].min())/(pandas["DISTAlt1"].max()-pandas["DISTAlt1"].min())
+pandas["DISTAlt2"]=(pandas["DISTAlt2"]-pandas["DISTAlt2"].min())/(pandas["DISTAlt2"].max()-pandas["DISTAlt2"].min())
+pandas["DISTAlt3"]=(pandas["DISTAlt3"]-pandas["DISTAlt3"].min())/(pandas["DISTAlt3"].max()-pandas["DISTAlt3"].min())
+pandas["DISTEC"]=(pandas["DISTEC"]-pandas["DISTEC"].min())/(pandas["DISTEC"].max()-pandas["DISTEC"].min())
+pandas["TIEMPOAlt1"]=(pandas["TIEMPOAlt1"]-pandas["TIEMPOAlt1"].min())/(pandas["TIEMPOAlt1"].max()-pandas["TIEMPOAlt1"].min())
+pandas["TIEMPOAlt2"]=(pandas["TIEMPOAlt2"]-pandas["TIEMPOAlt2"].min())/(pandas["TIEMPOAlt2"].max()-pandas["TIEMPOAlt2"].min())
+pandas["TIEMPOAlt3"]=(pandas["TIEMPOAlt3"]-pandas["TIEMPOAlt3"].min())/(pandas["TIEMPOAlt3"].max()-pandas["TIEMPOAlt3"].min())
+pandas["TIEMPOEC"]=(pandas["TIEMPOEC"]-pandas["TIEMPOEC"].min())/(pandas["TIEMPOEC"].max()-pandas["TIEMPOEC"].min())
+
+
 database = db.Database("DBModLogitMuestraVLCE",pandas)
 
 from headers import *
@@ -56,36 +70,42 @@ CONGEF = DefineVariable('CONGEF', CONGESTION > 4, database)
 SININFO = DefineVariable('SININFO', INFOTRAFICO == 1, database)
 CONINFO = DefineVariable('CONINFO', INFOTRAFICO == 2, database)
 USOCINTURON = DefineVariable ('USOCINTURON', CinSeg == 2, database)
+USODISPMOB = DefineVariable('USODISPMOB',(DispMob==2)+(DispMob==3)+(DispMob==4)+(DispMob==5)+(DispMob==6),database)
 CONDAGREF1 = DefineVariable('CONDAGRESF1', CondAgres, database)
 AMBLABORF2 = DefineVariable('AMBLABORF2', AmbienteLaboral, database)
 HABPROSOCF3 = DefineVariable('HABPROSOCF3', HabProsoc, database)
 STRESSF4 = DefineVariable('STRESSF4', Stress, database)
 
+# Coeficientes
+structResults = res.bioResults(pickleFile='/Users/williz/Desktop/ModelosED/DCA/2VL/02LV2MedellinOrdered.pickle')
+structBetas = structResults.getBetaValues()
+
 
 # Coeficientes
-COEF_INTER = Beta('COEF_INTER',-23.5,None,None,0)
-COEF_EDUC_BASICA = Beta('COEF_EDUC_BASICA',2.29,None,None,0)
-COEF_JOVEN30 = Beta('COEF_JOVEN30',0.76,None,None,0)
-COEF_ADULTO40 = Beta('COEF_ADULTO40',-1.3,None,None,0)
-COEF_ADULTO60 = Beta('COEF_ADULTO60',-2.08,None,None,0)
+COEF_INTER = Beta('COEF_INTER',structBetas['COEF_INTER'],None,None,0)
+COEF_EDUC_BASICA = Beta('COEF_EDUC_BASICA',structBetas['COEF_EDUC_BASICA'],None,None,0)
+COEF_JOVEN30 = Beta('COEF_JOVEN30',structBetas['COEF_JOVEN30'],None,None,0)
+COEF_ADULTO40 = Beta('COEF_ADULTO40',structBetas['COEF_ADULTO40'],None,None,0)
+COEF_ADULTO60 = Beta('COEF_ADULTO60',structBetas['COEF_ADULTO60'],None,None,0)
 COEF_ADULTOMAYOR = Beta('COEF_ADULTOMAYOR',0,None,None,0)
 COEF_EDUC_SUPERIOR = Beta('COEF_EDUC_SUPERIOR',0,None,None,0)
-COEF_TPROF = Beta('COEF_TPROF',-0.00402,None,None,0)
-COEF_HORASTRAB = Beta('COEF_HORASTRAB',-6.17,None,None,0)
-COEF_HORAPICO = Beta('COEF_HORAPICO',2.01,None,None,0)
+COEF_TPROF = Beta('COEF_TPROF',structBetas['COEF_TPROF'],None,None,0)
+COEF_HORASTRAB = Beta('COEF_HORASTRAB',structBetas['COEF_HORASTRAB'],None,None,0)
+COEF_HORAPICO = Beta('COEF_HORAPICO',structBetas['COEF_HORAPICO'],None,None,0)
 COEF_HVALLE = Beta('COEF_HVALLE',0,None,None,0)
-COEF_CLIMASECO = Beta('COEF_CLIMASECO',1.29,None,None,0)
+COEF_CLIMASECO = Beta('COEF_CLIMASECO',structBetas['COEF_CLIMASECO'],None,None,0)
 COEF_CLIMALLUVIA = Beta('COEF_CLIMALLUVIA',0,None,None,0)
 COEF_CONGAB = Beta('COEF_CONGAB',0,None,None,0)
-COEF_CONGCD = Beta('COEF_CONGCD',2.98,None,None,0)
-COEF_CONGEF = Beta('COEF_CONGEF',4.87,None,None,0)
-COEF_SININFO = Beta('COEF_SININFO',-1.5,None,None,0)
+COEF_CONGCD = Beta('COEF_CONGCD',structBetas['COEF_CONGCD'],None,None,0)
+COEF_CONGEF = Beta('COEF_CONGEF',structBetas['COEF_CONGEF'],None,None,0)
+COEF_SININFO = Beta('COEF_SININFO',structBetas['COEF_SININFO'],None,None,0)
 COEF_CONINFO = Beta('COEF_CONINFO',0,None,None,0)
-COEF_USOCINTRURON = Beta('COEF_USOCINTURON',0,None,None,0)
+COEF_USOCINTURON = Beta('COEF_USOCINTURON',structBetas['COEF_USOCINTURON'],None,None,0)
+COEF_USODISPMOB = Beta('COEF_USODISPMOB',structBetas['COEF_USODISPMOB'],None,None,0)
 COEF_CONDAGREF1 = Beta('COEF_CONDAGREF1',0,None,None,0)
 COEF_AMBLABORF2 = Beta('COEF_AMBLABORF2',0,None,None,0)
-COEF_HABPROSOCF3 = Beta('COEF_HABPROSOCF3',13.1,None,None,0)
-COEF_STRESSF4 = Beta('COEF_STRESSF4',0,None,None,0)
+COEF_HABPROSOCF3 = Beta('COEF_HABPROSOCF3',0,None,None,0)
+COEF_STRESSF4 = Beta('COEF_STRESSF4',structBetas['COEF_STRESSF4'],None,None,0)
 
 
 # Ecuacion Estructural Variable Latente
@@ -93,36 +113,39 @@ COEF_STRESSF4 = Beta('COEF_STRESSF4',0,None,None,0)
 ACTAGR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
     COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
     COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
-    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+COEF_HABPROSOCF3*HABPROSOCF3
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
+    COEF_USOCINTURON*USOCINTURON +COEF_USODISPMOB*USODISPMOB + COEF_STRESSF4*STRESSF4
 
 AMBLABOR = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
     COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
     COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
-    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+COEF_HABPROSOCF3*HABPROSOCF3
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
+    COEF_USOCINTURON*USOCINTURON +COEF_USODISPMOB*USODISPMOB
 
 HABPROSOC = COEF_INTER + COEF_EDUC_BASICA*EDUC_BASICA+COEF_JOVEN30*JOVEN30 +\
     COEF_ADULTO40*ADULTO40+COEF_ADULTO60*ADULTO60+COEF_TPROF*TPROF+\
     COEF_HORASTRAB*HORASTRAB+COEF_HORAPICO*HORAPICO+COEF_CLIMASECO*CLIMASECO+\
-    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO
+    COEF_CONGCD*CONGCD + COEF_CONGEF*CONGEF+COEF_SININFO*SININFO+\
+    COEF_USOCINTURON*USOCINTURON +COEF_USODISPMOB*USODISPMOB + COEF_AMBLABORF2*AMBLABORF2
 
 
 ### ECUACIONES DE MEDIDA
 
 INTER_FRbr= Beta('INTER_FRbr',0,None,None,1)
-INTER_EnfCond = Beta('INTER_EnfCond',-3.12,None,None,1)
-INTER_AFrSem = Beta('INTER_AFrSem',-0.414,None,None,1)
-INTER_CulFr = Beta('INTER_CulFr',3.53,None,None,1)
-INTER_OmLmVel = Beta('INTER_OmLmVel',-3.09,None,None,1)
-INTER_IgPare = Beta('INTER_IgPare',-3.63,None,None,1)
-INTER_UsoCel = Beta('INTER_UsoCel',-6.36,None,None,1)
+INTER_EnfCond = Beta('INTER_EnfCond',structBetas['INTER_EnfCond'],None,None,0)
+INTER_AFrSem = Beta('INTER_AFrSem',structBetas['INTER_AFrSem'],None,None,0)
+INTER_CulFr = Beta('INTER_CulFr',structBetas['INTER_CulFr'],None,None,0)
+INTER_OmLmVel = Beta('INTER_OmLmVel',structBetas['INTER_OmLmVel'],None,None,0)
+INTER_IgPare = Beta('INTER_IgPare',-structBetas['INTER_IgPare'],None,None,0)
+INTER_UsoCel = Beta('INTER_UsoCel',structBetas['INTER_UsoCel'],None,None,0)
 
-BETA_FRbrF1 = Beta('BETA_FRbrF1',0.573,None,None,1)
-BETA_EnfCondF1 = Beta('BETA_EnfCondF1',0.493,None,None,1)
+BETA_FRbrF1 = Beta('BETA_FRbrF1',0.574,None,None,1)
+BETA_EnfCondF1 = Beta('BETA_EnfCondF1',0.492,None,None,1)
 BETA_AFrSemF1 = Beta('BETA_AFrSemF1',0.589,None,None,1)
-BETA_CulFrF1 = Beta('BETA_CulFrF1',0.406,None,None,1)
-BETA_OmLmVelF1 = Beta('BETA_OmLmVelF1',0.474,None,None,1)
+BETA_CulFrF1 = Beta('BETA_CulFrF1',0.397,None,None,1)
+BETA_OmLmVelF1 = Beta('BETA_OmLmVelF1',0.472,None,None,1)
 BETA_IgPareF1 = Beta('BETA_IgPareF1', 0.501,None,None,1)
-BETA_UsoCelF1 = Beta('BETA_UsoCelF1',0.333,None,None,1)
+BETA_UsoCelF1 = Beta('BETA_UsoCelF1',0.330,None,None,1)
 
 MODEL_FRbr = INTER_FRbr + BETA_FRbrF1 * ACTAGR
 MODEL_EnfCond = INTER_EnfCond + BETA_EnfCondF1 * ACTAGR
@@ -134,27 +157,27 @@ MODEL_UsoCel = INTER_UsoCel + BETA_UsoCelF1 * ACTAGR
 
 
 SIGMA_STAR_FRbr = Beta('SIGMA_STAR_FRbr', 10,None,None,1)
-SIGMA_STAR_EnfCond = Beta('SIGMA_STAR_EnfCond', 7.2,None,None,1)
-SIGMA_STAR_AFrSem = Beta('SIGMA_STAR_AFrSem',8.91,None,None,1)
-SIGMA_STAR_CulFr = Beta('SIGMA_STAR_CulFr', 10.1,None,None,1)
-SIGMA_STAR_OmLmVel = Beta('SIGMA_STAR_OmLmVel', 8.18,None,None,1)
-SIGMA_STAR_IgPare = Beta('SIGMA_STAR_IgPare', 7.05,None,None,1)
-SIGMA_STAR_UsoCel = Beta('SIGMA_STAR_UsoCel', 9.59,None,None,1)
+SIGMA_STAR_EnfCond = Beta('SIGMA_STAR_EnfCond', structBetas['SIGMA_STAR_EnfCond'],None,None,0)
+SIGMA_STAR_AFrSem = Beta('SIGMA_STAR_AFrSem',structBetas['SIGMA_STAR_AFrSem'],None,None,0)
+SIGMA_STAR_CulFr = Beta('SIGMA_STAR_CulFr', structBetas['SIGMA_STAR_CulFr'],None,None,0)
+SIGMA_STAR_OmLmVel = Beta('SIGMA_STAR_OmLmVel', structBetas['SIGMA_STAR_OmLmVel'],None,None,0)
+SIGMA_STAR_IgPare = Beta('SIGMA_STAR_IgPare', structBetas['SIGMA_STAR_IgPare'],None,None,0)
+SIGMA_STAR_UsoCel = Beta('SIGMA_STAR_UsoCel', structBetas['SIGMA_STAR_UsoCel'],None,None,0)
 
 
 ### ECUACIONES DE MEDIDA FACTOR AMBIENTE LABORAL
 
 INTER_PrPer= Beta('INTER_PrPer',0,None,None,1)
-INTER_AmbTr= Beta('INTER_AmbTr',-9.8,None,None,1)
+INTER_AmbTr= Beta('INTER_AmbTr',structBetas['INTER_AmbTr'],None,None,0)
 
-BETA_PrPerF2 = Beta('BETA_PrPerF2',0.558,None,None,1)
-BETA_AmbTrF2 = Beta('BETA_AmbTFr2',0.485,None,None,1)
+BETA_PrPerF2 = Beta('BETA_PrPerF2',0.596,None,None,1)
+BETA_AmbTrF2 = Beta('BETA_AmbTFr2',0.566,None,None,1)
 
 MODEL_PrPer = INTER_PrPer + BETA_PrPerF2 * AMBLABOR
 MODEL_AmbTr = INTER_AmbTr + BETA_AmbTrF2 * AMBLABOR
 
 SIGMA_STAR_PrPer = Beta('SIGMA_STAR_PrPer',10,None,None,1)
-SIGMA_STAR_AmbTr = Beta('SIGMA_STAR_AmbTr',12.2,None,None,1)
+SIGMA_STAR_AmbTr = Beta('SIGMA_STAR_AmbTr',structBetas['SIGMA_STAR_AmbTr'],None,None,0)
 
 
 ### ECUACIONES DE MEDIDA FACTOR HABILIDADES PROSOCIALES
@@ -162,23 +185,19 @@ SIGMA_STAR_AmbTr = Beta('SIGMA_STAR_AmbTr',12.2,None,None,1)
 INTER_ComVrb = Beta('INTER_ComVrb',0,None,None,1)
 INTER_ComAfec = Beta('INTER_ComAfec',0,None,None,0)
 INTER_ConCl = Beta('INTER_ConCl',0,None,None,0)
-INTER_AnsF3 = Beta('INTER_AnsF3',0,None,None,0)
 
-BETA_ComVrbF3 = Beta('BETA_ComVrbF3',0.596,None,None,1)
-BETA_ComAfecF3 = Beta('BETA_ComAfecF3',-0.673,None,None,1)
-BETA_ConClF3 = Beta('BETA_ConClF3',-0.328,None,None,1)
-BETA_AnsF3 = Beta('BETA_AnsF3',-0.362,None,None,1)
+BETA_ComVrbF3 = Beta('BETA_ComVrbF3',0.506,None,None,1)
+BETA_ComAfecF3 = Beta('BETA_ComAfecF3',-0.591,None,None,1)
+BETA_ConClF3 = Beta('BETA_ConClF3',-0.281,None,None,1)
 
 MODEL_ComVrb = INTER_ComVrb + BETA_ComVrbF3 * HABPROSOC
 MODEL_ComAfec = INTER_ComAfec + BETA_ComAfecF3 * HABPROSOC
 MODEL_ConCl = INTER_ConCl + BETA_ConClF3 * HABPROSOC
-MODEL_AnsF3 = INTER_AnsF3 + BETA_AnsF3 * HABPROSOC
+
 
 SIGMA_STAR_ComVrb = Beta('SIGMA_STAR_ComVrb',10,None,None,1)
 SIGMA_STAR_ComAfec = Beta('SIGMA_STAR_ComAfec',10,None,None,0)
 SIGMA_STAR_ConCl = Beta('SIGMA_STAR_ConCl',10,None,None,0)
-SIGMA_STAR_AnsF3 = Beta('SIGMA_STAR_AnsF3',10,None,None,0)
-
 
 
 delta_1 = Beta('delta_1',0.25196349820243613,0,None,0 )
@@ -357,24 +376,10 @@ IndConCl = {
 
 P_ConCl = Elem(IndConCl, ConCl)
 
-Ans_tau_1 = (tau_1-MODEL_AnsF3) / SIGMA_STAR_AnsF3
-Ans_tau_2 = (tau_2-MODEL_AnsF3) / SIGMA_STAR_AnsF3
-Ans_tau_3 = (tau_3-MODEL_AnsF3) / SIGMA_STAR_AnsF3
-Ans_tau_4 = (tau_4-MODEL_AnsF3) / SIGMA_STAR_AnsF3
-IndAns = {
-    1: bioNormalCdf(Ans_tau_1),
-    2: bioNormalCdf(Ans_tau_2)-bioNormalCdf(Ans_tau_1),
-    3: bioNormalCdf(Ans_tau_3)-bioNormalCdf(Ans_tau_2),
-    4: bioNormalCdf(Ans_tau_4)-bioNormalCdf(Ans_tau_3),
-    5: 1-bioNormalCdf(Ans_tau_4)
-}
-
-P_Ans = Elem(IndAns, Ans)
-
 # log-verosimilitud
 
 loglike = log(P_FRbr * P_EnfCond * P_AFrSem * P_CulFr * P_OmLmVel * P_IgPare * P_UsoCel * P_PrPer * P_AmbTr *\
-    P_ComVrb * P_ComAfec * P_ConCl * P_Ans)
+    P_ComVrb * P_ComAfec * P_ConCl)
             
 
 biogeme  = bio.BIOGEME(database,loglike)
