@@ -1,0 +1,57 @@
+/*
+input[type="number"] {
+  max-width: 80%;
+}
+*/
+
+.outer {
+  position: fixed;
+  top: 41px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Customize fonts */
+body, label, input, button, select {
+  font-family: 'Helvetica Neue', Helvetica;
+  font-weight: 200;
+}
+h1, h2, h3, h4 { font-weight: 400; }
+
+#filtros {
+  /* Appearance */
+  background-color: white;
+  padding: 0 20px 20px 20px;
+  /* Fade out while not hovering */
+  opacity: 0.65;
+  zoom: 0.9;
+  transition: opacity 500ms 1s;
+}
+#filtros:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
+
+#checkboxPuntos {
+  /* Appearance */
+  padding: 10px 10px 10px 10px;
+  margin: 0;
+  /* Fade out while not hovering */
+  opacity: 0.65;
+  zoom: 0.9;
+  transition: opacity 500ms 1s;
+}
+#checkboxPuntos:hover {
+  /* Fade in while hovering */
+  opacity: 0.95;
+  transition-delay: 0;
+}
+
+/* If not using map tiles, show a white background */
+.leaflet-container {
+  background-color: white;
+}
