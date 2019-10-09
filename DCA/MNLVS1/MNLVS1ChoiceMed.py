@@ -8,6 +8,7 @@ Created on Sat May 18 15:52:01 2019
 # Modelo de Elección MNL1
 # Modelo básico con funciones de utilidad definidas solo en terminos del tiempo y distancias
 
+
 # Cargar Paquetes
 
 import pandas as pd
@@ -20,10 +21,12 @@ import biogeme.loglikelihood as ll
 
 #Cargar DataBase
 
+#Cargar DataBase
+
 pandas = pd.read_csv('/Users/williz/Desktop/ModelosED/Database/DBModLogitMuestraVLCE.csv', sep='\t')
 
 # normalizar variables continuas para evitar zero log-likelihood 
-pandas["TIEMPO_PROFESION"]=(pandas["TIEMPO_PROFESION"]-pandas["TIEMPO_PROFESION"].min())/(pandas["TIEMPO_PROFESION"].max()-pandas["TIEMPO_PROFESION"].min())
+#pandas["TIEMPO_PROFESION"]=(pandas["TIEMPO_PROFESION"]-pandas["TIEMPO_PROFESION"].min())/(pandas["TIEMPO_PROFESION"].max()-pandas["TIEMPO_PROFESION"].min())
 pandas["HORASTRABAJO"]=(pandas["HORASTRABAJO"]-pandas["HORASTRABAJO"].min())/(pandas["HORASTRABAJO"].max()-pandas["HORASTRABAJO"].min())
 pandas["DISTAlt1"]=(pandas["DISTAlt1"]-pandas["DISTAlt1"].min())/(pandas["DISTAlt1"].max()-pandas["DISTAlt1"].min())
 pandas["DISTAlt2"]=(pandas["DISTAlt2"]-pandas["DISTAlt2"].min())/(pandas["DISTAlt2"].max()-pandas["DISTAlt2"].min())
@@ -51,13 +54,13 @@ DIST1_SC = DefineVariable('DIST1_SC', DISTAlt1, database)
 DIST2_SC = DefineVariable('DIST2_SC', DISTAlt2, database)
 DIST3_SC = DefineVariable('DIST3_SC', DISTAlt3, database)
 DIST4_SC = DefineVariable('DIST4_SC', DISTEC, database)
-CONG_A1AB = DefineVariable('CONG_A1AB',CONG_A1 == 1,database)
+CONG_A1AB = DefineVariable('CONG_A1AB',(CONG_A1 == 0)+(CONG_A1 == 1),database)
 CONG_A1CD = DefineVariable('CONG_A1CD',CONG_A1 == 2,database)
 CONG_A1EF = DefineVariable('CONG_A1EF',(CONG_A1 == 3)+(CONG_A1 == 4),database)
-CONG_A2AB = DefineVariable('CONG_A2AB',CONG_A2 == 1,database)
+CONG_A2AB = DefineVariable('CONG_A2AB',(CONG_A2 == 0)+(CONG_A2 == 1),database)
 CONG_A2CD = DefineVariable('CONG_A2CD',CONG_A2 == 2,database)
 CONG_A2EF = DefineVariable('CONG_A2EF',(CONG_A2 == 3)+(CONG_A2 == 4),database)
-CONG_A3AB = DefineVariable('CONG_A3AB',CONG_A3 == 1,database)
+CONG_A3AB = DefineVariable('CONG_A3AB',(CONG_A3 == 0)+(CONG_A3 == 1),database)
 CONG_A3CD = DefineVariable('CONG_A3CD',CONG_A3 == 2,database)
 CONG_A3EF = DefineVariable('CONG_A3EF',(CONG_A3 == 3)+(CONG_A3 == 4),database)
 CONG_A4AB = DefineVariable('CONG_A4AB',CONGESTION <= 2,database)
@@ -81,8 +84,8 @@ CONINFO = DefineVariable('CONINFO', INFOTRAFICO == 2, database)
 USOCINTURON = DefineVariable ('USOCINTURON', CinSeg == 2, database)
 USODISPMOB = DefineVariable('USODISPMOB',(DispMob==2)+(DispMob==3)+(DispMob==4)+(DispMob==5)+(DispMob==6),database)
 SINEXPER = DefineVariable('SINEXPER', EXPERIENCIA == 1,database)
-POCAEXPER = DefineVariable('POCAEXPER', (EXPERIENCIA == 2)+(EXPERIENCIA == 4),database)
-EXPER = DefineVariable('EXPER', EXPERIENCIA >4,database)
+POCAEXPER = DefineVariable('POCAEXPER', EXPERIENCIA == 2,database)
+EXPER = DefineVariable('EXPER', EXPERIENCIA >2,database)
 
 
 # Coeficientes
@@ -117,17 +120,28 @@ COEF_SINEXPER = Beta('COEF_SINEXPER',0,None,None,0)
 COEF_POCAEXPER = Beta('COEF_POCAEXPER',0,None,None,0)
 COEF_EXPER = Beta('COEF_EXPER',0,None,None,0)
 
+#Variacion de Gustos
+B_TIMEVS = Beta('B_TIMEVS',0,None,None,0)
+B_DISTVS = Beta('B_DISTVS',0,None,None,0)
+B_CONGABVS = Beta('B_CONGABVS',0,None,None,0)
+B_CONGCDVS = Beta('B_CONGCDVS',0,None,None,0)
+
+
+B_TIMEVS = (B_TIME)
+B_DISTVS = (B_DIST)
+B_CONGABVS = (B_CONGAB + COEF_EXPER*EXPER )
+B_CONGCDVS = (B_CONGCD )
 
 #Especificacion de las Funciones de Utilidad
 
 
-V1 = ASC_ALT1+B_TIME*TIME1_SC+B_DIST*DIST1_SC + + B_CONGAB*CONG_A1AB + B_CONGCD*CONG_A1CD 
+V1 = ASC_ALT1+B_TIMEVS*TIME1_SC+B_DISTVS*DIST1_SC + B_CONGABVS*CONG_A1AB
 
-V2 = ASC_ALT2+B_TIME*TIME2_SC+B_DIST*DIST2_SC + B_CONGAB*CONG_A2AB + B_CONGCD*CONG_A2CD 
+V2 = ASC_ALT2+B_TIMEVS*TIME2_SC+B_DISTVS*DIST2_SC + B_CONGABVS*CONG_A2AB
 
-V3 = ASC_ALT3+B_TIME*TIME3_SC+B_DIST*DIST3_SC + B_CONGAB*CONG_A3AB + B_CONGCD*CONG_A3CD 
+V3 = ASC_ALT3+B_TIMEVS*TIME3_SC+B_DISTVS*DIST3_SC + B_CONGABVS*CONG_A3AB
 
-V4 = ASC_EC+B_TIME*TIME4_SC+B_DIST*DIST4_SC + B_CONGAB*CONG_A4AB + B_CONGCD*CONG_A4CD 
+V4 = ASC_EC+B_TIMEVS*TIME4_SC+B_DISTVS*DIST4_SC + B_CONGABVS*CONG_A4AB
 
 
 # Asociacion de las funciones de utilidad con el numero de alternativas
@@ -142,7 +156,7 @@ logprob = bioLogLogit(V,AV,CHOICE)
 #BIOGEME
 biogeme = bio.BIOGEME(database, logprob)
 
-biogeme.modelName = "MNL1ChoiceMed"
+biogeme.modelName = "MNLVS1ChoiceMed"
 results = biogeme.estimate()
 # Get the results in a pandas table
 pandasResults = results.getEstimatedParameters()
@@ -154,6 +168,4 @@ print(f"rho bar square = {results.data.rhoBarSquare:.3g}")
 print(f"Output file: {results.data.htmlFileName}")
 results.writeLaTeX()
 print(f"LaTeX file: {results.data.latexFileName}")
-
-
 

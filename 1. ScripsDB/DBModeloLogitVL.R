@@ -38,6 +38,30 @@ names(DB$ModoConduccion)
 names(DB$CaracterizacionTaxista)
 names(DB$PersonalidadConductor)
 
+RutasGoogle <- rename(RutasGoogle, replace = c("A1_Distancia Km" ="DISTAlt1", 
+                      "A1_Tiempo Min"="TIEMPOAlt1",
+                      A1_Color="CONG_A1", 
+                      "A2_Distancia Km" ="DISTAlt2", 
+                      "A2_Tiempo Min" ="TIEMPOAlt2", 
+                      A2_Color="CONG_A2", 
+                      "A3_Distancia Km"="DISTAlt3", 
+                      "A3_Tiempo Min" ="TIEMPOAlt3",
+                      A3_Color="CONG_A3", 
+                      AT_Distancia="DISTEC", 
+                      AT_Tiempo="TIEMPOEC", 
+                      Costo="COSTO", 
+                      Choice="CHOICE"))
+
+RutasGoogle$CONG_A1 <- factor(RutasGoogle$CONG_A1,
+                    levels = c("SinInf","Verde","Amarillo","Rojo","Negro"),
+                    labels = c('0','1','2','3','4'))
+RutasGoogle$CONG_A2 <- factor(RutasGoogle$CONG_A2,
+                              levels = c("SinInf","Verde","Amarillo","Rojo","Negro"),
+                              labels = c('0','1','2','3','4'))
+RutasGoogle$CONG_A3 <- factor(RutasGoogle$CONG_A3,
+                              levels = c("SinInf","Verde","Amarillo","Rojo","Negro"),
+                              labels = c('0','1','2','3','4'))
+
 Datos <- DB$Viajes %>%
   select(ViajeId) %>%
   # Rutas 200
@@ -47,11 +71,11 @@ Datos <- DB$Viajes %>%
              by ="ViajeId") %>%
   # Rutas Google
   inner_join(RutasGoogle %>%
-               select(ViajeId,"A1_Distancia Km",
-                      "A1_Tiempo Min",A1_Velocidad, "A2_Distancia Km", 
-                      "A2_Tiempo Min", A2_Velocidad,"A3_Distancia Km", 
-                      "A3_Tiempo Min",A3_Velocidad,AT_Distancia, AT_Tiempo, 
-                      AT_VelMed, AT_VelTotal,Costo, Choice),
+               select(ViajeId,"DISTAlt1", "TIEMPOAlt1","CONG_A1",
+                      "DISTAlt2", "TIEMPOAlt2", "CONG_A2", 
+                      "DISTAlt3", "TIEMPOAlt3","CONG_A3", 
+                      "DISTEC", "TIEMPOEC",
+                      "COSTO", "CHOICE"),
              by = "ViajeId") %>%
   # Modo conducción
   inner_join(DB$ModoConduccion %>%
@@ -85,21 +109,6 @@ Datos1 <- rename(Datos, replace = c(Clima="CLIMA",
                                NivelEducativo = "NIVELEDUCATIVO", 
                                InformacionPreviaDelTrafico="INFOTRAFICO",
                                Edad="EDAD",
-                               "A1_Distancia Km" ="DISTAlt1", 
-                               "A1_Tiempo Min"="TIEMPOAlt1",
-                               A1_Velocidad="VELAlt1", 
-                               "A2_Distancia Km" ="DISTAlt2", 
-                               "A2_Tiempo Min" ="TIEMPOAlt2", 
-                               A2_Velocidad="VELAlt2", 
-                               "A3_Distancia Km"="DISTAlt3", 
-                               "A3_Tiempo Min" ="TIEMPOAlt3",
-                               A3_Velocidad="VELAlt3", 
-                               AT_Distancia="DISTEC", 
-                               AT_Tiempo="TIEMPOEC", 
-                               AT_VelMed="VELPROMEC", 
-                               AT_VelTotal="VELTOTALEC", 
-                               Costo="COSTO", 
-                               Choice="CHOICE",
                                Accidente = "DispMob", 
                                Atraco = "SatDispMob",
                                SerioConservador = "ComVrb",
@@ -124,12 +133,12 @@ names(Datos1)
 # Ordenamos la Base de datos
 
 X <- Datos1 %>%
-  select("ViajeId", "GENERO", "TIEMPO_PROFESION", "HORASTRABAJO","NIVELEDUCATIVO", "INFOTRAFICO", 
-         "EDAD","CLIMA","CONGESTION","PAVIMENTO","INCIDENTE", "MERIDIANO", "HPICOHVALLE",
-         "DISTAlt1", "TIEMPOAlt1","VELAlt1",                        
-         "DISTAlt2","TIEMPOAlt2","VELAlt2" ,                       
-         "DISTAlt3", "TIEMPOAlt3", "VELAlt3",
-         "DISTEC","TIEMPOEC", "VELPROMEC", "VELTOTALEC", "COSTO", "CHOICE",
+  select("ViajeId", "GENERO", "TIEMPO_PROFESION", "HORASTRABAJO","NIVELEDUCATIVO",
+         "EDAD","DISTAlt1", "TIEMPOAlt1","CONG_A1",                        
+         "DISTAlt2","TIEMPOAlt2","CONG_A2" ,                       
+         "DISTAlt3", "TIEMPOAlt3", "CONG_A3",
+         "DISTEC","TIEMPOEC","INFOTRAFICO","CLIMA","CONGESTION","PAVIMENTO",
+         "INCIDENTE", "MERIDIANO", "HPICOHVALLE","COSTO", "CHOICE",
          "DispMob", "SatDispMob", "PasoPeatones", "UsaPito",
          "CinSeg","FRbr", "UsoDirec",
          "EnfCond", "AFrSem", "CulFr",
@@ -145,7 +154,6 @@ names(X)
 View(X)
 
 str(X)
-
 
 
 # Cinturon de Seguridad
@@ -216,6 +224,7 @@ X$DispMob[X$DispMob == 0] <-2
 
 
 str(X)
+view(X)
 summary(X, na.rm = TRUE)
 
 
@@ -240,32 +249,38 @@ levels(X$MERIDIANO) <- c('1','2')
 #1:Valle, 2:Pico
 levels(X$HPICOHVALLE) <- c('1','2')
 
+#Creacion Variable Experiencia
+X$EXPERIENCIA <- X$TIEMPO_PROFESION
+X$EXPERIENCIA[X$EXPERIENCIA <= 2] <- 1
+X$EXPERIENCIA[X$EXPERIENCIA > 2 & X$EXPERIENCIA <= 5] <- 2
+X$EXPERIENCIA[X$EXPERIENCIA > 5 & X$EXPERIENCIA <= 8] <- 3
+X$EXPERIENCIA[X$EXPERIENCIA > 8 & X$EXPERIENCIA <= 12] <- 4
+X$EXPERIENCIA[X$EXPERIENCIA > 12] <- 5
 
-#Eliminar Variables en el DB
 
-X <- X[ ,!colnames(X)=="ViajeId"]
+
 
 names(X)
 View(X)
 
 CEscala1 <- select(X,-("FRbr":"ConCl"))
 
-CEscala <- select(X, -("GENERO":"CinSeg"))
+#CEscala <- select(X, -("GENERO":"CinSeg"))
 
 
 
 
-names(CEscala)
+#names(CEscala)
 names(CEscala1)
 
 # Aqui se debe hacer e cambio de escala en Excel y luego continuar nuevamente
 
 #Creacion de la base de datos para el modelo logit multivariado
-write.table(CEscala, 
-            file="/Users/williz/Desktop/ModelosED/Database/DBCEscala.csv", sep="\t", dec=".")
+#write.table(CEscala, 
+            #file="/Users/williz/Desktop/ModelosED/Database/DBCEscala.csv", sep="\t", dec=".")
 
 
-names(X)
+#names(X)
 
 
 CEscalaPerso <-read_xlsx("/Users/williz/Desktop/ModelosED/Database/CambioEscalaVL.xlsx", 
@@ -281,7 +296,7 @@ names(CEscalaPerso)
 DBModelo <- CEscala1 %>%
   select(ViajeId) %>%
   inner_join(CEscala1 %>%
-                         select(ViajeId:CinSeg),
+                         select(ViajeId:EXPERIENCIA),
                        by = "ViajeId") %>%
   # CEscalaCond
   inner_join(CEscalaCond %>%
@@ -294,10 +309,32 @@ DBModelo <- CEscala1 %>%
 
 names(DBModelo)
 
+#ordenamos la base de datos
+
+DBModelo <- DBModelo %>%
+  select("ViajeId", "GENERO", "TIEMPO_PROFESION", "HORASTRABAJO","NIVELEDUCATIVO",
+         "EDAD","DISTAlt1", "TIEMPOAlt1","CONG_A1",                        
+         "DISTAlt2","TIEMPOAlt2","CONG_A2" ,                       
+         "DISTAlt3", "TIEMPOAlt3", "CONG_A3",
+         "DISTEC","TIEMPOEC","INFOTRAFICO","CLIMA","CONGESTION","PAVIMENTO",
+         "INCIDENTE", "MERIDIANO", "HPICOHVALLE","COSTO", "CHOICE",
+         "EXPERIENCIA","SatDispMob", "PasoPeatones", "UsaPito",
+         "CinSeg","FRbr", "UsoDirec",
+         "EnfCond", "AFrSem", "CulFr",
+         "OmLmVel" , "IgPare", "UsoCel",
+         "ComVrb", "Ans", "ComAfec", "PrPer", "AmbTr","StrC","ConCl","DispMob")
+
+names(DBModelo)
+
+
 view(DBModelo)
+
+#Eliminar Variables en el DB
+
+#X <- X[ ,!colnames(X)=="ViajeId"]
 
 write.table(DBModelo, 
             file="/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv", sep="\t", dec=".")
 
-
+# EL ANALISIS CONTINUA EN EL SCRIPT AFACTORIALCONJUNTO
 

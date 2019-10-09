@@ -1,0 +1,5 @@
+"","Mean for EXPERIENCIA if chosen","Mean for EXPERIENCIA if not chosen","t-test for difference","Mean for NIVELEDUCATIVO if chosen","Mean for NIVELEDUCATIVO if not chosen","t-test for difference","Mean for EDAD if chosen","Mean for EDAD if not chosen","t-test for difference"
+"Alt1",3.6726,3.6128,-0.34,1.3186,1.4,1.37,2.6106,2.7532,1.5
+"Alt2",3.381,3.6667,1.12,1.381,1.3725,-0.09,2.5714,2.7255,1.26
+"Alt3",3.8571,3.6177,-0.67,1.4762,1.367,-0.72,2.8095,2.7003,-0.71
+"Alt4",3.6395,3.625,-0.09,1.3953,1.3523,-0.73,2.7907,2.625,-1.96

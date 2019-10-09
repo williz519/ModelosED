@@ -1,0 +1,67 @@
+%% This file is designed to be included into a LaTeX document
+%% See http://www.latex-project.org/ for information about LaTeX
+%% biogeme 3.1.2 [Today, 2019]
+%% Version entirely written in Python
+%% Home page: http://biogeme.epfl.ch
+%% Submit questions to https://groups.google.com/d/forum/biogeme
+%% Michel Bierlaire, Transport and Mobility Laboratory, Ecole Polytechnique Fédérale de Lausanne (EPFL)
+
+%% File MNL1ChoiceMed~01.tex
+%% This file has automatically been generated on 2019-09-19 21:19:35.440033</p>
+
+%%Database name: DBModLogitMuestraVLCE
+
+%% General statistics
+\section{General statistics}
+\begin{tabular}{ll}
+Number of estimated parameters & 5 \\
+Sample size & 294 \\
+Excluded observations & 0 \\
+Init log likelihood & -407.5705 \\
+Final log likelihood & -325.8822 \\
+Likelihood ratio test for the init. model & 163.3767 \\
+Rho-square for the init. model & 0.2 \\
+Rho-square-bar for the init. model & 0.188 \\
+Akaike Information Criterion & 661.7644 \\
+Bayesian Information Criterion & 680.1823 \\
+Final gradient norm & 9.6903E-04 \\
+Diagnostic & b'CONVERGENCE: NORM\_OF\_PROJECTED\_GRADIENT\_<=\_PGTOL' \\
+Database readings & 15 \\
+Iterations & 14 \\
+Data processing time & 0:00:00.000016 \\
+Optimization time & 0:00:00.113454 \\
+Nbr of threads & 4 \\
+\end{tabular}
+
+%%Parameter estimates
+\section{Parameter estimates}
+\begin{tabular}{lrrrrrrr}
+\toprule
+{} &  Value &  Std err &  t-test &  p-value &  Rob. Std err &  Rob. t-test &  Rob. p-value \\
+\midrule
+ASC\_ALT1 & -0.734 &     0.16 &   -4.58 & 4.66e-06 &         0.155 &        -4.72 &       2.3e-06 \\
+ASC\_ALT2 &  -1.68 &    0.234 &   -7.16 & 8.05e-13 &         0.224 &        -7.49 &      6.91e-14 \\
+ASC\_ALT3 &  -2.27 &    0.271 &    -8.4 &      0.0 &         0.281 &        -8.09 &      6.66e-16 \\
+B\_DIST   &  -3.19 &     1.09 &   -2.94 &  0.00329 &         0.948 &        -3.37 &      0.000764 \\
+B\_TIME   &    4.1 &     1.01 &    4.06 & 4.82e-05 &          1.01 &         4.07 &      4.63e-05 \\
+\bottomrule
+\end{tabular}
+
+%%Correlation
+\section{Correlation}
+\begin{tabular}{lrrrrrrrr}
+\toprule
+{} &  Covariance &  Correlation &  t-test &  p-value &  Rob. cov. &  Rob. corr. &  Rob. t-test &  Rob. p-value \\
+\midrule
+ASC\_ALT2-ASC\_ALT1 &       0.016 &        0.425 &   -4.28 & 1.89e-05 &     0.0153 &       0.438 &        -4.51 &      6.52e-06 \\
+ASC\_ALT3-ASC\_ALT1 &      0.0157 &        0.363 &   -5.92 &  3.2e-09 &     0.0192 &       0.441 &        -6.06 &      1.39e-09 \\
+ASC\_ALT3-ASC\_ALT2 &      0.0224 &        0.353 &   -2.05 &   0.0399 &     0.0227 &       0.361 &        -2.05 &        0.0401 \\
+B\_DIST-ASC\_ALT1   &      0.0434 &         0.25 &   -2.32 &   0.0201 &     0.0352 &       0.239 &        -2.66 &       0.00781 \\
+B\_DIST-ASC\_ALT2   &     -0.0404 &       -0.159 &   -1.32 &    0.187 &    -0.0132 &     -0.0622 &        -1.53 &         0.126 \\
+B\_DIST-ASC\_ALT3   &     -0.0133 &      -0.0454 &  -0.812 &    0.417 &     0.0411 &       0.154 &        -0.97 &         0.332 \\
+B\_TIME-ASC\_ALT1   &      -0.087 &       -0.538 &    4.38 & 1.18e-05 &     -0.077 &      -0.492 &         4.43 &      9.44e-06 \\
+B\_TIME-ASC\_ALT2   &     -0.0816 &       -0.345 &     5.2 & 2.01e-07 &    -0.0628 &      -0.279 &          5.3 &      1.16e-07 \\
+B\_TIME-ASC\_ALT3   &     -0.0837 &       -0.307 &    5.68 & 1.34e-08 &     -0.117 &      -0.415 &         5.53 &      3.13e-08 \\
+B\_TIME-B\_DIST     &      -0.652 &       -0.596 &     3.9 & 9.77e-05 &     -0.732 &      -0.768 &         3.97 &      7.27e-05 \\
+\bottomrule
+\end{tabular}

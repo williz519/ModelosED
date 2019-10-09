@@ -15,6 +15,7 @@ require(psych)
 require(GGally)
 library(corrplot)
 library(corrr)
+library(psych)
 
 #Leer la dataset 
 
@@ -26,7 +27,7 @@ DB1 <- read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv"
 
 names(DB1)
 
-DB2 <- select(DB1, -("CinSeg":"ConCl"))
+DB2 <- select(DB1, -("CinSeg":"DispMob"))
 names(DB2)
 
 DB3 <- select(DB1, -("GENERO":"UsaPito"))
@@ -102,6 +103,17 @@ kmo.denom <- kmo.num + (sum(A^2)-sum(diag(A^2)))
 kmo <- kmo.num/kmo.denom
 print(kmo)
 
+# Alpha de Cronbach
+# Alfa >0.9 Excelente
+# Alfa > 0.8 Bueno
+# Alfa > 0.6 Cuestionable
+# Alfa > 0.5 Pobre
+# Alfa < 0.5 Inaceptable
+
+DBConjunta <- data.frame(DBConjunta)
+alpha(DBConjunta,check.keys=TRUE)
+
+
 
 #Analisis de Componentes Principales
 pca1 <- princomp(DBConjunta, scores = TRUE, cor = TRUE)
@@ -127,7 +139,7 @@ pca1$scores[1:10,]
 #Analisis Factorial
 
 fa <-factanal(DBConjunta, factor=5, rotation = "varimax", na.rm = TRUE)
-print(fa,cutoff=0.35, sort=FALSE)
+print(fa,cutoff=0.30, sort=FALSE)
 
 fa2 <-factanal(DBConjunta, factor=4, rotation = "varimax", na.rm = TRUE)
 print(fa2,cutoff=0.3, sort=FALSE)
@@ -174,6 +186,11 @@ hist(DBFAC$Stress, freq = TRUE, main = "Distr del Factor 4",
 
 
 #sink()
+
+
+write.table(DBFAC, 
+            file="/Users/williz/Desktop/ModelosED/Database/DataBaseVLCE.csv", sep="\t", dec=".")
+
 
 
 DBMuestra <- DBFAC %>%
@@ -235,12 +252,21 @@ DBMuestra <- DBFAC %>%
 
 
 DBMuestra <- DBMuestra[ ,!colnames(DBMuestra)=="ViajeId"]
-DBMuestra <-select(DBMuestra, -("SatDispMob"), -("VELAlt1"),
-                   -("VELAlt2"), -("VELAlt3"),-("VELPROMEC"),-("VELTOTALEC"),-("PasoPeatones"),
+names(DBMuestra)
+DBMuestra <-select(DBMuestra, -("SatDispMob"),-("PasoPeatones"),
                    -("UsaPito"))
 
-names(DBMuestra)
 view(DBMuestra)
+
+#Cambio de Escala a Congestion
+#DBMuestra$CONGESTION[DBMuestra$CONGESTION == 1 | DBMuestra$CONGESTION == 2 ] <- 1
+#DBMuestra$CONGESTION[DBMuestra$CONGESTION == 3 | DBMuestra$CONGESTION == 4 ] <- 2
+#DBMuestra$CONGESTION[DBMuestra$CONGESTION == 5 | DBMuestra$CONGESTION == 6 ] <- 3
+#DBMuestra$CONGESTION[DBMuestra$CONGESTION == 7 ] <- 4
+
+
+
+
 
 write.table(DBMuestra, 
             file="/Users/williz/Desktop/ModelosED/Database/DBModLogitMuestraVLCE.csv", sep="\t", dec=".")

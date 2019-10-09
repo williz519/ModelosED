@@ -1,0 +1,111 @@
+Model run using Apollo for R, version 0.0.8 
+www.ApolloChoiceModelling.com
+
+Model name                       : Apollo_MNL_1
+Model description                : Modelo MNL simple en datos RP de elecci?n de ruta
+Model run at                     : 2019-10-01 18:28:50
+Estimation method                : bfgs
+Model diagnosis                  : successful convergence 
+Number of individuals            : 348
+Number of observations           : 348
+
+Number of cores used             :  1 
+Model without mixing
+
+LL(start)                        : -482.4304
+LL(0)                            : -482.4304
+LL(final)                        : -382.2269
+Rho-square (0)                   :  0.2077 
+Adj.Rho-square (0)               :  0.1953 
+AIC                              :  776.45 
+BIC                              :  799.57 
+Estimated parameters             :  6
+Time taken (hh:mm:ss)            :  00:00:4.73 
+Iterations                       :  16 
+
+Estimates:
+         Estimate Std.err. t.ratio(0) Rob.std.err. Rob.t.ratio(0)
+asc_Alt1  -0.2286   0.1754      -1.30       0.1875          -1.22
+asc_Alt2  -1.2937   0.2049      -6.31       0.2028          -6.38
+asc_Alt3  -2.0975   0.2543      -8.25       0.2462          -8.52
+asc_Alt4   0.0000       NA         NA           NA             NA
+b_tt       0.0844   0.0216       3.91       0.0279           3.03
+b_dt      -0.2456   0.0866      -2.84       0.0796          -3.08
+b_cg       0.1838   0.1058       1.74       0.1052           1.75
+
+Overview of choices for MNL model component:
+                                   Alt1   Alt2   Alt3   Alt4
+Times available                  348.00 348.00 348.00 348.00
+Times chosen                     113.00  42.00  21.00 172.00
+Percentage chosen overall         32.47  12.07   6.03  49.43
+Percentage chosen when available  32.47  12.07   6.03  49.43
+
+
+Classical covariance matrix:
+          asc_Alt1  asc_Alt2  asc_Alt3      b_tt      b_dt      b_cg
+asc_Alt1  0.030761  0.019550  0.017936  0.001987 -0.003950 -0.010458
+asc_Alt2  0.019550  0.042001  0.017049  0.001464 -0.003651 -0.009605
+asc_Alt3  0.017936  0.017049  0.064678  0.000902 -0.002439 -0.009929
+b_tt      0.001987  0.001464  0.000902  0.000465 -0.000847 -0.000561
+b_dt     -0.003950 -0.003651 -0.002439 -0.000847  0.007494 -0.000978
+b_cg     -0.010458 -0.009605 -0.009929 -0.000561 -0.000978  0.011192
+
+Robust covariance matrix:
+          asc_Alt1  asc_Alt2  asc_Alt3      b_tt      b_dt      b_cg
+asc_Alt1  0.035138  0.021192  0.012607  0.003464 -0.006763 -0.010305
+asc_Alt2  0.021192  0.041131  0.012087  0.002279 -0.005009 -0.007847
+asc_Alt3  0.012607  0.012087  0.060591 -0.000364  0.001760 -0.008124
+b_tt      0.003464  0.002279 -0.000364  0.000776 -0.001475 -0.000945
+b_dt     -0.006763 -0.005009  0.001760 -0.001475  0.006342 -0.001115
+b_cg     -0.010305 -0.007847 -0.008124 -0.000945 -0.001115  0.011072
+
+Classical correlation matrix:
+          asc_Alt1  asc_Alt2  asc_Alt3      b_tt      b_dt      b_cg
+asc_Alt1  1.000000  0.543897  0.402101  0.525378 -0.260178 -0.563635
+asc_Alt2  0.543897  1.000000  0.327113  0.331219 -0.205803 -0.443028
+asc_Alt3  0.402101  0.327113  1.000000  0.164538 -0.110768 -0.369030
+b_tt      0.525378  0.331219  0.164538  1.000000 -0.453978 -0.246138
+b_dt     -0.260178 -0.205803 -0.110768 -0.453978  1.000000 -0.106755
+b_cg     -0.563635 -0.443028 -0.369030 -0.246138 -0.106755  1.000000
+
+Robust correlation matrix:
+          asc_Alt1  asc_Alt2  asc_Alt3      b_tt      b_dt      b_cg
+asc_Alt1  1.000000  0.557429  0.273231  0.663303 -0.453040 -0.522425
+asc_Alt2  0.557429  1.000000  0.242126  0.403325 -0.310139 -0.367721
+asc_Alt3  0.273231  0.242126  1.000000 -0.053098  0.089801 -0.313649
+b_tt      0.663303  0.403325 -0.053098  1.000000 -0.664505 -0.322173
+b_dt     -0.453040 -0.310139  0.089801 -0.664505  1.000000 -0.133091
+b_cg     -0.522425 -0.367721 -0.313649 -0.322173 -0.133091  1.000000
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+                                     ID Avg prob per choice
+ {0C1D8C2A-12E2-E811-8FB7-74867AD5B714}         0.004714026
+ {01023F7A-67C3-E811-914C-74867AD5B714}         0.012759689
+ {B780DF7F-0DD7-E811-8FB7-74867AD5B714}         0.021575475
+ {16644C52-46C0-E811-914C-74867AD5B714}         0.028626234
+ {18C72602-3CDC-E811-8FB7-74867AD5B714}         0.045292461
+ {116C5EFA-C6C5-E811-914C-74867AD5B714}         0.049817875
+ {04B1F452-BDC5-E811-914C-74867AD5B714}         0.051272297
+ {D9161238-0FDD-E811-8FB7-74867AD5B714}         0.051464960
+ {80300F0C-90E2-E811-8FB7-74867AD5B714}         0.053841960
+ {AA6A7427-7FDC-E811-8FB7-74867AD5B714}         0.054148920
+ {8048E4FB-D9C8-E811-914C-74867AD5B714}         0.055374706
+ {9CE74908-B4CC-E811-914C-74867AD5B714}         0.058103374
+ {5EC39CAF-B5CC-E811-914C-74867AD5B714}         0.062418477
+ {A5C8A79C-89C2-E811-914C-74867AD5B714}         0.064196132
+ {0B4811D4-93C6-E811-914C-74867AD5B714}         0.065164177
+ {42F5F39B-A9CC-E811-914C-74867AD5B714}         0.067761968
+ {93122F95-D9DE-E811-8FB7-74867AD5B714}         0.070429213
+ {7DC817C9-35E4-E811-8FB7-74867AD5B714}         0.070844293
+ {E0281A50-3DC0-E811-914C-74867AD5B714}         0.072059055
+ {34B59188-DEC5-E811-914C-74867AD5B714}         0.074036021
+
+Changes in parameter estimates from starting values:
+         Initial Estimate Difference
+asc_Alt1       0  -0.2286    -0.2286
+asc_Alt2       0  -1.2937    -1.2937
+asc_Alt3       0  -2.0975    -2.0975
+asc_Alt4       0   0.0000     0.0000
+b_tt           0   0.0844     0.0844
+b_dt           0  -0.2456    -0.2456
+b_cg           0   0.1838     0.1838

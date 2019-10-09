@@ -505,7 +505,7 @@ condlike = P_FRbr*P_EnfCond*P_AFrSem*P_CulFr*P_OmLmVel*P_IgPare*P_UsoCel*P_PrPer
     P_ComVrb*P_ComAfec*P_ConCl*P_Ans*P_StrC*P_UsoDirec*condprob
 
 
-loglike = log(MonteCarlo(condlike)+0.1)
+loglike = log(MonteCarlo(condlike))
 
 biogeme  = bio.BIOGEME(database,loglike, numberOfDraws=100)
 biogeme.DRAWS = {'omega_LV1': ('NORMAL'), 'omega_LV2': ('NORMAL'), 'omega_LV3': ('NORMAL'), 'omega_LV4': ('NORMAL')}
