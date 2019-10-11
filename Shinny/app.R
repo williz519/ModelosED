@@ -51,7 +51,7 @@ ui <- navbarPage("Rutas de viajes", id = "nav",
           choices = c("Todos" = "", levels(Rutas$Horario))),
         selectInput("Clima", "Clima:", selected = "",
           choices = c("Todos" = "", levels(Rutas$Clima))),
-        selectInput("Congestion", "Nivel de congestiÃÂ³n:", selected = "",
+        selectInput("Congestion", "Nivel de congestion:", selected = "",
           choices = c("Todos" = "", levels(Rutas$Congestion))),
         selectInput("Pavimento", "Pavimento:", selected = "",
           choices = c("Todos" = "", levels(Rutas$Pavimento))),
@@ -68,14 +68,14 @@ ui <- navbarPage("Rutas de viajes", id = "nav",
                              column(width = 6,
                                     selectInput("x", "Eje X:", selected = "Costo",
                                                 choices = c("Costo",
-                                                            "DuraciÃÂ³n" = "Duracion",
+                                                            "Duracion" = "Duracion",
                                                             "Distancia",
                                                             "Velocidad media" = "V_promedio",
                                                             "Velocidad total" = "V_total"))),
                              column(width = 6,
                                     selectInput("y", "Eje Y:", selected = "Duracion",
                                                 choices = c("Costo",
-                                                            "DuraciÃÂ³n" = "Duracion",
+                                                            "Duracion" = "Duracion",
                                                             "Distancia",
                                                             "Velocidad media" = "V_promedio",
                                                             "Velocidad total" = "V_total"))))),
@@ -85,12 +85,12 @@ ui <- navbarPage("Rutas de viajes", id = "nav",
                              column(width = 6,
                                     selectInput("var", "Variable:", selected = "Distancia",
                                                 choices = c("Costo",
-                                                            "DuraciÃÂ³n" = "Duracion",
+                                                            "Duracion" = "Duracion",
                                                             "Distancia",
                                                             "Velocidad media" = "V_promedio",
                                                             "Velocidad total" = "V_total"))),
                              column(width = 6,
-                                    selectInput("cat", "CategorÃ­a:", selected = "",
+                                    selectInput("cat", "Categoria:", selected = "",
                                                 choices = c(Todas = "",
                                                             "Zona de Origen" = "Zona_Origen",
                                                             "Zona de Destino" = "Zona_Destino",
@@ -98,7 +98,7 @@ ui <- navbarPage("Rutas de viajes", id = "nav",
                                                             "Hora" = "Meridiano",
                                                             "Horario",
                                                             "Clima",
-                                                            "Nivel de congestiÃÂ³n" = "Congestion",
+                                                            "Nivel de congestion" = "Congestion",
                                                             "Pavimento",
                                                             "Incidente"))))))),
   # Datos ----------------------------------------------------------------------
@@ -106,7 +106,7 @@ ui <- navbarPage("Rutas de viajes", id = "nav",
 
 ##### Server #####
 server <- function(input, output, session) {
-  # Datos reactivos de Rutas (lÃ­neas) ------------------------------------------
+  # Datos reactivos de Rutas (lineas) ------------------------------------------
   datosRutas <- reactive({
     filter(Rutas,
            str_detect(ViajeId, input$ViajeId),
@@ -127,7 +127,7 @@ server <- function(input, output, session) {
     filter(Puntos,
            str_detect(ViajeId, input$ViajeId))
   })
-  # Permitir seleccionar puntos ÃÂºnicamente si se selecciona un viaje -----------
+  # Permitir seleccionar puntos unicamente si se selecciona un viaje -----------
   output$GraficarPuntos <- renderUI({
     if (nrow(datosRutas()) == 1) {
       absolutePanel(id = "checkboxPuntos", class = "panel panel-default",
@@ -179,7 +179,7 @@ server <- function(input, output, session) {
   observe({
     # Crear la paleta a partir de los datos existentes
     pal <- colorpal()
-    # Dibujar las lÃ­neas de las rutas actuales
+    # Dibujar las lineas de las rutas actuales
     leafletProxy("mapa") %>%
       clearShapes() %>%
       addPolylines(data    = datosRutas(),
@@ -190,7 +190,7 @@ server <- function(input, output, session) {
                                      "<b>Desde:</b> ", Nombre_Origen, "<br/>",
                                      "<b>Hasta:</b> ", Nombre_Destino, "<br/>",
                                      "<b>Costo:</b> $", Costo, "<br/>",
-                                     "<b>DuraciÃÂ³n:</b> ",
+                                     "<b>Duracion:</b> ",
                                      round(Duracion, 1), "min", "<br/>",
                                      "<b>Distancia:</b> ",
                                      round(Distancia, 1), "km", "<br/>",
@@ -215,7 +215,7 @@ server <- function(input, output, session) {
   
   
   
-  # FunciÃÂ³n para poner las unidades en los plots -------------------------------
+  # Funcion para poner las unidades en los plots -------------------------------
   unidades <- function(var) {
     switch(var,
            "Costo"      = number_format(prefix = "$"),
@@ -224,7 +224,7 @@ server <- function(input, output, session) {
            "V_promedio" = unit_format(unit = "km/h"),
            "V_total"    = unit_format(unit = "km/h"))
   }
-  # Renderizar el diagrama de dispersiÃÂ³n----------------------------------------
+  # Renderizar el diagrama de dispersion----------------------------------------
   output$scatterPlot <- renderPlot({
     ggplot(datosRutas(),
            aes_string(x = input$x,
@@ -233,7 +233,7 @@ server <- function(input, output, session) {
       scale_x_continuous(labels = unidades(input$x)) +
       scale_y_continuous(labels = unidades(input$y))
   })
-  # Renderizar el diagrama de violÃ­n con puntos dispersos ----------------------
+  # Renderizar el diagrama de violin con puntos dispersos ----------------------
   output$boxPlot <- renderPlot({
     if (input$cat == "") {
       boxPlot <- ggplot(datosRutas(),
@@ -270,19 +270,19 @@ server <- function(input, output, session) {
                                buttons = I("colvis")),
                 extensions = c("Responsive",
                                "Buttons"),
-                colnames = c("CÃÂ³digo Viaje"    = 1,
+                colnames = c("Codigo Viaje"    = 1,
                              "Origen"          = 2,
                              "Zona de Origen"  = 3,
                              "Destino"         = 4,
                              "Zona de Destino" = 5,
-                             "CongestiÃÂ³n"      = 10,
-                             "DuraciÃÂ³n"        = 14,
+                             "Congestion"      = 10,
+                             "Duracion"        = 14,
                              "Velocidad media" = 16,
                              "Velocidad total" = 17),
                 selection = "none") %>%
       formatCurrency("Costo") %>%
-      formatRound("DuraciÃÂ³n", 1) %>%
-      formatString("DuraciÃÂ³n", suffix = " min") %>%
+      formatRound("Duracion", 1) %>%
+      formatString("Duracion", suffix = " min") %>%
       formatRound("Distancia", 1) %>%
       formatString("Distancia", suffix = " km") %>%
       formatRound(c("Velocidad media", "Velocidad total"), 0) %>%
