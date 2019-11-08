@@ -12,7 +12,7 @@ def plot(nodes, path: list, line_width=0.5, point_radius=math.sqrt(2.0)):
     for point in nodes:
         x.append(point[0])
         y.append(point[1])
-     noinspection PyUnusedLocal
+     # noinspection PyUnusedLocal
     y = list(map(operator.sub, [max(y) for i in range(len(nodes))], y))
     plt.plot(x, y, 'co')
 

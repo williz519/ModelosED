@@ -20,7 +20,7 @@ class Graph(object):
 
 class AntColony(object):
 
-    def __init__(self, distances, nodes, n_ants, n_best, n_iterations, rho, NodoIni, alpha=1, beta=1):
+    def __init__(self, distances, nodes, n_ants, n_best, n_iterations, rho, NodoIni, NodoFin, alpha=1, beta=1) :
         """
         Argumentos:
             distancia (2D numpy.array): Matriz cuadrada de distanceias. la Diagonal es asumida a ser np.inf.
@@ -43,8 +43,14 @@ class AntColony(object):
         self.n_iterations = n_iterations
         self.rho = rho
         self.NodoIni = NodoIni
+        self.NodoFin = NodoFin
         self.alpha = alpha
         self.beta = beta
+        self.NodoActual = 0
+
+        self.eta = [[0 if i == j else 1 / distances[i][j] for j in range(self.Graph.rank)] for i in
+                    range(self.Graph.rank)]  # Información Heuristica
+        self.NoVisitados = [i for i in range(self.Graph.rank)]  # nodos que están permitidos para la próxima selección
         
 
     def run(self):
@@ -63,7 +69,7 @@ class AntColony(object):
 
     def spread_pheronome(self, all_paths, n_best, shortest_path):
         sorted_paths = sorted(all_paths, key=lambda x: x[1])
-        for path, dist in sorted_paths[:n_best]:
+        for path, distances in sorted_paths[:n_best]:
             for move in path:
                 self.pheromone[move] += 1.0 / self.distances[move]
 
@@ -71,44 +77,86 @@ class AntColony(object):
         total_dist = 0
         for ele in path:
             total_dist += self.distances[ele]
-            #print("Total distance: ", total_dist)
+            #print("Distancia Total: ", total_dist)
         return total_dist
 
     def gen_all_paths(self):
         all_paths = []
         for i in range(self.n_ants):
-            path = self.gen_path(0)
+            path = self.gen_path(0,1)
             all_paths.append((path, self.gen_path_dist(path)))
         return all_paths
 
-    def gen_path(self, start):
+    def gen_path(self, start, goal):
+        self.Visitados = []
+
         path = []
         if self.NodoIni is None:
             start = [random.randint(0,self.all_inds-1)]
         else:
             start = self.NodoIni
-        visited = set()
-        visited.add(start)
+        
+        goal = self.NodoFin
+        
+        self.Visitados.append(start)
+        self.current = start
+        self.NoVisitados.remove(start)
+ 
         prev = start
-        for i in range(len(self.distances) - 1):
-            move = self.pick_move(self.pheromone[prev], self.distances[prev], visited)
-            path.append((prev, move))
-            prev = move
-            visited.add(move)
+        
+        #NodoActual = goal
+        y = 0
+        while goal != start:
+            try:
+                for i in range(len(self.distances) - 1):
+                    move = self.pick_move(self.pheromone[prev], self.distances[prev], self.Visitados)
+                    path.append((prev, move))
+                    prev = move
+                    self.Visitados.insert(y,move)
+                
+                path.insert(y,goal)
+                goal = self.Visitados[goal]
+                y = y + 1
+            except KeyError:
+                break
+                print("El camino no es accesible")
+
+            
+        
+        path.insert(0,start)
+
         #path.append((prev, start)) # going back to where we started    
         print('Path: ', path)
         return path
         
 
-    def pick_move(self, pheromone, dist, visited): #salto de nodo
+    def pick_move(self, pheromone, distances, Visitados): #salto de nodo
         pheromone = np.copy(pheromone)
-        pheromone[list(visited)] = 0
+        pheromone[list(Visitados)] = 0
 
-        row = pheromone ** self.alpha * (( 1.0 / dist) ** self.beta)
+        row = 0
 
-        norm_row = row / row.sum()
-        move = np_choice(self.all_inds, 1, p=norm_row)[0]
+        for i in self.NoVisitados:
+            denominator += pheromone[self.current][i] ** self.alpha * self.eta[self.current][i] ** self.beta
+        
+        probabilities = [0 for i in range(self.Graph.rank)]  # probabilities for moving to a node in the next step
+        for i in range(self.Graph.rank):
+            try:
+                self.NoVisitados.index(i)  # test if allowed list contains i
+                probabilities[i] = pheromone[self.current][i] ** self.alpha * \
+                    self.eta[self.current][i] ** self.beta / denominator
+            except ValueError:
+                pass  # do nothing
+        # select next node by probability roulette
+        move = 0
+        rand = random.random()
+        for i, probability in enumerate(probabilities):
+            rand -= probability
+            if rand <= 0:
+                move = i
+                break
+        self.NoVisitados.remove(selected)
+        self.Visitados.append(selected)
+        #self.total_cost += self.graph.matrix[self.current][selected]
+        self.current = move
         return move
-    
-
-

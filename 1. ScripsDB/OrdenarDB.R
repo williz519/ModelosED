@@ -31,3 +31,7 @@ names(Rutas1)
 
 write.table(Rutas1, 
             file="/Users/williz/Desktop/ModelosED/DBRutas.csv", sep="\t", dec=".")
+
+Rutas2 <-read.csv("/Users/williz/Desktop/ModelosED/DBRutas.csv",sep="\t", header=TRUE)
+
+fix(Rutas2)

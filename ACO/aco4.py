@@ -22,7 +22,7 @@ class Graph(object):
 
 class ACO(object):
     def __init__(self, n_ants: int, n_iterations: int, alpha: float, beta: float, rho: float, NodoIni: int, q: int,
-                 strategy: int):
+                 NodoFin: int, strategy: int):
         """
         :param n_ants:
         :param n_iterations:
@@ -35,6 +35,7 @@ class ACO(object):
         self.Q = q
         self.rho = rho
         self.NodoIni = NodoIni
+        self.NodoFin = NodoFin
         self.beta = beta
         self.alpha = alpha
         self.n_ants = n_ants
@@ -94,6 +95,7 @@ class _Ant(object):
 
     def _select_next(self):
         denominator = 0
+    
         for i in self.allowed:
             denominator += self.graph.pheromone[self.current][i] ** self.colony.alpha * self.eta[self.current][
                                                                                             i] ** self.colony.beta
