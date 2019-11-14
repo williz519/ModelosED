@@ -11,12 +11,12 @@ import numpy as np
 
 #from aco1 import AntColony
 #from aco2 import AntColony
-from aco3 import AntColony, Graph
-from plot import plot
+#from aco3 import AntColony, Graph
+#from plot import plot
 
 #Para correr con ACO4
-#from aco4 import ACO, Graph
-#from plot import plot
+from aco4 import ACO, Graph
+from plot import plot
 
 
 "Matriz de distancias entre nodos"
@@ -70,11 +70,11 @@ def main():
     
     "Para Correr con ACO4"
     #aco = ACO(n_ants, n_iterations, alpha, beta, rho, NodoInicio, NodoFin, q, strategy)
-    """aco = ACO(100, 100, 1.0, 10.0, 0.5, 4, 23, 10, 2)
+    aco = ACO(100, 100, 1.0, 10.0, 0.5, 4, 23, 10, 2)
     graph = Graph(cost_matrix, num_nodos)
     path, cost = aco.solve(graph)
     print('costo: {}, Camino: {}'.format(cost, path))
-    plot(nodes, path)"""
+    plot(nodes, path)
 
     #print(coord)
     #print(puntos)
@@ -90,12 +90,12 @@ def main():
     #_nodes = puntos
     
     "Para Correr con ACO3"
-    ant_colony = AntColony(distances, nodes, 1, 1, 100, 0.95, 4, 23, alpha=1, beta=1)
+    """ant_colony = AntColony(distances, nodes, 1, 1, 100, 0.95, 4, 23, alpha=1, beta=1)
     shortest_path = ant_colony.run()
     print ( "shorted_path: {}".format(shortest_path[0]))
     print("Distancia Total de viaje para completar el tour: {}".format(shortest_path[1]))
     plot(nodes, path)
-    #ant_colony.plot()
+    #ant_colony.plot()"""
 
     #graph = Graph(cost_matrix, rank)
     #plot(nodes, path)

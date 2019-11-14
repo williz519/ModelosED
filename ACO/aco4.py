@@ -11,12 +11,11 @@ import random
 class Graph(object):
     def __init__(self, cost_matrix: list, rank: int):
         """
-        :param cost_matrix:
-        :param rank: rank of the cost matrix
+        cost_matrix: Matriz de costos
+        rank: Rango de la matriz de costos
         """
         self.matrix = cost_matrix
         self.rank = rank
-        # noinspection PyUnusedLocal
         self.pheromone = [[1 / (rank * rank) for j in range(rank)] for i in range(rank)]
 
 
@@ -24,13 +23,13 @@ class ACO(object):
     def __init__(self, n_ants: int, n_iterations: int, alpha: float, beta: float, rho: float, NodoIni: int, q: int,
                  NodoFin: int, strategy: int):
         """
-        :param n_ants:
-        :param n_iterations:
-        :param alpha: relative importance of pheromone
-        :param beta: relative importance of heuristic information
-        :param rho: pheromone residual coefficient
-        :param q: pheromone intensity
-        :param strategy: pheromone update strategy. 0 - ant-cycle, 1 - ant-quality, 2 - ant-density
+        n_ants: Número de Hormigas
+        n_iterations: Número de Iteraciones
+        alpha: relative importance of pheromone
+        beta: relative importance of heuristic information
+        rho: pheromone residual coefficient
+        q: pheromone intensity
+        strategy: pheromone update strategy. 0 - ant-cycle, 1 - ant-quality, 2 - ant-density
         """
         self.Q = q
         self.rho = rho
@@ -49,11 +48,9 @@ class ACO(object):
                 for ant in ants:
                     graph.pheromone[i][j] += ant.pheromone_delta[i][j]
 
-    # noinspection PyProtectedMember
+    
     def solve(self, graph: Graph):
-        """
-        :param graph:
-        """
+        
         best_cost = float('inf')
         best_solution = []
         for gen in range(self.n_iterations):
@@ -66,11 +63,13 @@ class ACO(object):
                 if ant.total_cost < best_cost:
                     best_cost = ant.total_cost
                     best_solution = [] + ant.tabu
-                # update pheromone
+                
+                # actualizar pheromona
                 ant._update_pheromone_delta()
             self._update_pheromone(graph, ants)
-            print('generation #{}, best cost: {}, path: {}'.format(gen, best_cost, best_solution))
+            #print('generation #{}, best cost: {}, path: {}'.format(gen, best_cost, best_solution))
         return best_solution, best_cost
+        print('generation #{}, best cost: {}, path: {}'.format(gen, best_cost, best_solution))
 
 
 class _Ant(object):
@@ -78,20 +77,23 @@ class _Ant(object):
         self.colony = aco
         self.graph = graph
         self.total_cost = 0.0
-        self.tabu = []  # tabu list
-        self.pheromone_delta = []  # the local increase of pheromone
-        self.allowed = [i for i in range(graph.rank)]  # nodes which are allowed for the next selection
+        self.tabu = []  # Lista Tabu
+        self.pheromone_delta = []  # emento local de pheromona
+        self.allowed = [i for i in range(graph.rank)]  # nodos que están permitidos para la próxima selección
         self.eta = [[0 if i == j else 1 / graph.matrix[i][j] for j in range(graph.rank)] for i in
-                    range(graph.rank)]  # heuristic information
+                    range(graph.rank)]  # Información Heuristica
         
+        # Comienza desde un nodo elegido
         if aco.NodoIni is None:
-            start = random.randint(0, graph.rank - 1)  # Comienza desde un nodo elegido
+            start = random.randint(0, graph.rank - 1)  
         else:
             start = aco.NodoIni
         
         self.tabu.append(start)
         self.current = start
         self.allowed.remove(start)
+    
+    # Finaliza en el nodo Elegido
 
     def _select_next(self):
         denominator = 0
@@ -99,7 +101,7 @@ class _Ant(object):
         for i in self.allowed:
             denominator += self.graph.pheromone[self.current][i] ** self.colony.alpha * self.eta[self.current][
                                                                                             i] ** self.colony.beta
-        # noinspection PyUnusedLocal
+        
         probabilities = [0 for i in range(self.graph.rank)]  # probabilities for moving to a node in the next step
         for i in range(self.graph.rank):
             try:
@@ -121,7 +123,7 @@ class _Ant(object):
         self.total_cost += self.graph.matrix[self.current][selected]
         self.current = selected
 
-    # noinspection PyUnusedLocal
+    # 
     def _update_pheromone_delta(self):
         self.pheromone_delta = [[0 for j in range(self.graph.rank)] for i in range(self.graph.rank)]
         for _ in range(1, len(self.tabu)):

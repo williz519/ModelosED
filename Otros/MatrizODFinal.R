@@ -29,6 +29,8 @@ Puentes <- read_excel("/Users/williz/Desktop/ModelosED/MatrizODMedellin Modelos/
 map<- get_googlemap(center = c(lon = -75.576451, lat = 6.241869),zoom = 13, 
                     size=c(640,640), scale =2, format = "png8", maptype = "roadmap") 
 
+ggmap(map)
+
 MaOD <- ggmap(map) + geom_point(data=MatrizODFull, aes(x=Longitud, y=Latitud, col="red"),
                                 alpha = 0.6, show.legend = FALSE, size=2)
 
