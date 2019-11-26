@@ -94,6 +94,7 @@ class _Ant(object):
         self.allowed.remove(start)
     
     # Finaliza en el nodo Elegido
+    
 
     def _select_next(self):
         denominator = 0
