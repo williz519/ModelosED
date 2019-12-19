@@ -53,28 +53,31 @@ distances = np.array([[np.inf,99999,99999,99999,99999,99999,99999,99999,1723,171
 
 def main():
     coord = []
-    nodes = []
+    nodos = []
     with open('Med.txt') as f:
         for line in f.readlines():
             nodo = line.split( )
             coord.append(dict(index=float(nodo[0]), x=float(nodo[1]), y=float(nodo[2])))
-            nodes.append((float(nodo[1]), float(nodo[2])))
+            nodos.append((float(nodo[1]), float(nodo[2])))
     cost_matrix = []
     num_nodos = len(coord)
-    
+    print(num_nodos)
+
     for i in range(num_nodos):
         row = []
         for j in range(num_nodos):
             row.append(distances[i][j])
         cost_matrix.append(row)
     
+    print(cost_matrix)
+
     "Para Correr con ACO4"
     #aco = ACO(n_ants, n_iterations, alpha, beta, rho, NodoInicio, NodoFin, q, strategy)
     aco = ACO(100, 100, 1.0, 10.0, 0.5, 4, 23, 10, 2)
     graph = Graph(cost_matrix, num_nodos)
     path, cost = aco.solve(graph)
     print('costo: {}, Camino: {}'.format(cost, path))
-    plot(nodes, path)
+    plot(nodos, path)
 
     #print(coord)
     #print(puntos)
