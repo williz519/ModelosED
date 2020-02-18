@@ -22,6 +22,9 @@ library(corrr)
 DBPersonalidad <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBPersonalidad.rds")
 
 names(DBPersonalidad)
+head(DBPersonalidad)
+View(DBPersonalidad)
+str(DBPersonalidad)
 
 DBPers <- DBPersonalidad
 

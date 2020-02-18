@@ -18,46 +18,35 @@ library(corrr)
 
 #Leer la dataset
 
-ModoCond <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+DBModoCond <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+DBModLog <- read.csv("/Users/williz/Desktop/ModelosED/Database/ModeloLogitVL.csv", header = TRUE, sep = "\t")
+
+names(DBModoCond)
+names(DBModLog)
+
+ModoCond <- DBModLog %>%
+  select(ViajeId,Experiencia) %>%
+  # DB Modelo Logistico
+  inner_join(DBModoCond %>%
+               select(ViajeId:DispMob),
+             by = "ViajeId")
 
 names(ModoCond)
-
-#Renombrar las Variables
-ModoCond <- rename(ModoCond, replace =c(CinturonDeSeguridad = "CinSeg",
-                                    PasoPeatones = "PasPeat",
-                                    UsaPito = "UsPito",
-                                    FrenoRapidoBrusco = "FRbr",
-                                    UsaDireccionales = "UsDirec",
-                                    EnfadoConOtroConductor = "EnfCond",
-                                    AceleraFrenaBruscamenteSemaforo = "AFrSem",
-                                    CulebreaConFrecuencia = "CulFr",
-                                    OmiteLimiteVelocidad = "OmLmVel",
-                                    IgnoraSenhalPare = "IgPare",
-                                    UsoCelular = "UsCel"))
-
-
-names(ModoCond)
-
-summary(ModoCond)
-
 
 tibble::as_tibble(ModoCond) 
 
+ModoCond[c("ViajeId","Genero","INFOTRAFICO")] <- NULL
 
-
-ModoCond1 <- ModoCond[ ,!colnames(ModoCond)=="ViajeId"]
-ModoCond1 <- ModoCond1[ ,!colnames(ModoCond1)=="UsPito"]
-ModoCond1 <- ModoCond1[ ,!colnames(ModoCond1)=="PasPeat"]
 
 
 # Estadisticas descriptivas
 
-summary(ModoCond1)
+summary(ModoCond)
 
 
-cor(ModoCond1, use = "pairwise.complete.obs")
+cor(ModoCond, use = "pairwise.complete.obs")
 
-Rcor <- cor(ModoCond1)
+Rcor <- cor(ModoCond)
 
 # Gráfico de las Correlaciones
 corrplot(Rcor, order = "hclust", tl.col = "black", tl.cex = 1)
@@ -94,7 +83,7 @@ print(A)
 # muestral es pequeño. 
 
 #Test de esfericidad de Bartlett
-print(cortest.bartlett(Rcor, n=nrow(ModoCond1)))
+print(cortest.bartlett(Rcor, n=nrow(ModoCond)))
 
 
 # Como última prueba de multicolinealidad antes de comenzar probar modelos, analizaremos el
@@ -119,7 +108,7 @@ print(kmo)
 
 
 #Analisis de Componentes Principales
-pca1 <- princomp(ModoCond1, scores = TRUE, cor = TRUE)
+pca1 <- princomp(ModoCond, scores = TRUE, cor = TRUE)
 summary(pca1)
 
 #Cargar los componentes principales
@@ -142,14 +131,15 @@ pca1$scores[1:10,]
 #promax(pca1$rotation)
 
 #Analisis Factorial
-
-
-fa <-factanal(ModoCond1, factor=3, rotation = "varimax", na.rm = TRUE)
+fa <-factanal(ModoCond, factors = 3, rotation = "varimax", na.rm = TRUE,lower = 0.05)
 print(fa,cutoff=0.3, sort=FALSE)
+
+fa1 <-factanal(ModoCond, factor = 4, rotation = "varimax", na.rm = TRUE, lower = 0.05)
+print(fa1,cutoff=0.10, sort=FALSE)
 
 #sink()
 
-factores <- factanal(ModoCond1, factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+factores <- factanal(ModoCond, factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 
 #Normalizamos los valores que podran tomarse como el peso para el cálculo de un indice que
 # explica por cada i-esima fila la variabilidad de todo el conjunto de datos

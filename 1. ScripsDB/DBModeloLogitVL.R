@@ -38,6 +38,8 @@ names(DB$ModoConduccion)
 names(DB$CaracterizacionTaxista)
 names(DB$PersonalidadConductor)
 
+str(DB$ModoConduccion)
+
 RutasGoogle <- rename(RutasGoogle, replace = c("A1_Distancia Km" ="DISTAlt1", 
                       "A1_Tiempo Min"="TIEMPOAlt1",
                       A1_Color="CONG_A1", 
@@ -328,6 +330,27 @@ names(DBModelo)
 
 
 view(DBModelo)
+str(DBModelo)
+tab.Cinturon<-as.data.frame(prop.table(table(DBModelo$CinSeg))*100)
+tab.Cinturon
+tab.Peaton<-as.data.frame(prop.table(table(DBModelo$PasoPeatones))*100)
+tab.Peaton
+tab.FRbr<-as.data.frame(prop.table(table(DBModelo$FRbr))*100)
+tab.FRbr
+tab.UsoDir<-as.data.frame(prop.table(table(DBModelo$UsoDirec))*100)
+tab.UsoDir
+tab.EnfCond<-as.data.frame(prop.table(table(DBModelo$EnfCond))*100)
+tab.EnfCond
+tab.AFrSem<-as.data.frame(prop.table(table(DBModelo$AFrSem))*100)
+tab.AFrSem
+tab.CulFr<-as.data.frame(prop.table(table(DBModelo$CulFr))*100)
+tab.CulFr
+tab.OmLmVel<-as.data.frame(prop.table(table(DBModelo$OmLmVel))*100)
+tab.OmLmVel
+tab.Peaton<-as.data.frame(prop.table(table(DBModelo$PasoPeatones))*100)
+tab.Peaton
+
+
 
 #Eliminar Variables en el DB
 

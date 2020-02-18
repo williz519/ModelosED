@@ -14,6 +14,7 @@ require(psych)
 require(GGally)
 library(corrplot)
 library(corrr)
+library("ggplot2")
 
 #Leer la dataset
 
@@ -28,32 +29,41 @@ DBPersonalidad <- DB$Viajes %>%
   select(ViajeId, IdViaje) %>%
   # Caracterización taxista
   inner_join(DB$CaracterizacionTaxista %>%
-               select(ViajeId, #Edad,#TiempoProfesion,#HorasAlDia,
+               select(ViajeId, HorasAlDia, Edad, TiempoProfesion, 
                       NivelEducativo),
              by = "ViajeId") %>%
   # Personalidad conductor
   inner_join(DB$PersonalidadConductor %>%
-               select(ViajeId:AmbienteOrdenadoDesordenado),
+               select(ViajeId,SerioConservador:AmbienteOrdenadoDesordenado),
              by = "ViajeId") %>%
   # Modo de Conduccion
   inner_join(DB$ModoConduccion %>%
                select(ViajeId,TranquilaTensionada,RespetuosaIrrespetuosa),
              by = "ViajeId")
 
-View(DBPersonalidad)
+#View(DBPersonalidad)
 names(DBPersonalidad)
 
-DBPersonalidad <- rename(DBPersonalidad, replace =c(Accidente = "DispMobiles", 
-                                                    Atraco = "SatisfDispMob",
-                                                    SerioConservador = "ComunicVerbal",
-                                                    RelajadoTenso = "Ansiedad",
-                                                    AmableAntipatico = "ComunicAfectiva",
-                                                    OrdenadoDesordenado = "PresPersonal",
-                                                    AmbienteOrdenadoDesordenado = "AmbTrabajo",
-                                                    TranquilaTensionada = "StressAlCond",
-                                                    RespetuosaIrrespetuosa = "ConsidCliente"))
+
+DBPersonalidad <- rename(DBPersonalidad, replace =c(SerioConservador = "ComVrb",
+                                                    RelajadoTenso = "Ans",
+                                                    AmableAntipatico = "ComAfec",
+                                                    OrdenadoDesordenado = "PrPer",
+                                                    AmbienteOrdenadoDesordenado = "AmbTr",
+                                                    TranquilaTensionada = "StrC",
+                                                    RespetuosaIrrespetuosa = "ConCl",
+                                                    NivelEducativo = "NivEdu",
+                                                    TiempoProfesion = "TiempoProf",
+                                                    HorasAlDia = "HorTrDia"))
+
+
+
+# Eliminar Variables
+DBPersonalidad <- select(DBPersonalidad,-("IdViaje"))
 
 names(DBPersonalidad)
+
+
 
 DBPersonalidad <- DBPersonalidad%>%
   # Filtrar viajes Eliminados en la primera revisión
@@ -68,59 +78,212 @@ DBPersonalidad <- DBPersonalidad%>%
                           "{3D43C21E-76DB-E811-8FB7-74867AD5B714}",
                           "{39877BE2-6B1D-E811-9CE5-74867AD5B714}")))
 
-view(DBPersonalidad)
-
-# Eliminar Variables 
-DBPersonalidad <- DBPersonalidad[ ,!colnames(DBPersonalidad)=="IdViaje"]
-
+#view(DBPersonalidad)
+names(DBPersonalidad)
+ 
 #Reemplazar Valores Faltantes
 
-DBPersonalidad$ComunicVerbal[is.na(DBPersonalidad$ComunicVerbal)] <- 5
-DBPersonalidad$Ansiedad[is.na(DBPersonalidad$Ansiedad)] <- 5
-DBPersonalidad$ComunicAfectiva[is.na(DBPersonalidad$ComunicAfectiva)] <- 5
-DBPersonalidad$PresPersonal[is.na(DBPersonalidad$PresPersonal)] <- 5
-DBPersonalidad$AmbTrabajo[is.na(DBPersonalidad$AmbTrabajo)] <- 5
-DBPersonalidad$StressAlCond[is.na(DBPersonalidad$StressAlCond)] <- 5
-DBPersonalidad$Ansiedad[is.na(DBPersonalidad$Ansiedad)] <- 5
-DBPersonalidad$ConsidCliente[is.na(DBPersonalidad$ConsidCliente)] <- 5
-
+DBPersonalidad$ComVrb[is.na(DBPersonalidad$ComVrb)] <- 5
+DBPersonalidad$Ans[is.na(DBPersonalidad$Ans)] <- 5
+DBPersonalidad$ComAfec[is.na(DBPersonalidad$ComAfec)] <- 5
+DBPersonalidad$PrPer[is.na(DBPersonalidad$PrPer)] <- 5
+DBPersonalidad$AmbTr[is.na(DBPersonalidad$AmbTr)] <- 5
+DBPersonalidad$StrC[is.na(DBPersonalidad$StrC)] <- 5
+DBPersonalidad$ConCl[is.na(DBPersonalidad$ConCl)] <- 5
+DBPersonalidad$HorTrDia[is.na(DBPersonalidad$HorTrDia)] <- 8
+DBPersonalidad$TiempoProf[is.na(DBPersonalidad$TiempoProf)] <- 0.5
 
 
 #CAMBIO DE ESCALA
-# Comunicacion Verbal
-#DBPersonalidad$ComunicVerbal[DBPersonalidad$ComunicVerbal == 1 | DBPersonalidad$ComunicVerbal == 2 | DBPersonalidad$ComunicVerbal == 3] <- 1
-#DBPersonalidad$ComunicVerbal[DBPersonalidad$ComunicVerbal == 4 | DBPersonalidad$ComunicVerbal == 5 | DBPersonalidad$ComunicVerbal == 6 | DBPersonalidad$ComunicVerbal == 7 ] <- 2
-#DBPersonalidad$ComunicVerbal[DBPersonalidad$ComunicVerbal == 8 | DBPersonalidad$ComunicVerbal == 9 | DBPersonalidad$ComunicVerbal == 10] <- 3
 
-#Manejo del Stress
-#DBPersonalidad$Ansiedad[DBPersonalidad$Ansiedad == 1 | DBPersonalidad$Ansiedad == 2 | DBPersonalidad$Ansiedad == 3] <- 1
-#DBPersonalidad$Ansiedad[DBPersonalidad$Ansiedad == 4 | DBPersonalidad$Ansiedad == 5 | DBPersonalidad$Ansiedad == 6 | DBPersonalidad$Ansiedad == 7 ] <- 2
-#DBPersonalidad$Ansiedad[DBPersonalidad$Ansiedad == 8 | DBPersonalidad$Ansiedad == 9 | DBPersonalidad$Ansiedad == 10] <- 3
+# Edad
+DBPersonalidad$Edad[DBPersonalidad$Edad == 0] <- 2
+
+# Tiempo Profesion
+DBPersonalidad$TiempoProf[DBPersonalidad$TiempoProf == 0] <- 0.5
+
+# Horas de trabajo al dia
+DBPersonalidad$HorTrDia[DBPersonalidad$HorTrDia == 0 ] <- 6 
+
+# Comunicacion Verbal
+DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 1 | DBPersonalidad$ComVrb == 2] <- 1
+DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 3 | DBPersonalidad$ComVrb == 4] <- 2
+DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 5 | DBPersonalidad$ComVrb == 6] <- 3
+DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 7 | DBPersonalidad$ComVrb == 8] <- 4
+DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 9 | DBPersonalidad$ComVrb == 10] <- 5
+
+#Stress al Conducir
+DBPersonalidad$StrC[DBPersonalidad$StrC == 1 | DBPersonalidad$StrC == 2] <- 1
+DBPersonalidad$StrC[DBPersonalidad$StrC == 3 | DBPersonalidad$StrC == 4] <- 2
+DBPersonalidad$StrC[DBPersonalidad$StrC == 5 | DBPersonalidad$StrC == 6] <- 3
+DBPersonalidad$StrC[DBPersonalidad$StrC == 7 | DBPersonalidad$StrC == 8] <- 4
+DBPersonalidad$StrC[DBPersonalidad$StrC == 9 | DBPersonalidad$StrC == 10] <- 5
+
 
 #Comunicacion Afectiva
-#DBPersonalidad$ComunicAfectiva[DBPersonalidad$ComunicAfectiva == 1 | DBPersonalidad$ComunicAfectiva == 2 | DBPersonalidad$ComunicAfectiva == 3] <- 1
-#DBPersonalidad$ComunicAfectiva[DBPersonalidad$ComunicAfectiva == 4 | DBPersonalidad$ComunicAfectiva == 5 | DBPersonalidad$ComunicAfectiva == 6 | DBPersonalidad$ComunicAfectiva == 7 ] <- 2
-#DBPersonalidad$ComunicAfectiva[DBPersonalidad$ComunicAfectiva == 8 | DBPersonalidad$ComunicAfectiva == 9 | DBPersonalidad$ComunicAfectiva == 10] <- 3
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 1 | DBPersonalidad$ComAfec == 2] <- 1
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 3 | DBPersonalidad$ComAfec == 4] <- 2
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 5 | DBPersonalidad$ComAfec == 6] <- 3
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 7 | DBPersonalidad$ComAfec == 8] <- 4
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 9 | DBPersonalidad$ComAfec == 10] <- 5
+
 
 #Presentacion Personal
-#DBPersonalidad$PresPersonal[DBPersonalidad$PresPersonal == 1 | DBPersonalidad$PresPersonal == 2 | DBPersonalidad$PresPersonal == 3] <- 1
-#DBPersonalidad$PresPersonal[DBPersonalidad$PresPersonal == 4 | DBPersonalidad$PresPersonal == 5 | DBPersonalidad$PresPersonal == 6 | DBPersonalidad$PresPersonal == 7 ] <- 2
-#DBPersonalidad$PresPersonal[DBPersonalidad$PresPersonal == 8 | DBPersonalidad$PresPersonal == 9 | DBPersonalidad$PresPersonal == 10] <- 3
+DBPersonalidad$PrPer[DBPersonalidad$PrPer == 1 ] <- 1
+DBPersonalidad$PrPer[DBPersonalidad$PrPer == 2 | DBPersonalidad$PrPer == 3 | DBPersonalidad$PrPer == 4] <- 2
+DBPersonalidad$PrPer[DBPersonalidad$PrPer == 5 | DBPersonalidad$PrPer == 6] <- 3
+DBPersonalidad$PrPer[DBPersonalidad$PrPer == 7 | DBPersonalidad$PrPer == 8] <- 4
+DBPersonalidad$PrPer[DBPersonalidad$PrPer == 9 |DBPersonalidad$PrPer == 10] <- 5
+
 
 # Ambiente de Trabajo
-#DBPersonalidad$AmbTrabajo[DBPersonalidad$AmbTrabajo == 1 | DBPersonalidad$AmbTrabajo == 2 | DBPersonalidad$AmbTrabajo == 3] <- 1
-#DBPersonalidad$AmbTrabajo[DBPersonalidad$AmbTrabajo == 4 | DBPersonalidad$AmbTrabajo == 5 | DBPersonalidad$AmbTrabajo == 6 | DBPersonalidad$AmbTrabajo == 7] <- 2
-#DBPersonalidad$AmbTrabajo[DBPersonalidad$AmbTrabajo == 8 | DBPersonalidad$AmbTrabajo == 9 | DBPersonalidad$AmbTrabajo == 10] <- 3
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 1 ] <- 1
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 2 | DBPersonalidad$AmbTr == 3 | DBPersonalidad$AmbTr == 4] <- 2
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 5 | DBPersonalidad$AmbTr == 6] <- 3
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 7 | DBPersonalidad$AmbTr == 8] <- 4
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 9 | DBPersonalidad$AmbTr == 10] <- 5
 
-# Stress Al Conducir
-#DBPersonalidad$StressAlCond[DBPersonalidad$StressAlCond == 1 | DBPersonalidad$StressAlCond == 2 | DBPersonalidad$StressAlCond == 3] <- 1
-#DBPersonalidad$StressAlCond[DBPersonalidad$StressAlCond == 4 | DBPersonalidad$StressAlCond == 5 | DBPersonalidad$StressAlCond == 6 | DBPersonalidad$StressAlCond == 7] <-2
-#DBPersonalidad$StressAlCond[DBPersonalidad$StressAlCond == 8 | DBPersonalidad$StressAlCond == 9 | DBPersonalidad$StressAlCond == 10] <- 3
 
-#Habilidades Prosociales
-#DBPersonalidad$ConsidCliente[DBPersonalidad$ConsidCliente == 1 | DBPersonalidad$ConsidCliente == 2 | DBPersonalidad$ConsidCliente == 3] <- 1
-#DBPersonalidad$ConsidCliente[DBPersonalidad$ConsidCliente == 4 | DBPersonalidad$ConsidCliente == 5 | DBPersonalidad$ConsidCliente == 6 | DBPersonalidad$ConsidCliente == 7] <- 2
-#DBPersonalidad$ConsidCliente[DBPersonalidad$ConsidCliente == 8 | DBPersonalidad$ConsidCliente == 9 | DBPersonalidad$ConsidCliente == 10] <- 3
+# Ansiedad
+DBPersonalidad$Ans[DBPersonalidad$Ans == 1 ] <- 1
+DBPersonalidad$Ans[DBPersonalidad$Ans == 2 | DBPersonalidad$Ans == 3 ] <- 2
+DBPersonalidad$Ans[DBPersonalidad$Ans == 4 | DBPersonalidad$Ans == 5]  <- 3
+DBPersonalidad$Ans[DBPersonalidad$Ans == 6 | DBPersonalidad$Ans == 7 ] <- 4
+DBPersonalidad$Ans[DBPersonalidad$Ans == 8 | DBPersonalidad$Ans == 9 | DBPersonalidad$Ans == 10] <-5
+
+
+#Consideracion Cliente
+DBPersonalidad$ConCl[DBPersonalidad$ConCl == 1 ] <- 1
+DBPersonalidad$ConCl[DBPersonalidad$ConCl == 2 | DBPersonalidad$ConCl == 3 ] <- 2
+DBPersonalidad$ConCl[DBPersonalidad$ConCl == 4 | DBPersonalidad$ConCl == 5 ] <- 3
+DBPersonalidad$ConCl[DBPersonalidad$ConCl == 6 | DBPersonalidad$ConCl == 7 ] <- 4
+DBPersonalidad$ConCl[DBPersonalidad$ConCl == 8 | DBPersonalidad$ConCl == 9 | DBPersonalidad$ConCl == 10] <- 5
+
+
+#Creacion Variable Experiencia
+DBPersonalidad$Experiencia <- DBPersonalidad$TiempoProf
+DBPersonalidad$Experiencia[DBPersonalidad$Experiencia <= 2] <- 1
+DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 2 & DBPersonalidad$Experiencia <= 5] <- 2
+DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 5 & DBPersonalidad$Experiencia <= 8] <- 3
+DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 8 & DBPersonalidad$Experiencia <= 12] <- 4
+DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 12] <- 5
+
+
+
+
+DBPersonalidad$Edad = factor(DBPersonalidad$Edad,
+                       levels = 1:4,
+                       labels = c("18-29",
+                                  "30-40",
+                                  "41-60",
+                                  "Mayor de 60"))
+table(DBPersonalidad$Edad)
+tab.Edad <-as.data.frame(prop.table(table(DBPersonalidad$Edad))*100)
+tab.Edad
+
+str(DBPersonalidad$Edad)
+
+summary(DBPersonalidad$HorTrDia)
+summary(DBPersonalidad$TiempoProf)
+
+ggplot(DBPersonalidad, aes( y = DBPersonalidad$TiempoProf)) + 
+  geom_boxplot() +
+  xlab("Tiempo de Profesión") + 
+  ylab("Años") + ggtitle("Distribución Tiempo de profesión") 
+
+ggplot(DBPersonalidad, aes(x = DBPersonalidad$Edad, y = DBPersonalidad$HorTrDia)) + 
+  geom_boxplot() +
+  xlab("Edad") + ylab("Horas de trabajo al día") + labs(fill = "Rango de Edad") +
+  ggtitle("Horas de trabajo por rango de edad") 
+
+
+DBPersonalidad$ComVrb = factor(DBPersonalidad$ComVrb,
+                             levels = 1:5,
+                             labels = c("Muy Serio",
+                                        "Serio",
+                                        "Indiferente",
+                                        "Conversador",
+                                        "Muy Conversador"))
+
+table(DBPersonalidad$ComVrb)
+tab.ComVrb<-as.data.frame(prop.table(table(DBPersonalidad$ComVrb))*100)
+tab.ComVrb
+
+DBPersonalidad$StrC = factor(DBPersonalidad$StrC,
+                               levels = 1:5,
+                               labels = c("Muy Tranquilo",
+                                          "Tranquilo",
+                                          "Neutro",
+                                          "Tensionado",
+                                          "Muy Tensionado"))
+
+table(DBPersonalidad$StrC)
+tab.StrC<-as.data.frame(prop.table(table(DBPersonalidad$StrC))*100)
+tab.StrC
+
+DBPersonalidad$ComAfec = factor(DBPersonalidad$ComAfec,
+                               levels = 1:5,
+                               labels = c("Muy Amable",
+                                          "Amable",
+                                          "Neutro",
+                                          "Antipatico",
+                                          "Muy Antipatico"))
+
+
+table(DBPersonalidad$ComAfec)
+tab.ComAfec<-as.data.frame(prop.table(table(DBPersonalidad$ComAfec))*100)
+tab.ComAfec
+
+DBPersonalidad$PrPer = factor(DBPersonalidad$PrPer,
+                                levels = 1:5,
+                                labels = c("Muy Ordenado",
+                                           "Ordenado",
+                                           "Neutro",
+                                           "Desordenado",
+                                           "Muy desordenado"))
+
+table(DBPersonalidad$PrPer)
+tab.PrPer<-as.data.frame(prop.table(table(DBPersonalidad$PrPer))*100)
+tab.PrPer
+
+DBPersonalidad$AmbTr = factor(DBPersonalidad$AmbTr,
+                              levels = 1:5,
+                              labels = c("Muy Ordenado",
+                                         "Ordenado",
+                                         "Neutro",
+                                         "Desordenado",
+                                         "Muy desordenado"))
+
+
+table(DBPersonalidad$AmbTr)
+tab.AmbTr <-as.data.frame(prop.table(table(DBPersonalidad$AmbTr))*100)
+tab.AmbTr
+
+
+DBPersonalidad$Ans = factor(DBPersonalidad$Ans,
+                              levels = 1:5,
+                              labels = c("Relajado",
+                                         "Algo relajado",
+                                         "Neutro",
+                                         "Algo tenso",
+                                         "Tenso"))
+
+table(DBPersonalidad$Ans)
+tab.Ans <-as.data.frame(prop.table(table(DBPersonalidad$Ans))*100)
+tab.Ans
+
+DBPersonalidad$ConCl = factor(DBPersonalidad$ConCl,
+                              levels = 1:5,
+                              labels = c("Muy Respetuoso",
+                                         "Respetuoso",
+                                         "Indiferente",
+                                         "Irrespetuoso",
+                                         "Muy Irrespetuoso"))
+
+table(DBPersonalidad$ConCl)
+tab.ConCl <-as.data.frame(prop.table(table(DBPersonalidad$ConCl))*100)
+tab.ConCl
+
 
 
 summary(DBPersonalidad)

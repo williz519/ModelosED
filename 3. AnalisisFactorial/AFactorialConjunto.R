@@ -1,6 +1,7 @@
 #Installing the Psych package and loading it
 #install.packages("psych")
-
+#install_github('likert', 'jbryer')
+require(devtools)
 library(psych)
 library(tidyverse)
 library(readxl)
@@ -15,7 +16,8 @@ require(psych)
 require(GGally)
 library(corrplot)
 library(corrr)
-library(psych)
+library(umx)
+library(likert)
 
 #Leer la dataset 
 
@@ -23,20 +25,56 @@ library(psych)
 
 # Analisis Factorial con datos escalados a una escala likert 1 - 5
 
-DB1 <- read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv", header = TRUE, sep = "\t")
+#DBModLog <- read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVLCE.csv", header = TRUE, sep = "\t")
 
+# Base de datos de escala likert diferentes
+DBModLog <- read.csv("/Users/williz/Desktop/ModelosED/Database/ModeloLogitVL.csv", header = TRUE, sep = "\t")
+
+
+names(DBModLog)
+
+DB1 <- select(DBModLog, -("ViajeId":"CHOICE"))
 names(DB1)
 
-DB2 <- select(DB1, -("CinSeg":"DispMob"))
-names(DB2)
+DBPer <- select(DB1, c("ComVrb","Ans","ComAfec","PrPer","AmbTr","StrC","ConCl","EnfCond"))
+names(DBPer)
 
-DB3 <- select(DB1, -("GENERO":"UsaPito"))
-names(DB3)
+DBMod <- select(DB1, c("Experiencia","PasoPeaton","UsoPito","CinSeg","FRbr",
+                       "UsoDirec","AFrSem","CulFr","OmLmVel","IgPare","UsoCel","DispMob") )
+names(DBMod)
 
-DBConjunta <- select(DB3, -("ViajeId"))
+l1<- likert(DBMod)
+
+DBConjunta <- tibble(DBPer,DBMod)
 
 
-names(DBConjunta)
+#Alpha de Cronbach
+
+#Personalidad
+cov(DBPer)
+reliability(cov(DBPer))
+
+DBPer$Suma <- DBPer$ComVrb+DBPer$Ans+DBPer$ComAfec+DBPer$PrPer+DBPer$AmbTr+
+  DBPer$StrC+DBPer$ConCl+DBPer$EnfCond
+
+cor(DBPer)
+
+#Modo
+cov(DBMod)
+reliability(cov(DBMod))
+
+DBMod$Suma <- DBMod$Experiencia+DBMod$CinSeg+DBMod$FRbr+DBMod$UsoDirec+DBMod$UsoPito+DBMod$AFrSem+
+  DBMod$CulFr+DBMod$OmLmVel+DBMod$IgPare+DBMod$UsoCel+DBMod$PasoPeaton+DBMod$DispMob
+
+cor(DBMod)
+DBMod$OmLmVel[DBMod$OmLmVel == 1]<-4
+DBMod$OmLmVel[DBMod$OmLmVel == 3]<-1
+DBMod$OmLmVel[DBMod$OmLmVel == 4]<-3
+
+DBMod[c("Suma")] <- NULL
+
+alfa <- alpha(DBMod)
+
 
 summary(DBConjunta)
 
@@ -64,8 +102,8 @@ for (i in 1:nrow(invRcor)){
     A[j,i] <- A[i,j]
   }
 }
-colnames(A) <- colnames(DBPers)
-rownames(A) <- colnames(DBPers)
+colnames(A) <- colnames(DBConjunta)
+rownames(A) <- colnames(DBConjunta)
 print(A)
 
 # Esta matriz muestra el negativo del coeficiente de las correlaciones parciales (aquellas que se
@@ -110,9 +148,18 @@ print(kmo)
 # Alfa > 0.5 Pobre
 # Alfa < 0.5 Inaceptable
 
-DBConjunta <- data.frame(DBConjunta)
-alpha(DBConjunta,check.keys=TRUE)
+DBConj <- data.matrix(DBConjunta)
 
+
+cor(DB4)
+cor(DB5)
+
+str(DB5$CinSeg)
+DB5$CinSeg[DB5$CinSeg == 1] <- 3
+DB5$CinSeg[DB5$CinSeg == 2] <- 1
+DB5$CinSeg[DB5$CinSeg == 3] <- 1
+
+reliability(cov(DB5))
 
 
 #Analisis de Componentes Principales

@@ -60,97 +60,174 @@ Viaje <- DB$Viajes %>%
                select(ViajeId:AmbienteOrdenadoDesordenado),
              by = "ViajeId")
 
+names(Viaje)
+
 DBModo <- DB$Viajes %>%
   select(ViajeId) %>%
   # Modo conducción
   inner_join(DB$ModoConduccion %>%
-               select(ViajeId:RespetuosaIrrespetuosa,UsoCelular),
+               select(ViajeId:IgnoraSenhalPare,UsoCelular),
+             by = "ViajeId") %>%
+  inner_join(DB$CaracterizacionTaxista %>%
+               select(ViajeId,Genero,InformacionPreviaDelTrafico),
+             by = "ViajeId") %>%
+  inner_join(DB$PersonalidadConductor %>%
+               select(ViajeId,Accidente),
              by = "ViajeId")
+
 #View(DBModo)
 #head(DBModo)
 names(DBModo)
 attach(DBModo)
+str(DBModo)
 
 #Definimos las variables
-X <- data.frame(DBModo$ViajeId, DBModo$CinturonDeSeguridad,DBModo$PasoPeatones, DBModo$UsaPito, DBModo$FrenoRapidoBrusco,
-           DBModo$UsaDireccionales, DBModo$EnfadoConOtroConductor, DBModo$AceleraFrenaBruscamenteSemaforo,
-           DBModo$CulebreaConFrecuencia, DBModo$OmiteLimiteVelocidad, DBModo$IgnoraSenhalPare,
-           DBModo$UsoCelular)
 
-names(X)
-X <- rename(X, replace =c(DBModo.ViajeId = "ViajeId",
-                          DBModo.CinturonDeSeguridad = "CinturonDeSeguridad",
-                          DBModo.PasoPeatones = "PasoPeatones",
-                          DBModo.UsaPito = "UsaPito", 
-                          DBModo.FrenoRapidoBrusco = "FrenoRapidoBrusco",
-                          DBModo.UsaDireccionales = "UsaDireccionales", 
-                          DBModo.EnfadoConOtroConductor = "EnfadoConOtroConductor", 
-                          DBModo.AceleraFrenaBruscamenteSemaforo = "AceleraFrenaBruscamenteSemaforo",
-                          DBModo.CulebreaConFrecuencia = "CulebreaConFrecuencia", 
-                          DBModo.OmiteLimiteVelocidad = "OmiteLimiteVelocidad", 
-                          DBModo.IgnoraSenhalPare = "IgnoraSenhalPare",
-                          DBModo.UsoCelular = "UsoCelular"))
+DBModo <- rename(DBModo, replace = c(CinturonDeSeguridad = "CinSeg",
+                                     PasoPeatones = "PasoPeaton",
+                                     UsaPito = "UsoPito",
+                                     FrenoRapidoBrusco = "FRbr",
+                                     UsaDireccionales = "UsoDirec",
+                                     EnfadoConOtroConductor = "EnfCond",
+                                     AceleraFrenaBruscamenteSemaforo = "AFrSem",
+                                     CulebreaConFrecuencia = "CulFr",
+                                     OmiteLimiteVelocidad = "OmLmVel", 
+                                     IgnoraSenhalPare = "IgPare",
+                                     TranquilaTensionada = "StrC",
+                                     RespetuosaIrrespetuosa = "ConCl",
+                                     UsoCelular = "UsoCel",
+                                     Accidente = "DispMob", 
+                                     InformacionPreviaDelTrafico="INFOTRAFICO"))
+                                   
+names(DBModo)
+str(DBModo$DispMob)
 
-view(X)
-
-# Cinturon de Seguridad
-# X$CinturonDeSeguridad[X$CinturonDeSeguridad == 2] <-3
-X$UsoCelular[X$UsoCelular == 4] <-1
-X$UsoCelular[X$UsoCelular == 0] <-1
-
-# Freno Rapido y Brusco
-X$FrenoRapidoBrusco[X$FrenoRapidoBrusco ==4 & X$AceleraFrenaBruscamenteSemaforo == 2] <-2
-X$FrenoRapidoBrusco[X$FrenoRapidoBrusco == 4 & X$OmiteLimiteVelocidad == 2] <- 2
-X$FrenoRapidoBrusco[X$FrenoRapidoBrusco == 4 & X$OmiteLimiteVelocidad == 3] <- 3
-X$FrenoRapidoBrusco[X$FrenoRapidoBrusco ==4 & X$AceleraFrenaBruscamenteSemaforo == 4] <-1
-X$FrenoRapidoBrusco[X$FrenoRapidoBrusco == 4 & X$AceleraFrenaBruscamenteSemaforo ==1 & X$CulebreaConFrecuencia == 2] <- 2
-X$FrenoRapidoBrusco[X$FrenoRapidoBrusco == 4 & X$AceleraFrenaBruscamenteSemaforo ==1 & X$CulebreaConFrecuencia == 1] <- 1
+# Uso Celular 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Uso Celular cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$UsoCel[DBModo$UsoCel == 0] <-1
+DBModo$UsoCel[DBModo$UsoCel == 4 & DBModo$DispMob > 0] <-2
 
 
-# Acelera o frena bruscamente a la salida (llegada) de un semaforo
-X$AceleraFrenaBruscamenteSemaforo[X$AceleraFrenaBruscamenteSemaforo == 4 & X$FrenoRapidoBrusco == 1] <- 1
-X$AceleraFrenaBruscamenteSemaforo[X$AceleraFrenaBruscamenteSemaforo == 4 & X$FrenoRapidoBrusco == 2] <- 2
-
-# Omite limite de Velocidad
-X$OmiteLimiteVelocidad[X$OmiteLimiteVelocidad == 4 & X$CulebreaConFrecuencia == 2] <- 2
-X$OmiteLimiteVelocidad[X$OmiteLimiteVelocidad == 4 & X$AceleraFrenaBruscamenteSemaforo == 2] <- 3
-X$OmiteLimiteVelocidad[X$OmiteLimiteVelocidad == 4 & X$AceleraFrenaBruscamenteSemaforo == 1]<- 2
-
-#Ignora señal de pare
-X$IgnoraSenhalPare[X$IgnoraSenhalPare == 4 & X$AceleraFrenaBruscamenteSemaforo == 1] <- 1
-X$IgnoraSenhalPare[X$IgnoraSenhalPare == 4 & X$AceleraFrenaBruscamenteSemaforo == 2] <- 2
-X$IgnoraSenhalPare[X$IgnoraSenhalPare == 4 & X$AceleraFrenaBruscamenteSemaforo == 3] <- 3
-
-
-#Usa las direccionales
-X$UsaDireccionales[X$UsaDireccionales == 4 & X$CulebreaConFrecuencia == 2] <- 2
-
-# Se enfada con otro conductor
-X$EnfadoConOtroConductor[X$EnfadoConOtroConductor == 4 & (X$UsaPito == 1 | X$AceleraFrenaBruscamenteSemaforo == 1)] <- 1
-X$EnfadoConOtroConductor[X$EnfadoConOtroConductor == 4 & (X$UsaPito == 2 | X$AceleraFrenaBruscamenteSemaforo == 2)] <- 2
-X$EnfadoConOtroConductor[X$EnfadoConOtroConductor == 4 & (X$UsaPito == 3 | X$AceleraFrenaBruscamenteSemaforo == 3)] <- 3
+# Freno Rapido y Brusco 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Freno Rapido y Brusco Cambia a: 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 2] <-2
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$OmLmVel == 2] <- 2
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$OmLmVel == 3] <- 3
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 4] <-1
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==1 & DBModo$CulFr == 2] <- 2
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==1 & DBModo$CulFr == 1] <- 1
+DBModo$FRbr[DBModo$FRbr == 1 & DBModo$AFrSem ==2 ] <- 2
+DBModo$FRbr[DBModo$FRbr == 1 & DBModo$AFrSem ==3 ] <- 3
+DBModo$FRbr[DBModo$FRbr == 1 & DBModo$CulFr == 2] <- 2
+DBModo$FRbr[DBModo$FRbr == 1 & DBModo$CulFr == 3] <- 3
 
 
-table(X$CinturonDeSeguridad)
-table(X$PasoPeatones)
-table(X$UsaPito)
-table(X$FrenoRapidoBrusco)
-table(X$UsaDireccionales)
-table(X$EnfadoConOtroConductor)
-table(X$AceleraFrenaBruscamenteSemaforo)
-table(X$CulebreaConFrecuencia)
-table(X$OmiteLimiteVelocidad)
-table(X$IgnoraSenhalPare)
-table(X$UsoCelular)
 
-X$UsaDireccionales[X$UsaDireccionales == 4] <- 1
-X$CulebreaConFrecuencia[X$CulebreaConFrecuencia == 4] <- 3
+# Acelera o frena bruscamente a la salida (llegada) de un semaforo 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Acelera o frena bruscamente a la salida (llegada) de un semaforo Cambi a 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$AFrSem[DBModo$AFrSem == 4 & DBModo$FRbr == 1] <- 1
+DBModo$AFrSem[DBModo$AFrSem == 4 & DBModo$FRbr == 2] <- 2
+DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 2] <- 2
+DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 3] <- 3
+DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$CulFr == 2] <- 2
+DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 3] <- 3
+
+# Omite limite de Velocidad 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$CulFr == 2] <- 2
+DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$AFrSem == 2] <- 3
+DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$AFrSem == 1]<- 2
+DBModo$OmLmVel[DBModo$OmLmVel == 1 & DBModo$AFrSem == 1]<- 2
+DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$CulFr == 3]<- 3
 
 
-summary(X)
-describe(X)
+#Ignora señal de pare 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$IgPare[DBModo$IgPare == 4 & DBModo$AFrSem == 1] <- 1
+DBModo$IgPare[DBModo$IgPare == 4 & DBModo$AFrSem == 2] <- 2
+DBModo$IgPare[DBModo$IgPare == 4 & DBModo$AFrSem == 3] <- 3
+DBModo$IgPare[DBModo$IgPare == 1 & DBModo$AFrSem == 3] <- 3
+DBModo$IgPare[DBModo$IgPare == 1 & DBModo$PasoPeaton == 1] <- 3
+DBModo$IgPare[DBModo$IgPare == 1 & DBModo$PasoPeaton == 2] <- 2
 
-saveRDS(X, file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+#Usa las direccionales 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$UsoDirec[DBModo$UsoDirec == 4 & DBModo$CulFr == 3] <- 1
+DBModo$UsoDirec[DBModo$UsoDirec == 4 & DBModo$CulFr == 2] <- 2
+
+# Se enfada con otro conductor 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 1 | DBModo$AFrSem == 1)] <- 1
+DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 2 | DBModo$AFrSem == 2)] <- 2
+DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 3 | DBModo$AFrSem == 3)] <- 3
+
+DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$EnfCond == 2] <- 2
+DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$EnfCond == 3] <- 3
+DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$AFrSem == 3] <- 3
+DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$AFrSem == 2] <- 2
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$AFrSem == 2] <- 2
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$EnfCond == 2] <- 2
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$EnfCond == 3] <- 3
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$AFrSem == 3] <- 3
+
+
+DBModo$INFOTRAFICO = factor(DBModo$INFOTRAFICO,
+                              levels = 1:3,
+                              labels = c("No",
+                                         "SI",
+                                         "No Responde"))
+
+table(DBModo$INFOTRAFICO)
+tab.Infotrafico <-as.data.frame(prop.table(table(DBModo$INFOTRAFICO))*100)
+tab.Infotrafico
+
+table(DBModo$CinSeg)
+tab.Cinturon<-as.data.frame(prop.table(table(DBModo$CinSeg))*100)
+tab.Cinturon
+
+table(DBModo$PasoPeaton)
+tab.Peaton<-as.data.frame(prop.table(table(DBModo$PasoPeaton))*100)
+tab.Peaton
+
+table(DBModo$UsoPito)
+tab.UsaPito<-as.data.frame(prop.table(table(DBModo$UsoPito))*100)
+tab.UsaPito
+
+table(DBModo$FRbr)
+tab.FRBr<-as.data.frame(prop.table(table(DBModo$FRbr))*100)
+tab.FRBr
+
+
+table(DBModo$UsoDirec)
+tab.UsoDir<-as.data.frame(prop.table(table(DBModo$UsoDirec))*100)
+tab.UsoDir
+
+table(DBModo$EnfCond)
+tab.EnfCond<-as.data.frame(prop.table(table(DBModo$EnfCond))*100)
+tab.EnfCond
+
+table(DBModo$AFrSem)
+tab.AFrSem<-as.data.frame(prop.table(table(DBModo$AFrSem))*100)
+tab.AFrSem
+
+table(DBModo$CulFr)
+tab.CulFr<-as.data.frame(prop.table(table(DBModo$CulFr))*100)
+tab.CulFr
+
+table(DBModo$OmLmVel)
+tab.OmLmVel<-as.data.frame(prop.table(table(DBModo$OmLmVel))*100)
+tab.OmLmVel
+
+table(DBModo$IgPare)
+tab.IgPare<-as.data.frame(prop.table(table(DBModo$IgPare))*100)
+tab.IgPare
+
+table(DBModo$UsoCel)
+tab.UsoCel<-as.data.frame(prop.table(table(DBModo$UsoCel))*100)
+tab.UsoCel
+
+
+saveRDS(DBModo, file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
 
                        
                        
