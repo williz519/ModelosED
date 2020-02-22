@@ -114,21 +114,21 @@ write.table(MCond,
 # CFA a la unidad, se utiliza el argumento std.lv = TRUE, pero las cargas factoriales
 # del primer indicador de cada variable latente ya no se fijan en 1.
 
-#sink("Resul_MOD_ModoCond.txt")
+sink("Resul_MOD_ModoCond.txt")
 
 # MODELO 1
 
 model1 <- " #Variables Latentes
-      ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel
-      VIORD =~ PasoPeaton + UsoDirec + IgPare
-      IMPAC =~ UsoPito + UsoCel
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito
+      FA_2 =~ PasoPeaton + UsoDirec 
+      FA_3 =~ OmLmVel + UsoCel
       
       # Regresiones
-      ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+      FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
               CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-      VIORD ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+      FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
               CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-      IMPAC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+      FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
               CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
 
       # Interceptos"
@@ -168,22 +168,23 @@ sink("ResultadosMODELO2CE.txt")
 # MODELO 2
 
 model2 <- " #Variables Latentes
-      ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + UsoPito
-      VIORD =~ PasoPeaton + UsoDirec + IgPare
-      IMPAC =~ UsoPito + UsoCel
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel
+      FA_2 =~ PasoPeaton + UsoDirec 
+      FA_3 =~ OmLmVel + UsoCel
 
 # Regresiones
-ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-VIORD ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-IMPAC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
 
 # Interceptos
 
 #Varianzas-Covarianzas
-ACTAGR ~~ VIORD
+
+
 "
 
 fit2 <- cfa(model2, data = MCond, orthogonal = TRUE, std.lv = TRUE)
@@ -204,22 +205,21 @@ modindices(fit21, sort = TRUE, maximum.number = 10)
 #MODELO 3
 
 model3 <- " #Variables Latentes
-          ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + UsoPito
-          VIORD =~ PasoPeaton + UsoDirec + IgPare + OmLmVel
-          IMPAC =~ UsoPito + UsoCel
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel
+      FA_2 =~ PasoPeaton + UsoDirec 
+      FA_3 =~ OmLmVel + UsoCel + UsoPito
 
 # Regresiones
-ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-VIORD ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-IMPAC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
 
 # Interceptos
 
 #Varianzas-Covarianzas
-ACTAGR ~~ VIORD
 "
 
 fit3 <- cfa(model3, data = MCond, orthogonal = TRUE, std.lv = TRUE)
@@ -240,22 +240,21 @@ modindices(fit31, sort = TRUE, maximum.number = 10)
 #MODELO 4
 
 model4 <- " #Variables Latentes
-          ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + UsoPito + UsoDirec
-          VIORD =~ PasoPeaton + UsoDirec + IgPare + OmLmVel + UsoPito
-          IMPAC =~ UsoPito + UsoCel + UsoDirec
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel
+      FA_2 =~ PasoPeaton + UsoDirec 
+      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
 
 # Regresiones
-ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-VIORD ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-IMPAC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
 
 # Interceptos
 
 #Varianzas-Covarianzas
-ACTAGR ~~ VIORD
 "
 
 fit4 <- cfa(model4, data = MCond, orthogonal = TRUE, std.lv = TRUE)
@@ -281,23 +280,21 @@ sink("Resul_MODELO5.txt")
 # MODELO 5
 
 model5 <-  " #Variables Latentes
-          ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + UsoPito + UsoDirec
-          VIORD =~ PasoPeaton + UsoDirec + IgPare + OmLmVel + UsoPito
-          IMPAC =~ UsoPito + UsoCel + UsoDirec + OmLmVel
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel
+      FA_2 =~ PasoPeaton + UsoDirec + IgPare
+      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
 
 # Regresiones
-ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-VIORD ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-IMPAC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
 
 # Interceptos
 
 #Varianzas-Covarianzas
-ACTAGR ~~ VIORD
-UsoPito ~~ PasoPeaton
 "
 
 fit5 <- cfa(model5, data = MCond, orthogonal = TRUE, std.lv = TRUE)
@@ -322,20 +319,22 @@ sink("Resul_MODELO6.txt")
 # MODELO 6
 
 model6 <- " #Variables Latentes
-          ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + UsoPito + UsoDirec
-          VIORD =~ PasoPeaton + UsoDirec + IgPare + OmLmVel + UsoPito
-          IMPAC =~ UsoPito + UsoCel + UsoDirec + OmLmVel
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
+      FA_2 =~ PasoPeaton + UsoDirec + IgPare
+      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
 
 # Regresiones
-ACTAGR ~  ADULTO40 + CONG_CD + CONG_EF + SININFOTRF + USOCINTURON 
-VIORD ~ EDUBASICA + CONG_EF + USOCINTURON 
-IMPAC ~ EDUBASICA + CONG_CD + CONG_EF + USOCINTURON + USODISPMOB
+FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
+FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
+FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
 
 # Interceptos
 
 #Varianzas-Covarianzas
-ACTAGR ~~ VIORD
-UsoPito ~~ PasoPeaton
+
 "
 
 fit6 <- lavaan::cfa(model6, data = MCond, orthogonal = TRUE, std.lv = TRUE)
@@ -361,23 +360,22 @@ sink("ResultadoMODELO7CE.txt")
 # MODELO 7
 
 model7 <- " #Variables Latentes
-      ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + UsoPito
-VIORD =~ PasoPeaton + UsoDirec + IgPare + OmLmVel
-IMPAC =~ UsoPito + UsoCel + UsoDirec + OmLmVel + PasoPeaton
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
+      FA_2 =~ PasoPeaton + UsoDirec + IgPare
+      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
 
 # Regresiones
-ACTAGR ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-VIORD ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-IMPAC ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
 CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
 
 # Interceptos
 
 #Varianzas-Covarianzas
-ACTAGR ~~ VIORD
-UsoPito ~~ PasoPeaton
+IgPare ~~ OmLmVel
 "
 
 fit7 <- lavaan::cfa(model7, data = MCond, orthogonal = TRUE, std.lv = TRUE)
@@ -394,6 +392,107 @@ summary(fit71, fit.measures= TRUE, standardized = TRUE)
 semPaths(fit71, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
 #parameterestimates(fit11)
 modindices(fit71, sort = TRUE, maximum.number = 10) 
+
+sink("Modelo8.txt")
+model8 <-  " #Variables Latentes
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
+      FA_2 =~ PasoPeaton + UsoDirec + IgPare
+      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
+
+# Regresiones
+FA_1 ~  CSECO + CONG_CD + CONG_EF + USOCINTURON 
+FA_2 ~ EDUBASICA + JOVEN30 + HORAS_TRABAJO + CONG_CD + USOCINTURON + USODISPMOB
+FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF 
+
+# Interceptos
+
+#Varianzas-Covarianzas
+IgPare ~~ OmLmVel
+"
+
+fit8 <- cfa(model8, data = MCond, orthogonal = TRUE, std.lv = TRUE)
+summary(fit8, fit.measures=TRUE, standardized = TRUE)
+semPaths(fit8,"std", title = FALSE, curvePivot = TRUE)
+
+# Solicitar los 10 primeros IM con valores m?s altos
+modindices(fit8, sort = TRUE, maximum.number = 10) 
+
+fit81 <- cfa(model8, data = DBVL, orthogonal = TRUE)
+summary(fit81, fit.measures= TRUE, standardized = TRUE)
+semPaths(fit81, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
+#parameterestimates(fit11)
+modindices(fit81, sort = TRUE, maximum.number = 10) 
+
+sink("Modelo9.txt")
+
+model9 <- " #Variables Latentes
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
+FA_2 =~ PasoPeaton + UsoDirec + IgPare
+FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
+
+# Regresiones
+FA_1 ~  CSECO + CONG_CD + CONG_EF + USOCINTURON 
+FA_2 ~ EDUBASICA + JOVEN30 + HORAS_TRABAJO + CONG_CD + USOCINTURON + USODISPMOB
+FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
+CONG_CD + CONG_EF 
+
+# Interceptos
+
+#Varianzas-Covarianzas
+IgPare ~~ OmLmVel
+IgPare ~~ PasoPeaton
+"
+
+fit9 <- cfa(model9, data = MCond, orthogonal = TRUE, std.lv = TRUE)
+summary(fit9, fit.measures=TRUE, standardized = TRUE)
+semPaths(fit9,"std", title = FALSE, curvePivot = TRUE)
+
+# Solicitar los 10 primeros IM con valores m?s altos
+modindices(fit9, sort = TRUE, maximum.number = 10) 
+
+
+fit91 <- cfa(model9, data = DBVL, orthogonal = TRUE)
+summary(fit91, fit.measures= TRUE, standardized = TRUE)
+semPaths(fit91, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
+#parameterestimates(fit11)
+modindices(fit91, sort = TRUE, maximum.number = 10) 
+
+
+# MODELO 10
+
+sink("Modelo10.txt")
+
+model10 <- " #Variables Latentes
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
+      FA_2 =~ PasoPeaton + UsoDirec + IgPare
+      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
+
+# Regresiones
+FA_1 ~  CSECO + CONG_CD + CONG_EF + USOCINTURON 
+FA_2 ~ EDUBASICA + CONG_CD + USOCINTURON + USODISPMOB
+FA_3 ~ JOVEN30 + ADULTO40 + ADULTO60 + HORAS_TRABAJO + CSECO +
+CONG_CD + CONG_EF 
+
+# Interceptos
+
+#Varianzas-Covarianzas
+IgPare ~~ OmLmVel
+IgPare ~~ PasoPeaton
+"
+
+fit10 <- cfa(model10, data = MCond, orthogonal = TRUE, std.lv = TRUE)
+summary(fit10, fit.measures=TRUE, standardized = TRUE)
+semPaths(fit10,"std", title = FALSE, curvePivot = TRUE)
+# Solicitar los 10 primeros IM con valores m?s altos
+modindices(fit10, sort = TRUE, maximum.number = 10) 
+
+
+fit10_1 <- cfa(model10, data = DBVL, orthogonal = TRUE)
+summary(fit10_1, fit.measures= TRUE, standardized = TRUE)
+semPaths(fit10_1, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
+#parameterestimates(fit11)
+modindices(fit10_1, sort = TRUE, maximum.number = 10) 
 
 sink()
 
@@ -422,9 +521,19 @@ fit_index06 <- broom::glance(fit6) %>%
 fit_index07 <- broom::glance(fit7) %>% 
   select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
 
+fit_index08 <- broom::glance(fit8) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+fit_index09 <- broom::glance(fit9) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+fit_index10 <- broom::glance(fit10) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
+
+
 # Uniendo 
 bind_rows(fit_index01, fit_index02, fit_index03, fit_index04, fit_index05, fit_index06, 
-          fit_index07, .id = "Modelo")
+          fit_index07, fit_index08,fit_index09,fit_index10, .id = "Modelo")
 
 sink()
 
@@ -435,42 +544,6 @@ sink("ResulMODELO_8.txt")
 
 # MODELO 8
 
-model8 <-  " #Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare
-STRESS =~ Ans + ComAfec + StrC + ConsCl + UsDirec + CulFr
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec
-HABPROSOC =~ ComVrb + ComAfec
-
-# Regresiones
-ACTAGR ~ EDUBASICA + HORASTRABAJO + CONG_CD + CONG_EF + SININFOTRF
-
-STRESS ~ JOVEN + HORASTRABAJO + HPICO  + SININFOTRF
-
-AMBLABOR ~  ADULTO + CONG_CD + ACTAGR + STRESS
-
-CONDSEG ~ EDUBASICA  + STRESS
-
-HABPROSOC ~ JOVEN + ADULTO + HORASTRABAJO  + CONG_CD + CONG_EF + SININFOTRF  
-
-# Varianzas - Covarianzas
-ACTAGR ~~ STRESS
-FRbr ~~ AFrSem
-
-# Interceptos"
-
-fit8 <- cfa(model8, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
-summary(fit8, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit8,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit8, sort = TRUE, maximum.number = 10) 
-
-fit81 <- cfa(model8, data = DBVL, orthogonal = TRUE)
-summary(fit81, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit81, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit81, sort = TRUE, maximum.number = 10) 
 
 sink()
 
@@ -479,43 +552,7 @@ sink("ResulMODELO_9.txt")
 
 # MODELO 9
 
-model9 <- " #Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare
-STRESS =~ Ans + ComAfec + StrC + ConsCl + UsDirec + CulFr
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
 
-# Regresiones
-ACTAGR ~ EDUBASICA + HORASTRABAJO + CONG_CD + CONG_EF + SININFOTRF
-
-STRESS ~ JOVEN + HORASTRABAJO + HPICO  + SININFOTRF
-
-AMBLABOR ~  ADULTO + CONG_CD + ACTAGR + STRESS
-
-CONDSEG ~ EDUBASICA  + STRESS
-
-HABPROSOC ~ JOVEN + ADULTO + HORASTRABAJO  + CONG_CD + CONG_EF + SININFOTRF  
-
-# Varianzas - Covarianzas
-ACTAGR ~~ STRESS
-FRbr ~~ AFrSem
-
-# Interceptos"
-
-fit9 <- cfa(model9, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
-summary(fit9, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit9,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit9, sort = TRUE, maximum.number = 10) 
-
-
-fit91 <- cfa(model9, data = DBVL, orthogonal = TRUE)
-summary(fit91, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit91, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit91, sort = TRUE, maximum.number = 10) 
 
 sink()
 
@@ -525,44 +562,6 @@ sink()
 
 sink("ResulMODELO_10.txt")
 
-# MODELO 10
-
-model10 <- " #Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare
-STRESS =~ Ans + ComAfec + StrC + ConsCl + UsDirec + CulFr
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec + Ans
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
-
-# Regresiones
-ACTAGR ~ EDUBASICA + HORASTRABAJO + CONG_CD + CONG_EF + SININFOTRF
-
-STRESS ~ JOVEN + HORASTRABAJO + HPICO  + SININFOTRF
-
-AMBLABOR ~  ADULTO + CONG_CD + ACTAGR + STRESS
-
-CONDSEG ~ EDUBASICA  + STRESS
-
-HABPROSOC ~ JOVEN + ADULTO + HORASTRABAJO  + CONG_CD + CONG_EF + SININFOTRF  
-
-# Varianzas - Covarianzas
-ACTAGR ~~ STRESS
-FRbr ~~ AFrSem
-
-# Interceptos"
-
-fit10 <- cfa(model10, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
-summary(fit10, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit10,"std", title = FALSE, curvePivot = TRUE)
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit10, sort = TRUE, maximum.number = 10) 
-
-
-fit10_1 <- cfa(model10, data = DBVL, orthogonal = TRUE)
-summary(fit10_1, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit10_1, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit10_1, sort = TRUE, maximum.number = 10) 
 
 sink()
 

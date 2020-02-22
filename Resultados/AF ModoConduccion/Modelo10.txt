@@ -1,0 +1,129 @@
+lavaan 0.6-3 ended normally after 64 iterations
+
+  Optimization method                           NLMINB
+  Number of free parameters                         42
+
+  Number of observations                           348
+
+  Estimator                                         ML
+  Model Fit Test Statistic                     204.864
+  Degrees of freedom                               113
+  P-value (Chi-square)                           0.000
+
+Model test baseline model:
+
+  Minimum Function Test Statistic             3056.978
+  Degrees of freedom                               145
+  P-value                                        0.000
+
+User model versus baseline model:
+
+  Comparative Fit Index (CFI)                    0.968
+  Tucker-Lewis Index (TLI)                       0.960
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)              -3887.679
+  Loglikelihood unrestricted model (H1)      -3785.247
+
+  Number of free parameters                         42
+  Akaike (AIC)                                7859.358
+  Bayesian (BIC)                              8021.151
+  Sample-size adjusted Bayesian (BIC)         7887.913
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.048
+  90 Percent Confidence Interval          0.038  0.059
+  P-value RMSEA <= 0.05                          0.589
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.042
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+  Standard Errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  FA_1 =~                                                               
+    FRbr              1.057    0.041   25.642    0.000    1.097    0.987
+    EnfCond           0.704    0.047   15.119    0.000    0.731    0.706
+    AFrSem            1.052    0.041   25.586    0.000    1.091    0.986
+    CulFr             1.052    0.046   22.619    0.000    1.091    0.922
+    IgPare            0.659    0.048   13.588    0.000    0.684    0.582
+    UsoPito           0.772    0.045   17.096    0.000    0.800    0.766
+    UsoCel            0.332    0.051    6.534    0.000    0.344    0.313
+    UsoDirec          0.227    0.047    4.838    0.000    0.235    0.212
+  FA_2 =~                                                               
+    PasoPeaton        0.633    0.065    9.667    0.000    0.723    0.583
+    UsoDirec          0.824    0.085    9.668    0.000    0.941    0.848
+    IgPare           -0.236    0.049   -4.804    0.000   -0.269   -0.229
+  FA_3 =~                                                               
+    OmLmVel           0.673    0.062   10.898    0.000    0.717    0.684
+    UsoCel            0.635    0.064    9.878    0.000    0.677    0.616
+    UsoPito           0.304    0.042    7.318    0.000    0.324    0.310
+    PasoPeaton        0.367    0.060    6.075    0.000    0.391    0.315
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  FA_1 ~                                                                
+    CSECO             0.272    0.141    1.927    0.054    0.262    0.102
+    CONG_CD           0.415    0.130    3.197    0.001    0.400    0.173
+    CONG_EF           0.589    0.156    3.785    0.000    0.567    0.205
+    USOCINTURON      -0.228    0.134   -1.701    0.089   -0.220   -0.090
+  FA_2 ~                                                                
+    EDUBASICA        -0.565    0.139   -4.076    0.000   -0.495   -0.244
+    CONG_CD           0.267    0.149    1.791    0.073    0.234    0.101
+    USOCINTURON       0.834    0.172    4.853    0.000    0.730    0.299
+    USODISPMOB       -0.459    0.139   -3.311    0.001   -0.402   -0.191
+  FA_3 ~                                                                
+    JOVEN30          -0.500    0.308   -1.621    0.105   -0.469   -0.125
+    ADULTO40         -0.484    0.231   -2.100    0.036   -0.455   -0.202
+    ADULTO60         -0.300    0.209   -1.434    0.152   -0.282   -0.141
+    HORAS_TRABAJO    -0.076    0.032   -2.368    0.018   -0.071   -0.152
+    CSECO            -0.406    0.175   -2.327    0.020   -0.381   -0.149
+    CONG_CD          -0.482    0.164   -2.947    0.003   -0.453   -0.196
+    CONG_EF          -0.682    0.200   -3.406    0.001   -0.640   -0.232
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+ .IgPare ~~                                                             
+   .OmLmVel           0.266    0.046    5.773    0.000    0.266    0.380
+   .PasoPeaton       -0.294    0.060   -4.901    0.000   -0.294   -0.343
+ .FA_1 ~~                                                               
+   .FA_2              0.000                               0.000    0.000
+   .FA_3              0.000                               0.000    0.000
+ .FA_2 ~~                                                               
+   .FA_3              0.000                               0.000    0.000
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .FRbr              0.032    0.006    5.488    0.000    0.032    0.026
+   .EnfCond           0.538    0.041   13.029    0.000    0.538    0.502
+   .AFrSem            0.034    0.006    5.873    0.000    0.034    0.028
+   .CulFr             0.210    0.017   12.246    0.000    0.210    0.150
+   .IgPare            0.839    0.066   12.736    0.000    0.839    0.608
+   .UsoPito           0.382    0.034   11.257    0.000    0.382    0.349
+   .UsoCel            0.662    0.078    8.446    0.000    0.662    0.548
+   .UsoDirec          0.293    0.133    2.208    0.027    0.293    0.238
+   .PasoPeaton        0.880    0.107    8.247    0.000    0.880    0.572
+   .OmLmVel           0.584    0.079    7.412    0.000    0.584    0.532
+   .FA_1              1.000                               0.929    0.929
+   .FA_2              1.000                               0.767    0.767
+   .FA_3              1.000                               0.880    0.880
+
+        lhs op        rhs     mi    epc sepc.lv sepc.all sepc.nox
+154 UsoPito ~~ PasoPeaton 25.648 -0.174  -0.174   -0.301   -0.301
+114    FA_3 =~    EnfCond 19.519  0.199   0.212    0.204    0.204
+153 UsoPito ~~   UsoDirec 14.852  0.120   0.120    0.358    0.358
+158  UsoCel ~~    OmLmVel 12.398 -0.342  -0.342   -0.551   -0.551
+48     FA_2 ~~       FA_3  9.786  0.253   0.253    0.253    0.253
+118    FA_3 =~   UsoDirec  8.293  0.175   0.187    0.168    0.168
+132 EnfCond ~~     UsoCel  8.128  0.104   0.104    0.174    0.174
+157  UsoCel ~~ PasoPeaton  7.600  0.155   0.155    0.203    0.203
+171    FA_2  ~       FA_3  7.484  0.205   0.191    0.191    0.191
+170    FA_2  ~       FA_1  6.665  0.249   0.226    0.226    0.226

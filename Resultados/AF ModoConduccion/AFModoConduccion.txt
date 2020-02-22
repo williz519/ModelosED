@@ -1,0 +1,91 @@
+Alpha reliability =  0.8364 
+Standardized alpha =  0.8394 
+
+Reliability deleting each item in turn:
+            Alpha Std.Alpha r(item, total)
+PasoPeaton 0.8524    0.8518         0.2305
+UsoPito    0.8023    0.8047         0.7330
+FRbr       0.7935    0.7975         0.8071
+UsoDirec   0.8391    0.8432         0.3394
+EnfCond    0.8062    0.8088         0.6957
+AFrSem     0.7946    0.7985         0.7975
+CulFr      0.7975    0.8025         0.7543
+OmLmVel    0.8507    0.8557         0.1900
+IgPare     0.8324    0.8347         0.4135
+UsoCel     0.8301    0.8336         0.4347
+            PasoPeaton    UsoPito        FRbr    UsoDirec   EnfCond      AFrSem       CulFr     OmLmVel      IgPare
+PasoPeaton  1.00000000 0.09053891  0.11382777  0.52598089 0.1705430  0.09698269  0.10890612  0.26886480 -0.25736924
+UsoPito     0.09053891 1.00000000  0.74102163  0.25454341 0.5735441  0.73168577  0.70457227  0.20197660  0.42681461
+FRbr        0.11382777 0.74102163  1.00000000  0.25740964 0.6939250  0.97316992  0.90831048 -0.03452978  0.54768797
+UsoDirec    0.52598089 0.25454341  0.25740964  1.00000000 0.2678458  0.25205178  0.24688631  0.06539346 -0.02877843
+EnfCond     0.17054303 0.57354413  0.69392499  0.26784585 1.0000000  0.69565254  0.65137001  0.11776427  0.41094565
+AFrSem      0.09698269 0.73168577  0.97316992  0.25205178 0.6956525  1.00000000  0.90986014 -0.03671659  0.54626940
+CulFr       0.10890612 0.70457227  0.90831048  0.24688631 0.6513700  0.90986014  1.00000000 -0.01903292  0.50041384
+OmLmVel     0.26886480 0.20197660 -0.03452978  0.06539346 0.1177643 -0.03671659 -0.01903292  1.00000000  0.19513576
+IgPare     -0.25736924 0.42681461  0.54768797 -0.02877843 0.4109456  0.54626940  0.50041384  0.19513576  1.00000000
+UsoCel      0.29888257 0.41622086  0.28957180  0.14339019 0.3578341  0.27515116  0.23624319  0.39200472  0.16480718
+              UsoCel
+PasoPeaton 0.2988826
+UsoPito    0.4162209
+FRbr       0.2895718
+UsoDirec   0.1433902
+EnfCond    0.3578341
+AFrSem     0.2751512
+CulFr      0.2362432
+OmLmVel    0.3920047
+IgPare     0.1648072
+UsoCel     1.0000000
+[1] 0.0003121214
+$chisq
+[1] 2767.391
+
+$p.value
+[1] 0
+
+$df
+[1] 45
+
+Kaiser-Meyer-Olkin factor adequacy
+Call: KMO(r = Rcor)
+Overall MSA =  0.81
+MSA for each item = 
+PasoPeaton    UsoPito       FRbr   UsoDirec    EnfCond     AFrSem      CulFr    OmLmVel     IgPare     UsoCel 
+      0.46       0.89       0.81       0.68       0.97       0.82       0.95       0.41       0.77       0.79 
+Importance of components:
+                          Comp.1    Comp.2    Comp.3     Comp.4    Comp.5     Comp.6     Comp.7     Comp.8     Comp.9
+Standard deviation     2.1626902 1.3285574 1.1236582 0.81492241 0.6819281 0.66601002 0.62109595 0.45365446 0.32325231
+Proportion of Variance 0.4677229 0.1765065 0.1262608 0.06640985 0.0465026 0.04435693 0.03857602 0.02058024 0.01044921
+Cumulative Proportion  0.4677229 0.6442294 0.7704901 0.83689999 0.8834026 0.92775952 0.96633554 0.98691578 0.99736498
+                           Comp.10
+Standard deviation     0.162327382
+Proportion of Variance 0.002635018
+Cumulative Proportion  1.000000000
+
+Call:
+factanal(x = ModoCond, factors = 3, rotation = "varimax", na.rm = TRUE,     lower = 0.05)
+
+Uniquenesses:
+PasoPeaton    UsoPito       FRbr   UsoDirec    EnfCond     AFrSem      CulFr    OmLmVel     IgPare     UsoCel 
+     0.050      0.371      0.050      0.663      0.469      0.050      0.142      0.139      0.477      0.696 
+
+Loadings:
+           Factor1 Factor2 Factor3
+PasoPeaton          0.951         
+UsoPito     0.753                 
+FRbr        0.969                 
+UsoDirec            0.548         
+EnfCond     0.694                 
+AFrSem      0.971                 
+CulFr       0.915                 
+OmLmVel                     0.924 
+IgPare      0.608  -0.307         
+UsoCel                      0.427 
+
+               Factor1 Factor2 Factor3
+SS loadings      4.246   1.450   1.221
+Proportion Var   0.425   0.145   0.122
+Cumulative Var   0.425   0.570   0.692
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 109.83 on 18 degrees of freedom.
+The p-value is 3.39e-15 

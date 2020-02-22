@@ -25,11 +25,16 @@ RutasGoogle <- Google %>%
 
 Rutas200 <-readRDS("/Users/williz/Desktop/ModelosED/Database/RutasVelocidades/Rutas200.rds")
 
-#Base de datos creada en DBModoConduccion.r
-DBModoConduccion <- readRDS("/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+#Base de datos creada en DBModoConduccion.r Escala 1-3
+#DBModoConduccion <- readRDS("/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+
+#Base de datos creada en DBModoConduccion.r Escala 1-5
+DBModoConduccion <- readRDS("/Users/williz/Desktop/ModelosED/Database/DBModoCondCE.rds")
+
 
 #Base de datos creada en DBPersonalidad.r
 DBPersonalidad <- readRDS("/Users/williz/Desktop/ModelosED/Database/DBPersonalidad.rds")
+
 
 names(Rutas200)
 names(RutasGoogle)

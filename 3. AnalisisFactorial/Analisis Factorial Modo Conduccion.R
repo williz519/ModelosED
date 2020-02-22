@@ -15,10 +15,16 @@ require(psych)
 require(GGally)
 library(corrplot)
 library(corrr)
+library(umx)
 
 #Leer la dataset
 
-DBModoCond <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+#Base de datos creada en DBModoConduccion.r Escala 1-3
+#DBModoCond <- readRDS("/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+
+#Base de datos creada en DBModoConduccion.r Escala 1-5
+DBModoCond <- readRDS("/Users/williz/Desktop/ModelosED/Database/DBModoCondCE.rds")
+
 DBModLog <- read.csv("/Users/williz/Desktop/ModelosED/Database/ModeloLogitVL.csv", header = TRUE, sep = "\t")
 
 names(DBModoCond)
@@ -38,24 +44,23 @@ tibble::as_tibble(ModoCond)
 ModoCond[c("ViajeId","Genero","INFOTRAFICO","CinSeg","DispMob","Experiencia")] <- NULL
 names(ModoCond)
 
-
 reliability(cov(ModoCond))
 
-ModoCond$Suma <- ModoCond$FRbr+ModoCond$UsoDirec+ModoCond$EnfCond+ModoCond$AFrSem+ModoCond$CulFr+ModoCond$OmLmVel+
-  ModoCond$IgPare+ModoCond$UsoCel
+#ModoCond$Suma <- ModoCond$FRbr+ModoCond$UsoDirec+ModoCond$EnfCond+ModoCond$AFrSem+ModoCond$CulFr+ModoCond$OmLmVel+
+#  ModoCond$IgPare+ModoCond$UsoCel
 
-cor(ModoCond)
-ModoCond$PasoPeaton[ModoCond$PasoPeaton == 1] <- 4
-ModoCond$PasoPeaton[ModoCond$PasoPeaton == 3] <- 1
-ModoCond$PasoPeaton[ModoCond$PasoPeaton == 4] <- 3
+#cor(ModoCond)
+#ModoCond$PasoPeaton[ModoCond$PasoPeaton == 1] <- 4
+#ModoCond$PasoPeaton[ModoCond$PasoPeaton == 3] <- 1
+#ModoCond$PasoPeaton[ModoCond$PasoPeaton == 4] <- 3
 
-ModoCond$OmLmVel[ModoCond$OmLmVel == 1]<- 4
-ModoCond$OmLmVel[ModoCond$OmLmVel == 3]<- 1
-ModoCond$OmLmVel[ModoCond$OmLmVel == 4]<- 3
+#ModoCond$OmLmVel[ModoCond$OmLmVel == 1]<- 4
+#ModoCond$OmLmVel[ModoCond$OmLmVel == 3]<- 1
+#ModoCond$OmLmVel[ModoCond$OmLmVel == 4]<- 3
 
-ModoCond[c("Suma")]<- NULL
+#ModoCond[c("Suma")]<- NULL
 
-cor(ModoCond)
+#cor(ModoCond)
 
 sink("AFModoConduccion.txt")
 
@@ -160,9 +165,9 @@ fa <-factanal(ModoCond, factors = 3, rotation = "varimax", na.rm = TRUE,lower = 
 print(fa,cutoff=0.3, sort=FALSE)
 
 fa1 <-factanal(ModoCond, factor = 4, rotation = "varimax", na.rm = TRUE, lower = 0.05)
-print(fa1,cutoff=0.3, sort=FALSE)
+print(fa1,cutoff=0.2, sort=FALSE)
 
-#sink()
+sink()
 
 factores <- factanal(ModoCond, factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 
@@ -177,18 +182,18 @@ indicators2$Factor3 <- round(((indicators2$Factor3 - min(indicators2$Factor3))/(
 indicators2
 
 indicators2 <- rename(indicators2, replace =c(Factor1 = "ActitudAgresiva",
-                                              Factor2 = "ViolacionNormas",
-                                              Factor3 = "Impaciencia"))
+                                              Factor2 = "RespetoPeaton",
+                                              Factor3 = "VioNormas"))
 
 
 
 par(mfrow=c(1,3))
 hist(indicators2$ActitudAgresiva, freq = TRUE, main = "Distribución del Factor 1",
      xlab = "Actitud Agresiva", ylab = "Frecuencia", col = "red")
-hist(indicators2$ViolacionNormas, freq = TRUE, main = "Distribución del Factor 2",
-     xlab = "Violación Normas", ylab = "Frecuencia", col = "blue")
-hist(indicators2$Impaciencia, freq = TRUE, main = "Distribución del Factor 3",
-     xlab = "Impaciencia", ylab = "Frecuencia", col = "green")
+hist(indicators2$RespetoPeaton, freq = TRUE, main = "Distribución del Factor 2",
+     xlab = "Respeto Peatón", ylab = "Frecuencia", col = "blue")
+hist(indicators2$VioNormas, freq = TRUE, main = "Distribución del Factor 3",
+     xlab = "Violación Normas", ylab = "Frecuencia", col = "green")
 
 sink()
 

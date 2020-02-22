@@ -191,7 +191,186 @@ DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 3] <- 1
 DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 2] <- 2
 DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 1] <- 3
 
+summary(DBModo)
+names(DBModo)
 
+saveRDS(DBModo, file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
+
+
+# Rutina Cambio de escala de 1-5
+
+DBModoCE <-read_xlsx("/Users/williz/Desktop/ModelosED/Bases de Datos Ordenada/DBCEscala.xlsx",
+                     sheet = "ModoCond")
+
+DBCE <- DBModo %>%
+  select(ViajeId:DispMob) %>%
+  # Modo conducción
+  inner_join(DBModoCE %>%
+               select(ViajeId,aleatorio),
+             by = "ViajeId")
+
+
+#Paso a peatones
+DBCE$PasoPeaton <-ifelse(DBCE$PasoPeaton == 3,
+                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$PasoPeaton ==2,
+                              ifelse(DBCE$aleatorio<0.33, 2,
+                                     ifelse(DBCE$aleatorio>0.66,4,3)),
+                              ifelse(DBCE$PasoPeaton == 1,
+                                     ifelse(DBCE$aleatorio < 0.7, 1, 2),2)))
+    
+
+DBCE$PasoPeaton 
+table(DBCE$PasoPeaton)
+table(DBCE$PasoPeaton)
+tab.PasoPeaton <-as.data.frame(prop.table(table(DBCE$PasoPeaton))*100)
+tab.PasoPeaton
+
+# Uso Pito
+DBCE$UsoPito <-ifelse(DBCE$UsoPito == 3,
+                         ifelse(DBCE$aleatorio<0.4,4,5),
+                         ifelse(DBCE$UsoPito ==2,
+                                ifelse(DBCE$aleatorio<0.33, 2,
+                                       ifelse(DBCE$aleatorio>0.66,4,3)),
+                                ifelse(DBCE$UsoPito == 1,
+                                       ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
+
+
+DBCE$UsoPito 
+table(DBCE$UsoPito)
+tab.UsoPito <-as.data.frame(prop.table(table(DBCE$UsoPito))*100)
+tab.UsoPito
+
+#FRbr
+DBCE$FRbr <-ifelse(DBCE$FRbr == 3,
+                      ifelse(DBCE$aleatorio<0.4,4,5),
+                      ifelse(DBCE$FRbr ==2,
+                             ifelse(DBCE$aleatorio<0.33, 2,
+                                    ifelse(DBCE$aleatorio>0.66,4,3)),
+                             ifelse(DBCE$FRbr == 1,
+                                    ifelse(DBCE$aleatorio < 0.4, 1, 2),2)))
+
+
+DBCE$FRbr
+table(DBCE$FRbr)
+tab.FRbr <-as.data.frame(prop.table(table(DBCE$FRbr))*100)
+tab.FRbr
+
+#Uso direccionales
+DBCE$UsoDirec <-ifelse(DBCE$UsoDirec == 3,
+                   ifelse(DBCE$aleatorio<0.5,4,5),
+                   ifelse(DBCE$UsoDirec ==2,
+                          ifelse(DBCE$aleatorio<0.33, 2,
+                                 ifelse(DBCE$aleatorio>0.66,4,3)),
+                          ifelse(DBCE$UsoDirec == 1,
+                                 ifelse(DBCE$aleatorio < 0.7, 1, 2),2)))
+
+
+DBCE$UsoDirec
+table(DBCE$UsoDirec)
+tab.UsoDirec <-as.data.frame(prop.table(table(DBCE$UsoDirec))*100)
+tab.UsoDirec
+
+# Enfada con otros conductores
+DBCE$EnfCond <-ifelse(DBCE$EnfCond == 3,
+                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$EnfCond ==2,
+                              ifelse(DBCE$aleatorio<0.33, 2,
+                                     ifelse(DBCE$aleatorio>0.66,4,3)),
+                              ifelse(DBCE$EnfCond == 1,
+                                     ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
+
+
+DBCE$EnfCond
+table(DBCE$EnfCond)
+tab.EnfCond <-as.data.frame(prop.table(table(DBCE$EnfCond))*100)
+tab.EnfCond
+
+#Acelera o frena brusco en semaforo
+DBCE$AFrSem <-ifelse(DBCE$AFrSem == 3,
+                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$AFrSem ==2,
+                              ifelse(DBCE$aleatorio<0.33, 2,
+                                     ifelse(DBCE$aleatorio>0.66,4,3)),
+                              ifelse(DBCE$AFrSem == 1,
+                                     ifelse(DBCE$aleatorio < 0.4, 1, 2),2)))
+
+
+DBCE$AFrSem
+table(DBCE$AFrSem)
+tab.AFrSem <-as.data.frame(prop.table(table(DBCE$AFrSem))*100)
+tab.AFrSem
+
+# Culebrea con frecuencia
+DBCE$CulFr <-ifelse(DBCE$CulFr == 3,
+                       ifelse(DBCE$aleatorio<0.5,4,5),
+                       ifelse(DBCE$CulFr ==2,
+                              ifelse(DBCE$aleatorio<0.33, 2,
+                                     ifelse(DBCE$aleatorio>0.66,4,3)),
+                              ifelse(DBCE$CulFr == 1,
+                                     ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
+
+
+DBCE$CulFr
+table(DBCE$CulFr)
+tab.CulFr <-as.data.frame(prop.table(table(DBCE$CulFr))*100)
+tab.CulFr
+
+# Omite Limite de Velocidad
+DBCE$OmLmVel <-ifelse(DBCE$OmLmVel == 3,
+                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$OmLmVel ==2,
+                              ifelse(DBCE$aleatorio<0.25, 2,
+                                     ifelse(DBCE$aleatorio>0.6,4,3)),
+                              ifelse(DBCE$OmLmVel == 1,
+                                     ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
+
+
+DBCE$OmLmVel
+table(DBCE$OmLmVel)
+tab.OmLmVel <-as.data.frame(prop.table(table(DBCE$OmLmVel))*100)
+tab.OmLmVel
+
+# Ignora Señales de Pare
+DBCE$IgPare <-ifelse(DBCE$IgPare == 3,
+                       ifelse(DBCE$aleatorio<0.5,4,5),
+                       ifelse(DBCE$IgPare ==2,
+                              ifelse(DBCE$aleatorio<0.25, 2,
+                                     ifelse(DBCE$aleatorio>0.66,4,3)),
+                              ifelse(DBCE$IgPare == 1,
+                                     ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
+
+
+DBCE$IgPare
+table(DBCE$IgPare)
+tab.IgPare <-as.data.frame(prop.table(table(DBCE$IgPare))*100)
+tab.IgPare
+
+#
+DBCE$UsoCel <-ifelse(DBCE$UsoCel == 3,
+                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$UsoCel ==2,
+                              ifelse(DBCE$aleatorio<0.25, 2,
+                                     ifelse(DBCE$aleatorio>0.6,4,3)),
+                              ifelse(DBCE$UsoCel == 1,
+                                     ifelse(DBCE$aleatorio < 0.4, 1, 2),2)))
+
+
+DBCE$UsoCel
+table(DBCE$UsoCel)
+tab.UsoCel <-as.data.frame(prop.table(table(DBCE$UsoCel))*100)
+tab.UsoCel
+
+names(DBCE)
+
+DBCE[c("aleatorio")]<-NULL
+
+saveRDS(DBCE, file="/Users/williz/Desktop/ModelosED/Database/DBModoCondCE.rds")
+
+
+
+tab.Infotrafico <-as.data.frame(prop.table(table(DBModo$INFOTRAFICO))*100)
+tab.Infotrafico
 
 DBModo[c("ViajeId")]<-NULL
 
@@ -255,7 +434,6 @@ tab.UsoCel<-as.data.frame(prop.table(table(DBModo$UsoCel))*100)
 tab.UsoCel
 
 
-saveRDS(DBModo, file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
 
                        
                        
