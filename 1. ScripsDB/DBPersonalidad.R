@@ -26,7 +26,7 @@ DB <- DB_file %>%
   map(read_xlsx, path = DB_file)
 
 DBPersonalidad <- DB$Viajes %>%
-  select(ViajeId, IdViaje) %>%
+  select(ViajeId) %>%
   # Caracterización taxista
   inner_join(DB$CaracterizacionTaxista %>%
                select(ViajeId, HorasAlDia, Edad, TiempoProfesion, 
@@ -55,11 +55,6 @@ DBPersonalidad <- rename(DBPersonalidad, replace =c(SerioConservador = "ComVrb",
                                                     NivelEducativo = "NivEdu",
                                                     TiempoProfesion = "TiempoProf",
                                                     HorasAlDia = "HorTrDia"))
-
-
-
-# Eliminar Variables
-DBPersonalidad <- select(DBPersonalidad,-("IdViaje"))
 
 names(DBPersonalidad)
 
@@ -169,6 +164,13 @@ DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 8 & DBPersonalidad$Exper
 DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 12] <- 5
 
 
+summary(DBPersonalidad)
+
+DBPersonalidad[c("ViajeId","HorTrDia","Edad","TiempoProf", "NivEdu")]<- NULL
+
+names(DBPersonalidad)
+
+reliability(cov(DBPersonalidad))
 
 
 DBPersonalidad$Edad = factor(DBPersonalidad$Edad,

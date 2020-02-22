@@ -19,49 +19,43 @@ library(corrr)
 
 #Leer la dataset
 
-DBPersonalidad <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBPersonalidad.rds")
+DBPerso <- readRDS(file="/Users/williz/Desktop/ModelosED/Database/DBPersonalidad.rds")
 
-names(DBPersonalidad)
-head(DBPersonalidad)
-View(DBPersonalidad)
-str(DBPersonalidad)
-
-DBPers <- DBPersonalidad
+names(DBPerso)
+head(DBPerso)
+View(DBPerso)
+str(DBPerso)
 
 # Estadisticas descriptivas
 
-summary(DBPers)
+summary(DBPerso)
 
-summary(na.omit(DBPers))
+DBPerso[c("ViajeId","HorTrDia","Edad","TiempoProf","NivEdu","Experiencia")]<- NULL
+names(DBPerso)
 
-
-
-view(DBPers)
-
+DBPerso1 <- DBPerso[ ,!colnames(DBPerso)=="ViajeId"]
+names(DBPerso1)
 #Eliminar Variables que no entran en el analisis factorial
 
-DBPers <- DBPers[ ,!colnames(DBPers)=="ViajeId"]
-DBPers <- DBPers[ ,!colnames(DBPers)=="NivelEducativo"]
-DBPers <- DBPers[ ,!colnames(DBPers)=="DispMobiles"]
-DBPers <- DBPers[ ,!colnames(DBPers)=="SatisfDispMob"]
+names(DBPerso)
 
-names(DBPers)
+#Alpha Cronbach
+reliability(cov(DBPerso))
 
-#Renombrar las Variables
-DBPers <- rename(DBPers, replace =c(ComunicVerbal = "ComVrb",
-                                                    Ansiedad = "Ans",
-                                                    ComunicAfectiva = "ComAfec",
-                                                    PresPersonal = "PrPers",
-                                                    AmbTrabajo = "AmbT",
-                                                    StressAlCond = "StrC",
-                                                    ConsidCliente = "ConsCl"))
+DBPerso$Suma <- DBPerso$ComVrb+DBPerso$Ans+DBPerso$ComAfec+DBPerso$PrPer+DBPerso$AmbTr+
+  DBPerso$StrC+DBPerso$ConCl
 
-names(DBPers)
+summary(DBPerso)
+DBPerso[c("Suma")]<-NULL
+
+cor(DBPerso)
+
+
 
 #Correlacion
-cor(na.omit(DBPers), use = "pairwise.complete.obs")
+cor(na.omit(DBPerso), use = "pairwise.complete.obs")
 
-Rcor <- cor(na.omit(DBPers))
+Rcor <- cor(na.omit(DBPerso))
 
 # Gráfico de las Correlaciones
 corrplot(Rcor, method = "shade", type="upper", order = "hclust", tl.col = "black", tl.cex = 1)
@@ -99,7 +93,7 @@ print(A)
 # muestral es pequeño. 
 
 #Test de esfericidad de Bartlett
-print(cortest.bartlett(Rcor, n=nrow(DBPers)))
+print(cortest.bartlett(Rcor, n=nrow(DBPerso)))
 
 
 # Como última prueba de multicolinealidad antes de comenzar probar modelos, analizaremos el
@@ -123,7 +117,7 @@ print(kmo)
 
 
 #Analisis de Componentes Principales
-pca1 <- princomp(na.omit(DBPers), scores = TRUE, cor = TRUE)
+pca1 <- princomp(na.omit(DBPerso), scores = TRUE, cor = TRUE)
 summary(pca1)
 
 #Cargar los componentes principales
@@ -145,12 +139,12 @@ pca1$scores[1:10,]
 
 #Analisis Factorial
 
-fa <-factanal(na.omit(DBPers), factor=3, rotation = "varimax", na.rm = TRUE)
+fa <-factanal(na.omit(DBPerso), factor=3, rotation = "varimax", na.rm = TRUE)
 print(fa,cutoff=0.3, sort=FALSE)
 
 #sink()
 
-factores <- factanal(na.omit(DBPers), factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+factores <- factanal(na.omit(DBPerso), factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 
 #Normalizamos los valores que podran tomarse como el peso para el cálculo de un indice que
 # explica por cada i-esima fila la variabilidad de todo el conjunto de datos

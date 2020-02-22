@@ -35,10 +35,34 @@ names(ModoCond)
 
 tibble::as_tibble(ModoCond) 
 
-ModoCond[c("ViajeId","Genero","INFOTRAFICO")] <- NULL
+ModoCond[c("ViajeId","Genero","INFOTRAFICO","CinSeg","DispMob","Experiencia")] <- NULL
+names(ModoCond)
 
 
+reliability(cov(ModoCond))
 
+ModoCond$Suma <- ModoCond$FRbr+ModoCond$UsoDirec+ModoCond$EnfCond+ModoCond$AFrSem+ModoCond$CulFr+ModoCond$OmLmVel+
+  ModoCond$IgPare+ModoCond$UsoCel
+
+cor(ModoCond)
+ModoCond$PasoPeaton[ModoCond$PasoPeaton == 1] <- 4
+ModoCond$PasoPeaton[ModoCond$PasoPeaton == 3] <- 1
+ModoCond$PasoPeaton[ModoCond$PasoPeaton == 4] <- 3
+
+ModoCond$OmLmVel[ModoCond$OmLmVel == 1]<- 4
+ModoCond$OmLmVel[ModoCond$OmLmVel == 3]<- 1
+ModoCond$OmLmVel[ModoCond$OmLmVel == 4]<- 3
+
+ModoCond[c("Suma")]<- NULL
+
+cor(ModoCond)
+
+sink("AFModoConduccion.txt")
+
+#Alpha de Cronbach
+reliability(cov(ModoCond))
+
+summary(ModoCond)
 # Estadisticas descriptivas
 
 summary(ModoCond)
@@ -49,9 +73,10 @@ cor(ModoCond, use = "pairwise.complete.obs")
 Rcor <- cor(ModoCond)
 
 # Gráfico de las Correlaciones
-corrplot(Rcor, order = "hclust", tl.col = "black", tl.cex = 1)
+corrplot(Rcor, order = "AOE", method = c("shade"), tl.col = "black", addCoef.col = "black",
+         tl.srt= 45, tl.cex = 1, type = "upper", diag = F,  addshade = "all")
 
-corrplot.mixed(Rcor,lower.col = "black",number.cex=.7)
+corrplot.mixed(Rcor,lower.col = "black",number.cex=.7, title("Matriz de Correlación"))
 
 
 # Determinante de la Matriz de correlaciones
@@ -135,7 +160,7 @@ fa <-factanal(ModoCond, factors = 3, rotation = "varimax", na.rm = TRUE,lower = 
 print(fa,cutoff=0.3, sort=FALSE)
 
 fa1 <-factanal(ModoCond, factor = 4, rotation = "varimax", na.rm = TRUE, lower = 0.05)
-print(fa1,cutoff=0.10, sort=FALSE)
+print(fa1,cutoff=0.3, sort=FALSE)
 
 #sink()
 
@@ -152,19 +177,20 @@ indicators2$Factor3 <- round(((indicators2$Factor3 - min(indicators2$Factor3))/(
 indicators2
 
 indicators2 <- rename(indicators2, replace =c(Factor1 = "ActitudAgresiva",
-                                              Factor2 = "ConduccionSegura",
-                                              Factor3 = "ViolacionNormas"))
+                                              Factor2 = "ViolacionNormas",
+                                              Factor3 = "Impaciencia"))
 
 
 
 par(mfrow=c(1,3))
 hist(indicators2$ActitudAgresiva, freq = TRUE, main = "Distribución del Factor 1",
      xlab = "Actitud Agresiva", ylab = "Frecuencia", col = "red")
-hist(indicators2$ConduccionSegura, freq = TRUE, main = "Distribución del Factor 2",
-     xlab = "Conducción Segura", ylab = "Frecuencia", col = "blue")
-hist(indicators2$ViolacionNormas, freq = TRUE, main = "Distribución del Factor 3",
-     xlab = "Violación Normas", ylab = "Frecuencia", col = "green")
+hist(indicators2$ViolacionNormas, freq = TRUE, main = "Distribución del Factor 2",
+     xlab = "Violación Normas", ylab = "Frecuencia", col = "blue")
+hist(indicators2$Impaciencia, freq = TRUE, main = "Distribución del Factor 3",
+     xlab = "Impaciencia", ylab = "Frecuencia", col = "green")
 
+sink()
 
 saveRDS(indicators2, file="/Users/williz/Desktop/ModelosED/Database/AFModoConduccion.rds")
 

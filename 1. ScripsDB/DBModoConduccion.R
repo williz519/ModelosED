@@ -106,6 +106,8 @@ str(DBModo$DispMob)
 # Uso Celular cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
 DBModo$UsoCel[DBModo$UsoCel == 0] <-1
 DBModo$UsoCel[DBModo$UsoCel == 4 & DBModo$DispMob > 0] <-2
+DBModo$UsoCel[DBModo$UsoCel == 4 & DBModo$DispMob == 0] <-1
+
 
 
 # Freno Rapido y Brusco 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
@@ -154,6 +156,8 @@ DBModo$IgPare[DBModo$IgPare == 1 & DBModo$PasoPeaton == 2] <- 2
 # Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
 DBModo$UsoDirec[DBModo$UsoDirec == 4 & DBModo$CulFr == 3] <- 1
 DBModo$UsoDirec[DBModo$UsoDirec == 4 & DBModo$CulFr == 2] <- 2
+DBModo$UsoDirec[DBModo$UsoDirec == 4 ] <- 2
+
 
 # Se enfada con otro conductor 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
@@ -169,7 +173,31 @@ DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$AFrSem == 2] <- 2
 DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$EnfCond == 2] <- 2
 DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$EnfCond == 3] <- 3
 DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$AFrSem == 3] <- 3
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$OmLmVel == 3] <- 3
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$OmLmVel == 2] <- 2
 
+
+DBModo$CulFr[DBModo$CulFr == 4 & DBModo$FRbr == 1] <- 1
+DBModo$CulFr[DBModo$CulFr == 4 & DBModo$FRbr == 2] <- 2
+DBModo$CulFr[DBModo$CulFr == 4 & DBModo$FRbr == 3] <- 3
+
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$IgPare == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$IgPare == 2] <- 2
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$AFrSem == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$AFrSem == 2] <- 2
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$CulFr == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$CulFr == 2] <- 2
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 2] <- 2
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 1] <- 3
+
+
+
+DBModo[c("ViajeId")]<-NULL
+
+summary(DBModo)
+cor(DBModo, use = "pairwise.complete.obs")
+str(DBModo)
 
 DBModo$INFOTRAFICO = factor(DBModo$INFOTRAFICO,
                               levels = 1:3,
