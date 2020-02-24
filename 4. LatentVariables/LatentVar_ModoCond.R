@@ -17,6 +17,8 @@ require(dplyr)
 require(psych)
 require(GGally)
 library(semPlot)
+library(MVN)
+library(mvtnorm)
 
 # Cargar Datos desde MAC
 DBModLog <- read.csv("/Users/williz/Desktop/ModelosED/Database/ModeloLogitVL.csv", header = TRUE, sep = "\t")
@@ -104,10 +106,11 @@ write.table(MCond,
             file="/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVL.csv", sep="\t", dec=".")
 
 
+
 # ESPECIFICACION DEL MODELO DE VARIABLES LATENTES.
 
 
-# Nota: Se restringe todas las covarianzasde las variables latentes en el modelo
+# Nota: Se restringe todas las covarianzas de las variables latentes en el modelo
 # CFA para que sean ortogonales con la opcion orthogonal = TRUE
 
 # Si se desea corregir las variaciones de todas las variables latentes en un modelo
@@ -119,9 +122,9 @@ sink("Resul_MOD_ModoCond.txt")
 # MODELO 1
 
 model1 <- " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito
-      FA_2 =~ PasoPeaton + UsoDirec 
-      FA_3 =~ OmLmVel + UsoCel
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr 
+      FA_2 =~ OmLmVel + IgPare  
+      FA_3 =~ PasoPeaton + UsoDirec + UsoCel
       
       # Regresiones
       FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
@@ -142,13 +145,35 @@ modindices(fit1, sort = TRUE, maximum.number = 10)
 
 # Modelo sin correccion de variaciones, el primer argumento de las variables latentes es 1
 
-fit11 <- cfa(model1, data = DBVL, orthogonal = TRUE)
+fit11 <- cfa(model1, data = MCond, orthogonal = TRUE)
 summary(fit11, fit.measures= TRUE, standardized = TRUE)
 semPaths(fit11, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
 #parameterestimates(fit11)
 modindices(fit11, sort = TRUE, maximum.number = 10) 
 
 sink()
+
+
+
+model11 <- " #Variables Latentes
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr 
+      FA_2 =~ OmLmVel + IgPare  
+      FA_3 =~ PasoPeaton + UsoDirec + UsoCel
+
+# Regresiones
+FA_1 ~ EDUBASICA  + HORAS_TRABAJO  + CSECO  + CONG_EF + SININFOTRF + USOCINTURON
+FA_2 ~ HORAS_TRABAJO + HPICO + CONG_CD + CONG_EF + USOCINTURON + USODISPMOB
+FA_3 ~ EDUBASICA  + CONG_CD + CONG_EF  + USOCINTURON + USODISPMOB
+
+# Interceptos"
+
+
+fit11 <- cfa(model11, data = MCond, orthogonal = TRUE, std.lv = TRUE)
+summary(fit11, fit.measures=TRUE, standardized = TRUE)
+#parameterEstimates(fit1, standardized = TRUE, ci = FALSE)
+semPaths(fit11, what = "par", title = FALSE, curvePivot = TRUE)
+#parameterestimates(fit1)
+modindices(fit11, sort = TRUE, maximum.number = 10) 
 
 
 # Indices de ajuste más comunes: CFI (>= .95), TLI (>= .95), RMSEA (<= .05) y SRMR (<= .06).
@@ -168,24 +193,16 @@ sink("ResultadosMODELO2CE.txt")
 # MODELO 2
 
 model2 <- " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel
-      FA_2 =~ PasoPeaton + UsoDirec 
-      FA_3 =~ OmLmVel + UsoCel
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr 
+      FA_2 =~ OmLmVel + IgPare  
+      FA_3 =~ PasoPeaton + UsoDirec+ UsoCel
 
 # Regresiones
-FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-
-# Interceptos
-
-#Varianzas-Covarianzas
-
-
-"
+FA_1 ~ EDUBASICA  + HORAS_TRABAJO  + CSECO  + CONG_EF + SININFOTRF + USOCINTURON
+FA_2 ~ HORAS_TRABAJO + HPICO + CONG_CD + CONG_EF + USOCINTURON + USODISPMOB
+FA_3 ~ EDUBASICA  + CONG_CD + CONG_EF  + USOCINTURON + USODISPMOB
+FA_1 ~ FA_2
+# Interceptos"
 
 fit2 <- cfa(model2, data = MCond, orthogonal = TRUE, std.lv = TRUE)
 summary(fit2, fit.measures=TRUE, standardized = TRUE)
@@ -195,32 +212,27 @@ modindices(fit2, sort = TRUE, maximum.number = 10)
 
 # Modelo sin correccion de variaciones, el primer argumento de las variables latentes es 1
 
-fit21 <- cfa(model2, data = DBVL, orthogonal = TRUE)
+fit21 <- cfa(model2, data = MCond, orthogonal = TRUE)
 summary(fit21, fit.measures= TRUE, standardized = TRUE)
 semPaths(fit21, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
 #parameterestimates(fit11)
 modindices(fit21, sort = TRUE, maximum.number = 10) 
 
+sink("Modelo3.txt")
 
 #MODELO 3
 
 model3 <- " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel
-      FA_2 =~ PasoPeaton + UsoDirec 
-      FA_3 =~ OmLmVel + UsoCel + UsoPito
+      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr 
+      FA_2 =~ OmLmVel + IgPare + UsoCel
+      FA_3 =~ PasoPeaton + UsoDirec+ UsoCel
 
 # Regresiones
-FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-
-# Interceptos
-
-#Varianzas-Covarianzas
-"
+FA_1 ~ EDUBASICA  + HORAS_TRABAJO  + CSECO  + CONG_EF + SININFOTRF + USOCINTURON
+FA_2 ~ HORAS_TRABAJO + HPICO + CONG_CD + CONG_EF + USOCINTURON + USODISPMOB
+FA_3 ~ EDUBASICA  + CONG_CD + CONG_EF  + USOCINTURON + USODISPMOB
+FA_1 ~ FA_2
+# Interceptos"
 
 fit3 <- cfa(model3, data = MCond, orthogonal = TRUE, std.lv = TRUE)
 summary(fit3, fit.measures=TRUE, standardized = TRUE)
@@ -230,271 +242,41 @@ modindices(fit3, sort = TRUE, maximum.number = 10)
 
 # Modelo sin correccion de variaciones, el primer argumento de las variables latentes es 1
 
-fit31 <- cfa(model3, data = DBVL, orthogonal = TRUE)
+fit31 <- cfa(model3, data = MCond, orthogonal = TRUE)
 summary(fit31, fit.measures= TRUE, standardized = TRUE)
 semPaths(fit31, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
 #parameterestimates(fit11)
 modindices(fit31, sort = TRUE, maximum.number = 10) 
 
+sink()
 
-#MODELO 4
+sink("ComparacionModelos.txt")
 
-model4 <- " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel
-      FA_2 =~ PasoPeaton + UsoDirec 
-      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
+# TABLA COMPARATIVA DE TODOS LOS MODELOS
 
-# Regresiones
-FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
+fit_index01 <- broom::glance(fit1) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
 
-# Interceptos
+fit_index01 <- broom::glance(fit11) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
 
-#Varianzas-Covarianzas
-"
+fit_index02 <- broom::glance(fit2) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
 
-fit4 <- cfa(model4, data = MCond, orthogonal = TRUE, std.lv = TRUE)
-summary(fit4, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit4,"std", title = FALSE, curvePivot = TRUE)
+fit_index03 <- broom::glance(fit3) %>% 
+  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
 
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit4, sort = TRUE, maximum.number = 10) 
-
-# Modelo sin correccion de variaciones, el primer argumento de las variables latentes es 1
-
-fit41 <- cfa(model4, data = DBVL, orthogonal = TRUE)
-summary(fit41, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit41, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit41, sort = TRUE, maximum.number = 10) 
+# Uniendo 
+bind_rows(fit_index01, fit_index02, fit_index03, .id = "Modelo")
 
 sink()
 
 
-sink("Resul_MODELO5.txt")
-
-# MODELO 5
-
-model5 <-  " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel
-      FA_2 =~ PasoPeaton + UsoDirec + IgPare
-      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
-
-# Regresiones
-FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-
-# Interceptos
-
-#Varianzas-Covarianzas
-"
-
-fit5 <- cfa(model5, data = MCond, orthogonal = TRUE, std.lv = TRUE)
-summary(fit5, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit5,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit5, sort = TRUE, maximum.number = 10) 
-
-# Modelo sin correccion de variaciones, el primer argumento de las variables latentes es 1
-
-fit51 <- cfa(model5, data = DBVL, orthogonal = TRUE)
-summary(fit51, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit51, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit51, sort = TRUE, maximum.number = 10) 
-
-sink()
-
-sink("Resul_MODELO6.txt")
-
-# MODELO 6
-
-model6 <- " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
-      FA_2 =~ PasoPeaton + UsoDirec + IgPare
-      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
-
-# Regresiones
-FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-
-# Interceptos
-
-#Varianzas-Covarianzas
-
-"
-
-fit6 <- lavaan::cfa(model6, data = MCond, orthogonal = TRUE, std.lv = TRUE)
-summary(fit6, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit6,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit6, sort = TRUE, maximum.number = 10) 
-
-# Modelo sin correccion de variaciones, el primer argumento de las variables latentes es 1
-
-fit61 <- cfa(model6, data = DBVL, orthogonal = TRUE)
-summary(fit61, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit61, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit61, sort = TRUE, maximum.number = 10) 
-
-sink()
 
 
-sink("ResultadoMODELO7CE.txt")
-
-# MODELO 7
-
-model7 <- " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
-      FA_2 =~ PasoPeaton + UsoDirec + IgPare
-      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
-
-# Regresiones
-FA_1 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_2 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF + SININFOTRF + USOCINTURON + USODISPMOB
-
-# Interceptos
-
-#Varianzas-Covarianzas
-IgPare ~~ OmLmVel
-"
-
-fit7 <- lavaan::cfa(model7, data = MCond, orthogonal = TRUE, std.lv = TRUE)
-summary(fit7, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit7,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit7, sort = TRUE, maximum.number = 10) 
-
-# Modelo sin correccion de variaciones, el primer argumento de las variables latentes es 1
-
-fit71 <- cfa(model7, data = DBVL, orthogonal = TRUE)
-summary(fit71, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit71, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit71, sort = TRUE, maximum.number = 10) 
-
-sink("Modelo8.txt")
-model8 <-  " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
-      FA_2 =~ PasoPeaton + UsoDirec + IgPare
-      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
-
-# Regresiones
-FA_1 ~  CSECO + CONG_CD + CONG_EF + USOCINTURON 
-FA_2 ~ EDUBASICA + JOVEN30 + HORAS_TRABAJO + CONG_CD + USOCINTURON + USODISPMOB
-FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF 
-
-# Interceptos
-
-#Varianzas-Covarianzas
-IgPare ~~ OmLmVel
-"
-
-fit8 <- cfa(model8, data = MCond, orthogonal = TRUE, std.lv = TRUE)
-summary(fit8, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit8,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit8, sort = TRUE, maximum.number = 10) 
-
-fit81 <- cfa(model8, data = DBVL, orthogonal = TRUE)
-summary(fit81, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit81, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit81, sort = TRUE, maximum.number = 10) 
-
-sink("Modelo9.txt")
-
-model9 <- " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
-FA_2 =~ PasoPeaton + UsoDirec + IgPare
-FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
-
-# Regresiones
-FA_1 ~  CSECO + CONG_CD + CONG_EF + USOCINTURON 
-FA_2 ~ EDUBASICA + JOVEN30 + HORAS_TRABAJO + CONG_CD + USOCINTURON + USODISPMOB
-FA_3 ~ EDUBASICA + JOVEN30 + ADULTO40 + ADULTO60 + TIEMPO_PROFESION + HORAS_TRABAJO + HPICO + CSECO +
-CONG_CD + CONG_EF 
-
-# Interceptos
-
-#Varianzas-Covarianzas
-IgPare ~~ OmLmVel
-IgPare ~~ PasoPeaton
-"
-
-fit9 <- cfa(model9, data = MCond, orthogonal = TRUE, std.lv = TRUE)
-summary(fit9, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit9,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit9, sort = TRUE, maximum.number = 10) 
 
 
-fit91 <- cfa(model9, data = DBVL, orthogonal = TRUE)
-summary(fit91, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit91, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit91, sort = TRUE, maximum.number = 10) 
 
-
-# MODELO 10
-
-sink("Modelo10.txt")
-
-model10 <- " #Variables Latentes
-      FA_1 =~ FRbr + EnfCond + AFrSem + CulFr + IgPare + UsoPito + UsoCel + UsoDirec
-      FA_2 =~ PasoPeaton + UsoDirec + IgPare
-      FA_3 =~ OmLmVel + UsoCel + UsoPito + PasoPeaton
-
-# Regresiones
-FA_1 ~  CSECO + CONG_CD + CONG_EF + USOCINTURON 
-FA_2 ~ EDUBASICA + CONG_CD + USOCINTURON + USODISPMOB
-FA_3 ~ JOVEN30 + ADULTO40 + ADULTO60 + HORAS_TRABAJO + CSECO +
-CONG_CD + CONG_EF 
-
-# Interceptos
-
-#Varianzas-Covarianzas
-IgPare ~~ OmLmVel
-IgPare ~~ PasoPeaton
-"
-
-fit10 <- cfa(model10, data = MCond, orthogonal = TRUE, std.lv = TRUE)
-summary(fit10, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit10,"std", title = FALSE, curvePivot = TRUE)
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit10, sort = TRUE, maximum.number = 10) 
-
-
-fit10_1 <- cfa(model10, data = DBVL, orthogonal = TRUE)
-summary(fit10_1, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit10_1, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit10_1, sort = TRUE, maximum.number = 10) 
-
-sink()
 
 sink("ComparacionModelos.txt")
 
@@ -536,288 +318,6 @@ bind_rows(fit_index01, fit_index02, fit_index03, fit_index04, fit_index05, fit_i
           fit_index07, fit_index08,fit_index09,fit_index10, .id = "Modelo")
 
 sink()
-
-
-
-
-sink("ResulMODELO_8.txt")
-
-# MODELO 8
-
-
-sink()
-
-
-sink("ResulMODELO_9.txt")
-
-# MODELO 9
-
-
-
-sink()
-
-
-
-
-
-sink("ResulMODELO_10.txt")
-
-
-sink()
-
-
-
-
-sink("ResulMODELO_11.txt")
-
-# MODELO 11
-
-model11 <- " #Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare
-STRESS =~ Ans + ComAfec + StrC + ConsCl + UsDirec + CulFr
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec + Ans
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
-
-# Regresiones
-ACTAGR ~ EDUBASICA + HORASTRABAJO + CONG_CD + CONG_EF + SININFOTRF
-
-STRESS ~ JOVEN + HORASTRABAJO + HPICO  + SININFOTRF
-
-AMBLABOR ~  ADULTO + CONG_CD + ACTAGR + STRESS
-
-CONDSEG ~ EDUBASICA  + STRESS
-
-HABPROSOC ~ JOVEN + ADULTO + HORASTRABAJO  + CONG_CD + CONG_EF + SININFOTRF  
-
-# Varianzas - Covarianzas
-ACTAGR ~~ STRESS
-FRbr ~~ AFrSem
-CulFr ~~ ComVrb
-
-# Interceptos"
-fit11 <- lavaan::cfa(model11, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
-summary(fit11, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit11,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit11, sort = TRUE, maximum.number = 10) 
-
-fit11_1 <- cfa(model11, data = DBVL, orthogonal = TRUE)
-summary(fit11_1, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit11_1, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit11_1, sort = TRUE, maximum.number = 10) 
-
-sink()
-
-
-
-sink("ResulMODELO_12.txt")
-
-# MODELO 12
-
-model12 <- " #Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare
-STRESS =~ Ans + ComAfec + StrC + ConsCl + UsDirec + CulFr
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec + Ans
-HABPROSOC =~ ComVrb + ComAfec + ConsCl
-
-# Regresiones
-ACTAGR ~ EDUBASICA + HORASTRABAJO + CONG_CD + CONG_EF + SININFOTRF
-
-STRESS ~ JOVEN + HORASTRABAJO + HPICO  + SININFOTRF
-
-AMBLABOR ~  ADULTO + CONG_CD + ACTAGR + STRESS
-
-CONDSEG ~ EDUBASICA  + STRESS
-
-HABPROSOC ~ JOVEN + ADULTO + HORASTRABAJO  + CONG_CD + CONG_EF + SININFOTRF + AMBLABOR 
-
-# Varianzas - Covarianzas
-ACTAGR ~~ STRESS
-FRbr ~~ AFrSem
-CulFr ~~ ComVrb
-Ans ~~ ComAfec
-
-# Interceptos"
-
-fit12 <- lavaan::cfa(model12, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
-summary(fit12, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit12,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit12, sort = TRUE, maximum.number = 10) 
-
-fit12_1 <- cfa(model12, data = DBVL, orthogonal = TRUE)
-summary(fit12_1, fit.measures= TRUE, standardized = TRUE)
-semPaths(fit12_1, what = "std", style = "mx", title = FALSE, curvePivot = TRUE)
-#parameterestimates(fit11)
-modindices(fit12_1, sort = TRUE, maximum.number = 10) 
-
-sink()
-
-
-
-
-# MODELO 13
-model13 <- "#Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + ComVrb
-STRESS =~ Ans + ComAfec + StrC + ConsCl
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec + StrC
-HABPROSOC =~ ComVrb + ComAfec
-
-
-# Regresiones
-ACTAGR ~ EDUBASICA  + TIEMPO_PROFESION + HORASTRABAJO
-STRESS ~ JOVEN + ADULTO + TIEMPO_PROFESION + HORASTRABAJO
-AMBLABOR ~ EDUBASICA + ADULTO + HORASTRABAJO
-CONDSEG ~ EDUBASICA + JOVEN + ADULTO + TIEMPO_PROFESION 
-HABPROSOC ~ EDUBASICA + JOVEN + ADULTO + HORASTRABAJO 
-
-AMBLABOR ~ ACTAGR
-CONDSEG ~ STRESS
-
-#Varianzas - Covarianzas
-ACTAGR ~~ STRESS
-CulFr ~~ ComVrb
-CulFr ~~ Ans
-FRbr ~~ AFrSem
-AMBLABOR ~~ HABPROSOC
-
-# Interceptos"
-
-fit13 <- lavaan::cfa(model13, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
-summary(fit13, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit13,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit13, sort = TRUE, maximum.number = 10) 
-
-
-# MODELO 14
-
-model14 <- "#Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + ComVrb
-STRESS =~ Ans + ComAfec + StrC + ConsCl
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec + StrC
-HABPROSOC =~ ComVrb + ComAfec
-
-
-# Regresiones
-ACTAGR ~ EDUBASICA + HORASTRABAJO
-STRESS ~ JOVEN + ADULTO + HORASTRABAJO
-AMBLABOR ~ EDUBASICA + ADULTO 
-CONDSEG ~ EDUBASICA + JOVEN  + TIEMPO_PROFESION 
-HABPROSOC ~  JOVEN + ADULTO + HORASTRABAJO 
-
-AMBLABOR ~ ACTAGR
-CONDSEG ~ STRESS
-
-#Varianzas - Covarianzas
-ACTAGR ~~ STRESS
-CulFr ~~ ComVrb
-CulFr ~~ Ans
-FRbr ~~ AFrSem
-AMBLABOR ~~ HABPROSOC
-
-# Interceptos"
-
-fit14 <- lavaan::cfa(model14, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
-summary(fit14, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit14,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit14, sort = TRUE, maximum.number = 10) 
-
-
-#MODELO 15
-
-model15 <- "#Variables Latentes
-ACTAGR =~ FRbr + EnfCond + AFrSem + CulFr + OmLmVel + IgPare + ComVrb
-STRESS =~ Ans + ComAfec + StrC + ConsCl
-AMBLABOR =~ PrPers + AmbT + ConsCl
-CONDSEG =~  CinSeg + UsDirec + StrC
-HABPROSOC =~ ComVrb + ComAfec
-
-
-# Regresiones
-ACTAGR ~  HORASTRABAJO
-STRESS ~ JOVEN + HORASTRABAJO
-AMBLABOR ~  ADULTO 
-CONDSEG ~ EDUBASICA  + TIEMPO_PROFESION 
-HABPROSOC ~  ADULTO + HORASTRABAJO 
-
-AMBLABOR ~ ACTAGR
-CONDSEG ~ STRESS
-
-#Varianzas - Covarianzas
-ACTAGR ~~ STRESS
-CulFr ~~ ComVrb
-CulFr ~~ Ans
-FRbr ~~ AFrSem
-AMBLABOR ~~ HABPROSOC
-
-# Interceptos"
-
-fit15 <- lavaan::cfa(model15, data = DBVL, orthogonal = TRUE, std.lv = TRUE)
-summary(fit15, fit.measures=TRUE, standardized = TRUE)
-semPaths(fit15,"std", title = FALSE, curvePivot = TRUE)
-
-# Solicitar los 10 primeros IM con valores m?s altos
-modindices(fit15, sort = TRUE, maximum.number = 10)
-
-
-# TABLA COMPARATIVA DE TODOS LOS MODELOS
-
-fit_index <- broom::glance(fit1) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index02 <- broom::glance(fit2) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index03 <- broom::glance(fit3) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index04 <- broom::glance(fit4) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index05 <- broom::glance(fit5) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index06 <- broom::glance(fit6) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index07 <- broom::glance(fit7) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index08 <- broom::glance(fit8) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index09 <- broom::glance(fit9) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index10 <- broom::glance(fit10) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index11 <- broom::glance(fit11) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index12 <- broom::glance(fit12) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-fit_index13 <- broom::glance(fit13) %>% 
-  select(chisq, npar, cfi, tli, rmsea, rmsea.conf.high, srmr, aic, bic, estimator)
-
-
-# Uniendo 
-bind_rows(fit_index, fit_index02, fit_index03, fit_index04, fit_index05, fit_index06, 
-          fit_index07, fit_index08, fit_index09, fit_index10, fit_index11,
-          fit_index12, fit_index13, fit_index14, fit_index15, .id = "Modelo")
-
 
 
 #CREACION DE LAS VARIABLES LATENTES EN LA DB

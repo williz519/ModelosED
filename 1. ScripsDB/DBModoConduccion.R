@@ -100,6 +100,7 @@ DBModo <- rename(DBModo, replace = c(CinturonDeSeguridad = "CinSeg",
                                      InformacionPreviaDelTrafico="INFOTRAFICO"))
                                    
 names(DBModo)
+str(DBModo)
 str(DBModo$DispMob)
 
 # Uso Celular 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
@@ -109,90 +110,115 @@ DBModo$UsoCel[DBModo$UsoCel == 4 & DBModo$DispMob > 0] <-2
 DBModo$UsoCel[DBModo$UsoCel == 4 & DBModo$DispMob == 0] <-1
 
 
-
+DBModo$FRbr
+table(DBModo$FRbr)
 # Freno Rapido y Brusco 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Freno Rapido y Brusco Cambia a: 1: Nunca, 2: Algunas veces, 3: Siempre
-DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 2] <-2
-DBModo$FRbr[DBModo$FRbr == 4 & DBModo$OmLmVel == 2] <- 2
-DBModo$FRbr[DBModo$FRbr == 4 & DBModo$OmLmVel == 3] <- 3
-DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 4] <-1
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==2 & DBModo$CulFr == 2] <- 3
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==2 & DBModo$CulFr == 1] <- 2
 DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==1 & DBModo$CulFr == 2] <- 2
 DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==1 & DBModo$CulFr == 1] <- 1
-DBModo$FRbr[DBModo$FRbr == 1 & DBModo$AFrSem ==2 ] <- 2
-DBModo$FRbr[DBModo$FRbr == 1 & DBModo$AFrSem ==3 ] <- 3
-DBModo$FRbr[DBModo$FRbr == 1 & DBModo$CulFr == 2] <- 2
-DBModo$FRbr[DBModo$FRbr == 1 & DBModo$CulFr == 3] <- 3
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 2] <-2
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 4] <-1
+#DBModo$FRbr[DBModo$FRbr == 1 & DBModo$AFrSem ==2 ] <- 2
+#DBModo$FRbr[DBModo$FRbr == 1 & DBModo$AFrSem ==3 ] <- 3
+#DBModo$FRbr[DBModo$FRbr == 1 & DBModo$CulFr == 2] <- 2
+#DBModo$FRbr[DBModo$FRbr == 1 & DBModo$CulFr == 3] <- 3
 
 
-
+table(DBModo$AFrSem)
 # Acelera o frena bruscamente a la salida (llegada) de un semaforo 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Acelera o frena bruscamente a la salida (llegada) de un semaforo Cambi a 1: Nunca, 2: Algunas veces, 3: Siempre
-DBModo$AFrSem[DBModo$AFrSem == 4 & DBModo$FRbr == 1] <- 1
 DBModo$AFrSem[DBModo$AFrSem == 4 & DBModo$FRbr == 2] <- 2
-DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 2] <- 2
-DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 3] <- 3
-DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$CulFr == 2] <- 2
-DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 3] <- 3
+DBModo$AFrSem[DBModo$AFrSem == 4 & DBModo$FRbr == 1] <- 1
+#DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 2] <- 2
+#DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 3] <- 3
+#DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$CulFr == 2] <- 2
+#DBModo$AFrSem[DBModo$AFrSem == 1 & DBModo$FRbr == 3] <- 3
 
+table(DBModo$OmLmVel)
 # Omite limite de Velocidad 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
-DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$CulFr == 2] <- 2
 DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$AFrSem == 2] <- 3
+DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$CulFr == 2] <- 2
 DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$AFrSem == 1]<- 2
-DBModo$OmLmVel[DBModo$OmLmVel == 1 & DBModo$AFrSem == 1]<- 2
-DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$CulFr == 3]<- 3
+#DBModo$OmLmVel[DBModo$OmLmVel == 1 & DBModo$AFrSem == 1]<- 2
 
-
+table(DBModo$IgPare)
 #Ignora señal de pare 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
-DBModo$IgPare[DBModo$IgPare == 4 & DBModo$AFrSem == 1] <- 1
+DBModo$IgPare[DBModo$IgPare == 4 & DBModo$OmLmVel == 3] <- 3
+DBModo$IgPare[DBModo$IgPare == 4 & DBModo$OmLmVel == 2] <- 2
 DBModo$IgPare[DBModo$IgPare == 4 & DBModo$AFrSem == 2] <- 2
-DBModo$IgPare[DBModo$IgPare == 4 & DBModo$AFrSem == 3] <- 3
-DBModo$IgPare[DBModo$IgPare == 1 & DBModo$AFrSem == 3] <- 3
-DBModo$IgPare[DBModo$IgPare == 1 & DBModo$PasoPeaton == 1] <- 3
-DBModo$IgPare[DBModo$IgPare == 1 & DBModo$PasoPeaton == 2] <- 2
 
+#DBModo$IgPare[DBModo$IgPare == 1 & DBModo$AFrSem == 3] <- 3
+#DBModo$IgPare[DBModo$IgPare == 1 & DBModo$PasoPeaton == 1] <- 3
+#DBModo$IgPare[DBModo$IgPare == 1 & DBModo$PasoPeaton == 2] <- 2
+
+table(DBModo$UsoDirec)
 #Usa las direccionales 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
-DBModo$UsoDirec[DBModo$UsoDirec == 4 & DBModo$CulFr == 3] <- 1
 DBModo$UsoDirec[DBModo$UsoDirec == 4 & DBModo$CulFr == 2] <- 2
 DBModo$UsoDirec[DBModo$UsoDirec == 4 ] <- 2
 
-
+table(DBModo$EnfCond)
 # Se enfada con otro conductor 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
-DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 1 | DBModo$AFrSem == 1)] <- 1
-DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 2 | DBModo$AFrSem == 2)] <- 2
 DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 3 | DBModo$AFrSem == 3)] <- 3
+DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 2 | DBModo$AFrSem == 2)] <- 2
+DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 1 | DBModo$AFrSem == 1)] <- 1
 
-DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$EnfCond == 2] <- 2
-DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$EnfCond == 3] <- 3
-DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$AFrSem == 3] <- 3
-DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$AFrSem == 2] <- 2
-DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$AFrSem == 2] <- 2
-DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$EnfCond == 2] <- 2
-DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$EnfCond == 3] <- 3
-DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$AFrSem == 3] <- 3
-DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$OmLmVel == 3] <- 3
+table(DBModo$CulFr)
+# Culebrea con frecuencia 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$CulFr[DBModo$CulFr == 4 ] <- 3
+
+
+table(DBModo$UsoPito)
+# Culebrea con frecuencia 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$PasoPeaton == 1] <- 3
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$PasoPeaton == 2] <- 2
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$PasoPeaton == 3] <- 1
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$IgPare == 1] <- 1
 DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$OmLmVel == 2] <- 2
+DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$AFrSem == 2] <- 2
+DBModo$UsoPito[DBModo$UsoPito == 4 ] <- 3
+#DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$EnfCond == 2] <- 2
+#DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$EnfCond == 3] <- 3
+#DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$AFrSem == 3] <- 3
+#DBModo$UsoPito[DBModo$UsoPito == 1 & DBModo$AFrSem == 2] <- 2
 
-
-DBModo$CulFr[DBModo$CulFr == 4 & DBModo$FRbr == 1] <- 1
-DBModo$CulFr[DBModo$CulFr == 4 & DBModo$FRbr == 2] <- 2
-DBModo$CulFr[DBModo$CulFr == 4 & DBModo$FRbr == 3] <- 3
-
-DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$IgPare == 3] <- 1
-DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$IgPare == 2] <- 2
-DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$AFrSem == 3] <- 1
-DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$AFrSem == 2] <- 2
-DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$CulFr == 3] <- 1
-DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$CulFr == 2] <- 2
+table(DBModo$PasoPeaton)
+# Paso Peaton 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
+# Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
 DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$AFrSem == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$OmLmVel == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$FRbr == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$IgPare == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$CulFr == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$EnfCond == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$IgPare == 2] <- 2
 DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 2] <- 2
-DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$UsoPito == 1] <- 3
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$AFrSem == 2] <- 2
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$OmLmVel == 2] <- 2
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$CulFr == 2] <- 2
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$EnfCond == 3] <- 1
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$EnfCond == 2] <- 2
+DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$AFrSem == 1] <- 3
+
+summary(DBModo)
+
+DBModo[c("ViajeId")]<-NULL
+cor(DBModo, use = "pairwise.complete.obs")
+
 
 summary(DBModo)
 names(DBModo)
+
+
+tibble::as_tibble(DBModo) 
 
 saveRDS(DBModo, file="/Users/williz/Desktop/ModelosED/Database/DBModoConduccion.rds")
 
@@ -212,12 +238,12 @@ DBCE <- DBModo %>%
 
 #Paso a peatones
 DBCE$PasoPeaton <-ifelse(DBCE$PasoPeaton == 3,
-                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$aleatorio<0.5,4,5),
                        ifelse(DBCE$PasoPeaton ==2,
                               ifelse(DBCE$aleatorio<0.33, 2,
                                      ifelse(DBCE$aleatorio>0.66,4,3)),
                               ifelse(DBCE$PasoPeaton == 1,
-                                     ifelse(DBCE$aleatorio < 0.7, 1, 2),2)))
+                                     ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
     
 
 DBCE$PasoPeaton 
@@ -228,7 +254,7 @@ tab.PasoPeaton
 
 # Uso Pito
 DBCE$UsoPito <-ifelse(DBCE$UsoPito == 3,
-                         ifelse(DBCE$aleatorio<0.4,4,5),
+                         ifelse(DBCE$aleatorio<0.5,4,5),
                          ifelse(DBCE$UsoPito ==2,
                                 ifelse(DBCE$aleatorio<0.33, 2,
                                        ifelse(DBCE$aleatorio>0.66,4,3)),
@@ -243,12 +269,12 @@ tab.UsoPito
 
 #FRbr
 DBCE$FRbr <-ifelse(DBCE$FRbr == 3,
-                      ifelse(DBCE$aleatorio<0.4,4,5),
+                      ifelse(DBCE$aleatorio<0.5,4,5),
                       ifelse(DBCE$FRbr ==2,
                              ifelse(DBCE$aleatorio<0.33, 2,
                                     ifelse(DBCE$aleatorio>0.66,4,3)),
                              ifelse(DBCE$FRbr == 1,
-                                    ifelse(DBCE$aleatorio < 0.4, 1, 2),2)))
+                                    ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
 
 
 DBCE$FRbr
@@ -273,7 +299,7 @@ tab.UsoDirec
 
 # Enfada con otros conductores
 DBCE$EnfCond <-ifelse(DBCE$EnfCond == 3,
-                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$aleatorio<0.5,4,5),
                        ifelse(DBCE$EnfCond ==2,
                               ifelse(DBCE$aleatorio<0.33, 2,
                                      ifelse(DBCE$aleatorio>0.66,4,3)),
@@ -288,12 +314,12 @@ tab.EnfCond
 
 #Acelera o frena brusco en semaforo
 DBCE$AFrSem <-ifelse(DBCE$AFrSem == 3,
-                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$aleatorio<0.5,4,5),
                        ifelse(DBCE$AFrSem ==2,
                               ifelse(DBCE$aleatorio<0.33, 2,
                                      ifelse(DBCE$aleatorio>0.66,4,3)),
                               ifelse(DBCE$AFrSem == 1,
-                                     ifelse(DBCE$aleatorio < 0.4, 1, 2),2)))
+                                     ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
 
 
 DBCE$AFrSem
@@ -318,10 +344,10 @@ tab.CulFr
 
 # Omite Limite de Velocidad
 DBCE$OmLmVel <-ifelse(DBCE$OmLmVel == 3,
-                       ifelse(DBCE$aleatorio<0.4,4,5),
+                       ifelse(DBCE$aleatorio<0.5,4,5),
                        ifelse(DBCE$OmLmVel ==2,
-                              ifelse(DBCE$aleatorio<0.25, 2,
-                                     ifelse(DBCE$aleatorio>0.6,4,3)),
+                              ifelse(DBCE$aleatorio<0.33, 2,
+                                     ifelse(DBCE$aleatorio>0.66,4,3)),
                               ifelse(DBCE$OmLmVel == 1,
                                      ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))
 
@@ -335,7 +361,7 @@ tab.OmLmVel
 DBCE$IgPare <-ifelse(DBCE$IgPare == 3,
                        ifelse(DBCE$aleatorio<0.5,4,5),
                        ifelse(DBCE$IgPare ==2,
-                              ifelse(DBCE$aleatorio<0.25, 2,
+                              ifelse(DBCE$aleatorio<0.33, 2,
                                      ifelse(DBCE$aleatorio>0.66,4,3)),
                               ifelse(DBCE$IgPare == 1,
                                      ifelse(DBCE$aleatorio < 0.5, 1, 2),2)))

@@ -41,7 +41,7 @@ names(ModoCond)
 
 tibble::as_tibble(ModoCond) 
 
-ModoCond[c("ViajeId","Genero","INFOTRAFICO","CinSeg","DispMob","Experiencia")] <- NULL
+ModoCond[c("ViajeId","Genero","INFOTRAFICO","CinSeg","DispMob","Experiencia","UsoPito")] <- NULL
 names(ModoCond)
 
 reliability(cov(ModoCond))
@@ -161,11 +161,17 @@ pca1$scores[1:10,]
 #promax(pca1$rotation)
 
 #Analisis Factorial
-fa <-factanal(ModoCond, factors = 3, rotation = "varimax", na.rm = TRUE,lower = 0.05)
+fa <-factanal(ModoCond, factors = 2, rotation = "varimax", na.rm = TRUE,lower = 0.05)
 print(fa,cutoff=0.3, sort=FALSE)
+factor.plot(fa,cut=0.5)
+fa.diagram(fa)
+fa.parallel.poly(fa)
 
-fa1 <-factanal(ModoCond, factor = 4, rotation = "varimax", na.rm = TRUE, lower = 0.05)
+fa1 <-factanal(ModoCond, factor = 3, rotation = "varimax", na.rm = TRUE, lower = 0.05)
 print(fa1,cutoff=0.2, sort=FALSE)
+factor.plot(fa1,cut=0.5)
+fa.diagram(fa)
+fa.parallel.poly(fa1)
 
 sink()
 
@@ -181,17 +187,17 @@ indicators2$Factor3 <- round(((indicators2$Factor3 - min(indicators2$Factor3))/(
 
 indicators2
 
-indicators2 <- rename(indicators2, replace =c(Factor1 = "ActitudAgresiva",
-                                              Factor2 = "RespetoPeaton",
+indicators2 <- rename(indicators2, replace =c(Factor1 = "ActAgr",
+                                              Factor2 = "LimVel",
                                               Factor3 = "VioNormas"))
 
 
 
 par(mfrow=c(1,3))
-hist(indicators2$ActitudAgresiva, freq = TRUE, main = "Distribución del Factor 1",
+hist(indicators2$ActAgr, freq = TRUE, main = "Distribución del Factor 1",
      xlab = "Actitud Agresiva", ylab = "Frecuencia", col = "red")
-hist(indicators2$RespetoPeaton, freq = TRUE, main = "Distribución del Factor 2",
-     xlab = "Respeto Peatón", ylab = "Frecuencia", col = "blue")
+hist(indicators2$LimVel, freq = TRUE, main = "Distribución del Factor 2",
+     xlab = "Limite de Velocidad", ylab = "Frecuencia", col = "blue")
 hist(indicators2$VioNormas, freq = TRUE, main = "Distribución del Factor 3",
      xlab = "Violación Normas", ylab = "Frecuencia", col = "green")
 
