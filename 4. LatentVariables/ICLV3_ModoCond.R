@@ -14,7 +14,7 @@ apollo_initialise()
 
 ## Establecer controles principales
 apollo_control = list(
-  modelName  = "ICLV Modelo",
+  modelName  = "ICLV3 Modelo con tres LV",
   modelDescr = "ICLV modelo sobre datos de elección de ruta",
   indivID    = "ViajeId",
   mixing     = TRUE,
@@ -34,59 +34,53 @@ names(database)
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_ruta1     = 0,
-              asc_ruta2     = 0,
-              asc_ruta3     = 0,
-              asc_rutaEC    = 0,
-              b_time        = 0,
-              b_dist        = 0,
-              b_clima       = 0,
-              b_cong        = 0,
-              b_Hpico       = 0,
-              b_Hvalle      = 0,
-              b_T_prof      = 0,
-              b_Hor_trab    = 0,
-              b_EduBasica   = 0,
-              b_EduSuperior = 0,
-              b_Info_traf   = 0,
-              b_Joven30     = 0,
-              b_Adulto40    = 0,
-              b_Adulto60    = 0,
-              b_AdultoMayor = 0,
-              b_USOCINTURON = 0,
-              b_NOUSOCINTURON = 0,
-              b_USODISPMOB = 0,
-              b_NOUSODISPMOB = 0,
-              lambda        = 1,
-              gamma_EDUBASICA = 0.158,
-              gamma_CSECO = 0.144, 
-              gamma_CONG_EF = 0.205,
-              gamma_SININFO = -0.233,
-              zeta_FRbr     = 1, 
-              zeta_EnfCond  = 1, 
-              zeta_AFrSem   = 1, 
-              zeta_CulFr    = 1, 
-              tau_FRbr_1      =-2, 
-              tau_FRbr_2      =-1, 
-              tau_FRbr_3      = 1, 
-              tau_FRbr_4      = 2,
-              tau_EnfCond_1   =-2, 
-              tau_EnfCond_2   =-1, 
-              tau_EnfCond_3   = 1, 
-              tau_EnfCond_4   = 2, 
-              tau_AFrSem_1    =-2, 
-              tau_AFrSem_2    =-1, 
-              tau_AFrSem_3    = 1, 
-              tau_AFrSem_4    = 2, 
+apollo_beta=c(asc_ruta1     = 0, asc_ruta2     = 0, asc_ruta3     = 0, asc_rutaEC    = 0,
+              b_time        = 0, b_dist        = 0, b_clima       = 0, b_cong        = 0,
+              b_Hpico       = 0, b_Hvalle      = 0, b_T_prof      = 0, b_Hor_trab    = 0,
+              b_EduBasica   = 0, b_EduSuperior = 0, b_Info_traf   = 0, b_Joven30     = 0,
+              b_Adulto40    = 0, b_Adulto60    = 0, b_AdultoMayor = 0, b_USOCINTURON = 0,
+              b_NOUSOCINTURON = 0, b_USODISPMOB =0, b_NOUSODISPMOB = 0, lambda1        = 1,
+              lambda2        = 1, 
+              lambda3       = 1,
+              gamma_EDUBASICA = 0.158, gamma_CSECO = 0.144, gamma_CONG_EF = 0.205,
+              gamma_SININFO = -0.233, gamma_HORAS_TRABAJO = 0, gamma_HPICO = 0, gamma_CONG_CD = 0,
+              gamma_USOCINTURON = 0, gamma_USODISPMOB =0,
+              zeta_FRbr     = 1, zeta_EnfCond  = 1, zeta_AFrSem   = 1, zeta_CulFr    = 1, zeta_OmLmVel  = 1, 
+              zeta_IgPare    = 1,  zeta_UsoCel1    = 1, zeta_UsoCel2 = 1, zeta_PasoPeaton = 1, 
+              zeta_UsoDirec = 1,
+              tau_FRbr_1      =-2, tau_FRbr_2      =-1, tau_FRbr_3      = 1, tau_FRbr_4      = 2,
+              tau_EnfCond_1   =-2, tau_EnfCond_2   =-1, tau_EnfCond_3   = 1, tau_EnfCond_4   = 2, 
+              tau_AFrSem_1    =-2, tau_AFrSem_2    =-1, tau_AFrSem_3    = 1, tau_AFrSem_4    = 2, 
               tau_CulFr_1     =-2, 
               tau_CulFr_2     =-1, 
               tau_CulFr_3     = 1, 
-              tau_CulFr_4     = 2
+              tau_CulFr_4     = 2,
+              tau_OmLmVel_1     =-2, 
+              tau_OmLmVel_2     =-1, 
+              tau_OmLmVel_3     = 1, 
+              tau_OmLmVel_4     = 2,
+              tau_IgPare_1     =-2, 
+              tau_IgPare_2     =-1, 
+              tau_IgPare_3     = 1, 
+              tau_IgPare_4     = 2,
+              tau_UsoCel_1     =-2, 
+              tau_UsoCel_2     =-1, 
+              tau_UsoCel_3     = 1, 
+              tau_UsoCel_4     = 2,
+              tau_PasoPeaton_1     =-2, 
+              tau_PasoPeaton_2    =-1, 
+              tau_PasoPeaton_3    = 1, 
+              tau_PasoPeaton_4    = 2,
+              tau_UsoDirec_1     =-2, 
+              tau_UsoDirec_2    =-1, 
+              tau_UsoDirec_3    = 1, 
+              tau_UsoDirec_4    = 2
 )
 
 ### Vector con nombres (entre comillas) de los parámetros que se mantendrán fijos en su valor inicial en apollo_beta, use apollo_beta_fixed = c () si ninguno
 apollo_fixed = c("asc_ruta1", "b_AdultoMayor", "b_EduSuperior", "b_Hpico", "b_NOUSOCINTURON",
                  "b_NOUSODISPMOB")
+
 
 # ################################################################# #
 #### DEFINE COMPONENTES ALEATORIOS                              ####
@@ -97,7 +91,7 @@ apollo_draws = list(
   interDrawsType="halton", 
   interNDraws=100,          
   interUnifDraws=c(),      
-  interNormDraws=c("eta")
+  interNormDraws=c("eta1","eta2","eta3")
 )
 
 ### Crear parametros aleatorios
@@ -105,7 +99,14 @@ apollo_randCoeff=function(apollo_beta, apollo_inputs){
   randcoeff = list()
   
   randcoeff[["LV_1"]] = gamma_EDUBASICA * EDUBASICA + gamma_CSECO * CSECO + 
-    gamma_CONG_EF * CONG_EF + gamma_SININFO * SININFOTRF + eta
+    gamma_CONG_EF * CONG_EF + gamma_SININFO * SININFOTRF + eta1
+  
+  randcoeff[["LV_2"]] = gamma_HORAS_TRABAJO * HORAS_TRABAJO + gamma_HPICO * HPICO + 
+    gamma_CONG_CD * CONG_CD + gamma_CONG_EF * CONG_EF + gamma_USOCINTURON * USOCINTURON + 
+    gamma_USODISPMOB * USODISPMOB + eta2
+  
+  randcoeff[["LV_3"]] = gamma_EDUBASICA * EDUBASICA + gamma_CONG_CD * CONG_CD + gamma_CONG_EF * CONG_EF +
+    gamma_USOCINTURON * USOCINTURON + gamma_USODISPMOB * USODISPMOB + eta3
   
   return(randcoeff)
 }
@@ -143,10 +144,39 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
                       V=zeta_CulFr*LV_1, 
                       tau=c(tau_CulFr_1, tau_CulFr_2, tau_CulFr_3, tau_CulFr_4))
   
+  ol_settings5 = list(outcomeOrdered=OmLmVel, 
+                      V=zeta_OmLmVel*LV_2, 
+                      tau=c(tau_OmLmVel_1, tau_OmLmVel_2, tau_OmLmVel_3, tau_OmLmVel_4))
+  ol_settings6 = list(outcomeOrdered=IgPare, 
+                      V=zeta_IgPare*LV_2, 
+                      tau=c(tau_IgPare_1, tau_IgPare_2, tau_IgPare_3, tau_IgPare_4))
+  ol_settings7 = list(outcomeOrdered=UsoCel, 
+                      V=zeta_UsoCel1*LV_2, 
+                      tau=c(tau_UsoCel_1, tau_UsoCel_2,tau_UsoCel_3,tau_UsoCel_4))
+  ol_settings8 = list(outcomeOrdered=PasoPeaton, 
+                      V=zeta_PasoPeaton*LV_3, 
+                      tau=c(tau_PasoPeaton_1, tau_PasoPeaton_2,tau_PasoPeaton_3,tau_PasoPeaton_4))
+  ol_settings9 = list(outcomeOrdered=UsoDirec, 
+                      V=zeta_UsoDirec*LV_3, 
+                      tau=c(tau_UsoDirec_1, tau_UsoDirec_2,tau_UsoDirec_3,tau_UsoDirec_4))
+  ol_settings10 = list(outcomeOrdered=UsoCel, 
+                      V=zeta_UsoCel2*LV_3, 
+                      tau=c(tau_UsoCel_1, tau_UsoCel_2,tau_UsoCel_3,tau_UsoCel_4))
+  
+  
+  
   P[["indic_FRbr"]]     = apollo_ol(ol_settings1, functionality)
   P[["indic_EnfCond"]]  = apollo_ol(ol_settings2, functionality)
   P[["indic_AFrSem"]]   = apollo_ol(ol_settings3, functionality)
   P[["indic_CulFr"]]    = apollo_ol(ol_settings4, functionality)
+  P[["indic_OmLmVel"]]  = apollo_ol(ol_settings5, functionality)
+  P[["indic_IgPare"]]   = apollo_ol(ol_settings6, functionality)
+  P[["indic_UsoCel1"]]   = apollo_ol(ol_settings7, functionality)
+  P[["indic_PasoPeaton"]]   = apollo_ol(ol_settings8, functionality)
+  P[["indic_UsoDirec"]]   = apollo_ol(ol_settings9, functionality)
+  P[["indic_UsoCel2"]]   = apollo_ol(ol_settings10, functionality)
+  
+  
   
   ### Likelihood of choices
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
@@ -165,7 +195,7 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
                      b_Info_traf *(INFOTRAFICO == 2) + b_Joven30 * JOVEN30 + b_Adulto40 * ADULTO40 + 
                      b_Adulto60 *ADULTO60 + b_AdultoMayor * ADULTOMAYOR + b_USOCINTURON * USOCINTURON +
                      b_NOUSOCINTURON * NOUSOCINTURON + b_USODISPMOB * USODISPMOB + b_NOUSODISPMOB * NOUSODISPMOB +
-                     lambda * LV_1)
+                     lambda1 * LV_1 + lambda2 * LV_2 + lambda3 * LV_3)
   
   ### Define settings for MNL model component
   mnl_settings = list(
@@ -200,7 +230,6 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 # apollo_llCalc(apollo_beta, apollo_probabilities, apollo_inputs)
 
 ### Estimate model
-#model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_inputs)
 model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_inputs, 
                         estimate_settings = list(maxIterations = 400))
 

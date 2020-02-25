@@ -1,4 +1,3 @@
-
 # ################################################################# #
 #### CARGAR BIBLIOTECA Y DEFINIR AJUSTES BÁSICOS                 ####
 # ################################################################# #
@@ -14,8 +13,8 @@ apollo_initialise()
 
 ## Establecer controles principales
 apollo_control = list(
-  modelName  = "ICLV Modelo",
-  modelDescr = "ICLV modelo sobre datos de elección de ruta",
+  modelName  = "ICLV2 Modelo Continuo",
+  modelDescr = "ICLV modelo sobre datos de elección de ruta, utilizando el modelo de medición ordenado para indicadores",
   indivID    = "ViajeId",
   mixing     = TRUE,
   nCores     = 3
@@ -27,6 +26,16 @@ apollo_control = list(
 
 database = read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVL.csv",sep="\t", dec=".",header=TRUE)
 names(database)
+
+### Subtract mean of indicator variables to centre them on zero
+database$FRbr=database$FRbr-mean(database$FRbr)
+database$EnfCond=database$EnfCond-mean(database$EnfCond)
+database$AFrSem=database$AFrSem-mean(database$AFrSem)
+database$CulFr=database$CulFr-mean(database$CulFr)
+#database$IgPare=database$IgPare-mean(database$IgPare)
+#database$UsoPito=database$UsoPito-mean(database$UsoPito)
+#database$UsoCel=database$UsoCel-mean(database$UsoCel)
+#database$UsoDirec=database$UsoDirec-mean(database$UsoDirec)
 
 
 # ################################################################# #
@@ -66,27 +75,16 @@ apollo_beta=c(asc_ruta1     = 0,
               zeta_EnfCond  = 1, 
               zeta_AFrSem   = 1, 
               zeta_CulFr    = 1, 
-              tau_FRbr_1      =-2, 
-              tau_FRbr_2      =-1, 
-              tau_FRbr_3      = 1, 
-              tau_FRbr_4      = 2,
-              tau_EnfCond_1   =-2, 
-              tau_EnfCond_2   =-1, 
-              tau_EnfCond_3   = 1, 
-              tau_EnfCond_4   = 2, 
-              tau_AFrSem_1    =-2, 
-              tau_AFrSem_2    =-1, 
-              tau_AFrSem_3    = 1, 
-              tau_AFrSem_4    = 2, 
-              tau_CulFr_1     =-2, 
-              tau_CulFr_2     =-1, 
-              tau_CulFr_3     = 1, 
-              tau_CulFr_4     = 2
+              sigma_FRbr    = 1, 
+              sigma_EnfCond  = 1, 
+              sigma_AFrSem   = 1, 
+              sigma_CulFr    = 1
 )
 
 ### Vector con nombres (entre comillas) de los parámetros que se mantendrán fijos en su valor inicial en apollo_beta, use apollo_beta_fixed = c () si ninguno
 apollo_fixed = c("asc_ruta1", "b_AdultoMayor", "b_EduSuperior", "b_Hpico", "b_NOUSOCINTURON",
                  "b_NOUSODISPMOB")
+
 
 # ################################################################# #
 #### DEFINE COMPONENTES ALEATORIOS                              ####
@@ -130,23 +128,33 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   P = list()
   
   ### Likelihood of indicators
-  ol_settings1 = list(outcomeOrdered=FRbr, 
-                      V=zeta_FRbr*LV_1, 
-                      tau=c(tau_FRbr_1, tau_FRbr_2, tau_FRbr_3, tau_FRbr_4))
-  ol_settings2 = list(outcomeOrdered=EnfCond, 
-                      V=zeta_EnfCond*LV_1, 
-                      tau=c(tau_EnfCond_1, tau_EnfCond_2, tau_EnfCond_3, tau_EnfCond_4))
-  ol_settings3 = list(outcomeOrdered=AFrSem, 
-                      V=zeta_AFrSem*LV_1, 
-                      tau=c(tau_AFrSem_1, tau_AFrSem_2, tau_AFrSem_3, tau_AFrSem_4))
-  ol_settings4 = list(outcomeOrdered=CulFr, 
-                      V=zeta_CulFr*LV_1, 
-                      tau=c(tau_CulFr_1, tau_CulFr_2, tau_CulFr_3, tau_CulFr_4))
+  normalDensity_settings1 = list(outcomeNormal=FRbr, 
+                                 xNormal=zeta_FRbr*LV_1, 
+                                 mu=0, 
+                                 sigma=sigma_FRbr)
   
-  P[["indic_FRbr"]]     = apollo_ol(ol_settings1, functionality)
-  P[["indic_EnfCond"]]  = apollo_ol(ol_settings2, functionality)
-  P[["indic_AFrSem"]]   = apollo_ol(ol_settings3, functionality)
-  P[["indic_CulFr"]]    = apollo_ol(ol_settings4, functionality)
+  normalDensity_settings2 = list(outcomeNormal=EnfCond, 
+                                 xNormal=zeta_EnfCond*LV_1, 
+                                 mu=0, 
+                                 sigma=sigma_EnfCond) 
+  
+  normalDensity_settings3 = list(outcomeNormal=AFrSem, 
+                                 xNormal=zeta_AFrSem*LV_1, 
+                                 mu=0, 
+                                 sigma=sigma_AFrSem)
+  
+  normalDensity_settings4 = list(outcomeNormal=CulFr, 
+                                 xNormal=zeta_CulFr*LV_1, 
+                                 mu=0, 
+                                 sigma=sigma_CulFr)
+  
+  
+  
+  P[["indic_FRbr"]]     = apollo_normalDensity(normalDensity_settings1, functionality)
+  P[["indic_EnfCond"]]  = apollo_normalDensity(normalDensity_settings2, functionality)
+  P[["indic_AFrSem"]]   = apollo_normalDensity(normalDensity_settings3, functionality)
+  P[["indic_CulFr"]]    = apollo_normalDensity(normalDensity_settings4, functionality)
+  
   
   ### Likelihood of choices
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
@@ -200,9 +208,7 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 # apollo_llCalc(apollo_beta, apollo_probabilities, apollo_inputs)
 
 ### Estimate model
-#model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_inputs)
-model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_inputs, 
-                        estimate_settings = list(maxIterations = 400))
+model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_inputs)
 
 # ################################################################# #
 #### MODEL OUTPUTS                                               ####
@@ -247,4 +253,3 @@ unconditionals <- apollo_unconditionals(model,apollo_probabilities,apollo_inputs
 # ----------------------------------------------------------------- #
 
 if(sink.number()>0) sink()
-

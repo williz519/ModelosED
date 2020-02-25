@@ -34,40 +34,15 @@ names(database)
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_ruta1     = 0,
-              asc_ruta2     = 0,
-              asc_ruta3     = 0,
-              asc_rutaEC    = 0,
-              b_time        = 0,
-              b_dist        = 0,
-              b_clima       = 0,
-              b_cong        = 0,
-              b_Hpico       = 0,
-              b_Hvalle      = 0,
-              b_T_prof      = 0,
-              b_Hor_trab    = 0,
-              b_EduBasica   = 0,
-              b_EduSuperior = 0,
-              b_Info_traf   = 0,
-              b_Joven30     = 0,
-              b_Adulto40    = 0,
-              b_Adulto60    = 0,
-              b_AdultoMayor = 0,
-              b_USOCINTURON = 0,
-              b_NOUSOCINTURON = 0,
-              b_USODISPMOB =0,
-              b_NOUSODISPMOB = 0,
-              lambda1        = 1,
-              lambda2        = 1,
-              gamma_EDUBASICA = 0,
-              gamma_CSECO = 0, 
-              gamma_CONG_EF = 0,
-              gamma_SININFO = 0,
-              gamma_HORAS_TRABAJO = 0,
-              gamma_HPICO = 0,
-              gamma_CONG_CD = 0,
-              gamma_USOCINTURON = 0,
-              gamma_USODISPMOB =0,
+apollo_beta=c(asc_ruta1     = 0, asc_ruta2     = 0, asc_ruta3     = 0, asc_rutaEC    = 0,
+              b_time        = 0, b_dist        = 0, b_clima       = 0, b_cong        = 0,
+              b_Hpico       = 0, b_Hvalle      = 0, b_T_prof      = 0, b_Hor_trab    = 0,
+              b_EduBasica   = 0, b_EduSuperior = 0, b_Info_traf   = 0, b_Joven30     = 0,
+              b_Adulto40    = 0, b_Adulto60    = 0, b_AdultoMayor = 0, b_USOCINTURON = 0,
+              b_NOUSOCINTURON = 0, b_USODISPMOB =0, b_NOUSODISPMOB = 0, lambda1        = 1,
+              lambda2        = 1, gamma_EDUBASICA = 0.158, gamma_CSECO = 0.144, gamma_CONG_EF = 0.205,
+              gamma_SININFO = -0.233, gamma_HORAS_TRABAJO = 0, gamma_HPICO = 0, gamma_CONG_CD = 0,
+              gamma_USOCINTURON = 0, gamma_USODISPMOB =0,
               zeta_FRbr     = 1, 
               zeta_EnfCond  = 1, 
               zeta_AFrSem   = 1, 
@@ -119,12 +94,7 @@ apollo_draws = list(
   interDrawsType="halton", 
   interNDraws=100,          
   interUnifDraws=c(),      
-  interNormDraws=c("eta1","eta2"), 
-  
-  intraDrawsType='',
-  intraNDraws=0,          
-  intraUnifDraws=c(),     
-  intraNormDraws=c()      
+  interNormDraws=c("eta1","eta2")
 )
 
 ### Crear parametros aleatorios
@@ -198,20 +168,19 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
   
-  V[['ruta1']]  = (asc_ruta1  + b_time * TIEMPOAlt1 + b_dist * DISTAlt1 + b_cong * CONG_A1 +
+  V[['ruta1']]  = (asc_ruta1  + b_time * TIEMPOAlt1 + b_dist * DISTAlt1 + b_cong * CONG_A1)
+  
+  
+  V[['ruta2']]  = (asc_ruta2  + b_time * TIEMPOAlt2 + b_dist * DISTAlt2 + b_cong * CONG_A2)
+  
+  V[['ruta3']]  = (asc_ruta3  + b_time * TIEMPOAlt3 + b_dist * DISTAlt3 + b_cong * CONG_A3)
+  
+  V[['rutaEC']] = (asc_rutaEC + b_time * TIEMPOEC   + b_dist * DISTEC   + b_cong * CONGESTION +
                      b_clima * CLIMA + b_Hpico * HPICO + b_Hvalle * HVALLE + b_T_prof * TIEMPO_PROFESION + 
                      b_Hor_trab * HORAS_TRABAJO + b_EduBasica * EDUBASICA + b_EduSuperior * EDUSUP +
                      b_Info_traf *(INFOTRAFICO == 2) + b_Joven30 * JOVEN30 + b_Adulto40 * ADULTO40 + 
                      b_Adulto60 *ADULTO60 + b_AdultoMayor * ADULTOMAYOR + b_USOCINTURON * USOCINTURON +
                      b_NOUSOCINTURON * NOUSOCINTURON + b_USODISPMOB * USODISPMOB + b_NOUSODISPMOB * NOUSODISPMOB +
-                     lambda1 * LV_1 + lambda2 * LV_2)
-      
-  
-  V[['ruta2']]  = (asc_ruta2  + b_time * TIEMPOAlt2 + b_dist * DISTAlt2 + b_cong * CONG_A2 +
-                     lambda1 * LV_1 + lambda2 * LV_2)
-  V[['ruta3']]  = (asc_ruta3  + b_time * TIEMPOAlt3 + b_dist * DISTAlt3 + b_cong * CONG_A3 +
-                     lambda1 * LV_1 + lambda2 * LV_2)
-  V[['rutaEC']] = (asc_rutaEC + b_time * TIEMPOEC   + b_dist * DISTEC   + b_cong * CONGESTION +
                      lambda1 * LV_1 + lambda2 * LV_2)
   
   ### Define settings for MNL model component
