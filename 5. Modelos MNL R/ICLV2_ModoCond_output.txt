@@ -1,0 +1,891 @@
+Model run using Apollo for R, version 0.0.8 
+www.ApolloChoiceModelling.com
+
+Model name                       : ICLV2_ModoCond
+Model description                : ICLV modelo sobre datos de elección de ruta
+Model run at                     : 2020-02-26 22:33:27
+Estimation method                : bfgs
+Model diagnosis                  : successful convergence 
+Number of individuals            : 348
+Number of observations           : 348
+
+Number of cores used             :  3 
+Number of inter-person draws     : 100 (halton)
+WARNING: Inter-person draws were used
+         without a panel data structure.
+
+LL(start)                        : -4660.654
+LL(final, whole model)           : -2724.386
+  LL(indic_FRbr)                 : -465.4115
+  LL(indic_EnfCond)              : -445.3743
+  LL(indic_AFrSem)               : -442.6411
+  LL(indic_CulFr)                : -528.3552
+  LL(indic_OmLmVel)              : -376.4817
+  LL(indic_IgPare)               : -350.5132
+  LL(indic_UsoCel)               : -490.2929
+  LL(choice)                     : -369.6852
+AIC                              :  5596.77 
+BIC                              :  5881.84 
+Estimated parameters             :  74
+Time taken (hh:mm:ss)            :  07:25:0.67 
+Iterations                       :  434 
+
+Estimates:
+                     Estimate Std.err. t.ratio(0) Rob.std.err. Rob.t.ratio(0)
+asc_ruta1              0.0000       NA         NA           NA             NA
+asc_ruta2             -0.9331      Inf          0          NaN            NaN
+asc_ruta3             -1.6519      Inf          0          NaN            NaN
+asc_rutaEC             1.0463      Inf          0          NaN            NaN
+b_time                 0.0696      Inf          0          NaN            NaN
+b_dist                -0.4080      Inf          0          NaN            NaN
+b_semaf                0.0006      Inf          0          NaN            NaN
+b_CamFD                0.0035      Inf          0          NaN            NaN
+b_ZER                 -0.0440      Inf          0          NaN            NaN
+b_MtrP                 0.1556      Inf          0          NaN            NaN
+b_Acc                 -0.4359      Inf          0          NaN            NaN
+b_Panel               -0.1669      Inf          0          NaN            NaN
+b_clima               -0.1565      Inf          0          NaN            NaN
+b_cong                 0.0574      Inf          0          NaN            NaN
+b_Hpico                0.0000       NA         NA           NA             NA
+b_Hvalle               0.0982      Inf          0          NaN            NaN
+b_T_prof              -0.0110      Inf          0          NaN            NaN
+b_Hor_trab            -0.0092      Inf          0          NaN            NaN
+b_EduBasica           -0.0120      Inf          0          NaN            NaN
+b_EduSuperior          0.0000       NA         NA           NA             NA
+b_Info_traf            0.3039      Inf          0          NaN            NaN
+b_usodisp              0.0000      Inf          0          NaN            NaN
+b_Joven30             -1.3768      Inf          0          NaN            NaN
+b_Adulto40            -0.4344      Inf          0          NaN            NaN
+b_Adulto60            -0.5391      Inf          0          NaN            NaN
+b_AdultoMayor          0.0000       NA         NA           NA             NA
+b_USOCINTURON         -0.2308      Inf          0          NaN            NaN
+b_NOUSOCINTURON        0.0000       NA         NA           NA             NA
+b_USODISPMOB          -0.2309      Inf          0          NaN            NaN
+b_NOUSODISPMOB         0.0000       NA         NA           NA             NA
+gamma_EDUBASICA        0.1580      Inf          0          NaN            NaN
+gamma_CSECO            0.1440      Inf          0          NaN            NaN
+gamma_CONG_EF          0.2050      Inf          0          NaN            NaN
+gamma_SININFO         -0.2330      Inf          0          NaN            NaN
+gamma_EDUBASICA        0.1580      Inf          0          NaN            NaN
+gamma_CSECO            0.1440      Inf          0          NaN            NaN
+gamma_CONG_EF          0.2050      Inf          0          NaN            NaN
+gamma_SININFO         -0.2330      Inf          0          NaN            NaN
+gamma_HORAS_TRABAJO   -0.0471      Inf          0          NaN            NaN
+gamma_HPICO            0.1004      Inf          0          NaN            NaN
+gamma_CONG_CD          0.0836      Inf          0          NaN            NaN
+gamma_USOCINTURON     -0.2955      Inf          0          NaN            NaN
+gamma_USODISPMOB       0.0039      Inf          0          NaN            NaN
+zeta_FRbr              4.7231      Inf          0          NaN            NaN
+zeta_EnfCond           2.9200      Inf          0          NaN            NaN
+zeta_AFrSem           76.8154      Inf          0          NaN            NaN
+zeta_CulFr             1.9696      Inf          0          NaN            NaN
+zeta_OmLmVel           3.5862      Inf          0          NaN            NaN
+zeta_IgPare          648.2541      Inf          0          NaN            NaN
+zeta_UsoCel            1.0929      Inf          0          NaN            NaN
+lambda1                0.0241      Inf          0          NaN            NaN
+lambda2               -0.1078      Inf          0          NaN            NaN
+tau_FRbr_1             1.0081      Inf          0          NaN            NaN
+tau_FRbr_2             6.3740      Inf          0          NaN            NaN
+tau_FRbr_3             7.4409      Inf          0          NaN            NaN
+tau_FRbr_4            11.8875      Inf          0          NaN            NaN
+tau_EnfCond_1          0.6027      Inf          0          NaN            NaN
+tau_EnfCond_2          4.5504      Inf          0          NaN            NaN
+tau_EnfCond_3          5.5395      Inf          0          NaN            NaN
+tau_EnfCond_4          7.9996      Inf          0          NaN            NaN
+tau_AFrSem_1          20.3919      Inf          0          NaN            NaN
+tau_AFrSem_2         117.3780      Inf          0          NaN            NaN
+tau_AFrSem_3         125.0988      Inf          0          NaN            NaN
+tau_AFrSem_4         197.3831      Inf          0          NaN            NaN
+tau_CulFr_1           -1.1181      Inf          0          NaN            NaN
+tau_CulFr_2            1.3755      Inf          0          NaN            NaN
+tau_CulFr_3            2.3679      Inf          0          NaN            NaN
+tau_CulFr_4            5.3851      Inf          0          NaN            NaN
+tau_OmLmVel_1         -3.2334      Inf          0          NaN            NaN
+tau_OmLmVel_2          2.0961      Inf          0          NaN            NaN
+tau_OmLmVel_3          3.1061      Inf          0          NaN            NaN
+tau_OmLmVel_4          5.0828      Inf          0          NaN            NaN
+tau_IgPare_1        -515.4990      Inf          0          NaN            NaN
+tau_IgPare_2         372.6945      Inf          0          NaN            NaN
+tau_IgPare_3         500.4407      Inf          0          NaN            NaN
+tau_IgPare_4         828.3380      Inf          0          NaN            NaN
+tau_UsoCel_1          -2.5725      Inf          0          NaN            NaN
+tau_UsoCel_2          -0.3166      Inf          0          NaN            NaN
+tau_UsoCel_3           0.5603      Inf          0          NaN            NaN
+tau_UsoCel_4           3.2232      Inf          0          NaN            NaN
+
+Overview of choices for OL model component: indic_FRbr
+                            1   2  3  4 5
+Times chosen              127 144 24 47 6
+Percentage chosen overall  36  41  7 14 2
+
+Overview of choices for OL model component: indic_EnfCond
+                            1   2  3  4 5
+Times chosen              128 157 25 31 7
+Percentage chosen overall  37  45  7  9 2
+
+Overview of choices for OL model component: indic_AFrSem
+                            1   2  3  4 5
+Times chosen              131 164 14 36 3
+Percentage chosen overall  38  47  4 10 1
+
+Overview of choices for OL model component: indic_CulFr
+                           1   2  3  4  5
+Times chosen              68 119 54 92 15
+Percentage chosen overall 20  34 16 26  4
+
+Overview of choices for OL model component: indic_OmLmVel
+                            1   2  3  4 5
+Times chosen              136 171 17 16 8
+Percentage chosen overall  39  49  5  5 2
+
+Overview of choices for OL model component: indic_IgPare
+                            1   2  3  4 5
+Times chosen              146 171 11 15 5
+Percentage chosen overall  42  49  3  4 1
+
+Overview of choices for OL model component: indic_UsoCel
+                           1   2  3  4  5
+Times chosen              61 140 59 78 10
+Percentage chosen overall 18  40 17 22  3
+
+Overview of choices for MNL model component: choice
+                                  ruta1  ruta2  ruta3 rutaEC
+Times available                  348.00 348.00 348.00 348.00
+Times chosen                     113.00  42.00  21.00 172.00
+Percentage chosen overall         32.47  12.07   6.03  49.43
+Percentage chosen when available  32.47  12.07   6.03  49.43
+
+
+Classical covariance matrix:
+                    asc_ruta2 asc_ruta3 asc_rutaEC b_time b_dist b_semaf b_CamFD b_ZER b_MtrP b_Acc b_Panel
+asc_ruta2                 Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+asc_ruta3                 Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+asc_rutaEC                Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_time                    Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_dist                    Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_semaf                   Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_CamFD                   Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_ZER                     Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_MtrP                    Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_Acc                     Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_Panel                   Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_clima                   Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+b_cong                    Inf       Inf        Inf    Inf    Inf     Inf     Inf   Inf    Inf   Inf     Inf
+                    b_clima b_cong b_Hvalle b_T_prof b_Hor_trab b_EduBasica b_Info_traf b_usodisp b_Joven30
+asc_ruta2               Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+asc_ruta3               Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+asc_rutaEC              Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_time                  Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_dist                  Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_semaf                 Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_CamFD                 Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_ZER                   Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_MtrP                  Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_Acc                   Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_Panel                 Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_clima                 Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+b_cong                  Inf    Inf      Inf      Inf        Inf         Inf         Inf       Inf       Inf
+                    b_Adulto40 b_Adulto60 b_USOCINTURON b_USODISPMOB gamma_EDUBASICA gamma_CSECO
+asc_ruta2                  Inf        Inf           Inf          Inf             Inf         Inf
+asc_ruta3                  Inf        Inf           Inf          Inf             Inf         Inf
+asc_rutaEC                 Inf        Inf           Inf          Inf             Inf         Inf
+b_time                     Inf        Inf           Inf          Inf             Inf         Inf
+b_dist                     Inf        Inf           Inf          Inf             Inf         Inf
+b_semaf                    Inf        Inf           Inf          Inf             Inf         Inf
+b_CamFD                    Inf        Inf           Inf          Inf             Inf         Inf
+b_ZER                      Inf        Inf           Inf          Inf             Inf         Inf
+b_MtrP                     Inf        Inf           Inf          Inf             Inf         Inf
+b_Acc                      Inf        Inf           Inf          Inf             Inf         Inf
+b_Panel                    Inf        Inf           Inf          Inf             Inf         Inf
+b_clima                    Inf        Inf           Inf          Inf             Inf         Inf
+b_cong                     Inf        Inf           Inf          Inf             Inf         Inf
+                    gamma_CONG_EF gamma_SININFO gamma_EDUBASICA gamma_CSECO gamma_CONG_EF gamma_SININFO
+asc_ruta2                     Inf           Inf             Inf         Inf           Inf           Inf
+asc_ruta3                     Inf           Inf             Inf         Inf           Inf           Inf
+asc_rutaEC                    Inf           Inf             Inf         Inf           Inf           Inf
+b_time                        Inf           Inf             Inf         Inf           Inf           Inf
+b_dist                        Inf           Inf             Inf         Inf           Inf           Inf
+b_semaf                       Inf           Inf             Inf         Inf           Inf           Inf
+b_CamFD                       Inf           Inf             Inf         Inf           Inf           Inf
+b_ZER                         Inf           Inf             Inf         Inf           Inf           Inf
+b_MtrP                        Inf           Inf             Inf         Inf           Inf           Inf
+b_Acc                         Inf           Inf             Inf         Inf           Inf           Inf
+b_Panel                       Inf           Inf             Inf         Inf           Inf           Inf
+b_clima                       Inf           Inf             Inf         Inf           Inf           Inf
+b_cong                        Inf           Inf             Inf         Inf           Inf           Inf
+                    gamma_HORAS_TRABAJO gamma_HPICO gamma_CONG_CD gamma_USOCINTURON gamma_USODISPMOB
+asc_ruta2                           Inf         Inf           Inf               Inf              Inf
+asc_ruta3                           Inf         Inf           Inf               Inf              Inf
+asc_rutaEC                          Inf         Inf           Inf               Inf              Inf
+b_time                              Inf         Inf           Inf               Inf              Inf
+b_dist                              Inf         Inf           Inf               Inf              Inf
+b_semaf                             Inf         Inf           Inf               Inf              Inf
+b_CamFD                             Inf         Inf           Inf               Inf              Inf
+b_ZER                               Inf         Inf           Inf               Inf              Inf
+b_MtrP                              Inf         Inf           Inf               Inf              Inf
+b_Acc                               Inf         Inf           Inf               Inf              Inf
+b_Panel                             Inf         Inf           Inf               Inf              Inf
+b_clima                             Inf         Inf           Inf               Inf              Inf
+b_cong                              Inf         Inf           Inf               Inf              Inf
+                    zeta_FRbr zeta_EnfCond zeta_AFrSem zeta_CulFr zeta_OmLmVel zeta_IgPare zeta_UsoCel
+asc_ruta2                 Inf          Inf         Inf        Inf          Inf         Inf         Inf
+asc_ruta3                 Inf          Inf         Inf        Inf          Inf         Inf         Inf
+asc_rutaEC                Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_time                    Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_dist                    Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_semaf                   Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_CamFD                   Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_ZER                     Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_MtrP                    Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_Acc                     Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_Panel                   Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_clima                   Inf          Inf         Inf        Inf          Inf         Inf         Inf
+b_cong                    Inf          Inf         Inf        Inf          Inf         Inf         Inf
+                    lambda1 lambda2 tau_FRbr_1 tau_FRbr_2 tau_FRbr_3 tau_FRbr_4 tau_EnfCond_1 tau_EnfCond_2
+asc_ruta2               Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+asc_ruta3               Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+asc_rutaEC              Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_time                  Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_dist                  Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_semaf                 Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_CamFD                 Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_ZER                   Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_MtrP                  Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_Acc                   Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_Panel                 Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_clima                 Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+b_cong                  Inf     Inf        Inf        Inf        Inf        Inf           Inf           Inf
+                    tau_EnfCond_3 tau_EnfCond_4 tau_AFrSem_1 tau_AFrSem_2 tau_AFrSem_3 tau_AFrSem_4
+asc_ruta2                     Inf           Inf          Inf          Inf          Inf          Inf
+asc_ruta3                     Inf           Inf          Inf          Inf          Inf          Inf
+asc_rutaEC                    Inf           Inf          Inf          Inf          Inf          Inf
+b_time                        Inf           Inf          Inf          Inf          Inf          Inf
+b_dist                        Inf           Inf          Inf          Inf          Inf          Inf
+b_semaf                       Inf           Inf          Inf          Inf          Inf          Inf
+b_CamFD                       Inf           Inf          Inf          Inf          Inf          Inf
+b_ZER                         Inf           Inf          Inf          Inf          Inf          Inf
+b_MtrP                        Inf           Inf          Inf          Inf          Inf          Inf
+b_Acc                         Inf           Inf          Inf          Inf          Inf          Inf
+b_Panel                       Inf           Inf          Inf          Inf          Inf          Inf
+b_clima                       Inf           Inf          Inf          Inf          Inf          Inf
+b_cong                        Inf           Inf          Inf          Inf          Inf          Inf
+                    tau_CulFr_1 tau_CulFr_2 tau_CulFr_3 tau_CulFr_4 tau_OmLmVel_1 tau_OmLmVel_2
+asc_ruta2                   Inf         Inf         Inf         Inf           Inf           Inf
+asc_ruta3                   Inf         Inf         Inf         Inf           Inf           Inf
+asc_rutaEC                  Inf         Inf         Inf         Inf           Inf           Inf
+b_time                      Inf         Inf         Inf         Inf           Inf           Inf
+b_dist                      Inf         Inf         Inf         Inf           Inf           Inf
+b_semaf                     Inf         Inf         Inf         Inf           Inf           Inf
+b_CamFD                     Inf         Inf         Inf         Inf           Inf           Inf
+b_ZER                       Inf         Inf         Inf         Inf           Inf           Inf
+b_MtrP                      Inf         Inf         Inf         Inf           Inf           Inf
+b_Acc                       Inf         Inf         Inf         Inf           Inf           Inf
+b_Panel                     Inf         Inf         Inf         Inf           Inf           Inf
+b_clima                     Inf         Inf         Inf         Inf           Inf           Inf
+b_cong                      Inf         Inf         Inf         Inf           Inf           Inf
+                    tau_OmLmVel_3 tau_OmLmVel_4 tau_IgPare_1 tau_IgPare_2 tau_IgPare_3 tau_IgPare_4
+asc_ruta2                     Inf           Inf          Inf          Inf          Inf          Inf
+asc_ruta3                     Inf           Inf          Inf          Inf          Inf          Inf
+asc_rutaEC                    Inf           Inf          Inf          Inf          Inf          Inf
+b_time                        Inf           Inf          Inf          Inf          Inf          Inf
+b_dist                        Inf           Inf          Inf          Inf          Inf          Inf
+b_semaf                       Inf           Inf          Inf          Inf          Inf          Inf
+b_CamFD                       Inf           Inf          Inf          Inf          Inf          Inf
+b_ZER                         Inf           Inf          Inf          Inf          Inf          Inf
+b_MtrP                        Inf           Inf          Inf          Inf          Inf          Inf
+b_Acc                         Inf           Inf          Inf          Inf          Inf          Inf
+b_Panel                       Inf           Inf          Inf          Inf          Inf          Inf
+b_clima                       Inf           Inf          Inf          Inf          Inf          Inf
+b_cong                        Inf           Inf          Inf          Inf          Inf          Inf
+                    tau_UsoCel_1 tau_UsoCel_2 tau_UsoCel_3 tau_UsoCel_4
+asc_ruta2                    Inf          Inf          Inf          Inf
+asc_ruta3                    Inf          Inf          Inf          Inf
+asc_rutaEC                   Inf          Inf          Inf          Inf
+b_time                       Inf          Inf          Inf          Inf
+b_dist                       Inf          Inf          Inf          Inf
+b_semaf                      Inf          Inf          Inf          Inf
+b_CamFD                      Inf          Inf          Inf          Inf
+b_ZER                        Inf          Inf          Inf          Inf
+b_MtrP                       Inf          Inf          Inf          Inf
+b_Acc                        Inf          Inf          Inf          Inf
+b_Panel                      Inf          Inf          Inf          Inf
+b_clima                      Inf          Inf          Inf          Inf
+b_cong                       Inf          Inf          Inf          Inf
+ [ reached getOption("max.print") -- omitted 61 rows ]
+
+Robust covariance matrix:
+                    asc_ruta2 asc_ruta3 asc_rutaEC b_time b_dist b_semaf b_CamFD b_ZER b_MtrP b_Acc b_Panel
+asc_ruta2                 NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+asc_ruta3                 NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+asc_rutaEC                NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_time                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_dist                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_semaf                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_CamFD                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_ZER                     NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_MtrP                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_Acc                     NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_Panel                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_clima                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_cong                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+                    b_clima b_cong b_Hvalle b_T_prof b_Hor_trab b_EduBasica b_Info_traf b_usodisp b_Joven30
+asc_ruta2               NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+asc_ruta3               NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+asc_rutaEC              NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_time                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_dist                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_semaf                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_CamFD                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_ZER                   NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_MtrP                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_Acc                   NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_Panel                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_clima                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_cong                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+                    b_Adulto40 b_Adulto60 b_USOCINTURON b_USODISPMOB gamma_EDUBASICA gamma_CSECO
+asc_ruta2                  NaN        NaN           NaN          NaN             NaN         NaN
+asc_ruta3                  NaN        NaN           NaN          NaN             NaN         NaN
+asc_rutaEC                 NaN        NaN           NaN          NaN             NaN         NaN
+b_time                     NaN        NaN           NaN          NaN             NaN         NaN
+b_dist                     NaN        NaN           NaN          NaN             NaN         NaN
+b_semaf                    NaN        NaN           NaN          NaN             NaN         NaN
+b_CamFD                    NaN        NaN           NaN          NaN             NaN         NaN
+b_ZER                      NaN        NaN           NaN          NaN             NaN         NaN
+b_MtrP                     NaN        NaN           NaN          NaN             NaN         NaN
+b_Acc                      NaN        NaN           NaN          NaN             NaN         NaN
+b_Panel                    NaN        NaN           NaN          NaN             NaN         NaN
+b_clima                    NaN        NaN           NaN          NaN             NaN         NaN
+b_cong                     NaN        NaN           NaN          NaN             NaN         NaN
+                    gamma_CONG_EF gamma_SININFO gamma_EDUBASICA gamma_CSECO gamma_CONG_EF gamma_SININFO
+asc_ruta2                     NaN           NaN             NaN         NaN           NaN           NaN
+asc_ruta3                     NaN           NaN             NaN         NaN           NaN           NaN
+asc_rutaEC                    NaN           NaN             NaN         NaN           NaN           NaN
+b_time                        NaN           NaN             NaN         NaN           NaN           NaN
+b_dist                        NaN           NaN             NaN         NaN           NaN           NaN
+b_semaf                       NaN           NaN             NaN         NaN           NaN           NaN
+b_CamFD                       NaN           NaN             NaN         NaN           NaN           NaN
+b_ZER                         NaN           NaN             NaN         NaN           NaN           NaN
+b_MtrP                        NaN           NaN             NaN         NaN           NaN           NaN
+b_Acc                         NaN           NaN             NaN         NaN           NaN           NaN
+b_Panel                       NaN           NaN             NaN         NaN           NaN           NaN
+b_clima                       NaN           NaN             NaN         NaN           NaN           NaN
+b_cong                        NaN           NaN             NaN         NaN           NaN           NaN
+                    gamma_HORAS_TRABAJO gamma_HPICO gamma_CONG_CD gamma_USOCINTURON gamma_USODISPMOB
+asc_ruta2                           NaN         NaN           NaN               NaN              NaN
+asc_ruta3                           NaN         NaN           NaN               NaN              NaN
+asc_rutaEC                          NaN         NaN           NaN               NaN              NaN
+b_time                              NaN         NaN           NaN               NaN              NaN
+b_dist                              NaN         NaN           NaN               NaN              NaN
+b_semaf                             NaN         NaN           NaN               NaN              NaN
+b_CamFD                             NaN         NaN           NaN               NaN              NaN
+b_ZER                               NaN         NaN           NaN               NaN              NaN
+b_MtrP                              NaN         NaN           NaN               NaN              NaN
+b_Acc                               NaN         NaN           NaN               NaN              NaN
+b_Panel                             NaN         NaN           NaN               NaN              NaN
+b_clima                             NaN         NaN           NaN               NaN              NaN
+b_cong                              NaN         NaN           NaN               NaN              NaN
+                    zeta_FRbr zeta_EnfCond zeta_AFrSem zeta_CulFr zeta_OmLmVel zeta_IgPare zeta_UsoCel
+asc_ruta2                 NaN          NaN         NaN        NaN          NaN         NaN         NaN
+asc_ruta3                 NaN          NaN         NaN        NaN          NaN         NaN         NaN
+asc_rutaEC                NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_time                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_dist                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_semaf                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_CamFD                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_ZER                     NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_MtrP                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_Acc                     NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_Panel                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_clima                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_cong                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+                    lambda1 lambda2 tau_FRbr_1 tau_FRbr_2 tau_FRbr_3 tau_FRbr_4 tau_EnfCond_1 tau_EnfCond_2
+asc_ruta2               NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+asc_ruta3               NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+asc_rutaEC              NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_time                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_dist                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_semaf                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_CamFD                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_ZER                   NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_MtrP                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_Acc                   NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_Panel                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_clima                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_cong                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+                    tau_EnfCond_3 tau_EnfCond_4 tau_AFrSem_1 tau_AFrSem_2 tau_AFrSem_3 tau_AFrSem_4
+asc_ruta2                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_ruta3                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_rutaEC                    NaN           NaN          NaN          NaN          NaN          NaN
+b_time                        NaN           NaN          NaN          NaN          NaN          NaN
+b_dist                        NaN           NaN          NaN          NaN          NaN          NaN
+b_semaf                       NaN           NaN          NaN          NaN          NaN          NaN
+b_CamFD                       NaN           NaN          NaN          NaN          NaN          NaN
+b_ZER                         NaN           NaN          NaN          NaN          NaN          NaN
+b_MtrP                        NaN           NaN          NaN          NaN          NaN          NaN
+b_Acc                         NaN           NaN          NaN          NaN          NaN          NaN
+b_Panel                       NaN           NaN          NaN          NaN          NaN          NaN
+b_clima                       NaN           NaN          NaN          NaN          NaN          NaN
+b_cong                        NaN           NaN          NaN          NaN          NaN          NaN
+                    tau_CulFr_1 tau_CulFr_2 tau_CulFr_3 tau_CulFr_4 tau_OmLmVel_1 tau_OmLmVel_2
+asc_ruta2                   NaN         NaN         NaN         NaN           NaN           NaN
+asc_ruta3                   NaN         NaN         NaN         NaN           NaN           NaN
+asc_rutaEC                  NaN         NaN         NaN         NaN           NaN           NaN
+b_time                      NaN         NaN         NaN         NaN           NaN           NaN
+b_dist                      NaN         NaN         NaN         NaN           NaN           NaN
+b_semaf                     NaN         NaN         NaN         NaN           NaN           NaN
+b_CamFD                     NaN         NaN         NaN         NaN           NaN           NaN
+b_ZER                       NaN         NaN         NaN         NaN           NaN           NaN
+b_MtrP                      NaN         NaN         NaN         NaN           NaN           NaN
+b_Acc                       NaN         NaN         NaN         NaN           NaN           NaN
+b_Panel                     NaN         NaN         NaN         NaN           NaN           NaN
+b_clima                     NaN         NaN         NaN         NaN           NaN           NaN
+b_cong                      NaN         NaN         NaN         NaN           NaN           NaN
+                    tau_OmLmVel_3 tau_OmLmVel_4 tau_IgPare_1 tau_IgPare_2 tau_IgPare_3 tau_IgPare_4
+asc_ruta2                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_ruta3                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_rutaEC                    NaN           NaN          NaN          NaN          NaN          NaN
+b_time                        NaN           NaN          NaN          NaN          NaN          NaN
+b_dist                        NaN           NaN          NaN          NaN          NaN          NaN
+b_semaf                       NaN           NaN          NaN          NaN          NaN          NaN
+b_CamFD                       NaN           NaN          NaN          NaN          NaN          NaN
+b_ZER                         NaN           NaN          NaN          NaN          NaN          NaN
+b_MtrP                        NaN           NaN          NaN          NaN          NaN          NaN
+b_Acc                         NaN           NaN          NaN          NaN          NaN          NaN
+b_Panel                       NaN           NaN          NaN          NaN          NaN          NaN
+b_clima                       NaN           NaN          NaN          NaN          NaN          NaN
+b_cong                        NaN           NaN          NaN          NaN          NaN          NaN
+                    tau_UsoCel_1 tau_UsoCel_2 tau_UsoCel_3 tau_UsoCel_4
+asc_ruta2                    NaN          NaN          NaN          NaN
+asc_ruta3                    NaN          NaN          NaN          NaN
+asc_rutaEC                   NaN          NaN          NaN          NaN
+b_time                       NaN          NaN          NaN          NaN
+b_dist                       NaN          NaN          NaN          NaN
+b_semaf                      NaN          NaN          NaN          NaN
+b_CamFD                      NaN          NaN          NaN          NaN
+b_ZER                        NaN          NaN          NaN          NaN
+b_MtrP                       NaN          NaN          NaN          NaN
+b_Acc                        NaN          NaN          NaN          NaN
+b_Panel                      NaN          NaN          NaN          NaN
+b_clima                      NaN          NaN          NaN          NaN
+b_cong                       NaN          NaN          NaN          NaN
+ [ reached getOption("max.print") -- omitted 61 rows ]
+
+Classical correlation matrix:
+                    asc_ruta2 asc_ruta3 asc_rutaEC b_time b_dist b_semaf b_CamFD b_ZER b_MtrP b_Acc b_Panel
+asc_ruta2                 NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+asc_ruta3                 NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+asc_rutaEC                NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_time                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_dist                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_semaf                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_CamFD                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_ZER                     NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_MtrP                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_Acc                     NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_Panel                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_clima                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_cong                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+                    b_clima b_cong b_Hvalle b_T_prof b_Hor_trab b_EduBasica b_Info_traf b_usodisp b_Joven30
+asc_ruta2               NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+asc_ruta3               NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+asc_rutaEC              NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_time                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_dist                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_semaf                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_CamFD                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_ZER                   NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_MtrP                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_Acc                   NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_Panel                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_clima                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_cong                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+                    b_Adulto40 b_Adulto60 b_USOCINTURON b_USODISPMOB gamma_EDUBASICA gamma_CSECO
+asc_ruta2                  NaN        NaN           NaN          NaN             NaN         NaN
+asc_ruta3                  NaN        NaN           NaN          NaN             NaN         NaN
+asc_rutaEC                 NaN        NaN           NaN          NaN             NaN         NaN
+b_time                     NaN        NaN           NaN          NaN             NaN         NaN
+b_dist                     NaN        NaN           NaN          NaN             NaN         NaN
+b_semaf                    NaN        NaN           NaN          NaN             NaN         NaN
+b_CamFD                    NaN        NaN           NaN          NaN             NaN         NaN
+b_ZER                      NaN        NaN           NaN          NaN             NaN         NaN
+b_MtrP                     NaN        NaN           NaN          NaN             NaN         NaN
+b_Acc                      NaN        NaN           NaN          NaN             NaN         NaN
+b_Panel                    NaN        NaN           NaN          NaN             NaN         NaN
+b_clima                    NaN        NaN           NaN          NaN             NaN         NaN
+b_cong                     NaN        NaN           NaN          NaN             NaN         NaN
+                    gamma_CONG_EF gamma_SININFO gamma_EDUBASICA gamma_CSECO gamma_CONG_EF gamma_SININFO
+asc_ruta2                     NaN           NaN             NaN         NaN           NaN           NaN
+asc_ruta3                     NaN           NaN             NaN         NaN           NaN           NaN
+asc_rutaEC                    NaN           NaN             NaN         NaN           NaN           NaN
+b_time                        NaN           NaN             NaN         NaN           NaN           NaN
+b_dist                        NaN           NaN             NaN         NaN           NaN           NaN
+b_semaf                       NaN           NaN             NaN         NaN           NaN           NaN
+b_CamFD                       NaN           NaN             NaN         NaN           NaN           NaN
+b_ZER                         NaN           NaN             NaN         NaN           NaN           NaN
+b_MtrP                        NaN           NaN             NaN         NaN           NaN           NaN
+b_Acc                         NaN           NaN             NaN         NaN           NaN           NaN
+b_Panel                       NaN           NaN             NaN         NaN           NaN           NaN
+b_clima                       NaN           NaN             NaN         NaN           NaN           NaN
+b_cong                        NaN           NaN             NaN         NaN           NaN           NaN
+                    gamma_HORAS_TRABAJO gamma_HPICO gamma_CONG_CD gamma_USOCINTURON gamma_USODISPMOB
+asc_ruta2                           NaN         NaN           NaN               NaN              NaN
+asc_ruta3                           NaN         NaN           NaN               NaN              NaN
+asc_rutaEC                          NaN         NaN           NaN               NaN              NaN
+b_time                              NaN         NaN           NaN               NaN              NaN
+b_dist                              NaN         NaN           NaN               NaN              NaN
+b_semaf                             NaN         NaN           NaN               NaN              NaN
+b_CamFD                             NaN         NaN           NaN               NaN              NaN
+b_ZER                               NaN         NaN           NaN               NaN              NaN
+b_MtrP                              NaN         NaN           NaN               NaN              NaN
+b_Acc                               NaN         NaN           NaN               NaN              NaN
+b_Panel                             NaN         NaN           NaN               NaN              NaN
+b_clima                             NaN         NaN           NaN               NaN              NaN
+b_cong                              NaN         NaN           NaN               NaN              NaN
+                    zeta_FRbr zeta_EnfCond zeta_AFrSem zeta_CulFr zeta_OmLmVel zeta_IgPare zeta_UsoCel
+asc_ruta2                 NaN          NaN         NaN        NaN          NaN         NaN         NaN
+asc_ruta3                 NaN          NaN         NaN        NaN          NaN         NaN         NaN
+asc_rutaEC                NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_time                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_dist                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_semaf                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_CamFD                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_ZER                     NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_MtrP                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_Acc                     NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_Panel                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_clima                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_cong                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+                    lambda1 lambda2 tau_FRbr_1 tau_FRbr_2 tau_FRbr_3 tau_FRbr_4 tau_EnfCond_1 tau_EnfCond_2
+asc_ruta2               NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+asc_ruta3               NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+asc_rutaEC              NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_time                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_dist                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_semaf                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_CamFD                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_ZER                   NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_MtrP                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_Acc                   NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_Panel                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_clima                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_cong                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+                    tau_EnfCond_3 tau_EnfCond_4 tau_AFrSem_1 tau_AFrSem_2 tau_AFrSem_3 tau_AFrSem_4
+asc_ruta2                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_ruta3                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_rutaEC                    NaN           NaN          NaN          NaN          NaN          NaN
+b_time                        NaN           NaN          NaN          NaN          NaN          NaN
+b_dist                        NaN           NaN          NaN          NaN          NaN          NaN
+b_semaf                       NaN           NaN          NaN          NaN          NaN          NaN
+b_CamFD                       NaN           NaN          NaN          NaN          NaN          NaN
+b_ZER                         NaN           NaN          NaN          NaN          NaN          NaN
+b_MtrP                        NaN           NaN          NaN          NaN          NaN          NaN
+b_Acc                         NaN           NaN          NaN          NaN          NaN          NaN
+b_Panel                       NaN           NaN          NaN          NaN          NaN          NaN
+b_clima                       NaN           NaN          NaN          NaN          NaN          NaN
+b_cong                        NaN           NaN          NaN          NaN          NaN          NaN
+                    tau_CulFr_1 tau_CulFr_2 tau_CulFr_3 tau_CulFr_4 tau_OmLmVel_1 tau_OmLmVel_2
+asc_ruta2                   NaN         NaN         NaN         NaN           NaN           NaN
+asc_ruta3                   NaN         NaN         NaN         NaN           NaN           NaN
+asc_rutaEC                  NaN         NaN         NaN         NaN           NaN           NaN
+b_time                      NaN         NaN         NaN         NaN           NaN           NaN
+b_dist                      NaN         NaN         NaN         NaN           NaN           NaN
+b_semaf                     NaN         NaN         NaN         NaN           NaN           NaN
+b_CamFD                     NaN         NaN         NaN         NaN           NaN           NaN
+b_ZER                       NaN         NaN         NaN         NaN           NaN           NaN
+b_MtrP                      NaN         NaN         NaN         NaN           NaN           NaN
+b_Acc                       NaN         NaN         NaN         NaN           NaN           NaN
+b_Panel                     NaN         NaN         NaN         NaN           NaN           NaN
+b_clima                     NaN         NaN         NaN         NaN           NaN           NaN
+b_cong                      NaN         NaN         NaN         NaN           NaN           NaN
+                    tau_OmLmVel_3 tau_OmLmVel_4 tau_IgPare_1 tau_IgPare_2 tau_IgPare_3 tau_IgPare_4
+asc_ruta2                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_ruta3                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_rutaEC                    NaN           NaN          NaN          NaN          NaN          NaN
+b_time                        NaN           NaN          NaN          NaN          NaN          NaN
+b_dist                        NaN           NaN          NaN          NaN          NaN          NaN
+b_semaf                       NaN           NaN          NaN          NaN          NaN          NaN
+b_CamFD                       NaN           NaN          NaN          NaN          NaN          NaN
+b_ZER                         NaN           NaN          NaN          NaN          NaN          NaN
+b_MtrP                        NaN           NaN          NaN          NaN          NaN          NaN
+b_Acc                         NaN           NaN          NaN          NaN          NaN          NaN
+b_Panel                       NaN           NaN          NaN          NaN          NaN          NaN
+b_clima                       NaN           NaN          NaN          NaN          NaN          NaN
+b_cong                        NaN           NaN          NaN          NaN          NaN          NaN
+                    tau_UsoCel_1 tau_UsoCel_2 tau_UsoCel_3 tau_UsoCel_4
+asc_ruta2                    NaN          NaN          NaN          NaN
+asc_ruta3                    NaN          NaN          NaN          NaN
+asc_rutaEC                   NaN          NaN          NaN          NaN
+b_time                       NaN          NaN          NaN          NaN
+b_dist                       NaN          NaN          NaN          NaN
+b_semaf                      NaN          NaN          NaN          NaN
+b_CamFD                      NaN          NaN          NaN          NaN
+b_ZER                        NaN          NaN          NaN          NaN
+b_MtrP                       NaN          NaN          NaN          NaN
+b_Acc                        NaN          NaN          NaN          NaN
+b_Panel                      NaN          NaN          NaN          NaN
+b_clima                      NaN          NaN          NaN          NaN
+b_cong                       NaN          NaN          NaN          NaN
+ [ reached getOption("max.print") -- omitted 61 rows ]
+
+Robust correlation matrix:
+                    asc_ruta2 asc_ruta3 asc_rutaEC b_time b_dist b_semaf b_CamFD b_ZER b_MtrP b_Acc b_Panel
+asc_ruta2                 NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+asc_ruta3                 NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+asc_rutaEC                NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_time                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_dist                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_semaf                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_CamFD                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_ZER                     NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_MtrP                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_Acc                     NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_Panel                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_clima                   NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+b_cong                    NaN       NaN        NaN    NaN    NaN     NaN     NaN   NaN    NaN   NaN     NaN
+                    b_clima b_cong b_Hvalle b_T_prof b_Hor_trab b_EduBasica b_Info_traf b_usodisp b_Joven30
+asc_ruta2               NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+asc_ruta3               NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+asc_rutaEC              NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_time                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_dist                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_semaf                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_CamFD                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_ZER                   NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_MtrP                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_Acc                   NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_Panel                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_clima                 NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+b_cong                  NaN    NaN      NaN      NaN        NaN         NaN         NaN       NaN       NaN
+                    b_Adulto40 b_Adulto60 b_USOCINTURON b_USODISPMOB gamma_EDUBASICA gamma_CSECO
+asc_ruta2                  NaN        NaN           NaN          NaN             NaN         NaN
+asc_ruta3                  NaN        NaN           NaN          NaN             NaN         NaN
+asc_rutaEC                 NaN        NaN           NaN          NaN             NaN         NaN
+b_time                     NaN        NaN           NaN          NaN             NaN         NaN
+b_dist                     NaN        NaN           NaN          NaN             NaN         NaN
+b_semaf                    NaN        NaN           NaN          NaN             NaN         NaN
+b_CamFD                    NaN        NaN           NaN          NaN             NaN         NaN
+b_ZER                      NaN        NaN           NaN          NaN             NaN         NaN
+b_MtrP                     NaN        NaN           NaN          NaN             NaN         NaN
+b_Acc                      NaN        NaN           NaN          NaN             NaN         NaN
+b_Panel                    NaN        NaN           NaN          NaN             NaN         NaN
+b_clima                    NaN        NaN           NaN          NaN             NaN         NaN
+b_cong                     NaN        NaN           NaN          NaN             NaN         NaN
+                    gamma_CONG_EF gamma_SININFO gamma_EDUBASICA gamma_CSECO gamma_CONG_EF gamma_SININFO
+asc_ruta2                     NaN           NaN             NaN         NaN           NaN           NaN
+asc_ruta3                     NaN           NaN             NaN         NaN           NaN           NaN
+asc_rutaEC                    NaN           NaN             NaN         NaN           NaN           NaN
+b_time                        NaN           NaN             NaN         NaN           NaN           NaN
+b_dist                        NaN           NaN             NaN         NaN           NaN           NaN
+b_semaf                       NaN           NaN             NaN         NaN           NaN           NaN
+b_CamFD                       NaN           NaN             NaN         NaN           NaN           NaN
+b_ZER                         NaN           NaN             NaN         NaN           NaN           NaN
+b_MtrP                        NaN           NaN             NaN         NaN           NaN           NaN
+b_Acc                         NaN           NaN             NaN         NaN           NaN           NaN
+b_Panel                       NaN           NaN             NaN         NaN           NaN           NaN
+b_clima                       NaN           NaN             NaN         NaN           NaN           NaN
+b_cong                        NaN           NaN             NaN         NaN           NaN           NaN
+                    gamma_HORAS_TRABAJO gamma_HPICO gamma_CONG_CD gamma_USOCINTURON gamma_USODISPMOB
+asc_ruta2                           NaN         NaN           NaN               NaN              NaN
+asc_ruta3                           NaN         NaN           NaN               NaN              NaN
+asc_rutaEC                          NaN         NaN           NaN               NaN              NaN
+b_time                              NaN         NaN           NaN               NaN              NaN
+b_dist                              NaN         NaN           NaN               NaN              NaN
+b_semaf                             NaN         NaN           NaN               NaN              NaN
+b_CamFD                             NaN         NaN           NaN               NaN              NaN
+b_ZER                               NaN         NaN           NaN               NaN              NaN
+b_MtrP                              NaN         NaN           NaN               NaN              NaN
+b_Acc                               NaN         NaN           NaN               NaN              NaN
+b_Panel                             NaN         NaN           NaN               NaN              NaN
+b_clima                             NaN         NaN           NaN               NaN              NaN
+b_cong                              NaN         NaN           NaN               NaN              NaN
+                    zeta_FRbr zeta_EnfCond zeta_AFrSem zeta_CulFr zeta_OmLmVel zeta_IgPare zeta_UsoCel
+asc_ruta2                 NaN          NaN         NaN        NaN          NaN         NaN         NaN
+asc_ruta3                 NaN          NaN         NaN        NaN          NaN         NaN         NaN
+asc_rutaEC                NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_time                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_dist                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_semaf                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_CamFD                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_ZER                     NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_MtrP                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_Acc                     NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_Panel                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_clima                   NaN          NaN         NaN        NaN          NaN         NaN         NaN
+b_cong                    NaN          NaN         NaN        NaN          NaN         NaN         NaN
+                    lambda1 lambda2 tau_FRbr_1 tau_FRbr_2 tau_FRbr_3 tau_FRbr_4 tau_EnfCond_1 tau_EnfCond_2
+asc_ruta2               NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+asc_ruta3               NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+asc_rutaEC              NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_time                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_dist                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_semaf                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_CamFD                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_ZER                   NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_MtrP                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_Acc                   NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_Panel                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_clima                 NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+b_cong                  NaN     NaN        NaN        NaN        NaN        NaN           NaN           NaN
+                    tau_EnfCond_3 tau_EnfCond_4 tau_AFrSem_1 tau_AFrSem_2 tau_AFrSem_3 tau_AFrSem_4
+asc_ruta2                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_ruta3                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_rutaEC                    NaN           NaN          NaN          NaN          NaN          NaN
+b_time                        NaN           NaN          NaN          NaN          NaN          NaN
+b_dist                        NaN           NaN          NaN          NaN          NaN          NaN
+b_semaf                       NaN           NaN          NaN          NaN          NaN          NaN
+b_CamFD                       NaN           NaN          NaN          NaN          NaN          NaN
+b_ZER                         NaN           NaN          NaN          NaN          NaN          NaN
+b_MtrP                        NaN           NaN          NaN          NaN          NaN          NaN
+b_Acc                         NaN           NaN          NaN          NaN          NaN          NaN
+b_Panel                       NaN           NaN          NaN          NaN          NaN          NaN
+b_clima                       NaN           NaN          NaN          NaN          NaN          NaN
+b_cong                        NaN           NaN          NaN          NaN          NaN          NaN
+                    tau_CulFr_1 tau_CulFr_2 tau_CulFr_3 tau_CulFr_4 tau_OmLmVel_1 tau_OmLmVel_2
+asc_ruta2                   NaN         NaN         NaN         NaN           NaN           NaN
+asc_ruta3                   NaN         NaN         NaN         NaN           NaN           NaN
+asc_rutaEC                  NaN         NaN         NaN         NaN           NaN           NaN
+b_time                      NaN         NaN         NaN         NaN           NaN           NaN
+b_dist                      NaN         NaN         NaN         NaN           NaN           NaN
+b_semaf                     NaN         NaN         NaN         NaN           NaN           NaN
+b_CamFD                     NaN         NaN         NaN         NaN           NaN           NaN
+b_ZER                       NaN         NaN         NaN         NaN           NaN           NaN
+b_MtrP                      NaN         NaN         NaN         NaN           NaN           NaN
+b_Acc                       NaN         NaN         NaN         NaN           NaN           NaN
+b_Panel                     NaN         NaN         NaN         NaN           NaN           NaN
+b_clima                     NaN         NaN         NaN         NaN           NaN           NaN
+b_cong                      NaN         NaN         NaN         NaN           NaN           NaN
+                    tau_OmLmVel_3 tau_OmLmVel_4 tau_IgPare_1 tau_IgPare_2 tau_IgPare_3 tau_IgPare_4
+asc_ruta2                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_ruta3                     NaN           NaN          NaN          NaN          NaN          NaN
+asc_rutaEC                    NaN           NaN          NaN          NaN          NaN          NaN
+b_time                        NaN           NaN          NaN          NaN          NaN          NaN
+b_dist                        NaN           NaN          NaN          NaN          NaN          NaN
+b_semaf                       NaN           NaN          NaN          NaN          NaN          NaN
+b_CamFD                       NaN           NaN          NaN          NaN          NaN          NaN
+b_ZER                         NaN           NaN          NaN          NaN          NaN          NaN
+b_MtrP                        NaN           NaN          NaN          NaN          NaN          NaN
+b_Acc                         NaN           NaN          NaN          NaN          NaN          NaN
+b_Panel                       NaN           NaN          NaN          NaN          NaN          NaN
+b_clima                       NaN           NaN          NaN          NaN          NaN          NaN
+b_cong                        NaN           NaN          NaN          NaN          NaN          NaN
+                    tau_UsoCel_1 tau_UsoCel_2 tau_UsoCel_3 tau_UsoCel_4
+asc_ruta2                    NaN          NaN          NaN          NaN
+asc_ruta3                    NaN          NaN          NaN          NaN
+asc_rutaEC                   NaN          NaN          NaN          NaN
+b_time                       NaN          NaN          NaN          NaN
+b_dist                       NaN          NaN          NaN          NaN
+b_semaf                      NaN          NaN          NaN          NaN
+b_CamFD                      NaN          NaN          NaN          NaN
+b_ZER                        NaN          NaN          NaN          NaN
+b_MtrP                       NaN          NaN          NaN          NaN
+b_Acc                        NaN          NaN          NaN          NaN
+b_Panel                      NaN          NaN          NaN          NaN
+b_clima                      NaN          NaN          NaN          NaN
+b_cong                       NaN          NaN          NaN          NaN
+ [ reached getOption("max.print") -- omitted 61 rows ]
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+                                     ID Avg prob per choice
+ {7075AD0F-47CB-E811-914C-74867AD5B714}        1.197339e-11
+ {214A69B7-9CC6-E811-914C-74867AD5B714}        1.634020e-09
+ {56FF6CE7-E9C8-E811-914C-74867AD5B714}        1.994984e-08
+ {F4DFEB9C-CBD7-E811-8FB7-74867AD5B714}        5.547796e-08
+ {0C1D8C2A-12E2-E811-8FB7-74867AD5B714}        9.085202e-08
+ {F6DF6FDC-3F7A-E811-B124-74867AD5B714}        1.161033e-07
+ {C2F6EF0D-5B7A-E811-B124-74867AD5B714}        1.771780e-07
+ {8C6DDF29-1BB2-E811-BDF0-74867AD5B714}        2.043052e-07
+ {8A829696-5DC2-E811-914C-74867AD5B714}        2.540456e-07
+ {60D70C69-4FCB-E811-914C-74867AD5B714}        3.191848e-07
+ {5EC39CAF-B5CC-E811-914C-74867AD5B714}        3.395063e-07
+ {880C34B5-7F66-E811-95E4-74867AD5B714}        5.533897e-07
+ {42F5F39B-A9CC-E811-914C-74867AD5B714}        9.289548e-07
+ {11EF8DD3-11DD-E811-8FB7-74867AD5B714}        9.392013e-07
+ {FDC5065E-01CC-E811-914C-74867AD5B714}        1.021739e-06
+ {CD7427E5-16D7-E811-8FB7-74867AD5B714}        1.026786e-06
+ {50E02347-92CD-E811-914C-74867AD5B714}        1.056738e-06
+ {051C17B0-41DC-E811-8FB7-74867AD5B714}        1.240459e-06
+ {CF50D986-0AE2-E811-8FB7-74867AD5B714}        1.582664e-06
+ {1C22F1B4-92C9-E811-914C-74867AD5B714}        1.854885e-06
+
+Changes in parameter estimates from starting values:
+                    Initial  Estimate Difference
+asc_ruta1             0.000    0.0000     0.0000
+asc_ruta2             0.000   -0.9331    -0.9331
+asc_ruta3             0.000   -1.6519    -1.6519
+asc_rutaEC            0.000    1.0463     1.0463
+b_time                0.000    0.0696     0.0696
+b_dist                0.000   -0.4080    -0.4080
+b_semaf               0.000    0.0006     0.0006
+b_CamFD               0.000    0.0035     0.0035
+b_ZER                 0.000   -0.0440    -0.0440
+b_MtrP                0.000    0.1556     0.1556
+b_Acc                 0.000   -0.4359    -0.4359
+b_Panel               0.000   -0.1669    -0.1669
+b_clima               0.000   -0.1565    -0.1565
+b_cong                0.000    0.0574     0.0574
+b_Hpico               0.000    0.0000     0.0000
+b_Hvalle              0.000    0.0982     0.0982
+b_T_prof              0.000   -0.0110    -0.0110
+b_Hor_trab            0.000   -0.0092    -0.0092
+b_EduBasica           0.000   -0.0120    -0.0120
+b_EduSuperior         0.000    0.0000     0.0000
+b_Info_traf           0.000    0.3039     0.3039
+b_usodisp             0.000    0.0000     0.0000
+b_Joven30             0.000   -1.3768    -1.3768
+b_Adulto40            0.000   -0.4344    -0.4344
+b_Adulto60            0.000   -0.5391    -0.5391
+b_AdultoMayor         0.000    0.0000     0.0000
+b_USOCINTURON         0.000   -0.2308    -0.2308
+b_NOUSOCINTURON       0.000    0.0000     0.0000
+b_USODISPMOB          0.000   -0.2309    -0.2309
+b_NOUSODISPMOB        0.000    0.0000     0.0000
+gamma_EDUBASICA       0.158    0.1580     0.0000
+gamma_CSECO           0.144    0.1440     0.0000
+gamma_CONG_EF         0.205    0.2050     0.0000
+gamma_SININFO        -0.233   -0.2330     0.0000
+gamma_EDUBASICA       0.158    0.1580     0.0000
+gamma_CSECO           0.144    0.1440     0.0000
+gamma_CONG_EF         0.205    0.2050     0.0000
+gamma_SININFO        -0.233   -0.2330     0.0000
+gamma_HORAS_TRABAJO   0.000   -0.0471    -0.0471
+gamma_HPICO           0.000    0.1004     0.1004
+gamma_CONG_CD         0.000    0.0836     0.0836
+gamma_USOCINTURON     0.000   -0.2955    -0.2955
+gamma_USODISPMOB      0.000    0.0039     0.0039
+zeta_FRbr             1.000    4.7231     3.7231
+zeta_EnfCond          1.000    2.9200     1.9200
+zeta_AFrSem           1.000   76.8154    75.8154
+zeta_CulFr            1.000    1.9696     0.9696
+zeta_OmLmVel          1.000    3.5862     2.5862
+zeta_IgPare           1.000  648.2541   647.2541
+zeta_UsoCel           1.000    1.0929     0.0929
+lambda1               1.000    0.0241    -0.9759
+lambda2               1.000   -0.1078    -1.1078
+tau_FRbr_1           -2.000    1.0081     3.0081
+tau_FRbr_2           -1.000    6.3740     7.3740
+tau_FRbr_3            1.000    7.4409     6.4409
+tau_FRbr_4            2.000   11.8875     9.8875
+tau_EnfCond_1        -2.000    0.6027     2.6027
+tau_EnfCond_2        -1.000    4.5504     5.5504
+tau_EnfCond_3         1.000    5.5395     4.5395
+tau_EnfCond_4         2.000    7.9996     5.9996
+tau_AFrSem_1         -2.000   20.3919    22.3919
+tau_AFrSem_2         -1.000  117.3780   118.3780
+tau_AFrSem_3          1.000  125.0988   124.0988
+tau_AFrSem_4          2.000  197.3831   195.3831
+tau_CulFr_1          -2.000   -1.1181     0.8819
+tau_CulFr_2          -1.000    1.3755     2.3755
+tau_CulFr_3           1.000    2.3679     1.3679
+tau_CulFr_4           2.000    5.3851     3.3851
+tau_OmLmVel_1        -2.000   -3.2334    -1.2334
+tau_OmLmVel_2        -1.000    2.0961     3.0961
+tau_OmLmVel_3         1.000    3.1061     2.1061
+tau_OmLmVel_4         2.000    5.0828     3.0828
+tau_IgPare_1         -2.000 -515.4990  -513.4990
+tau_IgPare_2         -1.000  372.6945   373.6945
+tau_IgPare_3          1.000  500.4407   499.4407
+tau_IgPare_4          2.000  828.3380   826.3380
+tau_UsoCel_1         -2.000   -2.5725    -0.5725
+tau_UsoCel_2         -1.000   -0.3166     0.6834
+tau_UsoCel_3          1.000    0.5603    -0.4397
+tau_UsoCel_4          2.000    3.2232     1.2232

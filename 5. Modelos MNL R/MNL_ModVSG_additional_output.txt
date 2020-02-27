@@ -1,0 +1,47 @@
+
+Likelihood ratio test-value:   0.04
+Degrees of freedom:            1
+Likelihood ratio test p-value: 0.835 
+Updating inputs...Done.
+Running predictions from model... Done.
+       ID         Choice situation     ruta1             ruta2             ruta3             rutaEC      
+ Min.   :  1.00   Min.   :1        Min.   :0.01073   Min.   :0.00000   Min.   :0.00000   Min.   :0.1130  
+ 1st Qu.: 87.75   1st Qu.:1        1st Qu.:0.25664   1st Qu.:0.09028   1st Qu.:0.03868   1st Qu.:0.3992  
+ Median :174.50   Median :1        Median :0.32780   Median :0.12097   Median :0.06072   Median :0.4795  
+ Mean   :174.50   Mean   :1        Mean   :0.32471   Mean   :0.12069   Mean   :0.06034   Mean   :0.4943  
+ 3rd Qu.:261.25   3rd Qu.:1        3rd Qu.:0.39529   3rd Qu.:0.15934   3rd Qu.:0.08036   3rd Qu.:0.5782  
+ Max.   :348.00   Max.   :1        Max.   :0.76836   Max.   :0.27661   Max.   :0.23858   Max.   :0.9829  
+     chosen      
+ Min.   :0.0151  
+ 1st Qu.:0.2878  
+ Median :0.4009  
+ Mean   :0.4056  
+ 3rd Qu.:0.5226  
+ Max.   :0.9829  
+Updating inputs...Done.
+Running predictions from model... Done.
+       ID         Choice situation     ruta1             ruta2             ruta3             rutaEC      
+ Min.   :  1.00   Min.   :1        Min.   :0.01073   Min.   :0.00000   Min.   :0.00000   Min.   :0.1130  
+ 1st Qu.: 87.75   1st Qu.:1        1st Qu.:0.25664   1st Qu.:0.09028   1st Qu.:0.03868   1st Qu.:0.3992  
+ Median :174.50   Median :1        Median :0.32780   Median :0.12097   Median :0.06072   Median :0.4795  
+ Mean   :174.50   Mean   :1        Mean   :0.32471   Mean   :0.12069   Mean   :0.06034   Mean   :0.4943  
+ 3rd Qu.:261.25   3rd Qu.:1        3rd Qu.:0.39529   3rd Qu.:0.15934   3rd Qu.:0.08036   3rd Qu.:0.5782  
+ Max.   :348.00   Max.   :1        Max.   :0.76836   Max.   :0.27661   Max.   :0.23858   Max.   :0.9829  
+     chosen      
+ Min.   :0.0151  
+ 1st Qu.:0.2878  
+ Median :0.4009  
+ Mean   :0.4056  
+ 3rd Qu.:0.5226  
+ Max.   :0.9829  
+     ID Choice situation ruta1 ruta2 ruta3 rutaEC
+     ID Choice situation ruta1 ruta2 ruta3 rutaEC
+       ID    Choice situation     ruta1       ruta2       ruta3       rutaEC 
+ Min.   :0   Min.   :0        Min.   :0   Min.   :0   Min.   :0   Min.   :0  
+ 1st Qu.:0   1st Qu.:0        1st Qu.:0   1st Qu.:0   1st Qu.:0   1st Qu.:0  
+ Median :0   Median :0        Median :0   Median :0   Median :0   Median :0  
+ Mean   :0   Mean   :0        Mean   :0   Mean   :0   Mean   :0   Mean   :0  
+ 3rd Qu.:0   3rd Qu.:0        3rd Qu.:0   3rd Qu.:0   3rd Qu.:0   3rd Qu.:0  
+ Max.   :0   Max.   :0        Max.   :0   Max.   :0   Max.   :0   Max.   :0  
+              ID Choice situation            ruta1            ruta2            ruta3           rutaEC 
+               0                0                0                0                0                0 
