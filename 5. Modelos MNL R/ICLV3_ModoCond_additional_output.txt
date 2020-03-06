@@ -1,8 +1,0 @@
-Updating inputs...Done.
-Running predictions from model... Done.
-Updating inputs...Done.
-For information:
- This function is meant for use only with continuous mixture models, i.e. no latent class!.
-Calculating conditionals...Done.
-Updating inputs...Done.
-Unconditional distributions computed
