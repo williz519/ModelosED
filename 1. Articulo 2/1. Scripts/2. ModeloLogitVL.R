@@ -303,9 +303,21 @@ MCond$CSECO <- (ifelse((MCond$CLIMA == 1),1,0))
 MCond$CLLUVIA <- (ifelse((MCond$CLIMA == 2),1,0))
 
 # NIVEL DE CONGESTION
-MCond$CONG_AB <- (ifelse((MCond$CONGESTION == 1 | MCond$CONGESTION == 2), 1,0))
-MCond$CONG_CD <- (ifelse((MCond$CONGESTION == 3 | MCond$CONGESTION == 4), 1,0))
-MCond$CONG_EF <- (ifelse((MCond$CONGESTION == 5 | MCond$CONGESTION == 6), 1,0))
+MCond$CONG_AB_A1 <- (ifelse((MCond$CONG_A1 == 1), 1,0))
+MCond$CONG_CD_A1 <- (ifelse((MCond$CONG_A1 == 2 | MCond$CONG_A1 == 0), 1,0))
+MCond$CONG_EF_A1 <- (ifelse((MCond$CONG_A1 >= 3), 1,0))
+
+MCond$CONG_AB_A2 <- (ifelse((MCond$CONG_A2 == 1), 1,0))
+MCond$CONG_CD_A2 <- (ifelse((MCond$CONG_A2 == 2 | MCond$CONG_A2 == 0), 1,0))
+MCond$CONG_EF_A2 <- (ifelse((MCond$CONG_A2 >= 3), 1,0))
+
+MCond$CONG_AB_A3 <- (ifelse((MCond$CONG_A3 == 1), 1,0))
+MCond$CONG_CD_A3 <- (ifelse((MCond$CONG_A3 == 2 | MCond$CONG_A3 == 0), 1,0))
+MCond$CONG_EF_A3 <- (ifelse((MCond$CONG_A3 >= 3), 1,0))
+
+MCond$CONG_AB_EC <- (ifelse((MCond$CONGESTION == 1 | MCond$CONGESTION == 2), 1,0))
+MCond$CONG_CD_EC <- (ifelse((MCond$CONGESTION == 3 | MCond$CONGESTION == 4), 1,0))
+MCond$CONG_EF_EC <- (ifelse((MCond$CONGESTION == 5 | MCond$CONGESTION == 6), 1,0))
 
 
 # INFORMACION TRAFICO DE LA CIUDAD
@@ -347,29 +359,29 @@ MCond$HTRB_3 <- (ifelse((MCond$HORAS_TRABAJO > 8 & MCond$HORAS_TRABAJO <= 12),1,
 MCond$HTRB_4 <- (ifelse((MCond$HORAS_TRABAJO > 12),1,0))
 
 
-MCond$SEMF_A1_0 <- (ifelse((MCond$Semaf_A1 == 0),1,0))
-MCond$SEMF_A1_1 <- (ifelse((MCond$Semaf_A1 >= 1 & MCond$Semaf_A1 <= 5),1,0))
-MCond$SEMF_A1_2 <- (ifelse((MCond$Semaf_A1 > 5 & MCond$Semaf_A1 <= 10),1,0))
-MCond$SEMF_A1_3 <- (ifelse((MCond$Semaf_A1 > 11 & MCond$Semaf_A1 <= 15),1,0))
-MCond$SEMF_A1_4 <- (ifelse((MCond$Semaf_A1 > 15),1,0))
+MCond$SEMF_A1_0 <- (ifelse((MCond$Semaf_A1 <= 5),1,0))
+MCond$SEMF_A1_1 <- (ifelse((MCond$Semaf_A1 >= 6 & MCond$Semaf_A1 <= 10),1,0))
+MCond$SEMF_A1_2 <- (ifelse((MCond$Semaf_A1 > 10 & MCond$Semaf_A1 <= 15),1,0))
+MCond$SEMF_A1_3 <- (ifelse((MCond$Semaf_A1 > 15 & MCond$Semaf_A1 <= 20),1,0))
+MCond$SEMF_A1_4 <- (ifelse((MCond$Semaf_A1 > 20),1,0))
 
-MCond$SEMF_A2_0 <- (ifelse((MCond$Semaf_A2 == 0),1,0))
-MCond$SEMF_A2_1 <- (ifelse((MCond$Semaf_A2 >= 1 & MCond$Semaf_A2 <= 5),1,0))
-MCond$SEMF_A2_2 <- (ifelse((MCond$Semaf_A2 > 5 & MCond$Semaf_A2 <= 10),1,0))
-MCond$SEMF_A2_3 <- (ifelse((MCond$Semaf_A2 > 11 & MCond$Semaf_A2 <= 15),1,0))
-MCond$SEMF_A2_4 <- (ifelse((MCond$Semaf_A2 > 15),1,0))
+MCond$SEMF_A2_0 <- (ifelse((MCond$Semaf_A2 <= 5),1,0))
+MCond$SEMF_A2_1 <- (ifelse((MCond$Semaf_A2 >= 6 & MCond$Semaf_A2 <= 10),1,0))
+MCond$SEMF_A2_2 <- (ifelse((MCond$Semaf_A2 > 10 & MCond$Semaf_A2 <= 15),1,0))
+MCond$SEMF_A2_3 <- (ifelse((MCond$Semaf_A2 > 15 & MCond$Semaf_A2 <= 20),1,0))
+MCond$SEMF_A2_4 <- (ifelse((MCond$Semaf_A2 > 20),1,0))
 
-MCond$SEMF_A3_0 <- (ifelse((MCond$Semaf_A3 == 0),1,0))
-MCond$SEMF_A3_1 <- (ifelse((MCond$Semaf_A3 >= 1 & MCond$Semaf_A3 <= 5),1,0))
-MCond$SEMF_A3_2 <- (ifelse((MCond$Semaf_A3 > 5 & MCond$Semaf_A3 <= 10),1,0))
-MCond$SEMF_A3_3 <- (ifelse((MCond$Semaf_A3 > 11 & MCond$Semaf_A3 <= 15),1,0))
-MCond$SEMF_A3_4 <- (ifelse((MCond$Semaf_A3 > 15),1,0))
+MCond$SEMF_A3_0 <- (ifelse((MCond$Semaf_A3 <= 5),1,0))
+MCond$SEMF_A3_1 <- (ifelse((MCond$Semaf_A3 >= 6 & MCond$Semaf_A3 <= 10),1,0))
+MCond$SEMF_A3_2 <- (ifelse((MCond$Semaf_A3 > 10 & MCond$Semaf_A3 <= 15),1,0))
+MCond$SEMF_A3_3 <- (ifelse((MCond$Semaf_A3 > 15 & MCond$Semaf_A3 <= 20),1,0))
+MCond$SEMF_A3_4 <- (ifelse((MCond$Semaf_A3 > 20),1,0))
 
-MCond$SEMF_EC_0 <- (ifelse((MCond$Semaf_EC == 0),1,0))
-MCond$SEMF_EC_1 <- (ifelse((MCond$Semaf_EC >= 1 & MCond$Semaf_EC <= 5),1,0))
-MCond$SEMF_EC_2 <- (ifelse((MCond$Semaf_EC > 5 & MCond$Semaf_EC <= 10),1,0))
-MCond$SEMF_EC_3 <- (ifelse((MCond$Semaf_EC > 11 & MCond$Semaf_EC <= 15),1,0))
-MCond$SEMF_EC_4 <- (ifelse((MCond$Semaf_EC > 15),1,0))
+MCond$SEMF_EC_0 <- (ifelse((MCond$Semaf_EC <= 5),1,0))
+MCond$SEMF_EC_1 <- (ifelse((MCond$Semaf_EC >= 6 & MCond$Semaf_EC <= 10),1,0))
+MCond$SEMF_EC_2 <- (ifelse((MCond$Semaf_EC > 10 & MCond$Semaf_EC <= 15),1,0))
+MCond$SEMF_EC_3 <- (ifelse((MCond$Semaf_EC > 15 & MCond$Semaf_EC <= 20),1,0))
+MCond$SEMF_EC_4 <- (ifelse((MCond$Semaf_EC > 20),1,0))
 
 
 MCond$NO_CAMFD_A1 <- (ifelse((MCond$CamFD_A1 == 0),1,0))
@@ -415,6 +427,7 @@ MCond$NO_PANEL_EC <- (ifelse((MCond$Paneles_EC == 0 | MCond$Paneles_EC == 999),1
 MCond$SI_PANEL_EC <- (ifelse((MCond$Paneles_EC >= 1),1,0))
 
 
+MCond$MODELO <- as.numeric(MCond$MODELO)
 
 # ?Quiero orden!
 tibble::as_tibble(MCond) 
