@@ -20,7 +20,7 @@ import biogeme.loglikelihood as ll
 
 #Cargar DataBase
 
-pandas = pd.read_csv('/Users/williz/Desktop/ModelosED/Database/DBModLogitMuestraVLCE.csv', sep='\t')
+pandas = pd.read_csv('/Users/williz/Desktop/ModelosED/1. Articulo 2/2. Database/DBMuestra_ModeloLogitVL.csv', sep='\t')
 
 # normalizar variables continuas para evitar zero log-likelihood 
 pandas["TIEMPO_PROFESION"]=(pandas["TIEMPO_PROFESION"]-pandas["TIEMPO_PROFESION"].min())/(pandas["TIEMPO_PROFESION"].max()-pandas["TIEMPO_PROFESION"].min())

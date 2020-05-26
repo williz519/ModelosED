@@ -1,0 +1,106 @@
+Model run using Apollo for R, version 0.1.0 
+www.ApolloChoiceModelling.com
+
+Model name                       : EUT Simple
+Model description                : Modelos EUT en Eleccion de Ruta
+Model run at                     : 2020-05-02 16:45:47
+Estimation method                : bfgs
+Model diagnosis                  : successful convergence 
+Number of individuals            : 282
+Number of observations           : 282
+
+Number of cores used             :  1 
+Model without mixing
+
+LL(start)                        : -465.3585
+LL(0)                            : -195.4675
+LL(final)                        : -188.1094
+Rho-square (0)                   :  0.0376 
+Adj.Rho-square (0)               :  0.0172 
+AIC                              :  384.22 
+BIC                              :  398.79 
+Estimated parameters             :  4
+Time taken (hh:mm:ss)            :  00:00:2.71 
+Iterations                       :  21 
+Min abs eigenvalue of hessian    :  0.018768 
+
+Estimates:
+         Estimate Std.err. t.ratio(0) p-val(0) Rob.std.err. Rob.t.ratio(0)
+asc_real   0.1950   0.2097       0.93    0.352       0.2128           0.92
+asc_sim    0.0000       NA         NA       NA           NA             NA
+b_t        0.0616   0.0242       2.55    0.011       0.0334           1.84
+b_d        0.2093   0.1326       1.58    0.115       0.1370           1.53
+alpha      6.6978   7.2984       0.92    0.359       6.0503           1.11
+         Rob.p-val(0)
+asc_real        0.359
+asc_sim            NA
+b_t             0.065
+b_d             0.127
+alpha           0.268
+
+Overview of choices for model component "MNL"
+                                   real    sim
+Times available                  282.00 282.00
+Times chosen                     148.00 134.00
+Percentage chosen overall         52.48  47.52
+Percentage chosen when available  52.48  47.52
+
+
+Classical covariance matrix:
+         asc_real      b_t      b_d    alpha
+asc_real   0.0440  -0.0018   0.0145   0.9296
+b_t       -0.0018   0.0006  -0.0009  -0.0308
+b_d        0.0145  -0.0009   0.0176  -0.0139
+alpha      0.9296  -0.0308  -0.0139  53.2659
+
+Robust covariance matrix:
+         asc_real      b_t      b_d    alpha
+asc_real   0.0453  -0.0035   0.0186   0.8660
+b_t       -0.0035   0.0011  -0.0018  -0.0765
+b_d        0.0186  -0.0018   0.0188   0.2439
+alpha      0.8660  -0.0765   0.2439  36.6058
+
+Classical correlation matrix:
+         asc_real      b_t      b_d    alpha
+asc_real   1.0000  -0.3458   0.5219   0.6073
+b_t       -0.3458   1.0000  -0.2709  -0.1745
+b_d        0.5219  -0.2709   1.0000  -0.0144
+alpha      0.6073  -0.1745  -0.0144   1.0000
+
+Robust correlation matrix:
+         asc_real      b_t      b_d    alpha
+asc_real   1.0000  -0.4959   0.6379   0.6726
+b_t       -0.4959   1.0000  -0.4022  -0.3790
+b_d        0.6379  -0.4022   1.0000   0.2941
+alpha      0.6726  -0.3790   0.2941   1.0000
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+ row Avg prob per choice
+  13           0.0713378
+   2           0.1996888
+  68           0.2236558
+  85           0.2447595
+  44           0.2800882
+  30           0.2838533
+ 133           0.2979615
+  72           0.2983540
+ 210           0.3095885
+ 239           0.3168604
+ 128           0.3292865
+  15           0.3421891
+  96           0.3423304
+ 203           0.3565127
+ 105           0.3645231
+ 261           0.3677783
+   8           0.3725684
+ 153           0.3732248
+  23           0.3765912
+ 110           0.3803939
+
+Changes in parameter estimates from starting values:
+         Initial Estimate Difference
+asc_real       0   0.1950     0.1950
+asc_sim        0   0.0000     0.0000
+b_t            1   0.0616    -0.9384
+b_d            1   0.2093    -0.7907
+alpha          2   6.6978     4.6978

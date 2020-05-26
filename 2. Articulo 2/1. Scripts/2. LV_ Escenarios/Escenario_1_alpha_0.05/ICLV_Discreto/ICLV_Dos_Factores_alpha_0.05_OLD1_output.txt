@@ -1,0 +1,1771 @@
+Model run using Apollo for R, version 0.1.0 
+www.ApolloChoiceModelling.com
+
+Model name                       : ICLV_Dos_Factores_alpha_0.05
+Model description                : ICLV modelo sobre datos de elección de ruta
+Model run at                     : 2020-04-18 23:50:42
+Estimation method                : bfgs
+Model diagnosis                  : successful convergence 
+Number of individuals            : 282
+Number of observations           : 282
+
+Number of cores used             :  3 
+Number of inter-person draws     : 100 (halton)
+WARNING: Inter-person draws were used
+         without a panel data structure.
+
+LL(start)                        : -4437.062
+LL(0, whole model)               : Not applicable
+LL(final, whole model)           : -2865.921
+Rho-square (0)                   : Not applicable
+Adj.Rho-square (0)               : Not applicable
+AIC                              :  5883.84 
+BIC                              :  6160.63 
+  LL(0,indic_FRbr)               : Not applicable
+  LL(final,indic_FRbr)           : -351.0952
+  LL(0,indic_EnfCond)            : Not applicable
+  LL(final,indic_EnfCond)        : -346.1776
+  LL(0,indic_AFrSem)             : Not applicable
+  LL(final,indic_AFrSem)         : -316.8314
+  LL(0,indic_CulFr)              : Not applicable
+  LL(final,indic_CulFr)          : -413.49
+  LL(0,indic_OmLmVel)            : Not applicable
+  LL(final,indic_OmLmVel)        : -308.433
+  LL(0,indic_IgPare)             : Not applicable
+  LL(final,indic_IgPare)         : -287.8309
+  LL(0,indic_UsoCel1)            : Not applicable
+  LL(final,indic_UsoCel1)        : -401.1588
+  LL(0,indic_PasoPeaton)         : Not applicable
+  LL(final,indic_PasoPeaton)     : -431.8498
+  LL(0,indic_UsoDirec)           : Not applicable
+  LL(final,indic_UsoDirec)       : -355.6399
+  LL(0,choice)                   : -390.935
+  LL(final,choice)               : -298.5513
+Estimated parameters             :  76
+Time taken (hh:mm:ss)            :  00:41:25.67 
+Iterations                       :  122 
+Min abs eigenvalue of hessian    :  0.000505 
+
+Estimates:
+                  Estimate Std.err. t.ratio(0) Rob.std.err. Rob.t.ratio(0)
+asc_ruta1           4.6020  18.1759       0.25       1.4539           3.17
+asc_ruta2           3.5897  18.1762       0.20       1.4620           2.46
+asc_ruta3           2.8403  18.1770       0.16       1.4677           1.94
+asc_rutaEC          0.0000       NA         NA           NA             NA
+b_tt                0.0864   0.0253       3.42       0.0338           2.56
+b_dt               -0.1949   0.1002      -1.94       0.0946          -2.06
+b_CongAB           -0.1116   0.2958      -0.38       0.2947          -0.38
+b_CongCD           -0.5078   0.2301      -2.21       0.2337          -2.17
+b_CongEF            0.0000       NA         NA           NA             NA
+b_CSECO             0.0098   0.3580       0.03       0.3634           0.03
+b_CLLUVIA           0.0000       NA         NA           NA             NA
+b_Hpico             0.0439   0.2727       0.16       0.2679           0.16
+b_Hvalle            0.0000       NA         NA           NA             NA
+b_Joven30          -1.6757   0.7250      -2.31       0.7329          -2.29
+b_Adulto40         -0.5532   0.4714      -1.17       0.4982          -1.11
+b_Adulto60         -0.5144   0.4044      -1.27       0.4222          -1.22
+b_AdultoMayor       0.0000       NA         NA           NA             NA
+b_USOCINTURON      -0.1041   0.3442      -0.30       0.3449          -0.30
+b_NOUSOCINTURON     0.0000       NA         NA           NA             NA
+b_USODISPMOB       -0.1003   0.3030      -0.33       0.3031          -0.33
+b_NOUSODISPMOB      0.0000       NA         NA           NA             NA
+b_HTRB_1            0.0000       NA         NA           NA             NA
+b_HTRB_2            5.4805  18.1720       0.30       1.3524           4.05
+b_HTRB_3            5.0997  18.1677       0.28       1.3010           3.92
+b_HTRB_4            4.8582  18.1687       0.27       1.3196           3.68
+b_EduBasica         0.2826   0.2885       0.98       0.2906           0.97
+b_EduSuperior       0.0000       NA         NA           NA             NA
+b_Exp_1             0.6156   0.4036       1.53       0.3937           1.56
+b_Exp_2             1.1954   0.4922       2.43       0.5314           2.25
+b_Exp_3             0.1445   0.4675       0.31       0.4634           0.31
+b_Exp_4             0.3896   0.3702       1.05       0.3668           1.06
+b_Exp_5             0.0000       NA         NA           NA             NA
+b_Info_traf         0.0000       NA         NA           NA             NA
+b_NoInfo_traf      -0.1589   0.3316      -0.48       0.3365          -0.47
+lambda_1           -0.1682   0.1484      -1.13       0.1516          -1.11
+lambda_2           -0.2437   0.1673      -1.46       0.1748          -1.39
+gamma_JOVEN30       0.5081   0.2765       1.84       0.2919           1.74
+gamma_USOCINTURON  -0.5335   0.1235      -4.32       0.1686          -3.16
+gamma_EDUBASICA     0.4569   0.1458       3.13       0.1812           2.52
+gamma_EXP_2        -0.4866   0.2023      -2.40       0.1999          -2.43
+gamma_USODISPMOB    0.3797   0.0979       3.88       0.1139           3.33
+gamma_LV1          -0.3406   0.0569      -5.98       0.0587          -5.80
+zeta_FRbr           3.8851   0.4520       8.60       0.5728           6.78
+zeta_EnfCond        2.8039   0.2886       9.72       0.3797           7.38
+zeta_AFrSem         5.6737   0.8764       6.47       1.1824           4.80
+zeta_CulFr          1.8184   0.1935       9.40       0.1941           9.37
+zeta_OmLmVel        2.7718   0.3005       9.22       0.4115           6.74
+zeta_IgPare         3.6539   0.4312       8.47       0.5440           6.72
+zeta_UsoCel         0.7151   0.1268       5.64       0.1413           5.06
+zeta_PasoPeaton    -0.9341   0.1373      -6.80       0.1497          -6.24
+zeta_UsoDirec      -6.0036   3.7181      -1.61       4.9610          -1.21
+tau_FRbr_1         -2.3165   0.6310      -3.67       0.8454          -2.74
+tau_FRbr_2          2.9371   0.6230       4.71       0.8600           3.42
+tau_FRbr_3          3.9210   0.6606       5.94       0.9141           4.29
+tau_FRbr_4          8.1775   1.0150       8.06       1.3370           6.12
+tau_EnfCond_1      -1.5072   0.4411      -3.42       0.5816          -2.59
+tau_EnfCond_2       2.5824   0.4607       5.60       0.6412           4.03
+tau_EnfCond_3       3.6424   0.4991       7.30       0.6712           5.43
+tau_EnfCond_4       6.0785   0.6776       8.97       0.8658           7.02
+tau_AFrSem_1       -3.0374   0.9093      -3.34       1.1495          -2.64
+tau_AFrSem_2        5.3305   1.1753       4.54       1.7134           3.11
+tau_AFrSem_3        6.2646   1.2732       4.92       1.8842           3.32
+tau_AFrSem_4       12.3201   2.0627       5.97       3.1150           3.96
+tau_CulFr_1        -2.6273   0.3465      -7.58       0.4217          -6.23
+tau_CulFr_2        -0.1096   0.2881      -0.38       0.3838          -0.29
+tau_CulFr_3         1.0010   0.2951       3.39       0.3821           2.62
+tau_CulFr_4         4.1884   0.4378       9.57       0.5137           8.15
+tau_OmLmVel_1      -1.2535   0.4323      -2.90       0.5690          -2.20
+tau_OmLmVel_2       3.3728   0.4897       6.89       0.6915           4.88
+tau_OmLmVel_3       4.2177   0.5289       7.97       0.6784           6.22
+tau_OmLmVel_4       5.7568   0.6520       8.83       0.7883           7.30
+tau_IgPare_1       -1.4097   0.5602      -2.52       0.7570          -1.86
+tau_IgPare_2        4.6732   0.6925       6.75       0.9646           4.84
+tau_IgPare_3        5.3534   0.7297       7.34       0.9483           5.64
+tau_IgPare_4        7.7825   0.9580       8.12       1.1457           6.79
+tau_UsoCel_1       -1.7349   0.1965      -8.83       0.2165          -8.01
+tau_UsoCel_2        0.2126   0.1598       1.33       0.1989           1.07
+tau_UsoCel_3        1.0619   0.1723       6.16       0.2064           5.14
+tau_UsoCel_4        3.7612   0.3973       9.47       0.4295           8.76
+tau_PasoPeaton_1   -2.2341   0.2439      -9.16       0.2581          -8.66
+tau_PasoPeaton_2   -0.7388   0.1903      -3.88       0.2133          -3.46
+tau_PasoPeaton_3    0.0781   0.1818       0.43       0.2018           0.39
+tau_PasoPeaton_4    1.9095   0.2188       8.73       0.2357           8.10
+tau_UsoDirec_1    -12.1222   6.3914      -1.90       8.2294          -1.47
+tau_UsoDirec_2     -6.8413   3.3888      -2.02       4.1933          -1.63
+tau_UsoDirec_3     -4.4981   2.2271      -2.02       2.7218          -1.65
+tau_UsoDirec_4      2.7363   1.9969       1.37       2.6320           1.04
+
+Overview of choices for model component "OL"
+                               1      2     3     4    5
+Times chosen              102.00 120.00 19.00 37.00 4.00
+Percentage chosen overall  36.17  42.55  6.74 13.12 1.42
+
+Overview of choices for model component "OL"
+                               1      2    3     4    5
+Times chosen              105.00 125.00 22.0 24.00 6.00
+Percentage chosen overall  37.23  44.33  7.8  8.51 2.13
+
+Overview of choices for model component "OL"
+                               1      2     3     4    5
+Times chosen              107.00 133.00 10.00 30.00 2.00
+Percentage chosen overall  37.94  47.16  3.55 10.64 0.71
+
+Overview of choices for model component "OL"
+                              1     2     3     4    5
+Times chosen              54.00 94.00 47.00 76.00 11.0
+Percentage chosen overall 19.15 33.33 16.67 26.95  3.9
+
+Overview of choices for model component "OL"
+                               1      2     3     4    5
+Times chosen              112.00 136.00 14.00 13.00 7.00
+Percentage chosen overall  39.72  48.23  4.96  4.61 2.48
+
+Overview of choices for model component "OL"
+                               1      2    3     4    5
+Times chosen              118.00 138.00 8.00 14.00 4.00
+Percentage chosen overall  41.84  48.94 2.84  4.96 1.42
+
+Overview of choices for model component "OL"
+                              1      2     3     4    5
+Times chosen              53.00 110.00 49.00 63.00 7.00
+Percentage chosen overall 18.79  39.01 17.38 22.34 2.48
+
+Overview of choices for model component "OL"
+                              1     2     3     4     5
+Times chosen              35.00 59.00 47.00 92.00 49.00
+Percentage chosen overall 12.41 20.92 16.67 32.62 17.38
+
+Overview of choices for model component "OL"
+                              1     2     3      4     5
+Times chosen              10.00 32.00 28.00 113.00 99.00
+Percentage chosen overall  3.55 11.35  9.93  40.07 35.11
+
+Overview of choices for model component "MNL"
+                                  ruta1 ruta2  ruta3 rutaEC
+Times available                  282.00 282.0 282.00 282.00
+Times chosen                      83.00  33.0  18.00 148.00
+Percentage chosen overall         29.43  11.7   6.38  52.48
+Percentage chosen when available  29.43  11.7   6.38  52.48
+
+
+Classical covariance matrix:
+                          asc_ruta1         asc_ruta2         asc_ruta3
+asc_ruta1                  330.3617          330.3467          330.3458
+asc_ruta2                  330.3467          330.3753          330.3448
+asc_ruta3                  330.3458          330.3448          330.4029
+b_tt                         0.0029            0.0023            0.0016
+b_dt                        -0.0086           -0.0081           -0.0067
+b_CongAB                    -0.0095           -0.0093           -0.0041
+b_CongCD                     0.0045            0.0060            0.0122
+b_CSECO                      0.0943            0.0933            0.0947
+b_Hpico                      0.0804            0.0792            0.0791
+b_Joven30                    0.4666            0.4643            0.4629
+b_Adulto40                   0.1099            0.1090            0.1078
+b_Adulto60                   0.0862            0.0857            0.0847
+b_USOCINTURON                0.0776            0.0787            0.0786
+                               b_tt              b_dt          b_CongAB
+asc_ruta1                    0.0029           -0.0086           -0.0095
+asc_ruta2                    0.0023           -0.0081           -0.0093
+asc_ruta3                    0.0016           -0.0067           -0.0041
+b_tt                         0.0006           -0.0013            0.0018
+b_dt                        -0.0013            0.0100           -0.0026
+b_CongAB                     0.0018           -0.0026            0.0875
+b_CongCD                     0.0006            0.0002            0.0366
+b_CSECO                      0.0008           -0.0033            0.0174
+b_Hpico                      0.0004           -0.0002           -0.0070
+b_Joven30                    0.0001           -0.0011           -0.0287
+b_Adulto40                   0.0003            0.0001           -0.0166
+b_Adulto60                   0.0000            0.0008           -0.0119
+b_USOCINTURON               -0.0007            0.0017           -0.0111
+                           b_CongCD           b_CSECO           b_Hpico
+asc_ruta1                    0.0045            0.0943            0.0804
+asc_ruta2                    0.0060            0.0933            0.0792
+asc_ruta3                    0.0122            0.0947            0.0791
+b_tt                         0.0006            0.0008            0.0004
+b_dt                         0.0002           -0.0033           -0.0002
+b_CongAB                     0.0366            0.0174           -0.0070
+b_CongCD                     0.0529            0.0142           -0.0012
+b_CSECO                      0.0142            0.1282           -0.0028
+b_Hpico                     -0.0012           -0.0028            0.0744
+b_Joven30                   -0.0025           -0.0098            0.0067
+b_Adulto40                   0.0011            0.0104           -0.0053
+b_Adulto60                  -0.0008           -0.0031           -0.0040
+b_USOCINTURON               -0.0049           -0.0205            0.0025
+                          b_Joven30        b_Adulto40        b_Adulto60
+asc_ruta1                    0.4666            0.1099            0.0862
+asc_ruta2                    0.4643            0.1090            0.0857
+asc_ruta3                    0.4629            0.1078            0.0847
+b_tt                         0.0001            0.0003            0.0000
+b_dt                        -0.0011            0.0001            0.0008
+b_CongAB                    -0.0287           -0.0166           -0.0119
+b_CongCD                    -0.0025            0.0011           -0.0008
+b_CSECO                     -0.0098            0.0104           -0.0031
+b_Hpico                      0.0067           -0.0053           -0.0040
+b_Joven30                    0.5257            0.1780            0.1375
+b_Adulto40                   0.1780            0.2222            0.1390
+b_Adulto60                   0.1375            0.1390            0.1635
+b_USOCINTURON               -0.0001           -0.0141           -0.0144
+                      b_USOCINTURON      b_USODISPMOB          b_HTRB_2
+asc_ruta1                    0.0776            0.0778          329.9747
+asc_ruta2                    0.0787            0.0775          329.9744
+asc_ruta3                    0.0786            0.0782          329.9722
+b_tt                        -0.0007            0.0005            0.0001
+b_dt                         0.0017            0.0010           -0.0035
+b_CongAB                    -0.0111            0.0117           -0.0468
+b_CongCD                    -0.0049            0.0062           -0.0178
+b_CSECO                     -0.0205            0.0036           -0.0208
+b_Hpico                      0.0025           -0.0011            0.0381
+b_Joven30                   -0.0001           -0.0273            0.3732
+b_Adulto40                  -0.0141           -0.0307            0.0155
+b_Adulto60                  -0.0144           -0.0103           -0.0081
+b_USOCINTURON                0.1185           -0.0024            0.0210
+                           b_HTRB_3          b_HTRB_4       b_EduBasica
+asc_ruta1                  330.0089          330.0034            0.0523
+asc_ruta2                  330.0106          330.0053            0.0517
+asc_ruta3                  330.0089          330.0055            0.0526
+b_tt                        -0.0005           -0.0013           -0.0003
+b_dt                        -0.0012            0.0005            0.0015
+b_CongAB                    -0.0520           -0.0448           -0.0074
+b_CongCD                    -0.0130           -0.0117           -0.0025
+b_CSECO                     -0.0086           -0.0038            0.0072
+b_Hpico                      0.0371            0.0409           -0.0032
+b_Joven30                    0.3833            0.3880            0.0044
+b_Adulto40                   0.0222            0.0215           -0.0007
+b_Adulto60                  -0.0062           -0.0121            0.0004
+b_USOCINTURON                0.0278            0.0183            0.0063
+                            b_Exp_1           b_Exp_2           b_Exp_3
+asc_ruta1                    0.1131           -0.1461            0.0117
+asc_ruta2                    0.1130           -0.1462            0.0129
+asc_ruta3                    0.1140           -0.1474            0.0110
+b_tt                         0.0001            0.0004            0.0000
+b_dt                         0.0007            0.0005            0.0011
+b_CongAB                     0.0031            0.0023           -0.0118
+b_CongCD                    -0.0058           -0.0020           -0.0035
+b_CSECO                     -0.0052           -0.0019           -0.0112
+b_Hpico                     -0.0024           -0.0031            0.0154
+b_Joven30                   -0.0452           -0.1713           -0.0151
+b_Adulto40                  -0.0355           -0.0443           -0.0206
+b_Adulto60                  -0.0218           -0.0054           -0.0114
+b_USOCINTURON               -0.0015           -0.0017           -0.0014
+                            b_Exp_4     b_NoInfo_traf          lambda_1
+asc_ruta1                    0.0346           -0.0183           -0.0107
+asc_ruta2                    0.0335           -0.0190           -0.0105
+asc_ruta3                    0.0328           -0.0183           -0.0102
+b_tt                         0.0007            0.0001            0.0000
+b_dt                        -0.0016            0.0001           -0.0005
+b_CongAB                     0.0017            0.0092            0.0047
+b_CongCD                     0.0011            0.0007            0.0024
+b_CSECO                      0.0031           -0.0012           -0.0007
+b_Hpico                      0.0011            0.0004           -0.0029
+b_Joven30                   -0.0184           -0.0213            0.0016
+b_Adulto40                  -0.0215           -0.0203            0.0011
+b_Adulto60                  -0.0076           -0.0090            0.0001
+b_USOCINTURON               -0.0027           -0.0032            0.0120
+                           lambda_2     gamma_JOVEN30 gamma_USOCINTURON
+asc_ruta1                   -0.0456           -0.0010           -0.0041
+asc_ruta2                   -0.0454           -0.0010           -0.0040
+asc_ruta3                   -0.0458           -0.0010           -0.0040
+b_tt                         0.0001            0.0000            0.0000
+b_dt                         0.0005            0.0000            0.0000
+b_CongAB                    -0.0012           -0.0001            0.0000
+b_CongCD                     0.0011            0.0000            0.0000
+b_CSECO                      0.0015           -0.0001            0.0000
+b_Hpico                     -0.0023            0.0002           -0.0001
+b_Joven30                   -0.0138            0.0072           -0.0001
+b_Adulto40                  -0.0054            0.0004           -0.0001
+b_Adulto60                  -0.0020           -0.0001           -0.0001
+b_USOCINTURON                0.0167           -0.0016            0.0008
+                    gamma_EDUBASICA       gamma_EXP_2  gamma_USODISPMOB
+asc_ruta1                    0.0012           -0.0037           -0.0019
+asc_ruta2                    0.0012           -0.0037           -0.0019
+asc_ruta3                    0.0012           -0.0037           -0.0018
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0000            0.0000            0.0000
+b_CongAB                    -0.0002            0.0000           -0.0001
+b_CongCD                    -0.0001            0.0001            0.0000
+b_CSECO                     -0.0002            0.0002            0.0000
+b_Hpico                      0.0002           -0.0002            0.0001
+b_Joven30                    0.0019           -0.0040           -0.0002
+b_Adulto40                   0.0003           -0.0005            0.0000
+b_Adulto60                  -0.0001            0.0000            0.0000
+b_USOCINTURON               -0.0017            0.0020           -0.0001
+                          gamma_LV1         zeta_FRbr      zeta_EnfCond
+asc_ruta1                   -0.0005            0.0022           -0.0001
+asc_ruta2                   -0.0005            0.0022           -0.0001
+asc_ruta3                   -0.0005            0.0021           -0.0001
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0000            0.0000            0.0000
+b_CongAB                     0.0000            0.0003            0.0002
+b_CongCD                     0.0000            0.0000            0.0000
+b_CSECO                      0.0000            0.0004            0.0000
+b_Hpico                     -0.0001           -0.0003           -0.0002
+b_Joven30                   -0.0004            0.0006           -0.0004
+b_Adulto40                  -0.0001            0.0002           -0.0002
+b_Adulto60                   0.0000           -0.0001           -0.0003
+b_USOCINTURON                0.0005           -0.0010            0.0000
+                        zeta_AFrSem        zeta_CulFr      zeta_OmLmVel
+asc_ruta1                   -0.0041            0.0002           -0.0002
+asc_ruta2                   -0.0042            0.0002           -0.0002
+asc_ruta3                   -0.0043            0.0002           -0.0002
+b_tt                         0.0000            0.0000            0.0000
+b_dt                        -0.0001            0.0000            0.0000
+b_CongAB                    -0.0005           -0.0001            0.0001
+b_CongCD                    -0.0006            0.0000            0.0000
+b_CSECO                     -0.0001            0.0002            0.0000
+b_Hpico                      0.0002           -0.0001            0.0000
+b_Joven30                    0.0012           -0.0003           -0.0005
+b_Adulto40                   0.0009           -0.0001           -0.0002
+b_Adulto60                   0.0002            0.0000            0.0000
+b_USOCINTURON                0.0014            0.0000           -0.0001
+                        zeta_IgPare       zeta_UsoCel   zeta_PasoPeaton
+asc_ruta1                   -0.0011            0.0001           -0.0027
+asc_ruta2                   -0.0010            0.0001           -0.0026
+asc_ruta3                   -0.0010            0.0001           -0.0026
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0001            0.0000            0.0000
+b_CongAB                     0.0000            0.0001            0.0002
+b_CongCD                     0.0000            0.0000            0.0001
+b_CSECO                      0.0001            0.0000            0.0001
+b_Hpico                      0.0000            0.0000            0.0000
+b_Joven30                   -0.0011           -0.0001           -0.0008
+b_Adulto40                  -0.0005           -0.0001           -0.0004
+b_Adulto60                   0.0000            0.0000           -0.0001
+b_USOCINTURON                0.0003            0.0000            0.0005
+                      zeta_UsoDirec        tau_FRbr_1        tau_FRbr_2
+asc_ruta1                    0.1578           -0.0222           -0.0201
+asc_ruta2                    0.1560           -0.0221           -0.0200
+asc_ruta3                    0.1560           -0.0221           -0.0200
+b_tt                         0.0007            0.0000            0.0000
+b_dt                        -0.0028            0.0001            0.0001
+b_CongAB                    -0.0006           -0.0007           -0.0004
+b_CongCD                     0.0000           -0.0001           -0.0001
+b_CSECO                     -0.0091            0.0003            0.0006
+b_Hpico                      0.0043            0.0001           -0.0001
+b_Joven30                    0.0935           -0.0021           -0.0012
+b_Adulto40                   0.0217           -0.0008           -0.0006
+b_Adulto60                  -0.0013            0.0000           -0.0001
+b_USOCINTURON               -0.0824            0.0040            0.0030
+                         tau_FRbr_3        tau_FRbr_4     tau_EnfCond_1
+asc_ruta1                   -0.0199           -0.0155           -0.0150
+asc_ruta2                   -0.0199           -0.0154           -0.0150
+asc_ruta3                   -0.0198           -0.0154           -0.0149
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0001            0.0000            0.0001
+b_CongAB                    -0.0004           -0.0003           -0.0004
+b_CongCD                     0.0000            0.0001           -0.0001
+b_CSECO                      0.0007            0.0009            0.0003
+b_Hpico                     -0.0001           -0.0002            0.0001
+b_Joven30                   -0.0013            0.0002           -0.0010
+b_Adulto40                  -0.0006           -0.0001           -0.0004
+b_Adulto60                  -0.0002           -0.0001            0.0001
+b_USOCINTURON                0.0030            0.0014            0.0024
+                      tau_EnfCond_2     tau_EnfCond_3     tau_EnfCond_4
+asc_ruta1                   -0.0155           -0.0153           -0.0142
+asc_ruta2                   -0.0154           -0.0153           -0.0141
+asc_ruta3                   -0.0154           -0.0152           -0.0141
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0001            0.0001            0.0000
+b_CongAB                    -0.0003           -0.0002           -0.0002
+b_CongCD                     0.0000            0.0000            0.0000
+b_CSECO                      0.0003            0.0003            0.0003
+b_Hpico                     -0.0001           -0.0001           -0.0001
+b_Joven30                   -0.0014           -0.0015           -0.0013
+b_Adulto40                  -0.0006           -0.0007           -0.0007
+b_Adulto60                  -0.0002           -0.0003           -0.0005
+b_USOCINTURON                0.0027            0.0026            0.0022
+                       tau_AFrSem_1      tau_AFrSem_2      tau_AFrSem_3
+asc_ruta1                   -0.0283           -0.0348           -0.0360
+asc_ruta2                   -0.0282           -0.0348           -0.0360
+asc_ruta3                   -0.0281           -0.0348           -0.0360
+b_tt                        -0.0001            0.0000            0.0000
+b_dt                         0.0002            0.0000            0.0000
+b_CongAB                    -0.0005           -0.0013           -0.0015
+b_CongCD                     0.0001           -0.0006           -0.0007
+b_CSECO                      0.0008            0.0004            0.0004
+b_Hpico                     -0.0002            0.0003            0.0004
+b_Joven30                   -0.0032           -0.0015           -0.0016
+b_Adulto40                  -0.0014           -0.0004           -0.0003
+b_Adulto60                  -0.0002            0.0000            0.0001
+b_USOCINTURON                0.0040            0.0067            0.0071
+                       tau_AFrSem_4       tau_CulFr_1       tau_CulFr_2
+asc_ruta1                   -0.0318           -0.0101           -0.0098
+asc_ruta2                   -0.0319           -0.0101           -0.0098
+asc_ruta3                   -0.0320           -0.0100           -0.0098
+b_tt                         0.0001            0.0000            0.0000
+b_dt                        -0.0002            0.0000            0.0000
+b_CongAB                    -0.0019            0.0000           -0.0002
+b_CongCD                    -0.0010            0.0000            0.0000
+b_CSECO                      0.0002            0.0001            0.0002
+b_Hpico                      0.0008            0.0000            0.0000
+b_Joven30                    0.0023           -0.0005           -0.0007
+b_Adulto40                   0.0014           -0.0003           -0.0003
+b_Adulto60                   0.0005           -0.0001            0.0000
+b_USOCINTURON                0.0059            0.0018            0.0017
+                        tau_CulFr_3       tau_CulFr_4     tau_OmLmVel_1
+asc_ruta1                   -0.0098           -0.0095           -0.0148
+asc_ruta2                   -0.0098           -0.0094           -0.0148
+asc_ruta3                   -0.0098           -0.0094           -0.0148
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0000            0.0001            0.0001
+b_CongAB                    -0.0003           -0.0004           -0.0004
+b_CongCD                     0.0000            0.0000           -0.0001
+b_CSECO                      0.0002            0.0003            0.0004
+b_Hpico                      0.0000            0.0000            0.0000
+b_Joven30                   -0.0008           -0.0010           -0.0009
+b_Adulto40                  -0.0003           -0.0004           -0.0004
+b_Adulto60                   0.0000            0.0000            0.0000
+b_USOCINTURON                0.0017            0.0017            0.0024
+                      tau_OmLmVel_2     tau_OmLmVel_3     tau_OmLmVel_4
+asc_ruta1                   -0.0152           -0.0148           -0.0141
+asc_ruta2                   -0.0151           -0.0148           -0.0141
+asc_ruta3                   -0.0151           -0.0148           -0.0140
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0001            0.0001            0.0001
+b_CongAB                    -0.0004           -0.0004           -0.0004
+b_CongCD                     0.0000            0.0000            0.0000
+b_CSECO                      0.0002            0.0002            0.0002
+b_Hpico                      0.0001            0.0001            0.0001
+b_Joven30                   -0.0015           -0.0015           -0.0015
+b_Adulto40                  -0.0006           -0.0006           -0.0006
+b_Adulto60                  -0.0001           -0.0001           -0.0001
+b_USOCINTURON                0.0025            0.0024            0.0022
+                       tau_IgPare_1      tau_IgPare_2      tau_IgPare_3
+asc_ruta1                   -0.0194           -0.0211           -0.0209
+asc_ruta2                   -0.0193           -0.0210           -0.0208
+asc_ruta3                   -0.0193           -0.0209           -0.0208
+b_tt                         0.0000           -0.0001           -0.0001
+b_dt                         0.0001            0.0001            0.0001
+b_CongAB                    -0.0004           -0.0007           -0.0007
+b_CongCD                    -0.0001            0.0000            0.0000
+b_CSECO                      0.0004            0.0005            0.0005
+b_Hpico                      0.0000            0.0001            0.0001
+b_Joven30                   -0.0012           -0.0026           -0.0026
+b_Adulto40                  -0.0005           -0.0011           -0.0011
+b_Adulto60                  -0.0001            0.0000            0.0000
+b_USOCINTURON                0.0030            0.0039            0.0039
+                       tau_IgPare_4      tau_UsoCel_1      tau_UsoCel_2
+asc_ruta1                   -0.0196           -0.0039           -0.0039
+asc_ruta2                   -0.0195           -0.0039           -0.0039
+asc_ruta3                   -0.0194           -0.0039           -0.0039
+b_tt                        -0.0001            0.0000            0.0000
+b_dt                         0.0002            0.0000            0.0000
+b_CongAB                    -0.0007           -0.0001           -0.0001
+b_CongCD                     0.0002            0.0000            0.0000
+b_CSECO                      0.0005            0.0001            0.0001
+b_Hpico                      0.0001            0.0000            0.0000
+b_Joven30                   -0.0026           -0.0002           -0.0003
+b_Adulto40                  -0.0011           -0.0001           -0.0001
+b_Adulto60                   0.0000            0.0000            0.0000
+b_USOCINTURON                0.0036            0.0007            0.0007
+                       tau_UsoCel_3      tau_UsoCel_4  tau_PasoPeaton_1
+asc_ruta1                   -0.0039           -0.0038           -0.0010
+asc_ruta2                   -0.0039           -0.0038           -0.0009
+asc_ruta3                   -0.0039           -0.0038           -0.0009
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0000            0.0000            0.0001
+b_CongAB                    -0.0001           -0.0001            0.0002
+b_CongCD                     0.0000            0.0000            0.0001
+b_CSECO                      0.0001            0.0001            0.0003
+b_Hpico                      0.0000            0.0000           -0.0002
+b_Joven30                   -0.0003           -0.0003           -0.0028
+b_Adulto40                  -0.0001           -0.0001           -0.0007
+b_Adulto60                   0.0000            0.0000            0.0000
+b_USOCINTURON                0.0007            0.0006            0.0020
+                   tau_PasoPeaton_2  tau_PasoPeaton_3  tau_PasoPeaton_4
+asc_ruta1                    0.0005            0.0013            0.0036
+asc_ruta2                    0.0005            0.0014            0.0036
+asc_ruta3                    0.0005            0.0013            0.0036
+b_tt                         0.0000            0.0000            0.0000
+b_dt                         0.0000            0.0000            0.0000
+b_CongAB                     0.0001            0.0001            0.0000
+b_CongCD                     0.0000            0.0000           -0.0001
+b_CSECO                      0.0002            0.0002            0.0000
+b_Hpico                     -0.0002           -0.0002           -0.0001
+b_Joven30                   -0.0022           -0.0017           -0.0007
+b_Adulto40                  -0.0004           -0.0003            0.0001
+b_Adulto60                   0.0000            0.0000            0.0001
+b_USOCINTURON                0.0015            0.0012            0.0005
+                     tau_UsoDirec_1    tau_UsoDirec_2    tau_UsoDirec_3
+asc_ruta1                    0.2962            0.1641            0.1116
+asc_ruta2                    0.2930            0.1625            0.1105
+asc_ruta3                    0.2929            0.1624            0.1105
+b_tt                         0.0012            0.0006            0.0004
+b_dt                        -0.0047           -0.0024           -0.0015
+b_CongAB                    -0.0010            0.0000            0.0004
+b_CongCD                    -0.0005            0.0001            0.0000
+b_CSECO                     -0.0161           -0.0072           -0.0044
+b_Hpico                      0.0069            0.0032            0.0018
+b_Joven30                    0.1552            0.0797            0.0495
+b_Adulto40                   0.0375            0.0187            0.0118
+b_Adulto60                  -0.0022           -0.0012           -0.0006
+b_USOCINTURON               -0.1389           -0.0729           -0.0460
+                     tau_UsoDirec_4
+asc_ruta1                   -0.0536
+asc_ruta2                   -0.0527
+asc_ruta3                   -0.0528
+b_tt                        -0.0003
+b_dt                         0.0014
+b_CongAB                     0.0012
+b_CongCD                     0.0002
+b_CSECO                      0.0047
+b_Hpico                     -0.0028
+b_Joven30                   -0.0482
+b_Adulto40                  -0.0104
+b_Adulto60                   0.0007
+b_USOCINTURON                0.0403
+ [ reached getOption("max.print") -- omitted 63 rows ]
+
+Robust covariance matrix:
+                          asc_ruta1         asc_ruta2         asc_ruta3
+asc_ruta1                    2.1138            2.1044            2.0902
+asc_ruta2                    2.1044            2.1374            2.0971
+asc_ruta3                    2.0902            2.0971            2.1542
+b_tt                         0.0027            0.0017           -0.0017
+b_dt                        -0.0168           -0.0144           -0.0057
+b_CongAB                    -0.0155           -0.0151           -0.0046
+b_CongCD                    -0.0004           -0.0003            0.0165
+b_CSECO                      0.1087            0.1161            0.1152
+b_Hpico                      0.0780            0.0792            0.0835
+b_Joven30                    0.5157            0.5156            0.5125
+b_Adulto40                   0.1507            0.1429            0.1449
+b_Adulto60                   0.1175            0.1092            0.1057
+b_USOCINTURON                0.0970            0.0982            0.0908
+                               b_tt              b_dt          b_CongAB
+asc_ruta1                    0.0027           -0.0168           -0.0155
+asc_ruta2                    0.0017           -0.0144           -0.0151
+asc_ruta3                   -0.0017           -0.0057           -0.0046
+b_tt                         0.0011           -0.0025            0.0028
+b_dt                        -0.0025            0.0090           -0.0032
+b_CongAB                     0.0028           -0.0032            0.0868
+b_CongCD                     0.0012            0.0011            0.0386
+b_CSECO                      0.0002           -0.0020            0.0182
+b_Hpico                     -0.0006            0.0010           -0.0048
+b_Joven30                    0.0003           -0.0053           -0.0299
+b_Adulto40                   0.0006           -0.0013           -0.0223
+b_Adulto60                   0.0007           -0.0019           -0.0150
+b_USOCINTURON               -0.0009            0.0021           -0.0162
+                           b_CongCD           b_CSECO           b_Hpico
+asc_ruta1                   -0.0004            0.1087            0.0780
+asc_ruta2                   -0.0003            0.1161            0.0792
+asc_ruta3                    0.0165            0.1152            0.0835
+b_tt                         0.0012            0.0002           -0.0006
+b_dt                         0.0011           -0.0020            0.0010
+b_CongAB                     0.0386            0.0182           -0.0048
+b_CongCD                     0.0546            0.0150            0.0027
+b_CSECO                      0.0150            0.1320           -0.0024
+b_Hpico                      0.0027           -0.0024            0.0718
+b_Joven30                   -0.0071           -0.0043            0.0034
+b_Adulto40                  -0.0006            0.0083           -0.0060
+b_Adulto60                  -0.0037           -0.0033           -0.0046
+b_USOCINTURON               -0.0096           -0.0177            0.0052
+                          b_Joven30        b_Adulto40        b_Adulto60
+asc_ruta1                    0.5157            0.1507            0.1175
+asc_ruta2                    0.5156            0.1429            0.1092
+asc_ruta3                    0.5125            0.1449            0.1057
+b_tt                         0.0003            0.0006            0.0007
+b_dt                        -0.0053           -0.0013           -0.0019
+b_CongAB                    -0.0299           -0.0223           -0.0150
+b_CongCD                    -0.0071           -0.0006           -0.0037
+b_CSECO                     -0.0043            0.0083           -0.0033
+b_Hpico                      0.0034           -0.0060           -0.0046
+b_Joven30                    0.5372            0.2094            0.1620
+b_Adulto40                   0.2094            0.2482            0.1578
+b_Adulto60                   0.1620            0.1578            0.1782
+b_USOCINTURON                0.0143           -0.0018           -0.0013
+                      b_USOCINTURON      b_USODISPMOB          b_HTRB_2
+asc_ruta1                    0.0970            0.0893            1.6486
+asc_ruta2                    0.0982            0.0937            1.6493
+asc_ruta3                    0.0908            0.0948            1.6490
+b_tt                        -0.0009            0.0014           -0.0003
+b_dt                         0.0021           -0.0005           -0.0075
+b_CongAB                    -0.0162            0.0126           -0.0477
+b_CongCD                    -0.0096            0.0101           -0.0179
+b_CSECO                     -0.0177            0.0086           -0.0186
+b_Hpico                      0.0052            0.0008            0.0339
+b_Joven30                    0.0143           -0.0175            0.3835
+b_Adulto40                  -0.0018           -0.0298            0.0489
+b_Adulto60                  -0.0013           -0.0084            0.0168
+b_USOCINTURON                0.1190           -0.0026            0.0209
+                           b_HTRB_3          b_HTRB_4       b_EduBasica
+asc_ruta1                    1.6750            1.6763            0.0645
+asc_ruta2                    1.6690            1.6707            0.0661
+asc_ruta3                    1.6673            1.6760            0.0701
+b_tt                        -0.0005           -0.0019           -0.0011
+b_dt                        -0.0070           -0.0024            0.0021
+b_CongAB                    -0.0536           -0.0482           -0.0066
+b_CongCD                    -0.0135           -0.0129           -0.0026
+b_CSECO                     -0.0046           -0.0102            0.0066
+b_Hpico                      0.0376            0.0405           -0.0002
+b_Joven30                    0.3853            0.3985            0.0155
+b_Adulto40                   0.0516            0.0560           -0.0015
+b_Adulto60                   0.0064            0.0060            0.0012
+b_USOCINTURON                0.0234            0.0194            0.0038
+                            b_Exp_1           b_Exp_2           b_Exp_3
+asc_ruta1                    0.1085           -0.2139            0.0100
+asc_ruta2                    0.1054           -0.2258            0.0098
+asc_ruta3                    0.1067           -0.2206            0.0235
+b_tt                        -0.0009            0.0001           -0.0015
+b_dt                         0.0019            0.0009            0.0044
+b_CongAB                     0.0021            0.0047           -0.0114
+b_CongCD                    -0.0073           -0.0060           -0.0028
+b_CSECO                     -0.0060           -0.0080           -0.0115
+b_Hpico                     -0.0016            0.0037            0.0196
+b_Joven30                   -0.0389           -0.2128           -0.0270
+b_Adulto40                  -0.0402           -0.0620           -0.0224
+b_Adulto60                  -0.0330           -0.0182           -0.0089
+b_USOCINTURON               -0.0091           -0.0125            0.0026
+                            b_Exp_4     b_NoInfo_traf          lambda_1
+asc_ruta1                    0.0273           -0.0048           -0.0155
+asc_ruta2                    0.0282            0.0048           -0.0178
+asc_ruta3                    0.0273           -0.0010           -0.0130
+b_tt                        -0.0006           -0.0005           -0.0001
+b_dt                         0.0004            0.0008            0.0004
+b_CongAB                     0.0001            0.0107            0.0049
+b_CongCD                     0.0001           -0.0011            0.0026
+b_CSECO                      0.0079            0.0125           -0.0004
+b_Hpico                      0.0000            0.0000           -0.0029
+b_Joven30                   -0.0270           -0.0242            0.0012
+b_Adulto40                  -0.0270           -0.0356            0.0025
+b_Adulto60                  -0.0102           -0.0210           -0.0003
+b_USOCINTURON               -0.0034            0.0011            0.0104
+                           lambda_2     gamma_JOVEN30 gamma_USOCINTURON
+asc_ruta1                   -0.0573           -0.1179           -0.0313
+asc_ruta2                   -0.0589           -0.1285           -0.0299
+asc_ruta3                   -0.0622           -0.1172           -0.0323
+b_tt                         0.0005            0.0006            0.0002
+b_dt                         0.0007           -0.0028            0.0003
+b_CongAB                     0.0021           -0.0049           -0.0008
+b_CongCD                     0.0024           -0.0032           -0.0023
+b_CSECO                      0.0020           -0.0029           -0.0037
+b_Hpico                     -0.0034            0.0016            0.0001
+b_Joven30                   -0.0244            0.0059            0.0019
+b_Adulto40                  -0.0088            0.0122            0.0056
+b_Adulto60                  -0.0034            0.0071            0.0045
+b_USOCINTURON                0.0174           -0.0115           -0.0125
+                    gamma_EDUBASICA       gamma_EXP_2  gamma_USODISPMOB
+asc_ruta1                    0.0157            0.0222            0.0006
+asc_ruta2                    0.0115            0.0261            0.0034
+asc_ruta3                    0.0201            0.0210            0.0003
+b_tt                        -0.0002           -0.0002            0.0001
+b_dt                         0.0001            0.0014           -0.0003
+b_CongAB                     0.0030            0.0000           -0.0009
+b_CongCD                     0.0034            0.0000            0.0002
+b_CSECO                     -0.0005            0.0003            0.0028
+b_Hpico                      0.0012           -0.0055            0.0004
+b_Joven30                    0.0050           -0.0003            0.0010
+b_Adulto40                   0.0086           -0.0066           -0.0041
+b_Adulto60                   0.0024           -0.0022           -0.0013
+b_USOCINTURON               -0.0059            0.0077           -0.0059
+                          gamma_LV1         zeta_FRbr      zeta_EnfCond
+asc_ruta1                   -0.0057            0.0025           -0.0167
+asc_ruta2                   -0.0053           -0.0111           -0.0188
+asc_ruta3                   -0.0078            0.0122           -0.0397
+b_tt                         0.0000           -0.0006            0.0017
+b_dt                         0.0000            0.0029           -0.0028
+b_CongAB                    -0.0012            0.0103            0.0124
+b_CongCD                    -0.0021            0.0049            0.0009
+b_CSECO                     -0.0013            0.0056            0.0046
+b_Hpico                     -0.0010            0.0045           -0.0070
+b_Joven30                   -0.0036           -0.0070           -0.0083
+b_Adulto40                  -0.0018            0.0101           -0.0069
+b_Adulto60                  -0.0017            0.0029           -0.0050
+b_USOCINTURON                0.0000            0.0014            0.0006
+                        zeta_AFrSem        zeta_CulFr      zeta_OmLmVel
+asc_ruta1                   -0.0813           -0.0166            0.0048
+asc_ruta2                   -0.0857           -0.0182            0.0066
+asc_ruta3                   -0.0718           -0.0178            0.0110
+b_tt                        -0.0019            0.0011           -0.0011
+b_dt                         0.0091           -0.0023            0.0005
+b_CongAB                    -0.0318            0.0051           -0.0001
+b_CongCD                     0.0056            0.0044            0.0020
+b_CSECO                      0.0078            0.0027           -0.0031
+b_Hpico                     -0.0201           -0.0048            0.0003
+b_Joven30                    0.0409           -0.0109           -0.0075
+b_Adulto40                   0.0445           -0.0030           -0.0164
+b_Adulto60                   0.0358           -0.0042           -0.0096
+b_USOCINTURON               -0.0539            0.0012            0.0088
+                        zeta_IgPare       zeta_UsoCel   zeta_PasoPeaton
+asc_ruta1                    0.0099            0.0032           -0.0101
+asc_ruta2                    0.0122            0.0038           -0.0113
+asc_ruta3                    0.0103            0.0014           -0.0079
+b_tt                        -0.0017           -0.0003            0.0002
+b_dt                         0.0000            0.0006            0.0000
+b_CongAB                     0.0012            0.0042            0.0045
+b_CongCD                    -0.0012            0.0000            0.0057
+b_CSECO                      0.0154            0.0023            0.0008
+b_Hpico                     -0.0033            0.0003           -0.0001
+b_Joven30                   -0.0133            0.0021           -0.0039
+b_Adulto40                  -0.0205            0.0002           -0.0047
+b_Adulto60                  -0.0090            0.0021           -0.0009
+b_USOCINTURON               -0.0085            0.0052            0.0044
+                      zeta_UsoDirec        tau_FRbr_1        tau_FRbr_2
+asc_ruta1                    0.5443           -0.1801           -0.1294
+asc_ruta2                    0.3705           -0.1686           -0.1212
+asc_ruta3                    0.5852           -0.1808           -0.1160
+b_tt                        -0.0016            0.0000           -0.0008
+b_dt                        -0.0166            0.0012            0.0059
+b_CongAB                     0.0345           -0.0163           -0.0020
+b_CongCD                     0.0778           -0.0140           -0.0072
+b_CSECO                      0.0185           -0.0152           -0.0159
+b_Hpico                      0.0564           -0.0031            0.0056
+b_Joven30                    0.3083            0.0130            0.0130
+b_Adulto40                   0.2828            0.0037            0.0141
+b_Adulto60                   0.1407            0.0155            0.0104
+b_USOCINTURON               -0.1547           -0.0649           -0.0672
+                         tau_FRbr_3        tau_FRbr_4     tau_EnfCond_1
+asc_ruta1                   -0.1423           -0.1386           -0.1193
+asc_ruta2                   -0.1362           -0.1462           -0.1125
+asc_ruta3                   -0.1302           -0.1453           -0.1143
+b_tt                        -0.0006            0.0010           -0.0002
+b_dt                         0.0051            0.0003            0.0008
+b_CongAB                     0.0014            0.0015           -0.0079
+b_CongCD                    -0.0069            0.0036           -0.0076
+b_CSECO                     -0.0124           -0.0072           -0.0174
+b_Hpico                      0.0093            0.0333           -0.0010
+b_Joven30                    0.0062           -0.0071            0.0071
+b_Adulto40                   0.0173            0.0199           -0.0006
+b_Adulto60                   0.0147            0.0238            0.0124
+b_USOCINTURON               -0.0710           -0.0783           -0.0424
+                      tau_EnfCond_2     tau_EnfCond_3     tau_EnfCond_4
+asc_ruta1                   -0.1063           -0.1161           -0.0956
+asc_ruta2                   -0.0979           -0.1091           -0.0893
+asc_ruta3                   -0.1271           -0.1409           -0.1412
+b_tt                         0.0021            0.0019            0.0037
+b_dt                        -0.0009           -0.0010           -0.0077
+b_CongAB                     0.0052            0.0040            0.0012
+b_CongCD                    -0.0086           -0.0101           -0.0086
+b_CSECO                     -0.0145           -0.0049           -0.0020
+b_Hpico                     -0.0039           -0.0056           -0.0043
+b_Joven30                    0.0003           -0.0056           -0.0212
+b_Adulto40                   0.0047           -0.0021           -0.0323
+b_Adulto60                   0.0130            0.0070            0.0047
+b_USOCINTURON               -0.0469           -0.0491           -0.0493
+                       tau_AFrSem_1      tau_AFrSem_2      tau_AFrSem_3
+asc_ruta1                   -0.1847           -0.2372           -0.2668
+asc_ruta2                   -0.1710           -0.2208           -0.2477
+asc_ruta3                   -0.1928           -0.2258           -0.2542
+b_tt                         0.0010           -0.0015           -0.0016
+b_dt                        -0.0019            0.0118            0.0118
+b_CongAB                     0.0051           -0.0429           -0.0451
+b_CongCD                    -0.0182           -0.0106           -0.0109
+b_CSECO                     -0.0260           -0.0184           -0.0111
+b_Hpico                      0.0113           -0.0064           -0.0119
+b_Joven30                   -0.0122            0.0677            0.0725
+b_Adulto40                  -0.0196            0.0581            0.0687
+b_Adulto60                   0.0000            0.0614            0.0717
+b_USOCINTURON               -0.0586           -0.1377           -0.1484
+                       tau_AFrSem_4       tau_CulFr_1       tau_CulFr_2
+asc_ruta1                   -0.3255           -0.0586           -0.0767
+asc_ruta2                   -0.3245           -0.0562           -0.0738
+asc_ruta3                   -0.3182           -0.0578           -0.0777
+b_tt                        -0.0010           -0.0001            0.0008
+b_dt                         0.0158            0.0015            0.0007
+b_CongAB                    -0.0513           -0.0077            0.0023
+b_CongCD                     0.0200           -0.0074            0.0001
+b_CSECO                      0.0051           -0.0124           -0.0147
+b_Hpico                     -0.0308            0.0038            0.0012
+b_Joven30                    0.0786            0.0054           -0.0039
+b_Adulto40                   0.1008            0.0068            0.0062
+b_Adulto60                   0.0639            0.0112            0.0066
+b_USOCINTURON               -0.2021           -0.0274           -0.0302
+                        tau_CulFr_3       tau_CulFr_4     tau_OmLmVel_1
+asc_ruta1                   -0.0872           -0.0842           -0.1251
+asc_ruta2                   -0.0847           -0.0833           -0.1169
+asc_ruta3                   -0.0899           -0.0904           -0.1227
+b_tt                         0.0014            0.0007            0.0005
+b_dt                        -0.0009           -0.0021            0.0005
+b_CongAB                     0.0003           -0.0098           -0.0085
+b_CongCD                    -0.0013           -0.0020           -0.0083
+b_CSECO                     -0.0131           -0.0106           -0.0097
+b_Hpico                     -0.0015           -0.0081            0.0003
+b_Joven30                   -0.0067           -0.0168            0.0088
+b_Adulto40                  -0.0020            0.0013            0.0077
+b_Adulto60                   0.0014            0.0077            0.0124
+b_USOCINTURON               -0.0327           -0.0243           -0.0443
+                      tau_OmLmVel_2     tau_OmLmVel_3     tau_OmLmVel_4
+asc_ruta1                   -0.0971           -0.0914           -0.0619
+asc_ruta2                   -0.0833           -0.0803           -0.0587
+asc_ruta3                   -0.0815           -0.0782           -0.0485
+b_tt                        -0.0014           -0.0010           -0.0020
+b_dt                         0.0048            0.0039            0.0061
+b_CongAB                    -0.0085           -0.0061           -0.0119
+b_CongCD                    -0.0034           -0.0041            0.0002
+b_CSECO                     -0.0126           -0.0125           -0.0164
+b_Hpico                      0.0048            0.0043           -0.0019
+b_Joven30                   -0.0132           -0.0137           -0.0231
+b_Adulto40                  -0.0143           -0.0162           -0.0162
+b_Adulto60                  -0.0002            0.0035            0.0070
+b_USOCINTURON               -0.0272           -0.0356           -0.0246
+                       tau_IgPare_1      tau_IgPare_2      tau_IgPare_3
+asc_ruta1                   -0.1633           -0.1372           -0.1401
+asc_ruta2                   -0.1572           -0.1232           -0.1302
+asc_ruta3                   -0.1611           -0.1350           -0.1363
+b_tt                         0.0009           -0.0019           -0.0018
+b_dt                         0.0010            0.0037            0.0029
+b_CongAB                    -0.0106           -0.0059           -0.0042
+b_CongCD                    -0.0096           -0.0175           -0.0190
+b_CSECO                     -0.0233            0.0008            0.0039
+b_Hpico                      0.0005            0.0031            0.0044
+b_Joven30                    0.0090           -0.0229           -0.0374
+b_Adulto40                   0.0057           -0.0244           -0.0332
+b_Adulto60                   0.0155           -0.0034           -0.0053
+b_USOCINTURON               -0.0526           -0.0694           -0.0695
+                       tau_IgPare_4      tau_UsoCel_1      tau_UsoCel_2
+asc_ruta1                   -0.0712           -0.0446           -0.0620
+asc_ruta2                   -0.0809           -0.0443           -0.0606
+asc_ruta3                   -0.0694           -0.0438           -0.0660
+b_tt                        -0.0029           -0.0004           -0.0002
+b_dt                         0.0045            0.0006            0.0001
+b_CongAB                    -0.0087           -0.0087           -0.0062
+b_CongCD                    -0.0010           -0.0047           -0.0037
+b_CSECO                      0.0136           -0.0029           -0.0051
+b_Hpico                     -0.0064            0.0012            0.0000
+b_Joven30                   -0.0174           -0.0068           -0.0181
+b_Adulto40                  -0.0182           -0.0048           -0.0028
+b_Adulto60                   0.0096            0.0011           -0.0017
+b_USOCINTURON               -0.0677           -0.0115           -0.0131
+                       tau_UsoCel_3      tau_UsoCel_4  tau_PasoPeaton_1
+asc_ruta1                   -0.0669           -0.0229           -0.0078
+asc_ruta2                   -0.0654           -0.0197           -0.0042
+asc_ruta3                   -0.0711           -0.0305           -0.0082
+b_tt                         0.0001            0.0016           -0.0004
+b_dt                        -0.0001           -0.0025            0.0004
+b_CongAB                    -0.0071            0.0009           -0.0047
+b_CongCD                    -0.0034            0.0033           -0.0040
+b_CSECO                     -0.0053            0.0014            0.0014
+b_Hpico                      0.0026           -0.0028            0.0010
+b_Joven30                   -0.0181            0.0200           -0.0208
+b_Adulto40                  -0.0082            0.0124           -0.0185
+b_Adulto60                  -0.0050            0.0106           -0.0087
+b_USOCINTURON               -0.0158           -0.0079            0.0165
+                   tau_PasoPeaton_2  tau_PasoPeaton_3  tau_PasoPeaton_4
+asc_ruta1                   -0.0118           -0.0039           -0.0058
+asc_ruta2                   -0.0092           -0.0026           -0.0048
+asc_ruta3                   -0.0118           -0.0059           -0.0061
+b_tt                        -0.0002           -0.0002           -0.0007
+b_dt                         0.0001           -0.0003           -0.0005
+b_CongAB                     0.0001           -0.0024           -0.0066
+b_CongCD                    -0.0017           -0.0039           -0.0059
+b_CSECO                      0.0014            0.0021            0.0030
+b_Hpico                     -0.0017           -0.0018           -0.0028
+b_Joven30                   -0.0087           -0.0046            0.0016
+b_Adulto40                  -0.0115           -0.0105           -0.0043
+b_Adulto60                  -0.0076           -0.0087           -0.0039
+b_USOCINTURON                0.0137            0.0100            0.0125
+                     tau_UsoDirec_1    tau_UsoDirec_2    tau_UsoDirec_3
+asc_ruta1                    1.0083            0.5271            0.3358
+asc_ruta2                    0.7246            0.3755            0.2435
+asc_ruta3                    1.0561            0.5329            0.3456
+b_tt                        -0.0023           -0.0005           -0.0008
+b_dt                        -0.0286           -0.0203           -0.0135
+b_CongAB                     0.0678            0.0240            0.0172
+b_CongCD                     0.1282            0.0640            0.0393
+b_CSECO                      0.0572            0.0163            0.0068
+b_Hpico                      0.0923            0.0494            0.0318
+b_Joven30                    0.4452            0.2062            0.1198
+b_Adulto40                   0.3914            0.1926            0.1078
+b_Adulto60                   0.2020            0.0939            0.0587
+b_USOCINTURON               -0.2089           -0.0505           -0.0056
+                     tau_UsoDirec_4
+asc_ruta1                   -0.2469
+asc_ruta2                   -0.1634
+asc_ruta3                   -0.2652
+b_tt                         0.0009
+b_dt                         0.0054
+b_CongAB                    -0.0196
+b_CongCD                    -0.0370
+b_CSECO                     -0.0010
+b_Hpico                     -0.0337
+b_Joven30                   -0.1746
+b_Adulto40                  -0.1889
+b_Adulto60                  -0.0945
+b_USOCINTURON                0.1492
+ [ reached getOption("max.print") -- omitted 63 rows ]
+
+Classical correlation matrix:
+                          asc_ruta1         asc_ruta2         asc_ruta3
+asc_ruta1                    1.0000            0.9999            0.9999
+asc_ruta2                    0.9999            1.0000            0.9999
+asc_ruta3                    0.9999            0.9999            1.0000
+b_tt                         0.0062            0.0050            0.0034
+b_dt                        -0.0047           -0.0045           -0.0037
+b_CongAB                    -0.0018           -0.0017           -0.0008
+b_CongCD                     0.0011            0.0014            0.0029
+b_CSECO                      0.0145            0.0143            0.0146
+b_Hpico                      0.0162            0.0160            0.0160
+b_Joven30                    0.0354            0.0352            0.0351
+b_Adulto40                   0.0128            0.0127            0.0126
+b_Adulto60                   0.0117            0.0117            0.0115
+b_USOCINTURON                0.0124            0.0126            0.0126
+                               b_tt              b_dt          b_CongAB
+asc_ruta1                    0.0062           -0.0047           -0.0018
+asc_ruta2                    0.0050           -0.0045           -0.0017
+asc_ruta3                    0.0034           -0.0037           -0.0008
+b_tt                         1.0000           -0.5213            0.2359
+b_dt                        -0.5213            1.0000           -0.0869
+b_CongAB                     0.2359           -0.0869            1.0000
+b_CongCD                     0.1021            0.0098            0.5374
+b_CSECO                      0.0867           -0.0912            0.1646
+b_Hpico                      0.0614           -0.0064           -0.0869
+b_Joven30                    0.0066           -0.0146           -0.1339
+b_Adulto40                   0.0279            0.0028           -0.1192
+b_Adulto60                  -0.0009            0.0188           -0.0991
+b_USOCINTURON               -0.0800            0.0492           -0.1086
+                           b_CongCD           b_CSECO           b_Hpico
+asc_ruta1                    0.0011            0.0145            0.0162
+asc_ruta2                    0.0014            0.0143            0.0160
+asc_ruta3                    0.0029            0.0146            0.0160
+b_tt                         0.1021            0.0867            0.0614
+b_dt                         0.0098           -0.0912           -0.0064
+b_CongAB                     0.5374            0.1646           -0.0869
+b_CongCD                     1.0000            0.1729           -0.0190
+b_CSECO                      0.1729            1.0000           -0.0286
+b_Hpico                     -0.0190           -0.0286            1.0000
+b_Joven30                   -0.0152           -0.0376            0.0340
+b_Adulto40                   0.0098            0.0614           -0.0410
+b_Adulto60                  -0.0091           -0.0217           -0.0361
+b_USOCINTURON               -0.0623           -0.1668            0.0268
+                          b_Joven30        b_Adulto40        b_Adulto60
+asc_ruta1                    0.0354            0.0128            0.0117
+asc_ruta2                    0.0352            0.0127            0.0117
+asc_ruta3                    0.0351            0.0126            0.0115
+b_tt                         0.0066            0.0279           -0.0009
+b_dt                        -0.0146            0.0028            0.0188
+b_CongAB                    -0.1339           -0.1192           -0.0991
+b_CongCD                    -0.0152            0.0098           -0.0091
+b_CSECO                     -0.0376            0.0614           -0.0217
+b_Hpico                      0.0340           -0.0410           -0.0361
+b_Joven30                    1.0000            0.5207            0.4691
+b_Adulto40                   0.5207            1.0000            0.7292
+b_Adulto60                   0.4691            0.7292            1.0000
+b_USOCINTURON               -0.0005           -0.0869           -0.1031
+                      b_USOCINTURON      b_USODISPMOB          b_HTRB_2
+asc_ruta1                    0.0124            0.0141            0.9990
+asc_ruta2                    0.0126            0.0141            0.9990
+asc_ruta3                    0.0126            0.0142            0.9990
+b_tt                        -0.0800            0.0683            0.0002
+b_dt                         0.0492            0.0328           -0.0019
+b_CongAB                    -0.1086            0.1308           -0.0087
+b_CongCD                    -0.0623            0.0885           -0.0042
+b_CSECO                     -0.1668            0.0335           -0.0032
+b_Hpico                      0.0268           -0.0138            0.0077
+b_Joven30                   -0.0005           -0.1243            0.0283
+b_Adulto40                  -0.0869           -0.2149            0.0018
+b_Adulto60                  -0.1031           -0.0838           -0.0011
+b_USOCINTURON                1.0000           -0.0231            0.0034
+                           b_HTRB_3          b_HTRB_4       b_EduBasica
+asc_ruta1                    0.9994            0.9993            0.0100
+asc_ruta2                    0.9994            0.9993            0.0099
+asc_ruta3                    0.9993            0.9993            0.0100
+b_tt                        -0.0012           -0.0028           -0.0426
+b_dt                        -0.0007            0.0002            0.0517
+b_CongAB                    -0.0097           -0.0083           -0.0865
+b_CongCD                    -0.0031           -0.0028           -0.0381
+b_CSECO                     -0.0013           -0.0006            0.0695
+b_Hpico                      0.0075            0.0082           -0.0405
+b_Joven30                    0.0291            0.0295            0.0212
+b_Adulto40                   0.0026            0.0025           -0.0048
+b_Adulto60                  -0.0008           -0.0016            0.0031
+b_USOCINTURON                0.0044            0.0029            0.0633
+                            b_Exp_1           b_Exp_2           b_Exp_3
+asc_ruta1                    0.0154           -0.0163            0.0014
+asc_ruta2                    0.0154           -0.0163            0.0015
+asc_ruta3                    0.0155           -0.0165            0.0013
+b_tt                         0.0063            0.0317            0.0024
+b_dt                         0.0163            0.0093            0.0238
+b_CongAB                     0.0260            0.0161           -0.0854
+b_CongCD                    -0.0628           -0.0178           -0.0328
+b_CSECO                     -0.0360           -0.0106           -0.0667
+b_Hpico                     -0.0219           -0.0233            0.1210
+b_Joven30                   -0.1545           -0.4801           -0.0445
+b_Adulto40                  -0.1863           -0.1910           -0.0935
+b_Adulto60                  -0.1338           -0.0269           -0.0603
+b_USOCINTURON               -0.0108           -0.0101           -0.0087
+                            b_Exp_4     b_NoInfo_traf          lambda_1
+asc_ruta1                    0.0051           -0.0030           -0.0039
+asc_ruta2                    0.0050           -0.0031           -0.0039
+asc_ruta3                    0.0049           -0.0030           -0.0038
+b_tt                         0.0732            0.0119            0.0075
+b_dt                        -0.0440            0.0044           -0.0351
+b_CongAB                     0.0158            0.0933            0.1071
+b_CongCD                     0.0133            0.0093            0.0713
+b_CSECO                      0.0236           -0.0101           -0.0139
+b_Hpico                      0.0110            0.0049           -0.0711
+b_Joven30                   -0.0687           -0.0887            0.0153
+b_Adulto40                  -0.1233           -0.1298            0.0156
+b_Adulto60                  -0.0505           -0.0669            0.0022
+b_USOCINTURON               -0.0210           -0.0283            0.2357
+                           lambda_2     gamma_JOVEN30 gamma_USOCINTURON
+asc_ruta1                   -0.0150           -0.0002           -0.0018
+asc_ruta2                   -0.0149           -0.0002           -0.0018
+asc_ruta3                   -0.0151           -0.0002           -0.0018
+b_tt                         0.0119            0.0023           -0.0026
+b_dt                         0.0286           -0.0008           -0.0001
+b_CongAB                    -0.0243           -0.0015            0.0003
+b_CongCD                     0.0296           -0.0007            0.0014
+b_CSECO                      0.0254           -0.0007            0.0008
+b_Hpico                     -0.0511            0.0032           -0.0024
+b_Joven30                   -0.1134            0.0360           -0.0009
+b_Adulto40                  -0.0682            0.0029           -0.0025
+b_Adulto60                  -0.0300           -0.0007           -0.0010
+b_USOCINTURON                0.2904           -0.0169            0.0183
+                    gamma_EDUBASICA       gamma_EXP_2  gamma_USODISPMOB
+asc_ruta1                    0.0005           -0.0010           -0.0010
+asc_ruta2                    0.0004           -0.0010           -0.0010
+asc_ruta3                    0.0004           -0.0010           -0.0010
+b_tt                         0.0010           -0.0013           -0.0018
+b_dt                        -0.0018            0.0022           -0.0004
+b_CongAB                    -0.0043            0.0006           -0.0037
+b_CongCD                    -0.0028            0.0024           -0.0022
+b_CSECO                     -0.0031            0.0028           -0.0001
+b_Hpico                      0.0055           -0.0029            0.0038
+b_Joven30                    0.0181           -0.0273           -0.0028
+b_Adulto40                   0.0041           -0.0053            0.0008
+b_Adulto60                  -0.0009            0.0002            0.0011
+b_USOCINTURON               -0.0334            0.0283           -0.0042
+                          gamma_LV1         zeta_FRbr      zeta_EnfCond
+asc_ruta1                   -0.0005            0.0003            0.0000
+asc_ruta2                   -0.0005            0.0003            0.0000
+asc_ruta3                   -0.0005            0.0003            0.0000
+b_tt                        -0.0031           -0.0003           -0.0003
+b_dt                         0.0000            0.0001            0.0000
+b_CongAB                     0.0004            0.0020            0.0028
+b_CongCD                    -0.0016            0.0001            0.0000
+b_CSECO                      0.0019            0.0025            0.0004
+b_Hpico                     -0.0051           -0.0023           -0.0025
+b_Joven30                   -0.0104            0.0018           -0.0017
+b_Adulto40                  -0.0050            0.0008           -0.0016
+b_Adulto60                  -0.0006           -0.0004           -0.0025
+b_USOCINTURON                0.0253           -0.0067           -0.0004
+                        zeta_AFrSem        zeta_CulFr      zeta_OmLmVel
+asc_ruta1                   -0.0003            0.0001            0.0000
+asc_ruta2                   -0.0003            0.0001            0.0000
+asc_ruta3                   -0.0003            0.0001            0.0000
+b_tt                         0.0022           -0.0006           -0.0015
+b_dt                        -0.0013            0.0014            0.0010
+b_CongAB                    -0.0018           -0.0021            0.0008
+b_CongCD                    -0.0031           -0.0003           -0.0002
+b_CSECO                     -0.0002            0.0024           -0.0003
+b_Hpico                      0.0009           -0.0019           -0.0005
+b_Joven30                    0.0019           -0.0024           -0.0025
+b_Adulto40                   0.0021           -0.0011           -0.0012
+b_Adulto60                   0.0007            0.0001           -0.0002
+b_USOCINTURON                0.0046            0.0000           -0.0009
+                        zeta_IgPare       zeta_UsoCel   zeta_PasoPeaton
+asc_ruta1                   -0.0001            0.0000           -0.0011
+asc_ruta2                   -0.0001            0.0000           -0.0011
+asc_ruta3                   -0.0001            0.0000           -0.0011
+b_tt                        -0.0023           -0.0009            0.0012
+b_dt                         0.0015            0.0005            0.0021
+b_CongAB                    -0.0001            0.0022            0.0045
+b_CongCD                     0.0004            0.0000            0.0036
+b_CSECO                      0.0009           -0.0008            0.0021
+b_Hpico                     -0.0003           -0.0005           -0.0009
+b_Joven30                   -0.0035           -0.0013           -0.0077
+b_Adulto40                  -0.0022           -0.0009           -0.0062
+b_Adulto60                   0.0003            0.0008           -0.0024
+b_USOCINTURON                0.0022           -0.0005            0.0095
+                      zeta_UsoDirec        tau_FRbr_1        tau_FRbr_2
+asc_ruta1                    0.0023           -0.0019           -0.0018
+asc_ruta2                    0.0023           -0.0019           -0.0018
+asc_ruta3                    0.0023           -0.0019           -0.0018
+b_tt                         0.0076           -0.0031           -0.0030
+b_dt                        -0.0074            0.0015            0.0014
+b_CongAB                    -0.0005           -0.0036           -0.0024
+b_CongCD                     0.0000           -0.0009           -0.0004
+b_CSECO                     -0.0069            0.0012            0.0028
+b_Hpico                      0.0042            0.0007           -0.0004
+b_Joven30                    0.0347           -0.0047           -0.0027
+b_Adulto40                   0.0124           -0.0027           -0.0020
+b_Adulto60                  -0.0009           -0.0002           -0.0005
+b_USOCINTURON               -0.0644            0.0182            0.0142
+                         tau_FRbr_3        tau_FRbr_4     tau_EnfCond_1
+asc_ruta1                   -0.0017           -0.0008           -0.0019
+asc_ruta2                   -0.0017           -0.0008           -0.0019
+asc_ruta3                   -0.0017           -0.0008           -0.0019
+b_tt                        -0.0027           -0.0014           -0.0031
+b_dt                         0.0014            0.0005            0.0015
+b_CongAB                    -0.0021           -0.0008           -0.0034
+b_CongCD                    -0.0003            0.0004           -0.0006
+b_CSECO                      0.0029            0.0025            0.0020
+b_Hpico                     -0.0007           -0.0009            0.0005
+b_Joven30                   -0.0026            0.0003           -0.0031
+b_Adulto40                  -0.0020           -0.0002           -0.0018
+b_Adulto60                  -0.0006           -0.0003            0.0004
+b_USOCINTURON                0.0134            0.0040            0.0161
+                      tau_EnfCond_2     tau_EnfCond_3     tau_EnfCond_4
+asc_ruta1                   -0.0018           -0.0017           -0.0012
+asc_ruta2                   -0.0018           -0.0017           -0.0011
+asc_ruta3                   -0.0018           -0.0017           -0.0011
+b_tt                        -0.0027           -0.0024           -0.0015
+b_dt                         0.0012            0.0010            0.0005
+b_CongAB                    -0.0021           -0.0017           -0.0008
+b_CongCD                    -0.0004           -0.0003            0.0002
+b_CSECO                      0.0018            0.0016            0.0012
+b_Hpico                     -0.0005           -0.0006           -0.0007
+b_Joven30                   -0.0041           -0.0041           -0.0026
+b_Adulto40                  -0.0029           -0.0030           -0.0020
+b_Adulto60                  -0.0013           -0.0017           -0.0017
+b_USOCINTURON                0.0169            0.0151            0.0095
+                       tau_AFrSem_1      tau_AFrSem_2      tau_AFrSem_3
+asc_ruta1                   -0.0017           -0.0016           -0.0016
+asc_ruta2                   -0.0017           -0.0016           -0.0016
+asc_ruta3                   -0.0017           -0.0016           -0.0016
+b_tt                        -0.0044           -0.0006           -0.0004
+b_dt                         0.0023            0.0001            0.0001
+b_CongAB                    -0.0019           -0.0038           -0.0040
+b_CongCD                     0.0007           -0.0023           -0.0026
+b_CSECO                      0.0024            0.0010            0.0010
+b_Hpico                     -0.0007            0.0010            0.0013
+b_Joven30                   -0.0048           -0.0018           -0.0017
+b_Adulto40                  -0.0033           -0.0007           -0.0005
+b_Adulto60                  -0.0006            0.0000            0.0001
+b_USOCINTURON                0.0129            0.0165            0.0162
+                       tau_AFrSem_4       tau_CulFr_1       tau_CulFr_2
+asc_ruta1                   -0.0008           -0.0016           -0.0019
+asc_ruta2                   -0.0009           -0.0016           -0.0019
+asc_ruta3                   -0.0009           -0.0016           -0.0019
+b_tt                         0.0011           -0.0024           -0.0031
+b_dt                        -0.0010            0.0004            0.0013
+b_CongAB                    -0.0032           -0.0003           -0.0025
+b_CongCD                    -0.0021            0.0001           -0.0002
+b_CSECO                      0.0003            0.0005            0.0018
+b_Hpico                      0.0014            0.0001           -0.0002
+b_Joven30                    0.0016           -0.0021           -0.0032
+b_Adulto40                   0.0015           -0.0018           -0.0023
+b_Adulto60                   0.0005           -0.0005           -0.0004
+b_USOCINTURON                0.0083            0.0150            0.0169
+                        tau_CulFr_3       tau_CulFr_4     tau_OmLmVel_1
+asc_ruta1                   -0.0018           -0.0012           -0.0019
+asc_ruta2                   -0.0018           -0.0012           -0.0019
+asc_ruta3                   -0.0018           -0.0012           -0.0019
+b_tt                        -0.0030           -0.0019           -0.0028
+b_dt                         0.0016            0.0014            0.0012
+b_CongAB                    -0.0033           -0.0033           -0.0029
+b_CongCD                    -0.0004           -0.0003           -0.0006
+b_CSECO                      0.0022            0.0021            0.0023
+b_Hpico                     -0.0002           -0.0003           -0.0001
+b_Joven30                   -0.0037           -0.0031           -0.0030
+b_Adulto40                  -0.0025           -0.0018           -0.0020
+b_Adulto60                  -0.0003           -0.0001           -0.0003
+b_USOCINTURON                0.0166            0.0110            0.0162
+                      tau_OmLmVel_2     tau_OmLmVel_3     tau_OmLmVel_4
+asc_ruta1                   -0.0017           -0.0015           -0.0012
+asc_ruta2                   -0.0017           -0.0015           -0.0012
+asc_ruta3                   -0.0017           -0.0015           -0.0012
+b_tt                        -0.0031           -0.0029           -0.0024
+b_dt                         0.0016            0.0015            0.0012
+b_CongAB                    -0.0027           -0.0025           -0.0020
+b_CongCD                    -0.0004           -0.0003           -0.0002
+b_CSECO                      0.0013            0.0012            0.0008
+b_Hpico                      0.0004            0.0004            0.0004
+b_Joven30                   -0.0042           -0.0039           -0.0032
+b_Adulto40                  -0.0026           -0.0024           -0.0020
+b_Adulto60                  -0.0004           -0.0003           -0.0003
+b_USOCINTURON                0.0149            0.0132            0.0098
+                       tau_IgPare_1      tau_IgPare_2      tau_IgPare_3
+asc_ruta1                   -0.0019           -0.0017           -0.0016
+asc_ruta2                   -0.0019           -0.0017           -0.0016
+asc_ruta3                   -0.0019           -0.0017           -0.0016
+b_tt                        -0.0027           -0.0037           -0.0035
+b_dt                         0.0011            0.0021            0.0020
+b_CongAB                    -0.0027           -0.0033           -0.0032
+b_CongCD                    -0.0007           -0.0001            0.0002
+b_CSECO                      0.0019            0.0019            0.0019
+b_Hpico                     -0.0001            0.0007            0.0007
+b_Joven30                   -0.0028           -0.0052           -0.0050
+b_Adulto40                  -0.0018           -0.0033           -0.0032
+b_Adulto60                  -0.0004           -0.0001           -0.0001
+b_USOCINTURON                0.0157            0.0163            0.0154
+                       tau_IgPare_4      tau_UsoCel_1      tau_UsoCel_2
+asc_ruta1                   -0.0011           -0.0011           -0.0013
+asc_ruta2                   -0.0011           -0.0011           -0.0013
+asc_ruta3                   -0.0011           -0.0011           -0.0013
+b_tt                        -0.0029           -0.0015           -0.0022
+b_dt                         0.0016            0.0006            0.0010
+b_CongAB                    -0.0024           -0.0020           -0.0021
+b_CongCD                     0.0007            0.0000           -0.0003
+b_CSECO                      0.0015            0.0015            0.0014
+b_Hpico                      0.0005           -0.0002            0.0001
+b_Joven30                   -0.0038           -0.0016           -0.0025
+b_Adulto40                  -0.0024           -0.0012           -0.0017
+b_Adulto60                   0.0001           -0.0005           -0.0002
+b_USOCINTURON                0.0110            0.0103            0.0122
+                       tau_UsoCel_3      tau_UsoCel_4  tau_PasoPeaton_1
+asc_ruta1                   -0.0012           -0.0005           -0.0002
+asc_ruta2                   -0.0012           -0.0005           -0.0002
+asc_ruta3                   -0.0012           -0.0005           -0.0002
+b_tt                        -0.0021           -0.0009           -0.0011
+b_dt                         0.0010            0.0004            0.0028
+b_CongAB                    -0.0018           -0.0006            0.0031
+b_CongCD                    -0.0002            0.0000            0.0011
+b_CSECO                      0.0012            0.0004            0.0033
+b_Hpico                      0.0001            0.0000           -0.0031
+b_Joven30                   -0.0025           -0.0011           -0.0160
+b_Adulto40                  -0.0017           -0.0008           -0.0058
+b_Adulto60                  -0.0002            0.0000           -0.0004
+b_USOCINTURON                0.0113            0.0047            0.0235
+                   tau_PasoPeaton_2  tau_PasoPeaton_3  tau_PasoPeaton_4
+asc_ruta1                    0.0001            0.0004            0.0009
+asc_ruta2                    0.0001            0.0004            0.0009
+asc_ruta3                    0.0001            0.0004            0.0009
+b_tt                        -0.0009           -0.0007           -0.0008
+b_dt                         0.0026            0.0022            0.0005
+b_CongAB                     0.0026            0.0020           -0.0001
+b_CongCD                     0.0005            0.0000           -0.0014
+b_CSECO                      0.0033            0.0027            0.0005
+b_Hpico                     -0.0033           -0.0031           -0.0019
+b_Joven30                   -0.0156           -0.0131           -0.0047
+b_Adulto40                  -0.0048           -0.0034            0.0008
+b_Adulto60                   0.0002            0.0005            0.0016
+b_USOCINTURON                0.0227            0.0191            0.0066
+                     tau_UsoDirec_1    tau_UsoDirec_2    tau_UsoDirec_3
+asc_ruta1                    0.0025            0.0027            0.0028
+asc_ruta2                    0.0025            0.0026            0.0027
+asc_ruta3                    0.0025            0.0026            0.0027
+b_tt                         0.0076            0.0076            0.0076
+b_dt                        -0.0074           -0.0071           -0.0069
+b_CongAB                    -0.0005            0.0000            0.0005
+b_CongCD                    -0.0003            0.0001            0.0000
+b_CSECO                     -0.0070           -0.0060           -0.0056
+b_Hpico                      0.0040            0.0034            0.0029
+b_Joven30                    0.0335            0.0325            0.0306
+b_Adulto40                   0.0124            0.0117            0.0113
+b_Adulto60                  -0.0008           -0.0009           -0.0007
+b_USOCINTURON               -0.0631           -0.0625           -0.0601
+                     tau_UsoDirec_4
+asc_ruta1                   -0.0015
+asc_ruta2                   -0.0015
+asc_ruta3                   -0.0015
+b_tt                        -0.0057
+b_dt                         0.0068
+b_CongAB                     0.0020
+b_CongCD                     0.0003
+b_CSECO                      0.0066
+b_Hpico                     -0.0052
+b_Joven30                   -0.0333
+b_Adulto40                  -0.0111
+b_Adulto60                   0.0009
+b_USOCINTURON                0.0586
+ [ reached getOption("max.print") -- omitted 63 rows ]
+
+Robust correlation matrix:
+                          asc_ruta1         asc_ruta2         asc_ruta3
+asc_ruta1                    1.0000            0.9900            0.9795
+asc_ruta2                    0.9900            1.0000            0.9773
+asc_ruta3                    0.9795            0.9773            1.0000
+b_tt                         0.0544            0.0347           -0.0336
+b_dt                        -0.1219           -0.1040           -0.0410
+b_CongAB                    -0.0361           -0.0351           -0.0105
+b_CongCD                    -0.0012           -0.0009            0.0481
+b_CSECO                      0.2058            0.2186            0.2159
+b_Hpico                      0.2004            0.2021            0.2124
+b_Joven30                    0.4840            0.4812            0.4764
+b_Adulto40                   0.2081            0.1962            0.1982
+b_Adulto60                   0.1914            0.1769            0.1706
+b_USOCINTURON                0.1935            0.1948            0.1793
+                               b_tt              b_dt          b_CongAB
+asc_ruta1                    0.0544           -0.1219           -0.0361
+asc_ruta2                    0.0347           -0.1040           -0.0351
+asc_ruta3                   -0.0336           -0.0410           -0.0105
+b_tt                         1.0000           -0.7710            0.2817
+b_dt                        -0.7710            1.0000           -0.1148
+b_CongAB                     0.2817           -0.1148            1.0000
+b_CongCD                     0.1538            0.0498            0.5604
+b_CSECO                      0.0158           -0.0591            0.1696
+b_Hpico                     -0.0630            0.0406           -0.0611
+b_Joven30                    0.0130           -0.0763           -0.1383
+b_Adulto40                   0.0334           -0.0284           -0.1522
+b_Adulto60                   0.0471           -0.0465           -0.1208
+b_USOCINTURON               -0.0742            0.0647           -0.1589
+                           b_CongCD           b_CSECO           b_Hpico
+asc_ruta1                   -0.0012            0.2058            0.2004
+asc_ruta2                   -0.0009            0.2186            0.2021
+asc_ruta3                    0.0481            0.2159            0.2124
+b_tt                         0.1538            0.0158           -0.0630
+b_dt                         0.0498           -0.0591            0.0406
+b_CongAB                     0.5604            0.1696           -0.0611
+b_CongCD                     1.0000            0.1770            0.0436
+b_CSECO                      0.1770            1.0000           -0.0248
+b_Hpico                      0.0436           -0.0248            1.0000
+b_Joven30                   -0.0413           -0.0163            0.0176
+b_Adulto40                  -0.0052            0.0461           -0.0453
+b_Adulto60                  -0.0370           -0.0216           -0.0411
+b_USOCINTURON               -0.1190           -0.1416            0.0567
+                          b_Joven30        b_Adulto40        b_Adulto60
+asc_ruta1                    0.4840            0.2081            0.1914
+asc_ruta2                    0.4812            0.1962            0.1769
+asc_ruta3                    0.4764            0.1982            0.1706
+b_tt                         0.0130            0.0334            0.0471
+b_dt                        -0.0763           -0.0284           -0.0465
+b_CongAB                    -0.1383           -0.1522           -0.1208
+b_CongCD                    -0.0413           -0.0052           -0.0370
+b_CSECO                     -0.0163            0.0461           -0.0216
+b_Hpico                      0.0176           -0.0453           -0.0411
+b_Joven30                    1.0000            0.5735            0.5235
+b_Adulto40                   0.5735            1.0000            0.7505
+b_Adulto60                   0.5235            0.7505            1.0000
+b_USOCINTURON                0.0566           -0.0107           -0.0087
+                      b_USOCINTURON      b_USODISPMOB          b_HTRB_2
+asc_ruta1                    0.1935            0.2026            0.8384
+asc_ruta2                    0.1948            0.2114            0.8341
+asc_ruta3                    0.1793            0.2131            0.8307
+b_tt                        -0.0742            0.1353           -0.0069
+b_dt                         0.0647           -0.0166           -0.0589
+b_CongAB                    -0.1589            0.1413           -0.1197
+b_CongCD                    -0.1190            0.1430           -0.0567
+b_CSECO                     -0.1416            0.0779           -0.0378
+b_Hpico                      0.0567            0.0098            0.0935
+b_Joven30                    0.0566           -0.0788            0.3869
+b_Adulto40                  -0.0107           -0.1970            0.0726
+b_Adulto60                  -0.0087           -0.0656            0.0294
+b_USOCINTURON                1.0000           -0.0245            0.0448
+                           b_HTRB_3          b_HTRB_4       b_EduBasica
+asc_ruta1                    0.8855            0.8738            0.1527
+asc_ruta2                    0.8775            0.8660            0.1555
+asc_ruta3                    0.8732            0.8654            0.1643
+b_tt                        -0.0112           -0.0432           -0.1077
+b_dt                        -0.0565           -0.0193            0.0766
+b_CongAB                    -0.1397           -0.1239           -0.0766
+b_CongCD                    -0.0445           -0.0417           -0.0385
+b_CSECO                     -0.0097           -0.0213            0.0623
+b_Hpico                      0.1078            0.1146           -0.0029
+b_Joven30                    0.4041            0.4120            0.0726
+b_Adulto40                   0.0796            0.0852           -0.0103
+b_Adulto60                   0.0117            0.0107            0.0095
+b_USOCINTURON                0.0522            0.0427            0.0377
+                            b_Exp_1           b_Exp_2           b_Exp_3
+asc_ruta1                    0.1895           -0.2769            0.0148
+asc_ruta2                    0.1831           -0.2906            0.0145
+asc_ruta3                    0.1846           -0.2828            0.0346
+b_tt                        -0.0707            0.0036           -0.0964
+b_dt                         0.0504            0.0179            0.1010
+b_CongAB                     0.0177            0.0298           -0.0836
+b_CongCD                    -0.0791           -0.0484           -0.0259
+b_CSECO                     -0.0423           -0.0413           -0.0684
+b_Hpico                     -0.0155            0.0262            0.1577
+b_Joven30                   -0.1348           -0.5463           -0.0794
+b_Adulto40                  -0.2048           -0.2342           -0.0969
+b_Adulto60                  -0.1985           -0.0810           -0.0454
+b_USOCINTURON               -0.0668           -0.0681            0.0165
+                            b_Exp_4     b_NoInfo_traf          lambda_1
+asc_ruta1                    0.0511           -0.0098           -0.0702
+asc_ruta2                    0.0525            0.0098           -0.0804
+asc_ruta3                    0.0507           -0.0021           -0.0584
+b_tt                        -0.0522           -0.0461           -0.0166
+b_dt                         0.0127            0.0266            0.0281
+b_CongAB                     0.0005            0.1084            0.1092
+b_CongCD                     0.0013           -0.0142            0.0726
+b_CSECO                      0.0590            0.1022           -0.0064
+b_Hpico                     -0.0001            0.0004           -0.0708
+b_Joven30                   -0.1004           -0.0980            0.0106
+b_Adulto40                  -0.1479           -0.2125            0.0334
+b_Adulto60                  -0.0660           -0.1476           -0.0043
+b_USOCINTURON               -0.0266            0.0092            0.1989
+                           lambda_2     gamma_JOVEN30 gamma_USOCINTURON
+asc_ruta1                   -0.2255           -0.2779           -0.1276
+asc_ruta2                   -0.2304           -0.3011           -0.1212
+asc_ruta3                   -0.2426           -0.2736           -0.1307
+b_tt                         0.0902            0.0611            0.0279
+b_dt                         0.0438           -0.1016            0.0212
+b_CongAB                     0.0402           -0.0572           -0.0151
+b_CongCD                     0.0581           -0.0462           -0.0591
+b_CSECO                      0.0317           -0.0270           -0.0603
+b_Hpico                     -0.0716            0.0203            0.0025
+b_Joven30                   -0.1906            0.0276            0.0154
+b_Adulto40                  -0.1007            0.0838            0.0667
+b_Adulto60                  -0.0461            0.0579            0.0627
+b_USOCINTURON                0.2878           -0.1147           -0.2158
+                    gamma_EDUBASICA       gamma_EXP_2  gamma_USODISPMOB
+asc_ruta1                    0.0594            0.0765            0.0035
+asc_ruta2                    0.0435            0.0893            0.0204
+asc_ruta3                    0.0754            0.0714            0.0015
+b_tt                        -0.0342           -0.0316            0.0234
+b_dt                         0.0041            0.0754           -0.0313
+b_CongAB                     0.0555            0.0007           -0.0269
+b_CongCD                     0.0794            0.0008            0.0089
+b_CSECO                     -0.0080            0.0036            0.0684
+b_Hpico                      0.0249           -0.1018            0.0126
+b_Joven30                    0.0380           -0.0018            0.0115
+b_Adulto40                   0.0947           -0.0665           -0.0723
+b_Adulto60                   0.0317           -0.0256           -0.0275
+b_USOCINTURON               -0.0939            0.1117           -0.1508
+                          gamma_LV1         zeta_FRbr      zeta_EnfCond
+asc_ruta1                   -0.0665            0.0030           -0.0303
+asc_ruta2                   -0.0614           -0.0133           -0.0338
+asc_ruta3                   -0.0904            0.0145           -0.0712
+b_tt                        -0.0031           -0.0326            0.1347
+b_dt                        -0.0019            0.0531           -0.0773
+b_CongAB                    -0.0684            0.0608            0.1105
+b_CongCD                    -0.1501            0.0368            0.0101
+b_CSECO                     -0.0607            0.0270            0.0336
+b_Hpico                     -0.0642            0.0295           -0.0690
+b_Joven30                   -0.0846           -0.0166           -0.0297
+b_Adulto40                  -0.0623            0.0355           -0.0364
+b_Adulto60                  -0.0668            0.0121           -0.0315
+b_USOCINTURON                0.0005            0.0072            0.0046
+                        zeta_AFrSem        zeta_CulFr      zeta_OmLmVel
+asc_ruta1                   -0.0473           -0.0587            0.0080
+asc_ruta2                   -0.0496           -0.0641            0.0109
+asc_ruta3                   -0.0413           -0.0626            0.0182
+b_tt                        -0.0476            0.1658           -0.0790
+b_dt                         0.0815           -0.1251            0.0120
+b_CongAB                    -0.0914            0.0899           -0.0010
+b_CongCD                     0.0202            0.0961            0.0203
+b_CSECO                      0.0181            0.0380           -0.0210
+b_Hpico                     -0.0634           -0.0921            0.0026
+b_Joven30                    0.0472           -0.0765           -0.0249
+b_Adulto40                   0.0755           -0.0311           -0.0798
+b_Adulto60                   0.0717           -0.0507           -0.0552
+b_USOCINTURON               -0.1322            0.0186            0.0621
+                        zeta_IgPare       zeta_UsoCel   zeta_PasoPeaton
+asc_ruta1                    0.0126            0.0155           -0.0466
+asc_ruta2                    0.0153            0.0185           -0.0518
+asc_ruta3                    0.0129            0.0066           -0.0362
+b_tt                        -0.0948           -0.0599            0.0477
+b_dt                        -0.0002            0.0428            0.0027
+b_CongAB                     0.0076            0.1004            0.1023
+b_CongCD                    -0.0092            0.0015            0.1619
+b_CSECO                      0.0779            0.0446            0.0138
+b_Hpico                     -0.0229            0.0088           -0.0032
+b_Joven30                   -0.0332            0.0200           -0.0352
+b_Adulto40                  -0.0755            0.0024           -0.0624
+b_Adulto60                  -0.0392            0.0352           -0.0149
+b_USOCINTURON               -0.0453            0.1059            0.0844
+                      zeta_UsoDirec        tau_FRbr_1        tau_FRbr_2
+asc_ruta1                    0.0755           -0.1465           -0.1035
+asc_ruta2                    0.0511           -0.1364           -0.0964
+asc_ruta3                    0.0804           -0.1457           -0.0919
+b_tt                        -0.0097           -0.0015           -0.0279
+b_dt                        -0.0353            0.0154            0.0721
+b_CongAB                     0.0236           -0.0653           -0.0080
+b_CongCD                     0.0671           -0.0709           -0.0359
+b_CSECO                      0.0103           -0.0495           -0.0509
+b_Hpico                      0.0425           -0.0135            0.0245
+b_Joven30                    0.0848            0.0210            0.0206
+b_Adulto40                   0.1144            0.0088            0.0330
+b_Adulto60                   0.0672            0.0435            0.0286
+b_USOCINTURON               -0.0904           -0.2227           -0.2265
+                         tau_FRbr_3        tau_FRbr_4     tau_EnfCond_1
+asc_ruta1                   -0.1071           -0.0713           -0.1410
+asc_ruta2                   -0.1019           -0.0748           -0.1324
+asc_ruta3                   -0.0970           -0.0740           -0.1338
+b_tt                        -0.0182            0.0214           -0.0117
+b_dt                         0.0593            0.0022            0.0142
+b_CongAB                     0.0051            0.0038           -0.0459
+b_CongCD                    -0.0323            0.0116           -0.0559
+b_CSECO                     -0.0372           -0.0149           -0.0825
+b_Hpico                      0.0380            0.0929           -0.0063
+b_Joven30                    0.0092           -0.0073            0.0165
+b_Adulto40                   0.0381            0.0299           -0.0021
+b_Adulto60                   0.0381            0.0422            0.0507
+b_USOCINTURON               -0.2250           -0.1699           -0.2114
+                      tau_EnfCond_2     tau_EnfCond_3     tau_EnfCond_4
+asc_ruta1                   -0.1141           -0.1190           -0.0759
+asc_ruta2                   -0.1045           -0.1112           -0.0705
+asc_ruta3                   -0.1351           -0.1430           -0.1111
+b_tt                         0.0987            0.0851            0.1249
+b_dt                        -0.0148           -0.0152           -0.0944
+b_CongAB                     0.0274            0.0203            0.0047
+b_CongCD                    -0.0571           -0.0643           -0.0426
+b_CSECO                     -0.0625           -0.0201           -0.0065
+b_Hpico                     -0.0225           -0.0313           -0.0187
+b_Joven30                    0.0007           -0.0114           -0.0335
+b_Adulto40                   0.0146           -0.0062           -0.0748
+b_Adulto60                   0.0480            0.0248            0.0129
+b_USOCINTURON               -0.2121           -0.2122           -0.1651
+                       tau_AFrSem_1      tau_AFrSem_2      tau_AFrSem_3
+asc_ruta1                   -0.1105           -0.0952           -0.0974
+asc_ruta2                   -0.1018           -0.0881           -0.0899
+asc_ruta3                   -0.1143           -0.0898           -0.0919
+b_tt                         0.0268           -0.0263           -0.0254
+b_dt                        -0.0173            0.0730            0.0661
+b_CongAB                     0.0149           -0.0849           -0.0813
+b_CongCD                    -0.0678           -0.0264           -0.0248
+b_CSECO                     -0.0622           -0.0296           -0.0162
+b_Hpico                      0.0366           -0.0140           -0.0236
+b_Joven30                   -0.0144            0.0539            0.0525
+b_Adulto40                  -0.0343            0.0681            0.0732
+b_Adulto60                   0.0001            0.0848            0.0901
+b_USOCINTURON               -0.1479           -0.2330           -0.2284
+                       tau_AFrSem_4       tau_CulFr_1       tau_CulFr_2
+asc_ruta1                   -0.0719           -0.0956           -0.1375
+asc_ruta2                   -0.0713           -0.0912           -0.1315
+asc_ruta3                   -0.0696           -0.0933           -0.1379
+b_tt                        -0.0090           -0.0088            0.0639
+b_dt                         0.0535            0.0369            0.0192
+b_CongAB                    -0.0559           -0.0621            0.0201
+b_CongCD                     0.0274           -0.0755            0.0008
+b_CSECO                      0.0045           -0.0806           -0.1057
+b_Hpico                     -0.0369            0.0332            0.0118
+b_Joven30                    0.0344            0.0175           -0.0137
+b_Adulto40                   0.0650            0.0322            0.0326
+b_Adulto60                   0.0486            0.0628            0.0409
+b_USOCINTURON               -0.1881           -0.1881           -0.2285
+                        tau_CulFr_3       tau_CulFr_4     tau_OmLmVel_1
+asc_ruta1                   -0.1570           -0.1127           -0.1513
+asc_ruta2                   -0.1517           -0.1109           -0.1405
+asc_ruta3                   -0.1603           -0.1199           -0.1469
+b_tt                         0.1061            0.0431            0.0271
+b_dt                        -0.0251           -0.0437            0.0102
+b_CongAB                     0.0029           -0.0645           -0.0509
+b_CongCD                    -0.0144           -0.0169           -0.0627
+b_CSECO                     -0.0947           -0.0571           -0.0471
+b_Hpico                     -0.0144           -0.0590            0.0020
+b_Joven30                   -0.0240           -0.0445            0.0211
+b_Adulto40                  -0.0108            0.0052            0.0272
+b_Adulto60                   0.0089            0.0355            0.0515
+b_USOCINTURON               -0.2481           -0.1373           -0.2260
+                      tau_OmLmVel_2     tau_OmLmVel_3     tau_OmLmVel_4
+asc_ruta1                   -0.0966           -0.0926           -0.0540
+asc_ruta2                   -0.0824           -0.0810           -0.0509
+asc_ruta3                   -0.0803           -0.0785           -0.0419
+b_tt                        -0.0600           -0.0417           -0.0750
+b_dt                         0.0736            0.0615            0.0820
+b_CongAB                    -0.0419           -0.0304           -0.0514
+b_CongCD                    -0.0213           -0.0260            0.0013
+b_CSECO                     -0.0502           -0.0508           -0.0573
+b_Hpico                      0.0259            0.0237           -0.0089
+b_Joven30                   -0.0261           -0.0276           -0.0399
+b_Adulto40                  -0.0416           -0.0480           -0.0412
+b_Adulto60                  -0.0006            0.0123            0.0211
+b_USOCINTURON               -0.1140           -0.1523           -0.0903
+                       tau_IgPare_1      tau_IgPare_2      tau_IgPare_3
+asc_ruta1                   -0.1484           -0.0978           -0.1016
+asc_ruta2                   -0.1420           -0.0873           -0.0939
+asc_ruta3                   -0.1450           -0.0954           -0.0979
+b_tt                         0.0369           -0.0595           -0.0572
+b_dt                         0.0144            0.0410            0.0327
+b_CongAB                    -0.0474           -0.0209           -0.0149
+b_CongCD                    -0.0542           -0.0778           -0.0856
+b_CSECO                     -0.0848            0.0023            0.0112
+b_Hpico                      0.0026            0.0119            0.0172
+b_Joven30                    0.0163           -0.0324           -0.0538
+b_Adulto40                   0.0152           -0.0508           -0.0703
+b_Adulto60                   0.0485           -0.0084           -0.0133
+b_USOCINTURON               -0.2013           -0.2087           -0.2123
+                       tau_IgPare_4      tau_UsoCel_1      tau_UsoCel_2
+asc_ruta1                   -0.0427           -0.1417           -0.2145
+asc_ruta2                   -0.0483           -0.1400           -0.2083
+asc_ruta3                   -0.0413           -0.1379           -0.2260
+b_tt                        -0.0747           -0.0609           -0.0352
+b_dt                         0.0412            0.0286            0.0055
+b_CongAB                    -0.0258           -0.1369           -0.1065
+b_CongCD                    -0.0036           -0.0935           -0.0798
+b_CSECO                      0.0327           -0.0366           -0.0699
+b_Hpico                     -0.0209            0.0209            0.0003
+b_Joven30                   -0.0207           -0.0431           -0.1242
+b_Adulto40                  -0.0319           -0.0447           -0.0282
+b_Adulto60                   0.0198            0.0121           -0.0201
+b_USOCINTURON               -0.1714           -0.1537           -0.1905
+                       tau_UsoCel_3      tau_UsoCel_4  tau_PasoPeaton_1
+asc_ruta1                   -0.2229           -0.0367           -0.0209
+asc_ruta2                   -0.2166           -0.0314           -0.0111
+asc_ruta3                   -0.2346           -0.0484           -0.0217
+b_tt                         0.0081            0.1132           -0.0496
+b_dt                        -0.0029           -0.0603            0.0145
+b_CongAB                    -0.1167            0.0075           -0.0621
+b_CongCD                    -0.0703            0.0324           -0.0663
+b_CSECO                     -0.0713            0.0087            0.0151
+b_Hpico                      0.0473           -0.0243            0.0138
+b_Joven30                   -0.1196            0.0635           -0.1101
+b_Adulto40                  -0.0801            0.0579           -0.1436
+b_Adulto60                  -0.0575            0.0585           -0.0802
+b_USOCINTURON               -0.2226           -0.0536            0.1848
+                   tau_PasoPeaton_2  tau_PasoPeaton_3  tau_PasoPeaton_4
+asc_ruta1                   -0.0379           -0.0134           -0.0170
+asc_ruta2                   -0.0295           -0.0089           -0.0140
+asc_ruta3                   -0.0377           -0.0198           -0.0178
+b_tt                        -0.0323           -0.0339           -0.0901
+b_dt                         0.0040           -0.0141           -0.0205
+b_CongAB                     0.0009           -0.0398           -0.0955
+b_CongCD                    -0.0333           -0.0818           -0.1075
+b_CSECO                      0.0182            0.0291            0.0349
+b_Hpico                     -0.0297           -0.0331           -0.0439
+b_Joven30                   -0.0556           -0.0310            0.0094
+b_Adulto40                  -0.1083           -0.1042           -0.0370
+b_Adulto60                  -0.0848           -0.1017           -0.0394
+b_USOCINTURON                0.1858            0.1440            0.1537
+                     tau_UsoDirec_1    tau_UsoDirec_2    tau_UsoDirec_3
+asc_ruta1                    0.0843            0.0865            0.0849
+asc_ruta2                    0.0602            0.0613            0.0612
+asc_ruta3                    0.0874            0.0866            0.0865
+b_tt                        -0.0083           -0.0032           -0.0087
+b_dt                        -0.0367           -0.0513           -0.0525
+b_CongAB                     0.0280            0.0194            0.0214
+b_CongCD                     0.0666            0.0653            0.0618
+b_CSECO                      0.0191            0.0107            0.0069
+b_Hpico                      0.0418            0.0439            0.0437
+b_Joven30                    0.0738            0.0671            0.0601
+b_Adulto40                   0.0955            0.0922            0.0795
+b_Adulto60                   0.0581            0.0531            0.0511
+b_USOCINTURON               -0.0736           -0.0349           -0.0060
+                     tau_UsoDirec_4
+asc_ruta1                   -0.0645
+asc_ruta2                   -0.0425
+asc_ruta3                   -0.0687
+b_tt                         0.0105
+b_dt                         0.0218
+b_CongAB                    -0.0253
+b_CongCD                    -0.0602
+b_CSECO                     -0.0010
+b_Hpico                     -0.0478
+b_Joven30                   -0.0905
+b_Adulto40                  -0.1440
+b_Adulto60                  -0.0850
+b_USOCINTURON                0.1644
+ [ reached getOption("max.print") -- omitted 63 rows ]
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+ row Avg prob per choice
+ 266        5.908098e-12
+ 125        8.514799e-12
+ 272        1.648387e-10
+  42        2.214163e-10
+ 112        6.361064e-10
+  14        7.708716e-10
+  34        9.014982e-10
+ 219        9.580527e-10
+  13        2.060618e-09
+ 106        4.662877e-09
+ 111        1.235725e-08
+  79        1.505101e-08
+ 122        1.678549e-08
+ 277        2.776591e-08
+ 229        2.804067e-08
+  83        3.595489e-08
+ 154        4.280285e-08
+ 137        4.852591e-08
+ 138        6.259777e-08
+  96        7.609466e-08
+
+Changes in parameter estimates from starting values:
+                  Initial Estimate Difference
+asc_ruta1               0   4.6020     4.6020
+asc_ruta2               0   3.5897     3.5897
+asc_ruta3               0   2.8403     2.8403
+asc_rutaEC              0   0.0000     0.0000
+b_tt                    0   0.0864     0.0864
+b_dt                    0  -0.1949    -0.1949
+b_CongAB                0  -0.1116    -0.1116
+b_CongCD                0  -0.5078    -0.5078
+b_CongEF                0   0.0000     0.0000
+b_CSECO                 0   0.0098     0.0098
+b_CLLUVIA               0   0.0000     0.0000
+b_Hpico                 0   0.0439     0.0439
+b_Hvalle                0   0.0000     0.0000
+b_Joven30               0  -1.6757    -1.6757
+b_Adulto40              0  -0.5532    -0.5532
+b_Adulto60              0  -0.5144    -0.5144
+b_AdultoMayor           0   0.0000     0.0000
+b_USOCINTURON           0  -0.1041    -0.1041
+b_NOUSOCINTURON         0   0.0000     0.0000
+b_USODISPMOB            0  -0.1003    -0.1003
+b_NOUSODISPMOB          0   0.0000     0.0000
+b_HTRB_1                0   0.0000     0.0000
+b_HTRB_2                0   5.4805     5.4805
+b_HTRB_3                0   5.0997     5.0997
+b_HTRB_4                0   4.8582     4.8582
+b_EduBasica             0   0.2826     0.2826
+b_EduSuperior           0   0.0000     0.0000
+b_Exp_1                 0   0.6156     0.6156
+b_Exp_2                 0   1.1954     1.1954
+b_Exp_3                 0   0.1445     0.1445
+b_Exp_4                 0   0.3896     0.3896
+b_Exp_5                 0   0.0000     0.0000
+b_Info_traf             0   0.0000     0.0000
+b_NoInfo_traf           0  -0.1589    -0.1589
+lambda_1                1  -0.1682    -1.1682
+lambda_2                1  -0.2437    -1.2437
+gamma_JOVEN30           0   0.5081     0.5081
+gamma_USOCINTURON       0  -0.5335    -0.5335
+gamma_EDUBASICA         0   0.4569     0.4569
+gamma_EXP_2             0  -0.4866    -0.4866
+gamma_USODISPMOB        0   0.3797     0.3797
+gamma_LV1               0  -0.3406    -0.3406
+zeta_FRbr               1   3.8851     2.8851
+zeta_EnfCond            1   2.8039     1.8039
+zeta_AFrSem             1   5.6737     4.6737
+zeta_CulFr              1   1.8184     0.8184
+zeta_OmLmVel            1   2.7718     1.7718
+zeta_IgPare             1   3.6539     2.6539
+zeta_UsoCel             1   0.7151    -0.2849
+zeta_PasoPeaton         1  -0.9341    -1.9341
+zeta_UsoDirec           1  -6.0036    -7.0036
+tau_FRbr_1             -2  -2.3165    -0.3165
+tau_FRbr_2             -1   2.9371     3.9371
+tau_FRbr_3              1   3.9210     2.9210
+tau_FRbr_4              2   8.1775     6.1775
+tau_EnfCond_1          -2  -1.5072     0.4928
+tau_EnfCond_2          -1   2.5824     3.5824
+tau_EnfCond_3           1   3.6424     2.6424
+tau_EnfCond_4           2   6.0785     4.0785
+tau_AFrSem_1           -2  -3.0374    -1.0374
+tau_AFrSem_2           -1   5.3305     6.3305
+tau_AFrSem_3            1   6.2646     5.2646
+tau_AFrSem_4            2  12.3201    10.3201
+tau_CulFr_1            -2  -2.6273    -0.6273
+tau_CulFr_2            -1  -0.1096     0.8904
+tau_CulFr_3             1   1.0010     0.0010
+tau_CulFr_4             2   4.1884     2.1884
+tau_OmLmVel_1          -2  -1.2535     0.7465
+tau_OmLmVel_2          -1   3.3728     4.3728
+tau_OmLmVel_3           1   4.2177     3.2177
+tau_OmLmVel_4           2   5.7568     3.7568
+tau_IgPare_1           -2  -1.4097     0.5903
+tau_IgPare_2           -1   4.6732     5.6732
+tau_IgPare_3            1   5.3534     4.3534
+tau_IgPare_4            2   7.7825     5.7825
+tau_UsoCel_1           -2  -1.7349     0.2651
+tau_UsoCel_2           -1   0.2126     1.2126
+tau_UsoCel_3            1   1.0619     0.0619
+tau_UsoCel_4            2   3.7612     1.7612
+tau_PasoPeaton_1       -2  -2.2341    -0.2341
+tau_PasoPeaton_2       -1  -0.7388     0.2612
+tau_PasoPeaton_3        1   0.0781    -0.9219
+tau_PasoPeaton_4        2   1.9095    -0.0905
+tau_UsoDirec_1         -2 -12.1222   -10.1222
+tau_UsoDirec_2         -1  -6.8413    -5.8413
+tau_UsoDirec_3          1  -4.4981    -5.4981
+tau_UsoDirec_4          2   2.7363     0.7363

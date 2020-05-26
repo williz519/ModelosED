@@ -1,0 +1,195 @@
+
+Reliability analysis   
+Call: psych::alpha(x = ModoCond)
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+      0.83      0.85    0.89      0.36 5.7 0.015  2.4 0.67     0.35
+
+ lower alpha upper     95% confidence boundaries
+0.8 0.83 0.86 
+
+ Reliability if an item is dropped:
+           raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+FRbr            0.80      0.82    0.87      0.34 4.6    0.018 0.061  0.35
+UsoDirec        0.84      0.86    0.90      0.41 6.3    0.014 0.069  0.50
+EnfCond         0.80      0.82    0.87      0.34 4.6    0.018 0.065  0.33
+AFrSem          0.80      0.82    0.87      0.34 4.6    0.018 0.059  0.35
+CulFr           0.81      0.83    0.88      0.35 4.9    0.018 0.071  0.35
+OmLmVel         0.81      0.83    0.87      0.35 4.8    0.018 0.069  0.33
+IgPare          0.80      0.82    0.86      0.33 4.5    0.018 0.066  0.34
+UsoCel          0.83      0.85    0.89      0.38 5.6    0.016 0.080  0.50
+PasoPeaton      0.87      0.88    0.89      0.44 7.0    0.012 0.046  0.50
+UsoPito         0.81      0.83    0.87      0.36 5.0    0.017 0.067  0.35
+
+ Item statistics 
+             n raw.r std.r r.cor r.drop mean   sd
+FRbr       282  0.78  0.80  0.80  0.713  2.0 1.04
+UsoDirec   282  0.42  0.39  0.30  0.269  3.9 1.11
+EnfCond    282  0.78  0.79  0.78  0.715  1.9 0.99
+AFrSem     282  0.77  0.79  0.79  0.703  1.9 0.95
+CulFr      282  0.71  0.71  0.67  0.604  2.6 1.18
+OmLmVel    282  0.73  0.75  0.73  0.651  1.8 0.91
+IgPare     282  0.80  0.82  0.82  0.744  1.8 0.84
+UsoCel     282  0.56  0.55  0.46  0.433  2.5 1.11
+PasoPeaton 282  0.28  0.24  0.16  0.094  3.2 1.30
+UsoPito    282  0.69  0.70  0.67  0.582  2.1 1.11
+
+Non missing response frequency for each item
+              1    2    3    4    5 miss
+FRbr       0.36 0.43 0.07 0.13 0.01    0
+UsoDirec   0.04 0.11 0.10 0.40 0.35    0
+EnfCond    0.37 0.44 0.08 0.09 0.02    0
+AFrSem     0.38 0.47 0.04 0.11 0.01    0
+CulFr      0.19 0.33 0.17 0.27 0.04    0
+OmLmVel    0.40 0.48 0.05 0.05 0.02    0
+IgPare     0.42 0.49 0.03 0.05 0.01    0
+UsoCel     0.19 0.39 0.17 0.22 0.02    0
+PasoPeaton 0.12 0.21 0.17 0.33 0.17    0
+UsoPito    0.30 0.46 0.07 0.11 0.05    0
+      FRbr          UsoDirec        EnfCond         AFrSem         CulFr      
+ Min.   :1.000   Min.   :1.000   Min.   :1.00   Min.   :1.00   Min.   :1.000  
+ 1st Qu.:1.000   1st Qu.:4.000   1st Qu.:1.00   1st Qu.:1.00   1st Qu.:2.000  
+ Median :2.000   Median :4.000   Median :2.00   Median :2.00   Median :2.000  
+ Mean   :2.011   Mean   :3.918   Mean   :1.94   Mean   :1.89   Mean   :2.631  
+ 3rd Qu.:2.000   3rd Qu.:5.000   3rd Qu.:2.00   3rd Qu.:2.00   3rd Qu.:4.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.00   Max.   :5.00   Max.   :5.000  
+    OmLmVel          IgPare          UsoCel        PasoPeaton       UsoPito     
+ Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000   Min.   :1.000  
+ 1st Qu.:1.000   1st Qu.:1.000   1st Qu.:2.000   1st Qu.:2.000   1st Qu.:1.000  
+ Median :2.000   Median :2.000   Median :2.000   Median :3.500   Median :2.000  
+ Mean   :1.819   Mean   :1.752   Mean   :2.507   Mean   :3.216   Mean   :2.135  
+ 3rd Qu.:2.000   3rd Qu.:2.000   3rd Qu.:3.000   3rd Qu.:4.000   3rd Qu.:2.000  
+ Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000   Max.   :5.000  
+                  FRbr   UsoDirec     EnfCond      AFrSem       CulFr    OmLmVel
+FRbr        1.00000000 0.08113131  0.68657088  0.79542170  0.61952082 0.55871316
+UsoDirec    0.08113131 1.00000000  0.14497911  0.06967520  0.24692299 0.11290637
+EnfCond     0.68657088 0.14497911  1.00000000  0.69499033  0.54364718 0.52557973
+AFrSem      0.79542170 0.06967520  0.69499033  1.00000000  0.60709053 0.61865520
+CulFr       0.61952082 0.24692299  0.54364718  0.60709053  1.00000000 0.48854143
+OmLmVel     0.55871316 0.11290637  0.52557973  0.61865520  0.48854143 1.00000000
+IgPare      0.61751475 0.15356367  0.56854530  0.67791292  0.54291527 0.76211069
+UsoCel      0.28223263 0.16481214  0.35228276  0.23682211  0.20347305 0.34987074
+PasoPeaton -0.02012213 0.43148119 -0.01471963 -0.04719413 -0.06384728 0.03932544
+UsoPito     0.58907337 0.12492669  0.68289866  0.51850932  0.45583762 0.44039480
+               IgPare    UsoCel  PasoPeaton    UsoPito
+FRbr       0.61751475 0.2822326 -0.02012213  0.5890734
+UsoDirec   0.15356367 0.1648121  0.43148119  0.1249267
+EnfCond    0.56854530 0.3522828 -0.01471963  0.6828987
+AFrSem     0.67791292 0.2368221 -0.04719413  0.5185093
+CulFr      0.54291527 0.2034731 -0.06384728  0.4558376
+OmLmVel    0.76211069 0.3498707  0.03932544  0.4403948
+IgPare     1.00000000 0.3480383  0.09776388  0.5778260
+UsoCel     0.34803829 1.0000000  0.31204501  0.3203261
+PasoPeaton 0.09776388 0.3120450  1.00000000 -0.1608758
+UsoPito    0.57782601 0.3203261 -0.16087582  1.0000000
+[1] 0.003875126
+$chisq
+[1] 1537.305
+
+$p.value
+[1] 7.194062e-293
+
+$df
+[1] 45
+
+Kaiser-Meyer-Olkin factor adequacy
+Call: KMO(r = Rcor)
+Overall MSA =  0.81
+MSA for each item = 
+      FRbr   UsoDirec    EnfCond     AFrSem      CulFr    OmLmVel     IgPare 
+      0.87       0.50       0.88       0.85       0.89       0.85       0.81 
+    UsoCel PasoPeaton    UsoPito 
+      0.80       0.36       0.77 
+Importance of components:
+                          Comp.1    Comp.2     Comp.3    Comp.4     Comp.5
+Standard deviation     2.1934006 1.2516113 0.93537133 0.8522412 0.74595127
+Proportion of Variance 0.4811006 0.1566531 0.08749195 0.0726315 0.05564433
+Cumulative Proportion  0.4811006 0.6377537 0.72524567 0.7978772 0.85352150
+                           Comp.6     Comp.7     Comp.8    Comp.9    Comp.10
+Standard deviation     0.70214838 0.56964962 0.53302466 0.4613859 0.38765921
+Proportion of Variance 0.04930123 0.03245007 0.02841153 0.0212877 0.01502797
+Cumulative Proportion  0.90282274 0.93527281 0.96368434 0.9849720 1.00000000
+
+Loadings:
+           Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6 Comp.7 Comp.8 Comp.9 Comp.10
+FRbr        0.388  0.106                0.440                0.491  0.502  0.379 
+UsoDirec          -0.568  0.593 -0.222 -0.294         0.366  0.196               
+EnfCond     0.379               -0.318  0.240  0.237  0.267 -0.688         0.297 
+AFrSem      0.390  0.128         0.214  0.344         0.307  0.212 -0.486 -0.531 
+CulFr       0.337         0.401               -0.684 -0.423 -0.256               
+OmLmVel     0.354        -0.175  0.468 -0.449         0.294 -0.215  0.486 -0.233 
+IgPare      0.382        -0.103  0.326 -0.348  0.191 -0.325  0.135 -0.470  0.482 
+UsoCel      0.207 -0.369 -0.654 -0.324        -0.479  0.157  0.148 -0.109        
+PasoPeaton        -0.701         0.235  0.383  0.279 -0.383 -0.166  0.115 -0.186 
+UsoPito     0.340  0.125        -0.562 -0.270  0.356 -0.397  0.148  0.147 -0.388 
+
+               Comp.1 Comp.2 Comp.3 Comp.4 Comp.5 Comp.6 Comp.7 Comp.8 Comp.9
+SS loadings       1.0    1.0    1.0    1.0    1.0    1.0    1.0    1.0    1.0
+Proportion Var    0.1    0.1    0.1    0.1    0.1    0.1    0.1    0.1    0.1
+Cumulative Var    0.1    0.2    0.3    0.4    0.5    0.6    0.7    0.8    0.9
+               Comp.10
+SS loadings        1.0
+Proportion Var     0.1
+Cumulative Var     1.0
+
+Call:
+factanal(x = ModoCond, factors = 2, rotation = "varimax", na.rm = TRUE,     lower = 0.05)
+
+Uniquenesses:
+      FRbr   UsoDirec    EnfCond     AFrSem      CulFr    OmLmVel     IgPare 
+     0.274      0.781      0.362      0.250      0.513      0.470      0.357 
+    UsoCel PasoPeaton    UsoPito 
+     0.756      0.050      0.496 
+
+Loadings:
+           Factor1 Factor2
+FRbr        0.846         
+UsoDirec            0.459 
+EnfCond     0.792         
+AFrSem      0.863         
+CulFr       0.696         
+OmLmVel     0.712         
+IgPare      0.771         
+UsoCel      0.325   0.372 
+PasoPeaton          0.964 
+UsoPito     0.708         
+
+               Factor1 Factor2
+SS loadings      4.310   1.381
+Proportion Var   0.431   0.138
+Cumulative Var   0.431   0.569
+
+Test of the hypothesis that 2 factors are sufficient.
+The chi square statistic is 218.75 on 26 degrees of freedom.
+The p-value is 2.17e-32 
+
+Call:
+factanal(x = ModoCond, factors = 3, rotation = "varimax", na.rm = TRUE,     lower = 0.05)
+
+Uniquenesses:
+      FRbr   UsoDirec    EnfCond     AFrSem      CulFr    OmLmVel     IgPare 
+     0.211      0.783      0.347      0.239      0.515      0.376      0.050 
+    UsoCel PasoPeaton    UsoPito 
+     0.764      0.050      0.496 
+
+Loadings:
+           Factor1 Factor2 Factor3
+FRbr        0.854   0.214         
+UsoDirec                    0.458 
+EnfCond     0.773   0.210         
+AFrSem      0.807   0.321         
+CulFr       0.643   0.265         
+OmLmVel     0.493   0.605         
+IgPare      0.493   0.822         
+UsoCel      0.254           0.363 
+PasoPeaton                  0.962 
+UsoPito     0.624   0.333         
+
+               Factor1 Factor2 Factor3
+SS loadings      3.361   1.458   1.351
+Proportion Var   0.336   0.146   0.135
+Cumulative Var   0.336   0.482   0.617
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 127.31 on 18 degrees of freedom.
+The p-value is 1.73e-18 
