@@ -1,0 +1,151 @@
+lavaan 0.6-5 ended normally after 140 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of free parameters                         63
+                                                      
+  Number of observations                           281
+                                                      
+Model Test User Model:
+                                                      
+  Test statistic                               451.236
+  Degrees of freedom                               117
+  P-value (Chi-square)                           0.000
+
+Model Test Baseline Model:
+
+  Test statistic                              1525.271
+  Degrees of freedom                               171
+  P-value                                        0.000
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.753
+  Tucker-Lewis Index (TLI)                       0.639
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)              -3148.733
+  Loglikelihood unrestricted model (H1)      -2923.115
+                                                      
+  Akaike (AIC)                                6423.466
+  Bayesian (BIC)                              6652.683
+  Sample-size adjusted Bayesian (BIC)         6452.912
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.101
+  90 Percent confidence interval - lower         0.091
+  90 Percent confidence interval - upper         0.111
+  P-value RMSEA <= 0.05                          0.000
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.107
+
+Parameter Estimates:
+
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+  Standard errors                             Standard
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  FA_1 =~                                                               
+    FRbr              0.890    0.049   18.269    0.000    0.924    0.889
+    EnfCond           0.747    0.049   15.155    0.000    0.776    0.783
+    AFrSem            0.811    0.044   18.396    0.000    0.842    0.893
+    CulFr             0.786    0.062   12.713    0.000    0.816    0.690
+  FA_2 =~                                                               
+    OmLmVel           0.609    0.065    9.313    0.000    0.637    0.703
+    IgPare            0.873    0.094    9.313    0.000    0.913    1.086
+  FA_3 =~                                                               
+    PasoPeaton        0.685    0.086    8.004    0.000    0.784    0.602
+    UsoDirec          0.713    0.085    8.347    0.000    0.817    0.735
+    UsoCel            0.272    0.070    3.897    0.000    0.311    0.280
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+  FA_1 ~                                                                
+    EDUBASICA         0.104    0.134    0.781    0.435    0.101    0.050
+    JOVEN30          -0.489    0.324   -1.509    0.131   -0.471   -0.121
+    ADULTO40         -0.250    0.224   -1.115    0.265   -0.241   -0.107
+    ADULTO60         -0.159    0.194   -0.816    0.414   -0.153   -0.076
+    EXP_2            -0.430    0.250   -1.717    0.086   -0.414   -0.118
+    EXP_3            -0.216    0.208   -1.037    0.300   -0.208   -0.076
+    EXP_4            -0.108    0.164   -0.659    0.510   -0.104   -0.052
+    HTRB_2            0.275    1.114    0.247    0.805    0.265    0.065
+    HTRB_3            0.084    1.095    0.077    0.939    0.081    0.040
+    HTRB_4           -0.005    1.101   -0.005    0.996   -0.005   -0.002
+    HPICO             0.042    0.133    0.317    0.751    0.041    0.020
+    CSECO             0.217    0.176    1.236    0.216    0.209    0.078
+    SININFOTRF       -0.148    0.163   -0.910    0.363   -0.143   -0.057
+    USOCINTURON      -0.320    0.161   -1.993    0.046   -0.309   -0.128
+    USODISPMOB        0.286    0.142    2.017    0.044    0.275    0.131
+  FA_2 ~                                                                
+    EDUBASICA        -0.051    0.114   -0.443    0.658   -0.048   -0.024
+    JOVEN30          -0.570    0.287   -1.990    0.047   -0.545   -0.140
+    ADULTO40         -0.396    0.198   -1.998    0.046   -0.379   -0.169
+    ADULTO60         -0.024    0.166   -0.146    0.884   -0.023   -0.012
+    EXP_2            -0.230    0.215   -1.072    0.284   -0.220   -0.063
+    EXP_3            -0.272    0.181   -1.503    0.133   -0.260   -0.095
+    EXP_4            -0.311    0.146   -2.129    0.033   -0.298   -0.149
+    HTRB_2           -0.460    0.952   -0.483    0.629   -0.440   -0.108
+    HTRB_3           -0.336    0.935   -0.359    0.719   -0.321   -0.160
+    HTRB_4           -0.391    0.940   -0.416    0.678   -0.374   -0.182
+    HPICO             0.199    0.117    1.700    0.089    0.190    0.091
+    CSECO             0.051    0.150    0.338    0.736    0.048    0.018
+    SININFOTRF        0.054    0.139    0.386    0.699    0.051    0.021
+    USOCINTURON      -0.483    0.152   -3.183    0.001   -0.462   -0.192
+    USODISPMOB        0.247    0.125    1.977    0.048    0.236    0.113
+  FA_3 ~                                                                
+    EDUBASICA        -0.509    0.172   -2.960    0.003   -0.445   -0.220
+    JOVEN30          -0.534    0.405   -1.318    0.187   -0.467   -0.120
+    ADULTO40         -0.448    0.281   -1.592    0.111   -0.391   -0.174
+    ADULTO60         -0.127    0.242   -0.524    0.600   -0.111   -0.055
+    EXP_2            -0.364    0.313   -1.166    0.244   -0.318   -0.091
+    EXP_3            -0.297    0.260   -1.141    0.254   -0.259   -0.094
+    EXP_4            -0.165    0.205   -0.806    0.420   -0.144   -0.072
+    HTRB_2           -2.221    1.401   -1.585    0.113   -1.939   -0.475
+    HTRB_3           -2.085    1.376   -1.514    0.130   -1.820   -0.907
+    HTRB_4           -1.965    1.383   -1.421    0.155   -1.715   -0.837
+    HPICO            -0.052    0.166   -0.314    0.754   -0.045   -0.022
+    CSECO            -0.005    0.219   -0.021    0.983   -0.004   -0.001
+    SININFOTRF       -0.069    0.203   -0.340    0.734   -0.060   -0.024
+    USOCINTURON       0.568    0.205    2.767    0.006    0.496    0.206
+    USODISPMOB       -0.473    0.180   -2.626    0.009   -0.413   -0.197
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+ .FA_1 ~~                                                               
+   .FA_2              0.000                               0.000    0.000
+   .FA_3              0.000                               0.000    0.000
+ .FA_2 ~~                                                               
+   .FA_3              0.000                               0.000    0.000
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)   Std.lv  Std.all
+   .FRbr              0.227    0.033    6.988    0.000    0.227    0.210
+   .EnfCond           0.380    0.038    9.929    0.000    0.380    0.387
+   .AFrSem            0.181    0.027    6.800    0.000    0.181    0.203
+   .CulFr             0.734    0.068   10.777    0.000    0.734    0.524
+   .OmLmVel           0.416    0.081    5.120    0.000    0.416    0.506
+   .IgPare           -0.127    0.151   -0.844    0.399   -0.127   -0.180
+   .PasoPeaton        1.084    0.139    7.818    0.000    1.084    0.638
+   .UsoDirec          0.568    0.121    4.694    0.000    0.568    0.460
+   .UsoCel            1.142    0.100   11.368    0.000    1.142    0.922
+   .FA_1              1.000                               0.929    0.929
+   .FA_2              1.000                               0.914    0.914
+   .FA_3              1.000                               0.762    0.762
+
+      lhs op      rhs      mi   epc sepc.lv sepc.all sepc.nox
+246  FA_2  ~     FA_1 123.297 0.624   0.620    0.620    0.620
+67   FA_1 ~~     FA_2 123.297 0.624   0.624    0.624    0.624
+244  FA_1  ~     FA_2 123.297 0.624   0.629    0.629    0.629
+191  FA_1 =~   IgPare  32.803 0.187   0.194    0.231    0.231
+194  FA_1 =~   UsoCel  25.502 0.331   0.343    0.308    0.308
+201  FA_2 =~   UsoCel  25.384 0.282   0.295    0.265    0.265
+232 CulFr ~~ UsoDirec  21.545 0.236   0.236    0.365    0.365
+249  FA_3  ~     FA_2  20.019 0.314   0.286    0.286    0.286
+69   FA_2 ~~     FA_3  20.019 0.314   0.314    0.314    0.314
+247  FA_2  ~     FA_3  20.019 0.314   0.344    0.344    0.344

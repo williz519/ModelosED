@@ -37,11 +37,11 @@ names(database)
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_ruta1 = 0, asc_ruta2 = 0, asc_ruta3 = 0, asc_rutaEC = 0,
-              b_tt = 0, b_dt = 0, 
-              b_CongAB  = 0, b_CongCD  = 0, b_CongEF  = 0,
-              b_Sem_1 = 0, b_Sem_2 = 0, b_Sem_3 = 0,
-              b_ACC_0 = 0, b_ACC_1 = 0, b_ACC_2 = 0,
+apollo_beta=c(asc_ruta1 = 1.7138, asc_ruta2 = 0.7512, asc_ruta3 = 0, asc_rutaEC = -0.4423,
+              b_tt = 0.0712, b_dt = -0.3250, 
+              b_CongAB  = -0.1029, b_CongCD  = 0, b_CongEF  = 0,
+              b_Sem_1 = -0.3138, b_Sem_2 = 0, b_Sem_3 = 0,
+              b_ACC_0 = 3.1857, b_ACC_1 = 0, b_ACC_2 = 0,
               b_NO_CAMFD = 0, b_SI_CAMFD = 0, 
               b_NO_PANEL = 0, b_SI_PANEL = 0, 
               b_NO_ZER = 0, b_SI_ZER = 0, 
@@ -281,6 +281,7 @@ model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_
 # ----------------------------------------------------------------- #
 
 apollo_modelOutput(model, modelOutput_settings=list(printPVal=TRUE) )
+
 
 
 # ----------------------------------------------------------------- #

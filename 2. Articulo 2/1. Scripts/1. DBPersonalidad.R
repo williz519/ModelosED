@@ -16,6 +16,10 @@ library(corrplot)
 library(corrr)
 library("ggplot2")
 
+
+# Borrar Ambiente de trabajo
+rm(list = ls())
+
 #Leer la dataset
 
 DB_file <- "/Users/williz/Desktop/ModelosED/Database/DB_Viajes.xlsx"
@@ -75,16 +79,17 @@ DBPersonalidad <- DBPersonalidad%>%
 
 #view(DBPersonalidad)
 names(DBPersonalidad)
+
  
 #Reemplazar Valores Faltantes
 
 DBPersonalidad$ComVrb[is.na(DBPersonalidad$ComVrb)] <- 5
-DBPersonalidad$Ans[is.na(DBPersonalidad$Ans)] <- 5
-DBPersonalidad$ComAfec[is.na(DBPersonalidad$ComAfec)] <- 5
-DBPersonalidad$PrPer[is.na(DBPersonalidad$PrPer)] <- 5
-DBPersonalidad$AmbTr[is.na(DBPersonalidad$AmbTr)] <- 5
-DBPersonalidad$StrC[is.na(DBPersonalidad$StrC)] <- 5
-DBPersonalidad$ConCl[is.na(DBPersonalidad$ConCl)] <- 5
+DBPersonalidad$Ans[is.na(DBPersonalidad$Ans)] <- 6
+DBPersonalidad$ComAfec[is.na(DBPersonalidad$ComAfec)] <- 6
+DBPersonalidad$PrPer[is.na(DBPersonalidad$PrPer)] <- 6
+DBPersonalidad$AmbTr[is.na(DBPersonalidad$AmbTr)] <- 6
+DBPersonalidad$StrC[is.na(DBPersonalidad$StrC)] <- 6
+DBPersonalidad$ConCl[is.na(DBPersonalidad$ConCl)] <- 6
 DBPersonalidad$HorTrDia[is.na(DBPersonalidad$HorTrDia)] <- 8
 DBPersonalidad$TiempoProf[is.na(DBPersonalidad$TiempoProf)] <- 0.5
 
@@ -100,6 +105,7 @@ DBPersonalidad$TiempoProf[DBPersonalidad$TiempoProf == 0] <- 0.5
 # Horas de trabajo al dia
 DBPersonalidad$HorTrDia[DBPersonalidad$HorTrDia == 0 ] <- 6 
 
+
 # Comunicacion Verbal
 DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 1 | DBPersonalidad$ComVrb == 2] <- 1
 DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 3 | DBPersonalidad$ComVrb == 4] <- 2
@@ -107,56 +113,65 @@ DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 5 | DBPersonalidad$ComVrb == 6] <
 DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 7 | DBPersonalidad$ComVrb == 8] <- 4
 DBPersonalidad$ComVrb[DBPersonalidad$ComVrb == 9 | DBPersonalidad$ComVrb == 10] <- 5
 
+table(DBPersonalidad$ComVrb)
+
 #Stress al Conducir
-DBPersonalidad$StrC[DBPersonalidad$StrC == 1 | DBPersonalidad$StrC == 2] <- 1
-DBPersonalidad$StrC[DBPersonalidad$StrC == 3 | DBPersonalidad$StrC == 4] <- 2
-DBPersonalidad$StrC[DBPersonalidad$StrC == 5 | DBPersonalidad$StrC == 6] <- 3
-DBPersonalidad$StrC[DBPersonalidad$StrC == 7 | DBPersonalidad$StrC == 8] <- 4
-DBPersonalidad$StrC[DBPersonalidad$StrC == 9 | DBPersonalidad$StrC == 10] <- 5
+DBPersonalidad$StrC[DBPersonalidad$StrC == 1] <- 1
+DBPersonalidad$StrC[DBPersonalidad$StrC == 2] <- 2
+DBPersonalidad$StrC[DBPersonalidad$StrC == 3 | DBPersonalidad$StrC == 4  ] <- 3
+DBPersonalidad$StrC[DBPersonalidad$StrC == 5 | DBPersonalidad$StrC == 6  ] <- 4
+DBPersonalidad$StrC[DBPersonalidad$StrC == 7 | DBPersonalidad$StrC == 8 | DBPersonalidad$StrC == 9 | DBPersonalidad$StrC == 10] <- 5
 
+table(DBPersonalidad$StrC)
 
-#Comunicacion Afectiva
-DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 1 | DBPersonalidad$ComAfec == 2] <- 1
-DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 3 | DBPersonalidad$ComAfec == 4] <- 2
-DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 5 | DBPersonalidad$ComAfec == 6] <- 3
-DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 7 | DBPersonalidad$ComAfec == 8] <- 4
-DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 9 | DBPersonalidad$ComAfec == 10] <- 5
+ #Comunicacion Afectiva
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 1 ] <- 1
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 2 | DBPersonalidad$ComAfec == 3 ] <- 2
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 4 | DBPersonalidad$ComAfec == 5 ] <- 3
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 6 | DBPersonalidad$ComAfec == 7 ] <- 4
+DBPersonalidad$ComAfec[DBPersonalidad$ComAfec == 8 | DBPersonalidad$ComAfec == 9 | DBPersonalidad$ComAfec == 10] <- 5
 
+table(DBPersonalidad$ComAfec)
 
 #Presentacion Personal
 DBPersonalidad$PrPer[DBPersonalidad$PrPer == 1 ] <- 1
-DBPersonalidad$PrPer[DBPersonalidad$PrPer == 2 | DBPersonalidad$PrPer == 3 | DBPersonalidad$PrPer == 4] <- 2
-DBPersonalidad$PrPer[DBPersonalidad$PrPer == 5 | DBPersonalidad$PrPer == 6] <- 3
-DBPersonalidad$PrPer[DBPersonalidad$PrPer == 7 | DBPersonalidad$PrPer == 8] <- 4
-DBPersonalidad$PrPer[DBPersonalidad$PrPer == 9 |DBPersonalidad$PrPer == 10] <- 5
+DBPersonalidad$PrPer[DBPersonalidad$PrPer == 2 ] <- 2
+DBPersonalidad$PrPer[DBPersonalidad$PrPer == 3 ] <- 3
+DBPersonalidad$PrPer[DBPersonalidad$PrPer == 4 | DBPersonalidad$PrPer == 5 ] <- 4
+DBPersonalidad$PrPer[DBPersonalidad$PrPer > 5 ] <- 5
 
+table(DBPersonalidad$PrPer)
 
 # Ambiente de Trabajo
 DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 1 ] <- 1
-DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 2 | DBPersonalidad$AmbTr == 3 | DBPersonalidad$AmbTr == 4] <- 2
-DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 5 | DBPersonalidad$AmbTr == 6] <- 3
-DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 7 | DBPersonalidad$AmbTr == 8] <- 4
-DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 9 | DBPersonalidad$AmbTr == 10] <- 5
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 2 ] <- 2
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 3 ]  <- 3
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr == 4 | DBPersonalidad$AmbTr == 5] <- 4
+DBPersonalidad$AmbTr[DBPersonalidad$AmbTr > 5] <- 5
 
+table(DBPersonalidad$AmbTr)
 
 # Ansiedad
 DBPersonalidad$Ans[DBPersonalidad$Ans == 1 ] <- 1
-DBPersonalidad$Ans[DBPersonalidad$Ans == 2 | DBPersonalidad$Ans == 3 ] <- 2
-DBPersonalidad$Ans[DBPersonalidad$Ans == 4 | DBPersonalidad$Ans == 5]  <- 3
-DBPersonalidad$Ans[DBPersonalidad$Ans == 6 | DBPersonalidad$Ans == 7 ] <- 4
-DBPersonalidad$Ans[DBPersonalidad$Ans == 8 | DBPersonalidad$Ans == 9 | DBPersonalidad$Ans == 10] <-5
+DBPersonalidad$Ans[DBPersonalidad$Ans == 2 ] <- 2
+DBPersonalidad$Ans[DBPersonalidad$Ans == 3 ]  <- 3
+DBPersonalidad$Ans[DBPersonalidad$Ans == 4 | DBPersonalidad$Ans == 5 ] <- 4
+DBPersonalidad$Ans[DBPersonalidad$Ans > 5] <-5
 
+table(DBPersonalidad$Ans)
 
 #Consideracion Cliente
 DBPersonalidad$ConCl[DBPersonalidad$ConCl == 1 ] <- 1
-DBPersonalidad$ConCl[DBPersonalidad$ConCl == 2 | DBPersonalidad$ConCl == 3 ] <- 2
-DBPersonalidad$ConCl[DBPersonalidad$ConCl == 4 | DBPersonalidad$ConCl == 5 ] <- 3
-DBPersonalidad$ConCl[DBPersonalidad$ConCl == 6 | DBPersonalidad$ConCl == 7 ] <- 4
-DBPersonalidad$ConCl[DBPersonalidad$ConCl == 8 | DBPersonalidad$ConCl == 9 | DBPersonalidad$ConCl == 10] <- 5
+DBPersonalidad$ConCl[DBPersonalidad$ConCl == 2 ] <- 2
+DBPersonalidad$ConCl[DBPersonalidad$ConCl == 3 ] <- 3
+DBPersonalidad$ConCl[DBPersonalidad$ConCl == 4 ] <- 4
+DBPersonalidad$ConCl[DBPersonalidad$ConCl >= 5 ]<- 5
 
+table(DBPersonalidad$ConCl)
 
 #Creacion Variable Experiencia
 DBPersonalidad$Experiencia <- DBPersonalidad$TiempoProf
+
 DBPersonalidad$Experiencia[DBPersonalidad$Experiencia <= 2] <- 1
 DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 2 & DBPersonalidad$Experiencia <= 5] <- 2
 DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 5 & DBPersonalidad$Experiencia <= 8] <- 3
@@ -166,7 +181,11 @@ DBPersonalidad$Experiencia[DBPersonalidad$Experiencia > 12] <- 5
 
 summary(DBPersonalidad)
 
-DBPersonalidad[c("ViajeId","HorTrDia","Edad","TiempoProf", "NivEdu")]<- NULL
+#DBPersonalidad[c("HorTrDia","Edad","TiempoProf", "NivEdu")]<- NULL
+
+
+saveRDS(DBPersonalidad, file="/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBPersonalidad.rds")
+
 
 names(DBPersonalidad)
 
@@ -292,5 +311,3 @@ summary(DBPersonalidad)
 
 str(DBPersonalidad)
 
-
-saveRDS(DBPersonalidad, file="/Users/williz/Desktop/ModelosED/Database/DBPersonalidad.rds")

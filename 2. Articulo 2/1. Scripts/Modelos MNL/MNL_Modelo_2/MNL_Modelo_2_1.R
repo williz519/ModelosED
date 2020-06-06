@@ -3,6 +3,8 @@
 #### CARGAR BIBLIOTECA Y DEFINIR AJUSTES BÁSICOS                 ####
 # ################################################################# #
 
+## Elimino la ruta 3 debido a que no es significativa en el modelo
+
 ### Limpiar memoria
 rm(list = ls())
 
@@ -17,7 +19,7 @@ apollo_initialise()
 
 ## Establecer controles principales
 apollo_control = list(
-  modelName  = "MNL_Modelo_2",
+  modelName  = "MNL_Modelo_2_1 Sin la ruta 3",
   modelDescr = "Modelo MNL Con Camaras, Paneles, MTRP y ZER ",
   indivID    = "ViajeId",
   nCores     = 1
@@ -29,14 +31,23 @@ apollo_control = list(
 
 database = read.csv("/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBMuestra_ModeloLogitVL.csv",sep="\t", dec=".",header=TRUE)
 
+table(database$CHOICE)
 
+#database <-  database %>%
+  # Filtrar viajes Eliminados en la primera revisión
+#  filter(!(CHOICE %in% c("3")))
+
+#Reemplazar 
+database$CHOICE[database$CHOICE == 3]<-2
+
+table(database$CHOICE)
 
 # ################################################################# #
 #### DEFINE PARAMETROS DEL MODELO                                ####
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0,
+apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_rutaEC  = 0,
               b_tt  = 0,  
               b_dt  = 0,
               b_CongAB  = 0, b_CongCD  = 0, b_CongEF  = 0,
@@ -45,23 +56,12 @@ apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0
               b_NO_CAMFD = 0, b_SI_CAMFD = 0, 
               b_NO_PANEL = 0, b_SI_PANEL = 0, 
               b_NO_ZER = 0, b_SI_ZER = 0, 
-              b_No_MTRP = 0, b_Si_MTRP = 0,
-              b_Hpico = 0, b_Hvalle = 0, 
-              b_CSECO = 0, b_CLLUVIA = 0, 
-              b_HTRB_1 = 0, b_HTRB_2 = 0, b_HTRB_3 = 0, b_HTRB_4 = 0, 
-              b_EduBasica = 0, b_EduSuperior = 0,
-              b_Joven30 = 0, b_Adulto40 = 0, b_Adulto60 = 0, b_AdultoMayor = 0,  
-              b_Exp_1 = 0, b_Exp_2 = 0, b_Exp_3 = 0, b_Exp_4 = 0, b_Exp_5 = 0,
-              b_USOCINTURON = 0, 
-              b_NOUSOCINTURON = 0, 
-              b_USODISPMOB = 0, b_NOUSODISPMOB = 0, 
-              b_SININFOTRF = 0, b_CONINFOTRF = 0)
+              b_No_MTRP = 0, b_Si_MTRP = 0)
 
 
 ### Vector con nombres (entre comillas) de los parámetros que se mantendrán fijos en su valor inicial en apollo_beta, use apollo_beta_fixed = c () si ninguno
-apollo_fixed = c("asc_ruta3", "b_CongEF", "b_Sem_3", "b_ACC_2", "b_NO_CAMFD", "b_NO_PANEL", "b_NO_ZER",
-                 "b_No_MTRP", "b_Hpico", "b_CSECO","b_HTRB_1","b_EduSuperior","b_AdultoMayor",
-                 "b_Exp_5", "b_USOCINTURON", "b_NOUSODISPMOB", "b_CONINFOTRF")
+apollo_fixed = c("asc_ruta2", "b_CongEF", "b_Sem_3", "b_ACC_2", "b_NO_CAMFD", "b_NO_PANEL", "b_NO_ZER",
+                 "b_No_MTRP")
 
 # ################################################################# #
 #### ENTRADAS DE GRUPO Y VALIDACIÓN                                ####
@@ -104,15 +104,6 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
     b_NO_ZER * NO_ZER_A2 + b_SI_ZER * SI_ZER_A2 + b_No_MTRP * NO_MTRP_A2 +
     b_Si_MTRP * SI_MTRP_A2
   
-  V[['ruta3']]  = asc_ruta3  + b_tt * TIEMPOAlt3 + b_dt * DISTAlt3 + b_CongAB*CONG_AB_A3 + 
-    b_CongCD*CONG_CD_A3 + b_CongEF*CONG_EF_A3 +  
-    b_Sem_1*SEMF_A3_1 + b_Sem_2*SEMF_A3_2 + b_Sem_3*SEMF_A3_3 + 
-    b_ACC_0*ACC_A3_0 + b_ACC_1*ACC_A3_1 + b_ACC_2*ACC_A3_2 +  
-    b_NO_CAMFD * NO_CAMFD_A3 + b_SI_CAMFD * SI_CAMFD_A3 +
-    b_NO_PANEL * NO_PANEL_A3 + b_SI_PANEL * SI_PANEL_A3 + 
-    b_NO_ZER * NO_ZER_A3 + b_SI_ZER * SI_ZER_A3 + b_No_MTRP * NO_MTRP_A3 +
-    b_Si_MTRP * SI_MTRP_A3
-  
   V[['rutaEC']] = asc_rutaEC + b_tt * TIEMPOEC   + b_dt * DISTEC + b_CongAB*CONG_AB_EC + 
     b_CongCD*CONG_CD_EC + b_CongEF*CONG_EF_EC +
     b_Sem_1*SEMF_EC_1 + b_Sem_2*SEMF_EC_2 + b_Sem_3*SEMF_EC_3 + 
@@ -120,26 +111,13 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
     b_NO_CAMFD * NO_CAMFD_EC + b_SI_CAMFD * SI_CAMFD_EC +
     b_NO_PANEL * NO_PANEL_EC + b_SI_PANEL * SI_PANEL_EC + 
     b_NO_ZER * NO_ZER_EC + b_SI_ZER * SI_ZER_EC + b_No_MTRP * NO_MTRP_EC +
-    b_Si_MTRP * SI_MTRP_EC +
-    b_Hpico * HPICO + b_Hvalle * HVALLE + 
-    b_CSECO * CSECO + b_CLLUVIA * CLLUVIA + 
-    b_HTRB_1 * HTRB_1 + b_HTRB_2 * HTRB_2 + b_HTRB_3 * HTRB_3 + b_HTRB_4 * HTRB_4 +
-    b_EduBasica * EDUBASICA + b_EduSuperior * EDUSUP +
-    b_Joven30 * JOVEN30 + b_Adulto40 * ADULTO40 + 
-    b_Adulto60 *ADULTO60 + b_AdultoMayor * ADULTOMAYOR + 
-    b_Exp_1 * EXP_1 + b_Exp_2 * EXP_2 + b_Exp_3 * EXP_3 + 
-    b_Exp_4 * EXP_4 +   b_Exp_5 * EXP_5 +
-    b_USOCINTURON * USOCINTURON +
-    b_NOUSOCINTURON * NOUSOCINTURON + 
-    b_USODISPMOB * USODISPMOB + b_NOUSODISPMOB * NOUSODISPMOB +
-    b_SININFOTRF * SININFOTRF + b_CONINFOTRF*CONINFOTRF
-  
+    b_Si_MTRP * SI_MTRP_EC
   
   
   ### Define settings for MNL model component
   mnl_settings = list(
-    alternatives  = c(ruta1=1, ruta2=2, ruta3=3, rutaEC=4), 
-    avail         = list(ruta1=1, ruta2=1, ruta3=1, rutaEC=1), 
+    alternatives  = c(ruta1=1, ruta2=2, rutaEC=4), 
+    avail         = list(ruta1=1, ruta2=1, rutaEC=1), 
     choiceVar     = CHOICE,
     V             = V
   )
@@ -177,4 +155,9 @@ apollo_modelOutput(model, modelOutput_settings=list(printPVal=TRUE) )
 # ----------------------------------------------------------------- #
 
 apollo_saveOutput(model, saveOutput_settings=list(printPVal=TRUE) )
+
+predictions_base = apollo_prediction(model, 
+                                     apollo_probabilities, 
+                                     apollo_inputs)
+
 

@@ -6,7 +6,7 @@
 ### Limpiar memoria
 rm(list = ls())
 
-workingDirectory="/Users/williz/Desktop/ModelosED/2. Articulo 2/1. Scripts/Modelos MNL/MNL_Modelo_2"
+workingDirectory="/Users/williz/Desktop/ModelosED/2. Articulo 2/1. Scripts/Modelos MNL/MNL_Modelo_2/MNL_Modelo_2"
 setwd(workingDirectory)
 
 ### Cargar libreria Apollo
@@ -153,4 +153,9 @@ apollo_modelOutput(model, modelOutput_settings=list(printPVal=TRUE) )
 # ----------------------------------------------------------------- #
 
 apollo_saveOutput(model, saveOutput_settings=list(printPVal=TRUE) )
+
+predictions_base = apollo_prediction(model, 
+                                     apollo_probabilities, 
+                                     apollo_inputs)
+
 

@@ -21,7 +21,7 @@ library(MVN)
 library(mvtnorm)
 
 # Cargar Datos desde MAC
-DBModLog <- read.csv("/Users/williz/Desktop/ModelosED/Database/DBModeloLogitVL.csv", header = TRUE, sep = "\t")
+DBModLog <- read.csv("/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBMuestra_ModeloLogitVL.csv", header = TRUE, sep = "\t")
 
 
 MCond <- DBModLog
