@@ -425,10 +425,11 @@ MCond$NO_PANEL_EC <- (ifelse((MCond$Paneles_EC == 0 | MCond$Paneles_EC == 999),1
 MCond$SI_PANEL_EC <- (ifelse((MCond$Paneles_EC >= 1),1,0))
 
 
-MCond$EXP_1 <- ifelse((MCond$Experiencia <= 2),1,0)
-MCond$EXP_2 <- ifelse((MCond$Experiencia == 3),1,0)
-MCond$EXP_3 <- ifelse((MCond$Experiencia == 4),1,0)
-MCond$EXP_4 <- ifelse((MCond$Experiencia > 4 ),1,0)
+MCond$EXP_1 <- ifelse((MCond$Experiencia == 1),1,0)
+MCond$EXP_2 <- ifelse((MCond$Experiencia == 2),1,0)
+MCond$EXP_3 <- ifelse((MCond$Experiencia == 3),1,0)
+MCond$EXP_4 <- ifelse((MCond$Experiencia == 4 ),1,0)
+MCond$EXP_5 <- ifelse((MCond$Experiencia == 5 ),1,0)
 
 
 
@@ -444,8 +445,8 @@ dplyr::glimpse(MCond)
 summary(MCond)
 names(MCond)
 
-MCond[c("TIEMPO_PROFESION", "HORAS_TRABAJO","NIVEL_EDUCATIVO","EDAD","CLIMA", "MERIDIANO",
-        "HPICOHVALLE","CONGESTION","INCIDENTE")] <- NULL
+#MCond[c("TIEMPO_PROFESION", "HORAS_TRABAJO","NIVEL_EDUCATIVO","EDAD","CLIMA", "MERIDIANO",
+#        "HPICOHVALLE","CONGESTION","INCIDENTE")] <- NULL
 
 # ?Quiero orden!
 tibble::as_tibble(MCond) 

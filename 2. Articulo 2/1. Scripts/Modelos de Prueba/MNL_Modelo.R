@@ -1,9 +1,6 @@
-
 # ################################################################# #
 #### CARGAR BIBLIOTECA Y DEFINIR AJUSTES BÁSICOS                 ####
 # ################################################################# #
-
-## Elimino la ruta 3 debido a que no es significativa en el modelo
 
 ### Limpiar memoria
 rm(list = ls())
@@ -19,8 +16,8 @@ apollo_initialise()
 
 ## Establecer controles principales
 apollo_control = list(
-  modelName  = "MNL_Modelo",
-  modelDescr = "Modelo MNL de solo dos elecciones ",
+  modelName  = "MNL_Modelo_2",
+  modelDescr = "Modelo MNL Con Camaras, Paneles, MTRP y ZER ",
   indivID    = "ViajeId",
   nCores     = 1
 )
@@ -31,31 +28,22 @@ apollo_control = list(
 
 database = read.csv("/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBMuestra_ModeloLogitVL.csv",sep="\t", dec=".",header=TRUE)
 
-#table(database$CHOICE)
 
-#database <-  database %>%
-  # Filtrar viajes Eliminados en la primera revisión
-#  filter(!(CHOICE %in% c("3")))
-
-#Reemplazar la ruta 3 en la ruta 2
-database$CHOICE[database$CHOICE == 3 ]<-2
-database$CHOICE[database$CHOICE == 4]<- 3
-
-#table(database$CHOICE)
-
-#names(database)
-
-### Create new variable with time
-
-for (i in 1:nrow(database)) {
-  database$TIEMPOAlt23[i] = (database$TIEMPOAlt2[i]+ database$TIEMPOAlt3[i])/2
-  database$DISTAlt23[i] = min(database$DISTAlt2[i],database$DISTAlt3[i])
+# Normalización de los viajes
+for (i in 1:nrow(database)){
+  # Normalización de las variables tiempo
+  database$T_Alt_1[i] = (database$TIEMPOAlt1[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  database$T_Alt_2[i] = (database$TIEMPOAlt2[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  database$T_Alt_3[i] = (database$TIEMPOAlt3[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  database$T_Alt_4[i] = (database$TIEMPOEC[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  
+  # Normalización de la variable distancia
+  database$D_Alt_1[i] = (database$DISTAlt1[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
+  database$D_Alt_2[i] = (database$DISTAlt2[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
+  database$D_Alt_3[i] = (database$DISTAlt3[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
+  database$D_Alt_4[i] = (database$DISTEC[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
 }
-#database$TIEMPOAlt23
-database$DISTAlt23
 
-database$DISTAlt2
-database$DISTAlt3
 
 
 # ################################################################# #
@@ -63,21 +51,20 @@ database$DISTAlt3
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_Op1   = 0, asc_Op2   = 0, asc_Op3 =0,
+apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0,
               b_tt  = 0,  
               b_dt  = 0,
               b_CongAB  = 0, b_CongCD  = 0, b_CongEF  = 0,
               b_Sem = 0,
               b_ACC_0 = 0, b_ACC_1 = 0, b_ACC_2 = 0,
               b_NO_CAMFD = 0, b_SI_CAMFD = 0, 
-              b_PANEL0 = 0, b_PANEL1 = 0,  
-              b_ZER0 = 0, b_ZER1 = 0
-              )
-
+              b_NO_PANEL = 0, b_SI_PANEL = 0, 
+              b_NO_ZER = 0, b_SI_ZER = 0, 
+              b_No_MTRP = 0, b_Si_MTRP = 0)
 
 
 ### Vector con nombres (entre comillas) de los parámetros que se mantendrán fijos en su valor inicial en apollo_beta, use apollo_beta_fixed = c () si ninguno
-apollo_fixed = c("asc_Op1","asc_Op3", "b_CongEF", "b_ACC_0", "b_ZER0","b_NO_CAMFD", "b_PANEL0")
+apollo_fixed = c("asc_ruta3", "b_CongAB", "b_ACC_0", "b_NO_CAMFD", "b_No_MTRP", "b_NO_PANEL", "b_NO_ZER")
 
 # ################################################################# #
 #### ENTRADAS DE GRUPO Y VALIDACIÓN                                ####
@@ -98,47 +85,51 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   ### Create list of probabilities P
   P = list()
   
-
+  
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
   
-  V[['Op1']]  = asc_Op1  + b_tt * TIEMPOAlt1+ b_dt * DISTAlt1 + 
+  V[['ruta1']]  = asc_ruta1  + 
     b_CongAB*CONG_AB_A1 + b_CongCD*CONG_CD_A1 + b_CongEF*CONG_EF_A1 +
-    b_Sem*SEM_A1 + 
+    b_Sem*SEM_A1_km + 
     b_ACC_0*ACC_A1_0 + b_ACC_1*ACC_A1_1 + b_ACC_2*ACC_A1_2 + 
     b_NO_CAMFD * NO_CAMFD_A1 + b_SI_CAMFD * SI_CAMFD_A1 +
-    b_PANEL0 * (Panel_A1<=0.3) + b_PANEL1* (Panel_A1>0.3) + 
-    b_ZER0 * (ZER_A1_km<=0.1) +
-    b_ZER1 * (ZER_A1_km>0.1) 
+    b_NO_PANEL * NO_PANEL_A1 + b_SI_PANEL * SI_PANEL_A1 + 
+    b_NO_ZER * NO_ZER_A1 + b_SI_ZER * SI_ZER_A1 + 
+    b_No_MTRP * NO_MTRP_A1 + b_Si_MTRP * SI_MTRP_A1
   
-  V[['Op2']]  = asc_Op2  + b_tt * TIEMPOAlt23+ b_dt * DISTAlt23 + 
-    b_CongAB*(CONG_AB_A2+CONG_AB_A3-CONG_AB_A2*CONG_AB_A3) + 
-    b_CongCD*(CONG_CD_A2 + CONG_CD_A3 - CONG_CD_A2*CONG_CD_A3) +
-    b_CongEF*(CONG_EF_A2 + CONG_EF_A3 - CONG_EF_A2*CONG_EF_A3) +
-    b_Sem*((SEM_A2 + SEM_A3)/2) +
-    b_ACC_0* (ACC_A2_0 + ACC_A3_0 - ACC_A2_0*ACC_A2_0) +
-    b_ACC_1* (ACC_A2_1 + ACC_A3_1 - ACC_A2_1*ACC_A3_1) +
-    b_ACC_2* (ACC_A2_2 + ACC_A3_2 - ACC_A2_2*ACC_A3_2) + 
-    b_NO_CAMFD * (NO_CAMFD_A2 + NO_CAMFD_A3 - NO_CAMFD_A2*NO_CAMFD_A3) + 
-    b_SI_CAMFD * (SI_CAMFD_A2 + SI_CAMFD_A3 - SI_CAMFD_A2*SI_CAMFD_A3) +
-    b_PANEL0 * (((Panel_A2 + Panel_A3)/2)<=0.3) + b_PANEL1* (((Panel_A2 + Panel_A3)/2)>0.3) +
-    b_ZER0 * (((ZER_A2_km + ZER_A3_km)/2)<=0.1)  + 
-    b_ZER1 * (((ZER_A2_km + ZER_A3_km)/2)>0.1) 
-    
+  V[['ruta2']]  = asc_ruta2  + 
+    b_CongAB*CONG_AB_A2 + b_CongCD*CONG_CD_A2 + b_CongEF*CONG_EF_A2 + 
+    b_Sem*SEM_A2_km + 
+    b_ACC_0*ACC_A2_0 + b_ACC_1*ACC_A2_1 + b_ACC_2*ACC_A2_2 + 
+    b_NO_CAMFD * NO_CAMFD_A2 + b_SI_CAMFD * SI_CAMFD_A2 +
+    b_NO_PANEL * NO_PANEL_A2 + b_SI_PANEL * SI_PANEL_A2 + 
+    b_NO_ZER * NO_ZER_A2 + b_SI_ZER * SI_ZER_A2 + 
+    b_No_MTRP * NO_MTRP_A2 + b_Si_MTRP * SI_MTRP_A2
   
-  V[['Op3']] = asc_Op3 + b_tt * TIEMPOEC   + b_dt * DISTEC + b_CongAB*CONG_AB_EC + 
-    b_CongCD*CONG_CD_EC + b_CongEF*CONG_EF_EC +
-    b_Sem*SEM_EC + 
+  V[['ruta3']]  = asc_ruta3  + 
+    b_CongAB*CONG_AB_A3 + b_CongCD*CONG_CD_A3 + b_CongEF*CONG_EF_A3 +  
+    b_Sem*SEM_A3_km +
+    b_ACC_0*ACC_A3_0 + b_ACC_1*ACC_A3_1 + b_ACC_2*ACC_A3_2 +  
+    b_NO_CAMFD * NO_CAMFD_A3 + b_SI_CAMFD * SI_CAMFD_A3 +
+    b_NO_PANEL * NO_PANEL_A3 + b_SI_PANEL * SI_PANEL_A3 + 
+    b_NO_ZER * NO_ZER_A3 + b_SI_ZER * SI_ZER_A3 + 
+    b_No_MTRP * NO_MTRP_A3 + b_Si_MTRP * SI_MTRP_A3
+  
+  V[['rutaEC']] =  b_tt * T_Alt_4   + b_dt * D_Alt_4 + 
+    b_CongAB*CONG_AB_EC + b_CongCD*CONG_CD_EC + b_CongEF*CONG_EF_EC +
+    b_Sem*SEM_EC_km +
     b_ACC_0*ACC_EC_0 + b_ACC_1*ACC_EC_1 + b_ACC_2*ACC_EC_2 + 
     b_NO_CAMFD * NO_CAMFD_EC + b_SI_CAMFD * SI_CAMFD_EC +
-    b_PANEL0 * (Panel_EC<=0.3) + b_PANEL1* (Panel_EC>0.3) +
-    b_ZER0 * (ZER_EC_km<=0.1) + b_ZER1*(ZER_EC_km >0.1)  
+    b_NO_PANEL * NO_PANEL_EC + b_SI_PANEL * SI_PANEL_EC + 
+    b_NO_ZER * NO_ZER_EC + b_SI_ZER * SI_ZER_EC + 
+    b_No_MTRP * NO_MTRP_EC + b_Si_MTRP * SI_MTRP_EC
   
   
   ### Define settings for MNL model component
   mnl_settings = list(
-    alternatives  = c(Op1=1, Op2=2, Op3=3), 
-    avail         = list(Op1=1, Op2=1, Op3=1), 
+    alternatives  = c(ruta1=1, ruta2=2, ruta3=3, rutaEC=4), 
+    avail         = list(ruta1=1, ruta2=1, ruta3=1, rutaEC=1), 
     choiceVar     = CHOICE,
     V             = V
   )
@@ -158,8 +149,7 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
 #### ESTIMACION DEL MODELO                                       ####
 # ################################################################# #
 
-model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_inputs,
-                        estimate_settings = list(maxIterations = 700))
+model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_inputs)
 
 # ################################################################# #
 #### MODEL OUTPUTS                                               ####
@@ -170,7 +160,6 @@ model = apollo_estimate(apollo_beta, apollo_fixed, apollo_probabilities, apollo_
 # ----------------------------------------------------------------- #
 
 apollo_modelOutput(model, modelOutput_settings=list(printPVal=TRUE) )
-
 
 # ----------------------------------------------------------------- #
 #---- FORMATTED OUTPUT (TO FILE, using model name)               ----

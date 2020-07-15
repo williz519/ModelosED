@@ -84,15 +84,15 @@ for (i in 1:nrow(DB)) {
 # CREACION DE NUEVAS VARIABLES
 
 for (i in 1:nrow(DB)) {
-  DB$SEM_A1[i] = DB$Semaf_A1[i]/DB$DISTAlt1[i]
-  DB$SEM_A2[i] = DB$Semaf_A2[i]/DB$DISTAlt2[i] 
-  DB$SEM_A3[i] = DB$Semaf_A3[i]/DB$DISTAlt3[i]
-  DB$SEM_EC[i] = DB$Semaf_EC[i]/DB$DISTEC[i] 
+  DB$SEM_A1_km[i] = DB$Semaf_A1[i]/DB$DISTAlt1[i]
+  DB$SEM_A2_km[i] = DB$Semaf_A2[i]/DB$DISTAlt2[i] 
+  DB$SEM_A3_km[i] = DB$Semaf_A3[i]/DB$DISTAlt3[i]
+  DB$SEM_EC_km[i] = DB$Semaf_EC[i]/DB$DISTEC[i] 
   
-  DB$Panel_A1[i] = DB$Paneles_A1[i]/DB$DISTAlt1[i] 
-  DB$Panel_A2[i] = DB$Paneles_A2[i]/DB$DISTAlt2[i] 
-  DB$Panel_A3[i] = DB$Paneles_A3[i]/DB$DISTAlt3[i] 
-  DB$Panel_EC[i] = DB$Paneles_EC[i]/DB$DISTEC[i] 
+  DB$Panel_A1_km[i] = DB$Paneles_A1[i]/DB$DISTAlt1[i] 
+  DB$Panel_A2_km[i] = DB$Paneles_A2[i]/DB$DISTAlt2[i] 
+  DB$Panel_A3_km[i] = DB$Paneles_A3[i]/DB$DISTAlt3[i] 
+  DB$Panel_EC_km[i] = DB$Paneles_EC[i]/DB$DISTEC[i] 
   
   DB$ZER_A1_km[i] = DB$ZER_A1[i]/DB$DISTAlt1[i]
   DB$ZER_A2_km[i] = DB$ZER_A2[i]/DB$DISTAlt2[i]

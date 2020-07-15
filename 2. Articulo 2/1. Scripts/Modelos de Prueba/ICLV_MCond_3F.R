@@ -49,7 +49,7 @@ database$CHOICE[database$CHOICE == 4]<- 3
 
 for (i in 1:nrow(database)) {
   database$TIEMPOAlt23[i] = (database$TIEMPOAlt2[i]+ database$TIEMPOAlt3[i])/2
-  database$DISTAlt23[i] = min(database$DISTAlt2[i],database$DISTAlt3[i])
+  database$DISTAlt23[i] = database$DISTAlt2[i]
 }
 #database$TIEMPOAlt23
 #database$DISTAlt23
@@ -70,8 +70,8 @@ apollo_beta=c(asc_Op1   = 0, asc_Op2   = 0, asc_Op3 =0,
               b_CongAB  = 0, b_CongCD  = 0, b_CongEF  = 0,
               b_Sem = 0,
               b_ACC_0 = 0, b_ACC_1 = 0, b_ACC_2 = 0,
-              b_NO_CAMFD = 0, b_SI_CAMFD = 0, 
-              b_PANEL0 = 0, b_PANEL1 = 0,  
+              b_NO_CAMFD = 0, b_SI_CAMFD = 0,
+              b_PANEL0 = 0, b_PANEL1 = 0,
               b_ZER0 = 0, b_ZER1 = 0,
               lambda1        = 1,
               lambda2        = 1, 
@@ -127,10 +127,7 @@ apollo_beta=c(asc_Op1   = 0, asc_Op2   = 0, asc_Op3 =0,
               tau_UsoPito_4 = 2)
 
 ### Vector con nombres (entre comillas) de los parámetros que se mantendrán fijos en su valor inicial en apollo_beta, use apollo_beta_fixed = c () si ninguno
-apollo_fixed = c("asc_Op1","asc_Op3", "b_CongEF", "b_ACC_0", "b_ZER0","b_NO_CAMFD", "b_PANEL0",
-                 "gamma_JOVEN30", "gamma_ADULTO40","gamma_EXP_2","gamma_HTRB_2", "gamma_USODISPMOB1",
-                 "gamma_USODISPMOB2", "gamma_USODISPMOB3", "gamma_EXP_1", "gamma_HPICO","gamma_CSECO",
-                 "gamma_SININFOTRF","gamma_LV1","gamma_LV3","gamma_EDUBASICA","gamma_HTRB_3")
+apollo_fixed = c("asc_Op1","asc_Op3", "b_CongEF", "b_ACC_0","b_NO_CAMFD", "b_PANEL0","b_ZER0")
 
 ### Lea los valores iniciales para al menos algunos parámetros del archivo de salida del modelo existente
 #apollo_beta = apollo_readBeta(apollo_beta, apollo_fixed, "ICLV2_ModoCond", overwriteFixed=FALSE)
@@ -249,36 +246,34 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   V = list()
   
   V[['Op1']]  = (asc_Op1  + b_tt * TIEMPOAlt1+ b_dt * DISTAlt1 + 
-    b_CongAB*CONG_AB_A1 + b_CongCD*CONG_CD_A1 + b_CongEF*CONG_EF_A1 +
-    b_Sem*SEM_A1 + 
-    b_ACC_0*ACC_A1_0 + b_ACC_1*ACC_A1_1 + b_ACC_2*ACC_A1_2 + 
-    b_NO_CAMFD * NO_CAMFD_A1 + b_SI_CAMFD * SI_CAMFD_A1 +
-    b_PANEL0 * (Panel_A1<=0.3) + b_PANEL1* (Panel_A1>0.3) + 
-    b_ZER0 * (ZER_A1_km<=0.1) +
-    b_ZER1 * (ZER_A1_km>0.1))
+                   b_CongAB*CONG_AB_A1 + b_CongCD*CONG_CD_A1 + b_CongEF*CONG_EF_A1 +
+                   b_Sem*SEM_A1 +
+                   b_ACC_0*ACC_A1_0 + b_ACC_1*ACC_A1_1 + b_ACC_2*ACC_A1_2 +
+                   b_NO_CAMFD * NO_CAMFD_A1 + b_SI_CAMFD * SI_CAMFD_A1 +
+                   b_PANEL0 * (Panel_A1<=0.3) + b_PANEL1* (Panel_A1>0.3) +
+                   b_ZER0 * (ZER_A1_km<=0.1) + b_ZER1 * (ZER_A1_km>0.1))
   
   V[['Op2']]  = (asc_Op2  + b_tt * TIEMPOAlt23+ b_dt * DISTAlt23 + 
-    b_CongAB*(CONG_AB_A2+CONG_AB_A3-CONG_AB_A2*CONG_AB_A3) + 
-    b_CongCD*(CONG_CD_A2 + CONG_CD_A3 - CONG_CD_A2*CONG_CD_A3) +
-    b_CongEF*(CONG_EF_A2 + CONG_EF_A3 - CONG_EF_A2*CONG_EF_A3) +
-    b_Sem*((SEM_A2 + SEM_A3)/2) +
-    b_ACC_0* (ACC_A2_0 + ACC_A3_0 - ACC_A2_0*ACC_A2_0) +
-    b_ACC_1* (ACC_A2_1 + ACC_A3_1 - ACC_A2_1*ACC_A3_1) +
-    b_ACC_2* (ACC_A2_2 + ACC_A3_2 - ACC_A2_2*ACC_A3_2) + 
-    b_NO_CAMFD * (NO_CAMFD_A2 + NO_CAMFD_A3 - NO_CAMFD_A2*NO_CAMFD_A3) + 
-    b_SI_CAMFD * (SI_CAMFD_A2 + SI_CAMFD_A3 - SI_CAMFD_A2*SI_CAMFD_A3) +
-    b_PANEL0 * (((Panel_A2 + Panel_A3)/2)<=0.3) + b_PANEL1* (((Panel_A2 + Panel_A3)/2)>0.3) +
-    b_ZER0 * (((ZER_A2_km + ZER_A3_km)/2)<=0.1)  + 
-    b_ZER1 * (((ZER_A2_km + ZER_A3_km)/2)>0.1) )
+                   b_CongAB*(CONG_AB_A2+CONG_AB_A3-CONG_AB_A2*CONG_AB_A3) + 
+                   b_CongCD*(CONG_CD_A2 + CONG_CD_A3 - CONG_CD_A2*CONG_CD_A3) +
+                   b_CongEF*(CONG_EF_A2 + CONG_EF_A3 - CONG_EF_A2*CONG_EF_A3) +
+                   b_Sem*((SEM_A2 + SEM_A3)/2) +
+                   b_ACC_0* (ACC_A2_0 + ACC_A3_0 - ACC_A2_0*ACC_A2_0) +
+                   b_ACC_1* (ACC_A2_1 + ACC_A3_1 - ACC_A2_1*ACC_A3_1) +
+                   b_ACC_2* (ACC_A2_2 + ACC_A3_2 - ACC_A2_2*ACC_A3_2) +
+                   b_NO_CAMFD * (NO_CAMFD_A2 + NO_CAMFD_A3 - NO_CAMFD_A2*NO_CAMFD_A3) + 
+                   b_SI_CAMFD * (SI_CAMFD_A2 + SI_CAMFD_A3 - SI_CAMFD_A2*SI_CAMFD_A3) +
+                   b_PANEL0 * (((Panel_A2 + Panel_A3)/2)<=0.3) + b_PANEL1* (((Panel_A2 + Panel_A3)/2)>0.3) +
+                   b_ZER0 * (((ZER_A2_km + ZER_A3_km)/2)<=0.1) + b_ZER1 * (((ZER_A2_km + ZER_A3_km)/2)>0.1) )
   
   V[['Op3']] = (asc_Op3 + b_tt * TIEMPOEC   + b_dt * DISTEC + b_CongAB*CONG_AB_EC + 
-    b_CongCD*CONG_CD_EC + b_CongEF*CONG_EF_EC +
-    b_Sem*SEM_EC + 
-    b_ACC_0*ACC_EC_0 + b_ACC_1*ACC_EC_1 + b_ACC_2*ACC_EC_2 + 
-    b_NO_CAMFD * NO_CAMFD_EC + b_SI_CAMFD * SI_CAMFD_EC +
-    b_PANEL0 * (Panel_EC<=0.3) + b_PANEL1* (Panel_EC>0.3) +
-    b_ZER0 * (ZER_EC_km<=0.1) + b_ZER1*(ZER_EC_km >0.1) +  
-    lambda1 * LV_1 + lambda2 * LV_2 + lambda3 * LV_3)
+                  b_CongCD*CONG_CD_EC + b_CongEF*CONG_EF_EC +
+                  b_Sem*SEM_EC + 
+                  b_ACC_0*ACC_EC_0 + b_ACC_1*ACC_EC_1 + b_ACC_2*ACC_EC_2 +
+                  b_NO_CAMFD * NO_CAMFD_EC + b_SI_CAMFD * SI_CAMFD_EC +
+                  b_PANEL0 * (Panel_EC<=0.3) + b_PANEL1* (Panel_EC>0.3) +
+                  b_ZER0 * (ZER_EC_km<=0.1) + b_ZER1*(ZER_EC_km >0.1) + 
+                  lambda1 * LV_1 + lambda2 * LV_2 + lambda3 * LV_3)
   
   
   ### Define settings for MNL model component
@@ -329,6 +324,7 @@ apollo_modelOutput(model, modelOutput_settings=list(printPVal=TRUE) )
 # ----------------------------------------------------------------- #
 #---- FORMATTED OUTPUT (TO FILE, using model name)               ----
 # ----------------------------------------------------------------- #
+
 
 apollo_saveOutput(model, saveOutput_settings=list(printPVal=TRUE) )
 

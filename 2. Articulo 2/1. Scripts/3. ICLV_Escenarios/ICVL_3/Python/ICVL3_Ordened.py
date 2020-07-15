@@ -80,7 +80,6 @@ gamma_JOVEN30 = Beta('gamma_JOVEN30',0,None,None,0)
 gamma_EXP_2 = Beta('gamma_EXP_2',0,None,None,0)
 gamma_HTRB_2 = Beta('gamma_HTRB_2',0,None,None,0)
 gamma_HTRB_3 = Beta('gamma_HTRB_3',0,None,None,0)
-gamma_HTRB_4 = Beta('gamma_HTRB_4',0,None,None,0)
 gamma_LV2 = Beta('gamma_LV2',0,None,None,0)
 
 
@@ -100,7 +99,7 @@ LV_2 = gamma_ADULTO40*ADULTO40 + gamma_EXP_1*EXP_1 + gamma_HPICO*HPICO +\
     gamma_USOCINTURON*USOCINTURON  + gamma_LV1*LV_1 
   
 LV_3 = gamma_EDUBASICA * EDUBASICA + gamma_JOVEN30*JOVEN30 +  gamma_ADULTO40*ADULTO40 +\
-    gamma_EXP_2*EXP_2 + gamma_HTRB_2*HTRB_2 + gamma_HTRB_3*HTRB_3 + gamma_HTRB_4*HTRB_4 +\
+    gamma_EXP_2*EXP_2 + gamma_HTRB_2*HTRB_2 + gamma_HTRB_3*HTRB_3 +\
     gamma_USOCINTURON * USOCINTURON + gamma_USODISPMOB * USODISPMOB + gamma_LV2*LV_2
   
 
@@ -172,8 +171,8 @@ SIGMA_STAR_PasoPeaton = Beta('SIGMA_STAR_PasoPeaton',0,None,None,0)
 SIGMA_STAR_UsoDirec = Beta('SIGMA_STAR_UsoDirec',0,None,None,0)
 
 
-delta_1 = Beta('delta_1',1,0,10,0 )
-delta_2 = Beta('delta_2',2,0,10,0 )
+delta_1 = Beta('delta_1',1,-100,100,0 )
+delta_2 = Beta('delta_2',2,-100,100,0 )
 tau_1 = -delta_1 - delta_2
 tau_2 = -delta_1 
 tau_3 = delta_1

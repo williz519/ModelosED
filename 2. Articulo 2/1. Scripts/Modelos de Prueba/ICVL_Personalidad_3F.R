@@ -19,7 +19,7 @@ apollo_initialise()
 
 ## Establecer controles principales
 apollo_control = list(
-  modelName  = "ICLV_Personalidad_3F Fusion2-3",
+  modelName  = "ICLV_Personalidad_3F ",
   modelDescr = "ICLV Personalidad de 3F",
   indivID    = "ViajeId",
   mixing     = TRUE,
@@ -32,32 +32,21 @@ apollo_control = list(
 
 database = read.csv("/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBMuestra_ModeloLogitVL.csv",sep="\t", dec=".",header=TRUE)
 
-#table(database$CHOICE)
+# Normalización de las variables tiempo
 
-#database <-  database %>%
-# Filtrar viajes Eliminados en la primera revisión
-#  filter(!(CHOICE %in% c("3")))
-
-#Reemplazar la ruta 3 en la ruta 2
-database$CHOICE[database$CHOICE == 3 ]<-2
-database$CHOICE[database$CHOICE == 4]<- 3
-
-#table(database$CHOICE)
-
-#names(database)
-
-### Create new variable with time
-
-for (i in 1:nrow(database)) {
-  database$TIEMPOAlt23[i] = (database$TIEMPOAlt2[i]+ database$TIEMPOAlt3[i])/2
-  database$DISTAlt23[i] = min(database$DISTAlt2[i],database$DISTAlt3[i])
+for (i in 1:nrow(database)){
+  # Normalización de las variables tiempo
+  database$T_Alt_1[i] = (database$TIEMPOAlt1[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  database$T_Alt_2[i] = (database$TIEMPOAlt2[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  database$T_Alt_3[i] = (database$TIEMPOAlt3[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  database$T_Alt_4[i] = (database$TIEMPOEC[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  
+  # Normalización de la variable distancia
+  database$D_Alt_1[i] = (database$DISTAlt1[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
+  database$D_Alt_2[i] = (database$DISTAlt2[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
+  database$D_Alt_3[i] = (database$DISTAlt3[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
+  database$D_Alt_4[i] = (database$DISTEC[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
 }
-#database$TIEMPOAlt23
-#database$DISTAlt23
-
-#database$DISTAlt2
-#database$DISTAlt3
-
 
 
 # ################################################################# #
@@ -65,33 +54,53 @@ for (i in 1:nrow(database)) {
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_Op1   = 0, asc_Op2   = 0, asc_Op3 =0,
+apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0,
               b_tt  = 0,  
               b_dt  = 0,
               b_CongAB  = 0, b_CongCD  = 0, b_CongEF  = 0,
               b_Sem = 0,
               b_ACC_0 = 0, b_ACC_1 = 0, b_ACC_2 = 0,
               b_NO_CAMFD = 0, b_SI_CAMFD = 0, 
-              b_PANEL0 = 0, b_PANEL1 = 0,  
-              b_ZER0 = 0, b_ZER1 = 0,
+              b_NO_PANEL = 0, b_SI_PANEL = 0, 
+              b_NO_ZER = 0, b_SI_ZER = 0, 
+              b_No_MTRP = 0, b_Si_MTRP = 0,
               lambda1        = 1,
               lambda2        = 1, 
               lambda3       = 1,
-              gamma_JOVEN30 = 0,
-              gamma_ADULTO40 = 0,
-              gamma_ADULTO60 = 0,
-              gamma_EXP_2 = 0,
-              #gamma_EXP_3 = 0,
-              #gamma_HTRB_2 = 0,
-              #gamma_HTRB_3 = 0,
-              gamma_USODISPMOB =0,
-              #gamma_EXP_1 = 0,
-              #gamma_HPICO = 0,
-              #gamma_CSECO = 0,
-              gamma_SININFOTRF = 0,
-              gamma_LV4 = 0,
-              gamma_LV6 = 0,
-              gamma_EDUBASICA = 0,
+              
+              # Regresion LV_P1
+              gamma_EDUBASICA_LV_P1 = 0.287,
+              gamma_JOVEN30_LV_P1 = -0.432,
+              gamma_ADULTO40_LV_P1 = -0.504,
+              gamma_ADULTO60_LV_P1 = -0.503,
+              gamma_EXP_2_LV_P1 = -0.510,
+              gamma_EXP_3_LV_P1 = -0.585,
+              gamma_HPICO_LV_P1 = 0.192,
+              gamma_SININFOTRF_LV_P1 = -0.382,
+              gamma_USODISPMOB_LV_P1 = 0.332,
+              
+              #Regresion LV_P2
+              gamma_EDUBASICA_LV_P2 = 0.240,
+              gamma_ADULTO60_LV_P2 = -0.154,
+              gamma_EXP_2_LV_P2 = 0.738,
+              gamma_EXP_3_LV_P2 = 0.349,
+              gamma_EXP_4_LV_P2 = 0.371,
+              gamma_EXP_5_LV_P2 = 0.378,
+              gamma_CSECO_LV_P2 = -0.169,
+              gamma_LV_P3_P2 = -0.593,
+              
+              #Regresion LV_P3
+              gamma_EDUBASICA_LV_P3 = 0.227,
+              gamma_JOVEN30_LV_P3 = -0.558,
+              gamma_ADULTO40_LV_P3 = -0.335,
+              gamma_ADULTO60_LV_P3 = -0.428,
+              gamma_EXP_3_LV_P3 = 0.182,
+              gamma_HTRB_2_LV_P3 = -0.210,
+              gamma_HPICO_LV_P3 = 0.122,
+              gamma_SININFOTRF_LV_P3 = -0.265,
+              gamma_USODISPMOB_LV_P3 = -0.140,
+              gamma_LV_P1_P3 = -0.621,
+              
               zeta_PrPer   = 1, 
               zeta_AmbTr   = 1, 
               zeta_ComVrb  = 1,
@@ -129,7 +138,34 @@ apollo_beta=c(asc_Op1   = 0, asc_Op2   = 0, asc_Op3 =0,
               tau_StrC_4    = 2)
 
 ### Vector con nombres (entre comillas) de los parámetros que se mantendrán fijos en su valor inicial en apollo_beta, use apollo_beta_fixed = c () si ninguno
-apollo_fixed = c("asc_Op1","asc_Op3", "b_CongEF", "b_ACC_0", "b_ZER0","b_NO_CAMFD", "b_PANEL0")
+apollo_fixed = c("asc_ruta3", "b_CongAB", "b_ACC_0", "b_NO_CAMFD", "b_No_MTRP", "b_NO_PANEL", "b_NO_ZER",
+                 "gamma_EDUBASICA_LV_P1",
+                 "gamma_JOVEN30_LV_P1",
+                 "gamma_ADULTO40_LV_P1",
+                 "gamma_ADULTO60_LV_P1",
+                 "gamma_EXP_2_LV_P1",
+                 "gamma_EXP_3_LV_P1",
+                 "gamma_HPICO_LV_P1",
+                 "gamma_SININFOTRF_LV_P1",
+                 "gamma_USODISPMOB_LV_P1",
+                 "gamma_EDUBASICA_LV_P2",
+                 "gamma_ADULTO60_LV_P2",
+                 "gamma_EXP_2_LV_P2",
+                 "gamma_EXP_3_LV_P2",
+                 "gamma_EXP_4_LV_P2",
+                 "gamma_EXP_5_LV_P2",
+                 "gamma_CSECO_LV_P2",
+                 "gamma_LV_P3_P2",
+                 "gamma_EDUBASICA_LV_P3",
+                 "gamma_JOVEN30_LV_P3",
+                 "gamma_ADULTO40_LV_P3",
+                 "gamma_ADULTO60_LV_P3",
+                 "gamma_EXP_3_LV_P3",
+                 "gamma_HTRB_2_LV_P3",
+                 "gamma_HPICO_LV_P3",
+                 "gamma_SININFOTRF_LV_P3",
+                 "gamma_USODISPMOB_LV_P3",
+                 "gamma_LV_P1_P3")
 
 ### Lea los valores iniciales para al menos algunos parámetros del archivo de salida del modelo existente
 #apollo_beta = apollo_readBeta(apollo_beta, apollo_fixed, "ICLV2_ModoCond", overwriteFixed=FALSE)
@@ -150,16 +186,18 @@ apollo_draws = list(
 apollo_randCoeff=function(apollo_beta, apollo_inputs){
   randcoeff = list()
   
-  randcoeff[["LV_4"]] = gamma_EDUBASICA*EDUBASICA + gamma_JOVEN30*JOVEN30 + gamma_ADULTO40*ADULTO40 + 
-    gamma_ADULTO60*ADULTO60 + gamma_EXP_2*EXP_2 + gamma_SININFOTRF*SININFOTRF + gamma_USODISPMOB * USODISPMOB +
-    eta4
+  randcoeff[["LV_P1"]] = gamma_EDUBASICA_LV_P1*EDUBASICA + gamma_JOVEN30_LV_P1*JOVEN30 + gamma_ADULTO40_LV_P1*ADULTO40 + 
+    gamma_ADULTO60_LV_P1*ADULTO60 + gamma_EXP_2_LV_P1*EXP_2 + gamma_EXP_3_LV_P1*EXP_3 + gamma_HPICO_LV_P1*HPICO + 
+    gamma_SININFOTRF_LV_P1*SININFOTRF + gamma_USODISPMOB_LV_P1 * USODISPMOB + eta4
   
-  randcoeff[["LV_6"]] =  gamma_EDUBASICA*EDUBASICA + gamma_JOVEN30*JOVEN30 + gamma_ADULTO40*ADULTO40 + 
-    gamma_ADULTO60*ADULTO60 + gamma_EXP_2*EXP_2 + gamma_SININFOTRF*SININFOTRF + gamma_USODISPMOB * USODISPMOB +
-    gamma_LV4*randcoeff[["LV_4"]] + eta6
+  randcoeff[["LV_P3"]] =  gamma_EDUBASICA_LV_P3*EDUBASICA + gamma_JOVEN30_LV_P3*JOVEN30 + gamma_ADULTO40_LV_P3*ADULTO40 + 
+    gamma_ADULTO60_LV_P3*ADULTO60 + gamma_EXP_3_LV_P3*EXP_3 + gamma_HTRB_2_LV_P3*HTRB_2 + gamma_HPICO_LV_P3*HPICO + 
+    gamma_SININFOTRF_LV_P3*SININFOTRF + gamma_USODISPMOB_LV_P3 * USODISPMOB +
+    gamma_LV_P1_P3*randcoeff[["LV_P1"]] + eta6
   
-  randcoeff[["LV_5"]] = gamma_EDUBASICA*EDUBASICA + gamma_ADULTO60*ADULTO60 + 
-    gamma_LV6*randcoeff[["LV_6"]] + eta5
+  randcoeff[["LV_P2"]] = gamma_EDUBASICA_LV_P2*EDUBASICA +  gamma_ADULTO60_LV_P2*ADULTO60 + gamma_EXP_2_LV_P2*EXP_2 + gamma_EXP_3_LV_P2*EXP_3 +
+    gamma_EXP_4_LV_P2*EXP_4 + gamma_EXP_5_LV_P2*EXP_5 + gamma_CSECO_LV_P2*CSECO + 
+    gamma_LV_P3_P2*randcoeff[["LV_P3"]] + eta5
   
   return(randcoeff)
 }
@@ -187,82 +225,91 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   ### Likelihood of indicators
   
   ol_settings1 = list(outcomeOrdered=Ans, 
-                      V=zeta_Ans * LV_4, 
+                      V=zeta_Ans * LV_P1, 
                       tau=c(tau_Ans_1, tau_Ans_2, tau_Ans_3, tau_Ans_4))
   ol_settings2 = list(outcomeOrdered=StrC, 
-                      V=zeta_StrC * LV_4, 
+                      V=zeta_StrC * LV_P1, 
                       tau=c(tau_StrC_1, tau_StrC_2, tau_StrC_3, tau_StrC_4))
+  ol_settings3 = list(outcomeOrdered=ComVrb, 
+                      V=zeta_ComVrb * LV_P1, 
+                      tau=c(tau_ComVrb_1, tau_ComVrb_2, tau_ComVrb_3, tau_ComVrb_4))
   
-  ol_settings3 = list(outcomeOrdered=PrPer, 
-                      V=zeta_PrPer * LV_5, 
+  ol_settings4 = list(outcomeOrdered=PrPer, 
+                      V=zeta_PrPer * LV_P2, 
                       tau=c(tau_PrPer_1, tau_PrPer_2, tau_PrPer_3, tau_PrPer_4))
-  ol_settings4 = list(outcomeOrdered=AmbTr, 
-                      V=zeta_AmbTr * LV_5, 
+  ol_settings5 = list(outcomeOrdered=AmbTr, 
+                      V=zeta_AmbTr * LV_P2, 
                       tau=c(tau_AmbTr_1, tau_AmbTr_2, tau_AmbTr_3, tau_AmbTr_4))
   
-  ol_settings5 = list(outcomeOrdered=ComVrb, 
-                      V=zeta_ComVrb * LV_6, 
+  ol_settings6 = list(outcomeOrdered=ComVrb, 
+                      V=zeta_ComVrb * LV_P3, 
                       tau=c(tau_ComVrb_1, tau_ComVrb_2, tau_ComVrb_3, tau_ComVrb_4))
-  ol_settings6 = list(outcomeOrdered=ComAfec, 
-                      V=zeta_ComAfec * LV_6, 
+  ol_settings7 = list(outcomeOrdered=ComAfec, 
+                      V=zeta_ComAfec * LV_P3, 
                       tau=c(tau_ComAfec_1, tau_ComAfec_2, tau_ComAfec_3, tau_ComAfec_4))
-  ol_settings7 = list(outcomeOrdered=ConCl, 
-                      V=zeta_ConCl * LV_6, 
+  ol_settings8 = list(outcomeOrdered=ConCl, 
+                      V=zeta_ConCl * LV_P3, 
                       tau=c(tau_ConCl_1, tau_ConCl_2, tau_ConCl_3, tau_ConCl_4))
   
   
   P[["indic_Ans"]]      = apollo_ol(ol_settings1, functionality)
   P[["indic_StrC"]]     = apollo_ol(ol_settings2, functionality)
+  P[["indic_ComVrb"]]   = apollo_ol(ol_settings3, functionality)
   
-  P[["indic_PrPer"]]    = apollo_ol(ol_settings3, functionality)
-  P[["indic_AmbTr"]]    = apollo_ol(ol_settings4, functionality)
+  P[["indic_PrPer"]]    = apollo_ol(ol_settings4, functionality)
+  P[["indic_AmbTr"]]    = apollo_ol(ol_settings5, functionality)
   
-  P[["indic_ComVrb"]]   = apollo_ol(ol_settings5, functionality)
-  P[["indic_ComAfec"]]  = apollo_ol(ol_settings6, functionality)
-  P[["indic_ConCl"]]    = apollo_ol(ol_settings7, functionality)
+  P[["indic_ComVrb"]]   = apollo_ol(ol_settings6, functionality)
+  P[["indic_ComAfec"]]  = apollo_ol(ol_settings7, functionality)
+  P[["indic_ConCl"]]    = apollo_ol(ol_settings8, functionality)
   
   
   ### Likelihood of choices
   ### List of utilities: these must use the same names as in mnl_settings, order is irrelevant
   V = list()
   
-  V[['Op1']]  = (asc_Op1  + b_tt * TIEMPOAlt1+ b_dt * DISTAlt1 + 
-                   b_CongAB*CONG_AB_A1 + b_CongCD*CONG_CD_A1 + b_CongEF*CONG_EF_A1 +
-                   b_Sem*SEM_A1 + 
-                   b_ACC_0*ACC_A1_0 + b_ACC_1*ACC_A1_1 + b_ACC_2*ACC_A1_2 + 
-                   b_NO_CAMFD * NO_CAMFD_A1 + b_SI_CAMFD * SI_CAMFD_A1 +
-                   b_PANEL0 * (Panel_A1<=0.3) + b_PANEL1* (Panel_A1>0.3) + 
-                   b_ZER0 * (ZER_A1_km<=0.1) +
-                   b_ZER1 * (ZER_A1_km>0.1))
+  V[['ruta1']]  = (asc_ruta1  + b_tt * T_Alt_1 + b_dt * D_Alt_1 + 
+                     b_CongAB*CONG_AB_A1 + b_CongCD*CONG_CD_A1 + b_CongEF*CONG_EF_A1 +
+                     b_Sem*SEM_A1_km + 
+                     b_ACC_0*ACC_A1_0 + b_ACC_1*ACC_A1_1 + b_ACC_2*ACC_A1_2 + 
+                     b_NO_CAMFD * NO_CAMFD_A1 + b_SI_CAMFD * SI_CAMFD_A1 +
+                     b_NO_PANEL * NO_PANEL_A1 + b_SI_PANEL * SI_PANEL_A1 + 
+                     b_NO_ZER * NO_ZER_A1 + b_SI_ZER * SI_ZER_A1 + 
+                     b_No_MTRP * NO_MTRP_A1 + b_Si_MTRP * SI_MTRP_A1)
   
-  V[['Op2']]  = (asc_Op2  + b_tt * TIEMPOAlt23+ b_dt * DISTAlt23 + 
-                   b_CongAB*(CONG_AB_A2+CONG_AB_A3-CONG_AB_A2*CONG_AB_A3) + 
-                   b_CongCD*(CONG_CD_A2 + CONG_CD_A3 - CONG_CD_A2*CONG_CD_A3) +
-                   b_CongEF*(CONG_EF_A2 + CONG_EF_A3 - CONG_EF_A2*CONG_EF_A3) +
-                   b_Sem*((SEM_A2 + SEM_A3)/2) +
-                   b_ACC_0* (ACC_A2_0 + ACC_A3_0 - ACC_A2_0*ACC_A2_0) +
-                   b_ACC_1* (ACC_A2_1 + ACC_A3_1 - ACC_A2_1*ACC_A3_1) +
-                   b_ACC_2* (ACC_A2_2 + ACC_A3_2 - ACC_A2_2*ACC_A3_2) + 
-                   b_NO_CAMFD * (NO_CAMFD_A2 + NO_CAMFD_A3 - NO_CAMFD_A2*NO_CAMFD_A3) + 
-                   b_SI_CAMFD * (SI_CAMFD_A2 + SI_CAMFD_A3 - SI_CAMFD_A2*SI_CAMFD_A3) +
-                   b_PANEL0 * (((Panel_A2 + Panel_A3)/2)<=0.3) + b_PANEL1* (((Panel_A2 + Panel_A3)/2)>0.3) +
-                   b_ZER0 * (((ZER_A2_km + ZER_A3_km)/2)<=0.1)  + 
-                   b_ZER1 * (((ZER_A2_km + ZER_A3_km)/2)>0.1) )
+  V[['ruta2']]  = (asc_ruta2  + b_tt * T_Alt_2 + b_dt * D_Alt_2 + 
+                     b_CongAB*CONG_AB_A2 + b_CongCD*CONG_CD_A2 + b_CongEF*CONG_EF_A2 + 
+                     b_Sem*SEM_A2_km + 
+                     b_ACC_0*ACC_A2_0 + b_ACC_1*ACC_A2_1 + b_ACC_2*ACC_A2_2 + 
+                     b_NO_CAMFD * NO_CAMFD_A2 + b_SI_CAMFD * SI_CAMFD_A2 +
+                     b_NO_PANEL * NO_PANEL_A2 + b_SI_PANEL * SI_PANEL_A2 + 
+                     b_NO_ZER * NO_ZER_A2 + b_SI_ZER * SI_ZER_A2 + 
+                     b_No_MTRP * NO_MTRP_A2 + b_Si_MTRP * SI_MTRP_A2)
   
-  V[['Op3']] = (asc_Op3 + b_tt * TIEMPOEC   + b_dt * DISTEC + b_CongAB*CONG_AB_EC + 
-                  b_CongCD*CONG_CD_EC + b_CongEF*CONG_EF_EC +
-                  b_Sem*SEM_EC + 
-                  b_ACC_0*ACC_EC_0 + b_ACC_1*ACC_EC_1 + b_ACC_2*ACC_EC_2 + 
-                  b_NO_CAMFD * NO_CAMFD_EC + b_SI_CAMFD * SI_CAMFD_EC +
-                  b_PANEL0 * (Panel_EC<=0.3) + b_PANEL1* (Panel_EC>0.3) +
-                  b_ZER0 * (ZER_EC_km<=0.1) + b_ZER1*(ZER_EC_km >0.1) +  
-                  lambda4 * LV_4 + lambda5 * LV_5 + lambda6 * LV_6)
+  V[['ruta3']]  = (asc_ruta3  + b_tt * T_Alt_3 + b_dt * D_Alt_3 + 
+                     b_CongAB*CONG_AB_A3 + b_CongCD*CONG_CD_A3 + b_CongEF*CONG_EF_A3 +  
+                     b_Sem*SEM_A3_km +
+                     b_ACC_0*ACC_A3_0 + b_ACC_1*ACC_A3_1 + b_ACC_2*ACC_A3_2 +  
+                     b_NO_CAMFD * NO_CAMFD_A3 + b_SI_CAMFD * SI_CAMFD_A3 +
+                     b_NO_PANEL * NO_PANEL_A3 + b_SI_PANEL * SI_PANEL_A3 + 
+                     b_NO_ZER * NO_ZER_A3 + b_SI_ZER * SI_ZER_A3 + 
+                     b_No_MTRP * NO_MTRP_A3 + b_Si_MTRP * SI_MTRP_A3)
+  
+  V[['rutaEC']] = (asc_rutaEC + b_tt * T_Alt_4   + b_dt * D_Alt_4 + 
+                     b_CongAB*CONG_AB_EC + b_CongCD*CONG_CD_EC + b_CongEF*CONG_EF_EC +
+                     b_Sem*SEM_EC_km +
+                     b_ACC_0*ACC_EC_0 + b_ACC_1*ACC_EC_1 + b_ACC_2*ACC_EC_2 + 
+                     b_NO_CAMFD * NO_CAMFD_EC + b_SI_CAMFD * SI_CAMFD_EC +
+                     b_NO_PANEL * NO_PANEL_EC + b_SI_PANEL * SI_PANEL_EC + 
+                     b_NO_ZER * NO_ZER_EC + b_SI_ZER * SI_ZER_EC + 
+                     b_No_MTRP * NO_MTRP_EC + b_Si_MTRP * SI_MTRP_EC +
+                     lambda1 * LV_P1 + lambda2 * LV_P2 + lambda3 * LV_P3)
   
   
   ### Define settings for MNL model component
   mnl_settings = list(
-    alternatives  = c(Op1=1, Op2=2, Op3=3), 
-    avail         = list(Op1=1, Op2=1, Op3=1), 
+    alternatives  = c(ruta1=1, ruta2=2, ruta3=3, rutaEC=4), 
+    avail         = list(ruta1=1, ruta2=1, ruta3=1, rutaEC=1), 
     choiceVar     = CHOICE,
     V             = V
   )
