@@ -1,6 +1,8 @@
+# Github installation
+install.packages("devtools")
+devtools::install_github("rodazuero/gmapsdistance")
 
-
-library("gmapdistance")
+library("gmapsdistance")
 
 origin=Oriental$Coordenadas
 fix(origin)
@@ -27,21 +29,33 @@ des=c("6.221713+-75.59181", "6.21883+-75.58655", "6.214981+-75.59758",
       "6.27907+-75.571295", "6.234699+-75.58744", "6.230405+-75.609889", 
       "6.24448+-75.589435", "6.241586+-75.5765")
 
+Puentes = c("6.286183+-75.56599", "6.275893+-75.56978", "6.265202+-75.57218", "6.260895+-75.57370",
+            "6.254212+-75.57729", "6.247960+-75.58028", "6.239645+-75.57740", "6.236897+-75.57647", 
+            "6.231378+-75.57567", "6.213594+-75.57807", "6.204031+-75.57959", "6.195293+-75.58154")
 
 
-resultados = gmapsdistance(or, des,
-                           mode = "driving", key ="AIzaSyDTpTbw19_FAOtRd0dLHIllsla3jLDq0h4", 
+
+resultados1 = gmapsdistance(or, Puentes,
+                           mode = "driving", shape= "long", key ="AIzaSyDP4YQ9BZH0U0oicJ7nFkP7groRV9eGkEQ", 
                            combinations = "all")
 
-resultados
+resultados2 = gmapsdistance(Puentes, des,
+                            mode = "driving", shape= "long", key ="AIzaSyDP4YQ9BZH0U0oicJ7nFkP7groRV9eGkEQ" , 
+                            combinations = "all")
+
+resultados1
 
 library(xlsx)
 
-write.table(resultados, file = "C:/Users/sin definir/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/MatrizDistancias.txt", row.names = FALSE)
+write.table(resultados1, file = "/Users/williz/Desktop/ModelosED/Mapas/MatrizDistancias1.txt", row.names = FALSE)
+write.table(resultados2, file = "/Users/williz/Desktop/ModelosED/Mapas/MatrizDistancias2.txt", row.names = FALSE)
 
-write.csv(resultados, file = "C:/Users/sin definir/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/MatrizDistancias.txt", row.names = FALSE)
+write.csv(resultados1, file = "/Users/williz/Desktop/ModelosED/Mapas/MatrizDistancias1.txt", row.names = FALSE)
+write.csv(resultados2, file = "/Users/williz/Desktop/ModelosED/Mapas/MatrizDistancias2.txt", row.names = FALSE)
 
-write.xlsx(resultados, file = "C:/Users/sin definir/Dropbox/Doctorado/Tesis Doctorado/Avances Tesis/Analisis Datos Tesis/MatrizDistancias.xlsx",
+write.xlsx(resultados1, file = "/Users/williz/Desktop/ModelosED/Mapas/MatrizDistancias1.xlsx",
             sheetName = "Distancias", col.names=TRUE, row.names=TRUE, append=FALSE)
+write.xlsx(resultados2, file = "/Users/williz/Desktop/ModelosED/Mapas/MatrizDistancias2.xlsx",
+           sheetName = "Distancias", col.names=TRUE, row.names=TRUE, append=FALSE)
 
 

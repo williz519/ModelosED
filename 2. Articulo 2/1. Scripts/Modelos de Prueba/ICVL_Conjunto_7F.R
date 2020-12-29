@@ -33,18 +33,19 @@ database = read.csv("/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/D
 
 # Normalización de las variables tiempo
 
+# Normalización de los viajes
 for (i in 1:nrow(database)){
   # Normalización de las variables tiempo
-  database$T_Alt_1[i] = (database$TIEMPOAlt1[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
-  database$T_Alt_2[i] = (database$TIEMPOAlt2[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
-  database$T_Alt_3[i] = (database$TIEMPOAlt3[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
-  database$T_Alt_4[i] = (database$TIEMPOEC[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  database$T_Alt_1[i] = (database$TIEMPOAlt1[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05))
+  database$T_Alt_2[i] = (database$TIEMPOAlt2[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05))
+  database$T_Alt_3[i] = (database$TIEMPOAlt3[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05))
+  database$T_Alt_4[i] = (database$TIEMPOEC[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05))
   
   # Normalización de la variable distancia
-  database$D_Alt_1[i] = (database$DISTAlt1[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
-  database$D_Alt_2[i] = (database$DISTAlt2[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
-  database$D_Alt_3[i] = (database$DISTAlt3[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
-  database$D_Alt_4[i] = (database$DISTEC[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
+  database$D_Alt_1[i] = (database$DISTAlt1[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))
+  database$D_Alt_2[i] = (database$DISTAlt2[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))
+  database$D_Alt_3[i] = (database$DISTAlt3[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))
+  database$D_Alt_4[i] = (database$DISTEC[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))
 }
 
 
@@ -53,7 +54,7 @@ for (i in 1:nrow(database)){
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0,
+apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_ruta4  = 0,
               b_tt  = 0,  
               b_dt  = 0,
               b_CongAB  = 0, b_CongCD  = 0, b_CongEF  = 0,
@@ -73,12 +74,15 @@ apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0
               
               # Regresion LV1
               g_EXP_3_LV1 = -0.408,
-              g_EXP_4_LV1 = -0.180,
+              #g_EXP_4_LV1 = -0.180,
               g_HTRB_2_LV1 = 0.311,
+              #g_CSECO_LV1 = 0.181,
+              #g_SININFOTRF_LV1 = -0.182,
               g_USODISPMOB_LV1 = 0.194,
 
               # Regresion LV2
               g_EDUBASICA_LV2 = 0.220,
+              #g_ADULTO60_LV2 = -0.154,
               g_EXP_2_LV2 = 0.798,
               g_EXP_3_LV2 = 0.410,
               g_EXP_4_LV2 = 0.410,
@@ -88,18 +92,24 @@ apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0
               # Regresion LV3
               g_EDUBASICA_LV3 = -0.301,
               g_JOVEN30_LV3 = 0.329,
+              #g_ADULTO40_LV3 = 0.216,
               g_ADULTO60_LV3 = 0.347,
               g_EXP_3_LV3 = -0.241,
+              #g_HPICO_LV3 = -0.112,
+              #g_SININFOTRF_LV3 = 0.155,
               g_LV4_LV3 = 0.398,
               g_LV5_LV3 = -0.456,
               g_LV6_LV3 = 0.353,
               
               # Regresion LV4
-              g_ADULTO40_LV4 = -0.204,
-              g_ADULTO60_LV4 = -0.204,
-              g_EXP_2_LV4 = 0.196,
+              #g_EDUBASICA_LV4 = 0.185,
+              g_ADULTO40_LV4 = -0.440,
+              g_ADULTO60_LV4 = -0.478,
+              g_EXP_2_LV4 = -0.481,
+              #g_EXP_3_LV4 = -0.402,
               g_SININFOTRF_LV4 = -0.290,
-              g_LV1_LV4 = 0.398,
+              #g_USODISPMOB_LV4 = 0.193,
+              g_LV1_LV4 = 0.458,
               
               # Regresion LV5
               g_EDUBASICA_LV5 = -0.422,
@@ -111,10 +121,12 @@ apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0
               
               # Regresion LV6
               g_ADULTO40_LV6 = -0.194,
+              #g_EXP_2_LV6 = -0.141,
               g_EXP_5_LV6 = -0.150,
               g_HPICO_LV6 = 0.159, 
               g_CSECO_LV6 = -0.221,
               g_SININFOTRF_LV6 = 0.140,
+              #g_USODISPMOB_LV6 = 0.094,
               g_LV1_LV6 = 0.656,
               
               # Regresion LV7
@@ -123,6 +135,7 @@ apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0
               g_ADULTO60_LV7 = -0.230,
               g_EXP_2_LV7 = -0.224,
               g_EXP_5_LV7 = -0.163,
+              #g_CSECO_LV7 = -0.145,
               g_LV1_LV7 = 0.789,
               
               zeta_FRbr     = 1, zeta_EnfCond  = 1, zeta_AFrSem   = 1, zeta_CulFr    = 1, zeta_OmLmVel  = 1, 
@@ -198,7 +211,6 @@ apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_rutaEC  = 0
 ### Vector con nombres (entre comillas) de los parámetros que se mantendrán fijos en su valor inicial en apollo_beta, use apollo_beta_fixed = c () si ninguno
 apollo_fixed = c("asc_ruta3", "b_CongAB", "b_ACC_0", "b_NO_CAMFD", "b_No_MTRP", "b_NO_PANEL", "b_NO_ZER",
                  "g_EXP_3_LV1",
-                 "g_EXP_4_LV1",
                  "g_HTRB_2_LV1",
                  "g_USODISPMOB_LV1",
                  
@@ -250,6 +262,11 @@ apollo_fixed = c("asc_ruta3", "b_CongAB", "b_ACC_0", "b_NO_CAMFD", "b_No_MTRP", 
                  "g_EXP_5_LV7",
                  "g_LV1_LV7")
 
+# "g_EXP_4_LV1",#"g_CSECO_LV1","g_SININFOTRF_LV1", "g_ADULTO60_LV2","g_ADULTO40_LV3","g_HPICO_LV3", 
+# "g_SININFOTRF_LV3","g_EDUBASICA_LV4","g_EXP_3_LV4","g_USODISPMOB_LV4","g_EXP_2_LV6","g_USODISPMOB_LV6","g_CSECO_LV7",
+
+
+
 ### Lea los valores iniciales para al menos algunos parámetros del archivo de salida del modelo existente
 #apollo_beta = apollo_readBeta(apollo_beta, apollo_fixed, "ICLV2_ModoCond", overwriteFixed=FALSE)
 
@@ -269,27 +286,31 @@ apollo_draws = list(
 apollo_randCoeff=function(apollo_beta, apollo_inputs){
   randcoeff = list()
   
-  randcoeff[["LV_1"]] = g_EXP_3_LV1 * EXP_3 + g_EXP_4_LV1 * EXP_4 + g_HTRB_2_LV1*HTRB_2 + 
-    g_USODISPMOB_LV1*USODISPMOB + eta1
+  randcoeff[["LV_1"]] = g_EXP_3_LV1 * EXP_3 +  g_HTRB_2_LV1*HTRB_2 + g_USODISPMOB_LV1*USODISPMOB + eta1
+  # g_EXP_4_LV1 * EXP_4 + g_CSECO_LV1*CSECO + g_SININFOTRF_LV1 *SININFOTRF
   
   randcoeff[["LV_5"]] = g_EDUBASICA_LV5*EDUBASICA + g_JOVEN30_LV5*JOVEN30 + g_ADULTO40_LV5*ADULTO40 + 
     g_EXP_2_LV5*EXP_2 + g_HTRB_2_LV5*HTRB_2 + g_USODISPMOB_LV5*USODISPMOB + eta5
   
-  randcoeff[["LV_4"]] =  g_ADULTO40_LV4*ADULTO40 + g_ADULTO60_LV4*ADULTO60 + g_EXP_2_LV4*EXP_2 + 
-    g_SININFOTRF_LV4 *SININFOTRF + g_LV1_LV4*randcoeff[["LV_1"]] + eta4
+  randcoeff[["LV_4"]] =   g_ADULTO40_LV4*ADULTO40 + g_ADULTO60_LV4*ADULTO60 + g_EXP_2_LV4*EXP_2 + 
+     g_SININFOTRF_LV4 *SININFOTRF +  g_LV1_LV4*randcoeff[["LV_1"]] + eta4
+  #g_EDUBASICA_LV4*EDUBASICA + g_EXP_3_LV4*EXP_3 + g_USODISPMOB_LV4*USODISPMOB +
   
-  randcoeff[["LV_6"]] = g_ADULTO40_LV6*ADULTO40 + g_EXP_5_LV6*EXP_5 + g_HPICO_LV6*HPICO + g_CSECO_LV6*CSECO +
-    g_SININFOTRF_LV6 *SININFOTRF + g_LV1_LV6*randcoeff[["LV_1"]] + eta6
+  randcoeff[["LV_6"]] = g_ADULTO40_LV6*ADULTO40 +  g_EXP_5_LV6*EXP_5 + g_HPICO_LV6*HPICO + g_CSECO_LV6*CSECO +
+    g_SININFOTRF_LV6 *SININFOTRF +  g_LV1_LV6*randcoeff[["LV_1"]] + eta6
+  #g_EXP_2_LV6*EXP_2 + g_USODISPMOB_LV6*USODISPMOB +
   
-  randcoeff[["LV_3"]] = g_EDUBASICA_LV3*EDUBASICA + g_JOVEN30_LV3*JOVEN30 + 
-    g_ADULTO60_LV3*ADULTO60 + g_EXP_3_LV3*EXP_3 +  g_LV4_LV3*randcoeff[["LV_4"]] + 
-    g_LV5_LV3*randcoeff[["LV_5"]] + g_LV6_LV3*randcoeff[["LV_6"]] + eta3
+  randcoeff[["LV_3"]] = g_EDUBASICA_LV3*EDUBASICA + g_JOVEN30_LV3*JOVEN30 + g_ADULTO60_LV3*ADULTO60 + 
+    g_EXP_3_LV3*EXP_3 + g_LV4_LV3*randcoeff[["LV_4"]] + g_LV5_LV3*randcoeff[["LV_5"]] + g_LV6_LV3*randcoeff[["LV_6"]] + eta3
+  #g_ADULTO40_LV3*ADULTO40 + g_HPICO_LV3*HPICO + g_SININFOTRF_LV3 *SININFOTRF +
   
-  randcoeff[["LV_2"]] = g_EDUBASICA_LV2*EDUBASICA + g_EXP_2_LV2*EXP_2 + g_EXP_3_LV2*EXP_3 + 
+  randcoeff[["LV_2"]] = g_EDUBASICA_LV2*EDUBASICA +  g_EXP_2_LV2*EXP_2 + g_EXP_3_LV2*EXP_3 + 
     g_EXP_4_LV2*EXP_4 + g_EXP_5_LV2*EXP_5 + g_LV3_LV2*randcoeff[["LV_3"]] + eta2
+  #g_ADULTO60_LV2*ADULTO60 +
   
   randcoeff[["LV_7"]] = g_JOVEN30_LV7*JOVEN30 + g_ADULTO40_LV7*ADULTO40 + g_ADULTO60_LV7*ADULTO60 + 
-    g_EXP_2_LV7*EXP_2 + g_EXP_5_LV7*EXP_5 + g_LV1_LV7*randcoeff[["LV_1"]] + eta7
+    g_EXP_2_LV7*EXP_2 + g_EXP_5_LV7*EXP_5 +  g_LV1_LV7*randcoeff[["LV_1"]] + eta7
+  #g_CSECO_LV7*CSECO +
   
   return(randcoeff)
 }
@@ -431,7 +452,7 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
                      b_NO_ZER * NO_ZER_A3 + b_SI_ZER * SI_ZER_A3 + 
                      b_No_MTRP * NO_MTRP_A3 + b_Si_MTRP * SI_MTRP_A3)
   
-  V[['rutaEC']] = (asc_rutaEC + b_tt * T_Alt_4   + b_dt * D_Alt_4 + 
+  V[['rutaEC']] = (asc_ruta4 + b_tt * T_Alt_4   + b_dt * D_Alt_4 + 
                      b_CongAB*CONG_AB_EC + b_CongCD*CONG_CD_EC + b_CongEF*CONG_EF_EC +
                      b_Sem*SEM_EC_km +
                      b_ACC_0*ACC_EC_0 + b_ACC_1*ACC_EC_1 + b_ACC_2*ACC_EC_2 + 

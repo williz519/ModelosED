@@ -17,6 +17,10 @@ library(corrplot)
 library(corrr)
 library(umx)
 
+### Limpiar memoria
+rm(list = ls())
+
+
 workingDirectory="/Users/williz/Desktop/ModelosED/2. Articulo 2/1. Scripts/1. Analisis Factorial"
 setwd(workingDirectory)
 
@@ -54,72 +58,26 @@ ModoCond <- DBModLog %>%
          "IgPare","UsoCel","PasoPeaton","INFOTRAFICO","DispMob","Experiencia",
          "CinSeg","UsoPito")
 
-psych::alpha(ModoCond)
+psych::alpha(ModoCond, check.keys=TRUE)
 
-ModoCond[c("CinSeg","DispMob","Experiencia","INFOTRAFICO")] <- NULL
+ModoCond[c("Experiencia", "DispMob", "INFOTRAFICO", "CinSeg")] <- NULL
 
 cor(ModoCond)
 
 psych::alpha(ModoCond)
 
+ACA <- ModoCond %>%
+  select("FRbr","EnfCond","AFrSem","CulFr", "UsoPito")
 
-##############################################################################
+psych::alpha(ACA)
 
-# Personalidad
+VLV <- ModoCond %>%
+  select("IgPare","OmLmVel")
+psych::alpha(VLV)
 
-MPerson <- DBModLog %>%
-  select("ComVrb","Ans","ComAfec","PrPer", "AmbTr","StrC","ConCl", "Experiencia")
-
-psych::alpha(MPerson)
-cor(MPerson)
-
-MPerson$ComVrb[MPerson$ComVrb == 1] <- 6
-MPerson$ComVrb[MPerson$ComVrb == 2] <- 7
-MPerson$ComVrb[MPerson$ComVrb == 5] <- 1
-MPerson$ComVrb[MPerson$ComVrb == 4] <- 2
-MPerson$ComVrb[MPerson$ComVrb == 6] <- 5
-MPerson$ComVrb[MPerson$ComVrb == 7] <- 4
-
-MPerson[c("Experiencia")]<-NULL
-
-psych::alpha(MPerson)
-
-cor(MPerson)
-cor(ModoCond)
-
-##############################################################################
-
-# BASES DE DATOS CONJUNTA
-
-MConj <- DBModLog %>%
-  select("FRbr", "UsoDirec","EnfCond","AFrSem","CulFr","OmLmVel",    
-         "IgPare","UsoCel","PasoPeaton","INFOTRAFICO","DispMob","Experiencia",
-         "CinSeg","UsoPito", "ComVrb","Ans","ComAfec","PrPer", "AmbTr","StrC",
-         "ConCl", "Experiencia")
-
-psych::alpha(MConj)
-
-MConj[c("CinSeg","DispMob","INFOTRAFICO", "Experiencia")] <- NULL
-
-MConj$ComVrb[MConj$ComVrb == 1] <- 6
-MConj$ComVrb[MConj$ComVrb == 2] <- 7
-MConj$ComVrb[MConj$ComVrb == 5] <- 1
-MConj$ComVrb[MConj$ComVrb == 4] <- 2
-MConj$ComVrb[MConj$ComVrb == 6] <- 5
-MConj$ComVrb[MConj$ComVrb == 7] <- 4
-
-MConj$PasoPeaton[MConj$PasoPeaton == 1] <- 6
-MConj$PasoPeaton[MConj$PasoPeaton == 2] <- 7
-MConj$PasoPeaton[MConj$PasoPeaton == 5] <- 1
-MConj$PasoPeaton[MConj$PasoPeaton == 4] <- 2
-MConj$PasoPeaton[MConj$PasoPeaton == 6] <- 5
-MConj$PasoPeaton[MConj$PasoPeaton == 7] <- 4
-
-
-cor(MConj)
-names(MConj)
-
-
+CNV <- ModoCond %>%
+  select("PasoPeaton", "UsoDirec")
+psych::alpha(CNV)
 
 ##############################################################################
 
@@ -223,7 +181,7 @@ pca1$scores[1:10,]
 
 #Analisis Factorial
 fa <-factanal(ModoCond, factors = 2, rotation = "varimax", na.rm = TRUE,lower = 0.05)
-print(fa,cutoff=0.3, sort=FALSE)
+print(fa,cutoff=0.2, sort=FALSE)
 factor.plot(fa,cut=0.5)
 fa.diagram(fa)
 fa.parallel.poly(fa)
@@ -234,11 +192,39 @@ factor.plot(fa1,cut=0.5)
 fa.diagram(fa)
 fa.parallel.poly(fa1)
 
-fa1 <-factanal(ModoCond, factor = 5, rotation = "varimax", na.rm = TRUE, lower = 0.05)
+fa1 <-factanal(ModoCond, factor = 4, rotation = "varimax", na.rm = TRUE, lower = 0.05)
 print(fa1,cutoff=0.2, sort=FALSE)
 factor.plot(fa1,cut=0.5)
 
+#sink()
+
+# Modelo de dos factores
+
+factores <- factanal(ModoCond, factor=2, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+
+indicators2 <- cbind(ModoCond, factores)
+indicators2$Factor1 <- round(((indicators2$Factor1 - min(indicators2$Factor1))/(max(indicators2$Factor1)-min(indicators2$Factor1))),3)
+indicators2$Factor2 <- round(((indicators2$Factor2 - min(indicators2$Factor2))/(max(indicators2$Factor2)-min(indicators2$Factor2))),3)
+
+indicators2
+
+indicators2 <- rename(indicators2, replace =c(Factor1 = "ActAgr",
+                                              Factor2 = "ConVial"))
+
+par(mfrow=c(1,2))
+hist(indicators2$ActAgr, freq = TRUE, main = "Distribución del Factor 1",
+     xlab = "Actitud Agresiva", ylab = "Frecuencia", col = "red")
+hist(indicators2$ConVial, freq = TRUE, main = "Distribución del Factor 2",
+     xlab = "Conciencia Vial", ylab = "Frecuencia", col = "blue")
+
 sink()
+
+
+saveRDS(indicators2, file="/Users/williz/Desktop/ModelosED/2. Articulo 2/1. Scripts/1. Analisis Factorial/AFModoConduccion.rds")
+
+
+
+# Modelo de tres factores
 
 factores <- factanal(ModoCond, factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 
@@ -254,7 +240,7 @@ indicators2
 
 indicators2 <- rename(indicators2, replace =c(Factor1 = "ActAgr",
                                               Factor2 = "LimVel",
-                                              Factor3 = "VioNormas"))
+                                              Factor3 = "ConVial"))
 
 
 
@@ -263,8 +249,8 @@ hist(indicators2$ActAgr, freq = TRUE, main = "Distribución del Factor 1",
      xlab = "Actitud Agresiva", ylab = "Frecuencia", col = "red")
 hist(indicators2$LimVel, freq = TRUE, main = "Distribución del Factor 2",
      xlab = "Limite de Velocidad", ylab = "Frecuencia", col = "blue")
-hist(indicators2$VioNormas, freq = TRUE, main = "Distribución del Factor 3",
-     xlab = "Violación Normas", ylab = "Frecuencia", col = "green")
+hist(indicators2$ConVial, freq = TRUE, main = "Distribución del Factor 3",
+     xlab = "Conciencia Vial", ylab = "Frecuencia", col = "green")
 
 sink()
 
@@ -275,8 +261,35 @@ saveRDS(indicators2, file="/Users/williz/Desktop/ModelosED/2. Articulo 2/1. Scri
 ###################################################################################################
 ###################################################################################################
 
+##############################################################################
 
-sink("AFPersonalidad.txt")
+# Personalidad
+
+MPerson <- DBModLog %>%
+  select("ComVrb","Ans","ComAfec","PrPer", "AmbTr","StrC","ConCl", "Experiencia")
+
+psych::alpha(MPerson, check.keys=TRUE)
+cor(MPerson)
+
+MPerson$ComVrb[MPerson$ComVrb == 1] <- 6
+MPerson$ComVrb[MPerson$ComVrb == 2] <- 7
+MPerson$ComVrb[MPerson$ComVrb == 5] <- 1
+MPerson$ComVrb[MPerson$ComVrb == 4] <- 2
+MPerson$ComVrb[MPerson$ComVrb == 6] <- 5
+MPerson$ComVrb[MPerson$ComVrb == 7] <- 4
+
+MPerson[c("Experiencia")]<-NULL
+
+psych::alpha(MPerson, check.keys=TRUE)
+
+MPerson[c("ComVrb")]<-NULL
+
+cor(MPerson)
+cor(ModoCond)
+
+
+
+#sink("AFPersonalidad.txt")
 
 #Alpha de Cronbach
 psych::alpha(MPerson)
@@ -375,7 +388,7 @@ pca1$scores[1:10,]
 #promax(pca1$rotation)
 
 #Analisis Factorial
-fa <-factanal(MPerson, factors = 2, rotation = "varimax", na.rm = TRUE,lower = 0.05)
+fa <-factanal(MPerson, factors = 3, rotation = "varimax", na.rm = TRUE,lower = 0.05)
 print(fa,cutoff=0.3, sort=FALSE)
 factor.plot(fa,cut=0.5)
 fa.diagram(fa)
@@ -424,11 +437,58 @@ saveRDS(indicators2, file="/Users/williz/Desktop/ModelosED/2. Articulo 2/1. Scri
 ###################################################################################################
 ###################################################################################################
 
+##############################################################################
 
-sink("AFConjunta.txt")
+# BASES DE DATOS CONJUNTA
+
+MConj <- DBModLog %>%
+  select("FRbr", "UsoDirec","EnfCond","AFrSem","CulFr","OmLmVel",    
+         "IgPare","UsoCel","PasoPeaton","INFOTRAFICO","DispMob","Experiencia",
+         "CinSeg","UsoPito", "ComVrb","Ans","ComAfec","PrPer", "AmbTr","StrC",
+         "ConCl", "Experiencia")
+
+psych::alpha(MConj, check.keys=TRUE)
+
+MConj[c("Experiencia", "INFOTRAFICO", "DispMob")] <- NULL
+
+
+MConj$Suma = MConj$FRbr+MConj$UsoDirec+MConj$EnfCond + MConj$AFrSem + MConj$CulFr + MConj$OmLmVel +
+             MConj$IgPare + MConj$UsoCel + MConj$PasoPeaton + MConj$CinSeg + MConj$UsoPito + 
+             MConj$ComVrb + MConj$Ans + MConj$ComAfec + MConj$PrPer + MConj$AmbTr + MConj$StrC +
+             MConj$ConCl
+cor(MConj)
+
+
+MConj$ComVrb[MConj$ComVrb == 1] <- 6
+MConj$ComVrb[MConj$ComVrb == 2] <- 7
+MConj$ComVrb[MConj$ComVrb == 5] <- 1
+MConj$ComVrb[MConj$ComVrb == 4] <- 2
+MConj$ComVrb[MConj$ComVrb == 6] <- 5
+MConj$ComVrb[MConj$ComVrb == 7] <- 4
+
+MConj$CinSeg[MConj$CinSeg == 1]<-3
+MConj$CinSeg[MConj$CinSeg == 2]<-1
+MConj$CinSeg[MConj$CinSeg == 3]<-2
+
+#MConj$PasoPeaton[MConj$PasoPeaton == 1] <- 6
+#MConj$PasoPeaton[MConj$PasoPeaton == 2] <- 7
+#MConj$PasoPeaton[MConj$PasoPeaton == 5] <- 1
+#MConj$PasoPeaton[MConj$PasoPeaton == 4] <- 2
+#MConj$PasoPeaton[MConj$PasoPeaton == 6] <- 5
+#MConj$PasoPeaton[MConj$PasoPeaton == 7] <- 4
+
+MConj[c("Suma", "CinSeg")] <- NULL
+
+#MConj[c("Suma", "CinSeg", "UsoDirec","PasoPeaton","ComVrb")] <- NULL
+
+psych::alpha(MConj, check.keys=TRUE)
+
+names(MConj)
+
+#sink("AFConjunta.txt")
 
 #Alpha de Cronbach
-psych::alpha(MConj)
+psych::alpha(MConj, check.keys=TRUE)
 
 
 # Estadisticas descriptivas
@@ -443,6 +503,7 @@ Rcor <- cor(MConj)
 # Gráfico de las Correlaciones
 corrplot(Rcor, order = "AOE", method = c("shade"), tl.col = "black", addCoef.col = "black",
          tl.srt= 45, tl.cex = 1, type = "upper", diag = F,  addshade = "all")
+
 
 corrplot.mixed(Rcor,lower.col = "black",number.cex=.7, title("Matriz de Correlación"))
 
@@ -524,7 +585,7 @@ pca1$scores[1:10,]
 #promax(pca1$rotation)
 
 #Analisis Factorial
-fa <-factanal(MConj, factors = 5, rotation = "varimax", na.rm = TRUE,lower = 0.05)
+fa <-factanal(MConj, factors = 7, rotation = "varimax", na.rm = TRUE,lower = 0.05)
 print(fa,cutoff=0.2, sort=FALSE)
 factor.plot(fa,cut=0.5)
 fa.diagram(fa)
@@ -538,7 +599,7 @@ fa.parallel.poly(fa1)
 
 sink()
 
-factores <- factanal(ModoCond, factor=3, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
+factores <- factanal(ModoCond, factor=4, rotation = "varimax", na.rm = TRUE, scores = "regression")$scores
 
 #Normalizamos los valores que podran tomarse como el peso para el cálculo de un indice que
 # explica por cada i-esima fila la variabilidad de todo el conjunto de datos

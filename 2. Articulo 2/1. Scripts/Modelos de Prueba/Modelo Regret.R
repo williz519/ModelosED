@@ -32,18 +32,19 @@ apollo_control = list(
 database = read.csv("/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBMuestra_ModeloLogitVL.csv",sep="\t", dec=".",header=TRUE)
 
 
+# Normalización de los viajes
 for (i in 1:nrow(database)){
   # Normalización de las variables tiempo
-  database$T_Alt_1[i] = (database$TIEMPOAlt1[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
-  database$T_Alt_2[i] = (database$TIEMPOAlt2[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
-  database$T_Alt_3[i] = (database$TIEMPOAlt3[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
-  database$T_Alt_4[i] = (database$TIEMPOEC[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.5))
+  database$T_Alt_1[i] = (database$TIEMPOAlt1[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05))
+  database$T_Alt_2[i] = (database$TIEMPOAlt2[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05))
+  database$T_Alt_3[i] = (database$TIEMPOAlt3[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05))
+  database$T_Alt_4[i] = (database$TIEMPOEC[i]- (min(c(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05)))/(max(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-(min(database$TIEMPOAlt1[i],database$TIEMPOAlt2[i],database$TIEMPOAlt3[i],database$TIEMPOEC[i])-0.05))
   
   # Normalización de la variable distancia
-  database$D_Alt_1[i] = (database$DISTAlt1[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
-  database$D_Alt_2[i] = (database$DISTAlt2[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
-  database$D_Alt_3[i] = (database$DISTAlt3[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
-  database$D_Alt_4[i] = (database$DISTEC[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.1)))
+  database$D_Alt_1[i] = (database$DISTAlt1[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))
+  database$D_Alt_2[i] = (database$DISTAlt2[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))
+  database$D_Alt_3[i] = (database$DISTAlt3[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))
+  database$D_Alt_4[i] = (database$DISTEC[i]- (min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))/(max(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i]))-(min(c(database$DISTAlt1[i],database$DISTAlt2[i],database$DISTAlt3[i],database$DISTEC[i])-0.15)))
 }
 
 
@@ -54,7 +55,7 @@ for (i in 1:nrow(database)){
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, 
+apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_ruta4   = 0,
               b_tt  = 0,  
               b_dt  = 0,
               b_Sem = 0, 
@@ -129,12 +130,12 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   ### List of regret functions: these must use the same names as in mnl_settings, order is irrelevant
   R = list()
   R[['ruta1']]  = asc_ruta1  + 
-    #log(1+exp(b_tt*(T_Alt_2 - T_Alt_1))) + 
-    #log(1+exp(b_tt*(T_Alt_3  - T_Alt_1))) + 
-    #log(1+exp(b_tt*(T_Alt_4   - T_Alt_1))) + 
-    #log(1+exp(b_dt*(D_Alt_2 - D_Alt_1))) + 
-    #log(1+exp(b_dt*(D_Alt_3 - D_Alt_1))) +
-    #log(1+exp(b_dt*(D_Alt_4 - D_Alt_1))) +
+    log(1+exp(b_tt*(T_Alt_2 - T_Alt_1))) + 
+    log(1+exp(b_tt*(T_Alt_3  - T_Alt_1))) + 
+    log(1+exp(b_tt*(T_Alt_4   - T_Alt_1))) + 
+    log(1+exp(b_dt*(D_Alt_2 - D_Alt_1))) + 
+    log(1+exp(b_dt*(D_Alt_3 - D_Alt_1))) +
+    log(1+exp(b_dt*(D_Alt_4 - D_Alt_1))) +
     log(1+exp(b_Sem*(RSem_ruta2  - RSem_ruta1)))  + 
     log(1+exp(b_Sem*(RSem_ruta3  - RSem_ruta1)))  + 
     log(1+exp(b_Sem*(RSem_ruta4  - RSem_ruta1)))  +
@@ -158,12 +159,12 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
     log(1+exp(RMtrp_r4 - RMtrp_r1))
     
   R[['ruta2']]  = asc_ruta2  + 
-    #log(1+exp(b_tt*(T_Alt_1 - T_Alt_2))) + 
-    #log(1+exp(b_tt*(T_Alt_3 - T_Alt_2))) + 
-    #log(1+exp(b_tt*(T_Alt_4 - T_Alt_2))) + 
-    #log(1+exp(b_dt*(D_Alt_1 - D_Alt_2))) + 
-    #log(1+exp(b_dt*(D_Alt_3 - D_Alt_2))) +
-    #log(1+exp(b_dt*(D_Alt_4 - D_Alt_2))) +
+    log(1+exp(b_tt*(T_Alt_1 - T_Alt_2))) + 
+    log(1+exp(b_tt*(T_Alt_3 - T_Alt_2))) + 
+    log(1+exp(b_tt*(T_Alt_4 - T_Alt_2))) + 
+    log(1+exp(b_dt*(D_Alt_1 - D_Alt_2))) + 
+    log(1+exp(b_dt*(D_Alt_3 - D_Alt_2))) +
+    log(1+exp(b_dt*(D_Alt_4 - D_Alt_2))) +
     log(1+exp(b_Sem*(RSem_ruta1  - RSem_ruta2)))  + 
     log(1+exp(b_Sem*(RSem_ruta3  - RSem_ruta2)))  + 
     log(1+exp(b_Sem*(RSem_ruta4  - RSem_ruta2)))  +
@@ -188,12 +189,12 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
   
     
   R[['ruta3']]  = asc_ruta3  + 
-    #log(1+exp(b_tt*(T_Alt_1 - T_Alt_3))) + 
-    #log(1+exp(b_tt*(T_Alt_2 - T_Alt_3))) + 
-    #log(1+exp(b_tt*(T_Alt_4 - T_Alt_3))) + 
-    #log(1+exp(b_dt*(D_Alt_1 - D_Alt_3))) + 
-    #log(1+exp(b_dt*(D_Alt_2 - D_Alt_3))) +
-    #log(1+exp(b_dt*(D_Alt_4 - D_Alt_3))) +
+    log(1+exp(b_tt*(T_Alt_1 - T_Alt_3))) + 
+    log(1+exp(b_tt*(T_Alt_2 - T_Alt_3))) + 
+    log(1+exp(b_tt*(T_Alt_4 - T_Alt_3))) + 
+    log(1+exp(b_dt*(D_Alt_1 - D_Alt_3))) + 
+    log(1+exp(b_dt*(D_Alt_2 - D_Alt_3))) +
+    log(1+exp(b_dt*(D_Alt_4 - D_Alt_3))) +
     log(1+exp(b_Sem*(RSem_ruta1  - RSem_ruta3)))  + 
     log(1+exp(b_Sem*(RSem_ruta2  - RSem_ruta3)))  + 
     log(1+exp(b_Sem*(RSem_ruta4  - RSem_ruta3)))  +
@@ -217,7 +218,7 @@ apollo_probabilities=function(apollo_beta, apollo_inputs, functionality="estimat
     log(1+exp(RMtrp_r4 - RMtrp_r3))
     
   
-  R[['ruta4']]  =
+  R[['ruta4']]  = asc_ruta4  + 
     log(1+exp(b_tt*(T_Alt_1 - T_Alt_4))) + 
     log(1+exp(b_tt*(T_Alt_2 - T_Alt_4))) + 
     log(1+exp(b_tt*(T_Alt_3 - T_Alt_4))) + 

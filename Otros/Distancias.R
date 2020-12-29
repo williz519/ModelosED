@@ -1,10 +1,10 @@
 
-library("gmapdistance")
+library("gmapsdistance")
 
 
 
 Dist = gmapsdistance(or="6.2458218+-75.574752", des="6.2448442+-75.5756626",
-                           mode = "driving", key ="AIzaSyDTpTbw19_FAOtRd0dLHIllsla3jLDq0h4", 
+                           mode = "driving", key ="AIzaSyDCZq163UlIE4pGJXOAWC-5XxwK6RW5W84", 
                            combinations = "all")
 
 Dist

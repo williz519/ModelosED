@@ -292,8 +292,9 @@ MCond$ADULTOMAYOR <- (ifelse((MCond$EDAD == 4),1,0))
 
 
 # NIVEL EDUCATIVO EDUBASICA - EDUSUP
-MCond$EDUBASICA <- (ifelse((MCond$NIVEL_EDUCATIVO == 1), 1,0))
+MCond$EDUBASICA <- (ifelse((MCond$NIVEL_EDUCATIVO == 0 | MCond$NIVEL_EDUCATIVO == 1), 1,0))
 MCond$EDUSUP <- (ifelse((MCond$NIVEL_EDUCATIVO == 2 | MCond$NIVEL_EDUCATIVO == 3),1,0))
+MCond$EDUNR <- (ifelse((MCond$NIVEL_EDUCATIVO == 4), 1,0))
 
 
 # HORA DEL RECORRIDO HPICO - HVALLE
@@ -343,10 +344,10 @@ MCond$NO_MTRP_A2 <- (ifelse((MCond$MtrP_A2 == 0),1,0))
 MCond$NO_MTRP_A3 <- (ifelse((MCond$MtrP_A3 == 0),1,0))
 MCond$NO_MTRP_EC <- (ifelse((MCond$MtrP_EC == 0),1,0))
 
-MCond$SI_MTRP_A1 <- (ifelse((MCond$MtrP_A1 >= 1 | MCond$MtrP_A1 == 999),1,0))
-MCond$SI_MTRP_A2 <- (ifelse((MCond$MtrP_A2 >= 1 | MCond$MtrP_A2 == 999),1,0))
-MCond$SI_MTRP_A3 <- (ifelse((MCond$MtrP_A3 >= 1 | MCond$MtrP_A3 == 999),1,0))
-MCond$SI_MTRP_EC <- (ifelse((MCond$MtrP_EC >= 1 | MCond$MtrP_EC == 999),1,0))
+MCond$SI_MTRP_A1 <- (ifelse((MCond$MtrP_A1 >= 1 ),1,0))
+MCond$SI_MTRP_A2 <- (ifelse((MCond$MtrP_A2 >= 1 ),1,0))
+MCond$SI_MTRP_A3 <- (ifelse((MCond$MtrP_A3 >= 1 ),1,0))
+MCond$SI_MTRP_EC <- (ifelse((MCond$MtrP_EC >= 1 ),1,0))
 
 
 MCond$NO_ZER_A1 <- (ifelse((MCond$ZER_A1 == 0),1,0))
@@ -355,10 +356,11 @@ MCond$NO_ZER_A3 <- (ifelse((MCond$ZER_A3 == 0),1,0))
 MCond$NO_ZER_EC <- (ifelse((MCond$ZER_EC == 0),1,0))
 
 MCond$SI_ZER_A1 <- (ifelse((MCond$ZER_A1 >= 1),1,0))
-MCond$SI_ZER_A2 <- (ifelse((MCond$ZER_A2 >= 1 | MCond$ZER_A2 == 999),1,0))
-MCond$SI_ZER_A3 <- (ifelse((MCond$ZER_A3 >= 1 | MCond$ZER_A3 == 999),1,0))
+MCond$SI_ZER_A2 <- (ifelse((MCond$ZER_A2 >= 1 ),1,0))
+MCond$SI_ZER_A3 <- (ifelse((MCond$ZER_A3 >= 1 ),1,0))
 MCond$SI_ZER_EC <- (ifelse((MCond$ZER_EC >= 1 ),1,0))
 
+#Horas de trabajo al día
 MCond$HTRB_1 <- (ifelse((MCond$HORAS_TRABAJO <= 6),1,0))
 MCond$HTRB_2 <- (ifelse((MCond$HORAS_TRABAJO > 6 & MCond$HORAS_TRABAJO <= 10),1,0))
 MCond$HTRB_3 <- (ifelse((MCond$HORAS_TRABAJO > 10),1,0))
@@ -411,17 +413,20 @@ MCond$ACC_EC_0 <- (ifelse((MCond$Acc_EC == 0),1,0))
 MCond$ACC_EC_1 <- (ifelse((MCond$Acc_EC == 1),1,0))
 MCond$ACC_EC_2 <- (ifelse((MCond$Acc_EC >= 2),1,0))
 
-
-MCond$NO_PANEL_A1 <- (ifelse((MCond$Paneles_A1 == 0 | MCond$Paneles_A1 == 999),1,0))
+#MCond$Paneles_A1[MCond$Paneles_A1 == 999]<-0
+MCond$NO_PANEL_A1 <- (ifelse((MCond$Paneles_A1 == 0 ),1,0))
 MCond$SI_PANEL_A1 <- (ifelse((MCond$Paneles_A1 >= 1),1,0))
 
-MCond$NO_PANEL_A2 <- (ifelse((MCond$Paneles_A2 == 0 | MCond$Paneles_A2 == 999),1,0))
+MCond$Paneles_A2[MCond$Paneles_A2 == 999]<-1
+MCond$NO_PANEL_A2 <- (ifelse((MCond$Paneles_A2 == 0 ),1,0))
 MCond$SI_PANEL_A2 <- (ifelse((MCond$Paneles_A2 >= 1),1,0))
 
-MCond$NO_PANEL_A3 <- (ifelse((MCond$Paneles_A3 == 0 | MCond$Paneles_A3 == 999),1,0))
+MCond$Paneles_A3[MCond$Paneles_A3 == 999]<-1
+MCond$NO_PANEL_A3 <- (ifelse((MCond$Paneles_A3 == 0 ),1,0))
 MCond$SI_PANEL_A3 <- (ifelse((MCond$Paneles_A3 >= 1),1,0))
 
-MCond$NO_PANEL_EC <- (ifelse((MCond$Paneles_EC == 0 | MCond$Paneles_EC == 999),1,0))
+
+MCond$NO_PANEL_EC <- (ifelse((MCond$Paneles_EC == 0 ),1,0))
 MCond$SI_PANEL_EC <- (ifelse((MCond$Paneles_EC >= 1),1,0))
 
 

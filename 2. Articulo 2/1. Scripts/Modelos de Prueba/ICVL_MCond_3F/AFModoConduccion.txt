@@ -1,0 +1,150 @@
+
+Reliability analysis   
+Call: psych::alpha(x = ModoCond)
+
+  raw_alpha std.alpha G6(smc) average_r S/N   ase mean   sd median_r
+      0.84      0.85     0.9      0.37 5.9 0.015  2.4 0.67     0.38
+
+ lower alpha upper     95% confidence boundaries
+0.81 0.84 0.86 
+
+ Reliability if an item is dropped:
+           raw_alpha std.alpha G6(smc) average_r S/N alpha se var.r med.r
+FRbr            0.80      0.83    0.87      0.34 4.7    0.018 0.058  0.37
+UsoDirec        0.84      0.86    0.90      0.42 6.4    0.014 0.066  0.50
+EnfCond         0.80      0.82    0.87      0.34 4.7    0.018 0.063  0.35
+AFrSem          0.81      0.83    0.87      0.35 4.8    0.018 0.057  0.37
+CulFr           0.81      0.83    0.88      0.36 5.0    0.018 0.068  0.37
+OmLmVel         0.81      0.83    0.88      0.35 4.9    0.017 0.067  0.36
+IgPare          0.80      0.82    0.87      0.34 4.6    0.018 0.064  0.35
+UsoCel          0.83      0.85    0.89      0.39 5.7    0.016 0.077  0.50
+PasoPeaton      0.87      0.88    0.90      0.44 7.2    0.012 0.043  0.50
+UsoPito         0.81      0.83    0.88      0.36 5.1    0.017 0.064  0.37
+
+ Item statistics 
+             n raw.r std.r r.cor r.drop mean   sd
+FRbr       279  0.78  0.79  0.79   0.71  2.0 1.04
+UsoDirec   279  0.43  0.40  0.31   0.29  3.9 1.11
+EnfCond    279  0.79  0.80  0.79   0.72  1.9 0.98
+AFrSem     279  0.76  0.79  0.79   0.69  1.9 0.93
+CulFr      279  0.71  0.71  0.67   0.61  2.6 1.18
+OmLmVel    279  0.72  0.75  0.72   0.65  1.8 0.89
+IgPare     279  0.80  0.82  0.82   0.75  1.7 0.82
+UsoCel     279  0.57  0.56  0.48   0.45  2.5 1.12
+PasoPeaton 279  0.30  0.25  0.16   0.10  3.2 1.31
+UsoPito    279  0.70  0.71  0.69   0.60  2.1 1.10
+
+Non missing response frequency for each item
+              1    2    3    4    5 miss
+FRbr       0.36 0.43 0.07 0.13 0.01    0
+UsoDirec   0.04 0.11 0.10 0.39 0.36    0
+EnfCond    0.38 0.44 0.08 0.08 0.02    0
+AFrSem     0.38 0.48 0.04 0.10 0.01    0
+CulFr      0.20 0.33 0.17 0.27 0.04    0
+OmLmVel    0.40 0.49 0.05 0.04 0.03    0
+IgPare     0.42 0.50 0.03 0.04 0.01    0
+UsoCel     0.19 0.38 0.18 0.22 0.03    0
+PasoPeaton 0.13 0.20 0.17 0.33 0.18    0
+UsoPito    0.32 0.46 0.07 0.11 0.04    0
+                  FRbr   UsoDirec     EnfCond      AFrSem       CulFr    OmLmVel    IgPare    UsoCel
+FRbr        1.00000000 0.08194869 0.693628371  0.79755024  0.61865874 0.55385529 0.6186844 0.2877890
+UsoDirec    0.08194869 1.00000000 0.169278096  0.08867612  0.26520093 0.13390510 0.1825485 0.1558095
+EnfCond     0.69362837 0.16927810 1.000000000  0.69070953  0.53700918 0.51610337 0.5612745 0.3769484
+AFrSem      0.79755024 0.08867612 0.690709532  1.00000000  0.60503363 0.59975471 0.6627892 0.2418879
+CulFr       0.61865874 0.26520093 0.537009184  0.60503363  1.00000000 0.48830167 0.5494930 0.2138254
+OmLmVel     0.55385529 0.13390510 0.516103367  0.59975471  0.48830167 1.00000000 0.7522578 0.3634491
+IgPare      0.61868438 0.18254849 0.561274477  0.66278923  0.54949305 0.75225782 1.0000000 0.3680644
+UsoCel      0.28778901 0.15580953 0.376948386  0.24188792  0.21382541 0.36344914 0.3680644 1.0000000
+PasoPeaton -0.02626596 0.42774211 0.003581072 -0.05148868 -0.04341206 0.04433496 0.1102001 0.3123292
+UsoPito     0.59645935 0.14190187 0.695089152  0.52833697  0.46482187 0.44959087 0.5834609 0.3434313
+             PasoPeaton    UsoPito
+FRbr       -0.026265959  0.5964593
+UsoDirec    0.427742108  0.1419019
+EnfCond     0.003581072  0.6950892
+AFrSem     -0.051488683  0.5283370
+CulFr      -0.043412056  0.4648219
+OmLmVel     0.044334956  0.4495909
+IgPare      0.110200100  0.5834609
+UsoCel      0.312329185  0.3434313
+PasoPeaton  1.000000000 -0.1421709
+UsoPito    -0.142170907  1.0000000
+[1] 0.003879395
+$chisq
+[1] 1520.343
+
+$p.value
+[1] 2.732512e-289
+
+$df
+[1] 45
+
+Kaiser-Meyer-Olkin factor adequacy
+Call: KMO(r = Rcor)
+Overall MSA =  0.82
+MSA for each item = 
+      FRbr   UsoDirec    EnfCond     AFrSem      CulFr    OmLmVel     IgPare     UsoCel PasoPeaton 
+      0.88       0.53       0.87       0.86       0.90       0.85       0.82       0.80       0.37 
+   UsoPito 
+      0.79 
+
+Call:
+factanal(x = ModoCond, factors = 2, rotation = "varimax", na.rm = TRUE,     lower = 0.05)
+
+Uniquenesses:
+      FRbr   UsoDirec    EnfCond     AFrSem      CulFr    OmLmVel     IgPare     UsoCel PasoPeaton 
+     0.266      0.778      0.358      0.260      0.513      0.487      0.366      0.744      0.050 
+   UsoPito 
+     0.479 
+
+Loadings:
+           Factor1 Factor2
+FRbr        0.851         
+UsoDirec            0.458 
+EnfCond     0.792         
+AFrSem      0.857         
+CulFr       0.695         
+OmLmVel     0.699         
+IgPare      0.763   0.228 
+UsoCel      0.341   0.373 
+PasoPeaton          0.964 
+UsoPito     0.721         
+
+               Factor1 Factor2
+SS loadings      4.310   1.388
+Proportion Var   0.431   0.139
+Cumulative Var   0.431   0.570
+
+Test of the hypothesis that 2 factors are sufficient.
+The chi square statistic is 216.86 on 26 degrees of freedom.
+The p-value is 5.03e-32 
+
+Call:
+factanal(x = ModoCond, factors = 3, rotation = "varimax", na.rm = TRUE,     lower = 0.05)
+
+Uniquenesses:
+      FRbr   UsoDirec    EnfCond     AFrSem      CulFr    OmLmVel     IgPare     UsoCel PasoPeaton 
+     0.212      0.781      0.335      0.246      0.519      0.391      0.050      0.752      0.050 
+   UsoPito 
+     0.481 
+
+Loadings:
+           Factor1 Factor2 Factor3
+FRbr        0.852   0.227         
+UsoDirec                    0.455 
+EnfCond     0.781                 
+AFrSem      0.807   0.312         
+CulFr       0.631   0.283         
+OmLmVel     0.481   0.600         
+IgPare      0.483   0.824         
+UsoCel      0.266   0.211   0.365 
+PasoPeaton                  0.963 
+UsoPito     0.634   0.338         
+
+               Factor1 Factor2 Factor3
+SS loadings      3.351   1.472   1.361
+Proportion Var   0.335   0.147   0.136
+Cumulative Var   0.335   0.482   0.618
+
+Test of the hypothesis that 3 factors are sufficient.
+The chi square statistic is 127.93 on 18 degrees of freedom.
+The p-value is 1.31e-18 

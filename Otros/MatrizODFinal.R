@@ -159,6 +159,8 @@ write.xlsx(resul_Ori_Occ, file = "C:/Users/sin definir/Dropbox/Doctorado/Tesis D
            sheetName = "Distancias", col.names=TRUE, row.names=TRUE, append=FALSE)
 
 
+
+
 #Origenes Todos y Destinos Todos
 
 or2=c("6.209042+-75.56778", "6.229264+-75.570485", "6.244864+-75.57721",
