@@ -16,6 +16,9 @@ require(GGally)
 library(corrplot)
 library(corrr)
 
+# Limpiar Entorno de trabajo
+rm(list = ls())
+
 #Leer la dataset
 
 DB_file <- "/Users/williz/Desktop/ModelosED/Database/DB_Viajes.xlsx"
@@ -72,7 +75,7 @@ DBModo <- DB$Viajes %>%
                select(ViajeId,Genero,InformacionPreviaDelTrafico),
              by = "ViajeId") %>%
   inner_join(DB$PersonalidadConductor %>%
-               select(ViajeId,Accidente),
+               select(ViajeId,Accidente,Atraco),
              by = "ViajeId")
 
 #View(DBModo)
@@ -96,7 +99,8 @@ DBModo <- rename(DBModo, replace = c(CinturonDeSeguridad = "CinSeg",
                                      TranquilaTensionada = "StrC",
                                      RespetuosaIrrespetuosa = "ConCl",
                                      UsoCelular = "UsoCel",
-                                     Accidente = "DispMob", 
+                                     Accidente = "DispMob",
+                                     Atraco = "Satisf_DispMob",
                                      InformacionPreviaDelTrafico="INFOTRAFICO"))
                                    
 names(DBModo)
@@ -108,25 +112,26 @@ str(DBModo$DispMob)
 DBModo$UsoCel[DBModo$UsoCel == 0] <-1
 DBModo$UsoCel[DBModo$UsoCel == 4 & DBModo$DispMob > 0] <-2
 DBModo$UsoCel[DBModo$UsoCel == 4 & DBModo$DispMob == 0] <-1
+table(DBModo$UsoCel)
 
 
-DBModo$FRbr
 table(DBModo$FRbr)
 # Freno Rapido y Brusco 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Freno Rapido y Brusco Cambia a: 1: Nunca, 2: Algunas veces, 3: Siempre
-DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==2 & DBModo$CulFr == 2] <- 3
-DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==2 & DBModo$CulFr == 1] <- 2
-DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==1 & DBModo$CulFr == 2] <- 2
-DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem ==1 & DBModo$CulFr == 1] <- 1
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 2 & DBModo$CulFr == 2] <- 3
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 2 & DBModo$CulFr == 1] <- 2
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 1 & DBModo$CulFr == 2] <- 2
+DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 1 & DBModo$CulFr == 1] <- 1
 DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 2] <-2
 DBModo$FRbr[DBModo$FRbr == 4 & DBModo$AFrSem == 4] <-1
-
+table(DBModo$FRbr)
 
 table(DBModo$AFrSem)
 # Acelera o frena bruscamente a la salida (llegada) de un semaforo 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Acelera o frena bruscamente a la salida (llegada) de un semaforo Cambi a 1: Nunca, 2: Algunas veces, 3: Siempre
 DBModo$AFrSem[DBModo$AFrSem == 4 & DBModo$FRbr == 2] <- 2
 DBModo$AFrSem[DBModo$AFrSem == 4 & DBModo$FRbr == 1] <- 1
+table(DBModo$AFrSem)
 
 table(DBModo$OmLmVel)
 # Omite limite de Velocidad 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
@@ -134,6 +139,7 @@ table(DBModo$OmLmVel)
 DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$AFrSem == 2] <- 3
 DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$CulFr == 2] <- 2
 DBModo$OmLmVel[DBModo$OmLmVel == 4 & DBModo$AFrSem == 1]<- 2
+table(DBModo$OmLmVel)
 
 table(DBModo$IgPare)
 #Ignora señal de pare 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
@@ -141,7 +147,6 @@ table(DBModo$IgPare)
 DBModo$IgPare[DBModo$IgPare == 4 & DBModo$OmLmVel == 3] <- 3
 DBModo$IgPare[DBModo$IgPare == 4 & DBModo$OmLmVel == 2] <- 2
 DBModo$IgPare[DBModo$IgPare == 4 & DBModo$AFrSem == 2] <- 2
-
 table(DBModo$IgPare)
 
 table(DBModo$UsoDirec)
@@ -149,6 +154,7 @@ table(DBModo$UsoDirec)
 # Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
 DBModo$UsoDirec[DBModo$UsoDirec == 4 & DBModo$CulFr == 2] <- 2
 DBModo$UsoDirec[DBModo$UsoDirec == 4 ] <- 2
+table(DBModo$UsoDirec)
 
 table(DBModo$EnfCond)
 # Se enfada con otro conductor 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
@@ -156,12 +162,13 @@ table(DBModo$EnfCond)
 DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 3 | DBModo$AFrSem == 3)] <- 3
 DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 2 | DBModo$AFrSem == 2)] <- 2
 DBModo$EnfCond[DBModo$EnfCond == 4 & (DBModo$UsoPito == 1 | DBModo$AFrSem == 1)] <- 1
+table(DBModo$EnfCond)
 
 table(DBModo$CulFr)
 # Culebrea con frecuencia 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
 # Cambia a 1: Nunca, 2: Algunas veces, 3: Siempre
 DBModo$CulFr[DBModo$CulFr == 4 ] <- 3
-
+table(DBModo$CulFr)
 
 table(DBModo$UsoPito)
 # Culebrea con frecuencia 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
@@ -173,6 +180,7 @@ DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$IgPare == 1] <- 1
 DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$OmLmVel == 2] <- 2
 DBModo$UsoPito[DBModo$UsoPito == 4 & DBModo$AFrSem == 2] <- 2
 DBModo$UsoPito[DBModo$UsoPito == 4 ] <- 3
+table(DBModo$UsoPito)
 
 table(DBModo$PasoPeaton)
 # Paso Peaton 1: Nunca, 2: Algunas veces, 3: Siempre, 4: No se observo
@@ -192,20 +200,28 @@ DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$CulFr == 2] <- 2
 DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$EnfCond == 3] <- 1
 DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$EnfCond == 2] <- 2
 DBModo$PasoPeaton[DBModo$PasoPeaton == 4 & DBModo$AFrSem == 1] <- 3
+table(DBModo$PasoPeaton)
+
+table(DBModo$DispMob)
+DBModo$DispMob[DBModo$DispMob == 0 & DBModo$Satisf_DispMob == 0] <- 1
+DBModo$DispMob[DBModo$DispMob == 0 & DBModo$Satisf_DispMob > 0] <- 2
+table(DBModo$DispMob)
+
+
 
 summary(DBModo)
 
-DBModo[c("ViajeId")]<-NULL
-cor(DBModo, use = "pairwise.complete.obs")
+#DBModo[c("ViajeId")]<-NULL
+#cor(DBModo, use = "pairwise.complete.obs")
 
 
 summary(DBModo)
 names(DBModo)
 
 
-tibble::as_tibble(DBModo) 
+#tibble::as_tibble(DBModo) 
 
-saveRDS(DBModo, file="/Users/williz/Desktop/ModelosED/1. Articulo 2/2. Database/DBModoConduccion.rds")
+saveRDS(DBModo, file="/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBModoConduccion.rds")
 
 
 # Rutina Cambio de escala de 1-5
@@ -214,7 +230,7 @@ DBModoCE <-read_xlsx("/Users/williz/Desktop/ModelosED/Bases de Datos Ordenada/DB
                      sheet = "ModoCond")
 
 DBCE <- DBModo %>%
-  select(ViajeId:DispMob) %>%
+  select(ViajeId:Satisf_DispMob) %>%
   # Modo conducción
   inner_join(DBModoCE %>%
                select(ViajeId,aleatorio),

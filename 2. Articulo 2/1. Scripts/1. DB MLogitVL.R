@@ -172,7 +172,7 @@ Datos <- RutasGoogle %>%
              by = "ViajeId") %>%
   # Modo conducción
   inner_join(DBModoConduccion %>%
-               select(ViajeId:DispMob),
+               select(ViajeId:Satisf_DispMob),
              by = "ViajeId") %>%
   # Personalidad conductor
   inner_join(DBPersonalidad %>%
@@ -262,7 +262,7 @@ DBModelo <- Datos %>%
          "CinSeg","FRbr", "UsoDirec",
          "EnfCond", "AFrSem", "CulFr",
          "OmLmVel" , "IgPare", "UsoCel",
-         "ComVrb", "Ans", "ComAfec", "PrPer", "AmbTr","StrC","ConCl","DispMob")
+         "ComVrb", "Ans", "ComAfec", "PrPer", "AmbTr","StrC","ConCl","DispMob", "Satisf_DispMob")
 
 names(DBModelo)
 #view(DBModelo)

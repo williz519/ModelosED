@@ -15,9 +15,13 @@ require(dplyr)
 require(psych)
 require(GGally)
 
+# Limpiar Entorno de trabajo
+rm(list = ls())
+
 
 DB = read.csv("/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBCompleta_ModeloLogitVL.csv", sep="\t", dec=".")
 
+names(DB)
 summary(DB)
 
 # Eliminamos las distancias y tiempos CERO
@@ -101,6 +105,14 @@ for (i in 1:nrow(DB)) {
 }
 
 summary(DB)
+names(DB)
+
+#DB Completa
+
+# Guardar los datos para alimentar la WebApp
+saveRDS(DB, 
+            file="/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBCOMPLETA.rds")
+
 
 
 # DB Muestra
