@@ -49,14 +49,16 @@ dt$Camaras <- (ifelse((dt$CHOICE == 1), (dt$CamFD_A1/dt$DISTAlt1),
 dt$Camaras
 
 ### Velocidad
+## Baja <= 16.09, media <= 27.4
 
-dt$Velocidad <- (ifelse((dt$V_promedio < 20), 1,
-                        ifelse((dt$V_promedio < 32), 2,3)))
+dt$Velocidad <- (ifelse((dt$V_promedio <= 17), 1,
+                        ifelse((dt$V_promedio < 27), 2,3)))
 
 dt$Velocidad <- factor(dt$Velocidad,
                        levels = 1:3,
                        labels = c("Baja","Media","Alta"))
 dt$Velocidad <- ordered(dt$Velocidad, levels = c("Baja","Media","Alta"))
+prop.table(table(dt$Velocidad))*100
 
 dt$CONGESTION <-ordered(dt$CONGESTION)
 
