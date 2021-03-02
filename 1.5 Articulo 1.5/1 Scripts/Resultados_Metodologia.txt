@@ -1,0 +1,239 @@
+
+Call:
+lm(formula = COSTO ~ Duracion + Distancia, data = db)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3897.3  -655.5  -172.4   379.7  4994.8 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 3571.590    231.897   15.40   <2e-16 ***
+Duracion     123.611      9.038   13.68   <2e-16 ***
+Distancia    958.659     49.340   19.43   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1198 on 273 degrees of freedom
+Multiple R-squared:  0.804,	Adjusted R-squared:  0.8026 
+F-statistic: 560.1 on 2 and 273 DF,  p-value: < 2.2e-16
+
+
+ELECCION DEL MEJOR MODELO
+
+Likelihood ratio tests of ordinal regression models
+
+Response: db$Velocidad
+          Model Resid. df Resid. Dev   Test    Df LR stat.      Pr(Chi)
+1             1       274   382.5231                                   
+2 db$CONGESTION       269   315.1330 1 vs 2     5 67.39006 3.576028e-13
+Likelihood ratio tests of ordinal regression models
+
+Response: db$Velocidad
+                     Model Resid. df Resid. Dev   Test    Df LR stat.     Pr(Chi)
+1            db$CONGESTION       269   315.1330                                  
+2 db$CONGESTION + db$CLIMA       268   307.0001 1 vs 2     1 8.132853 0.004347029
+Likelihood ratio tests of ordinal regression models
+
+Response: db$Velocidad
+                                    Model Resid. df Resid. Dev   Test    Df LR stat.      Pr(Chi)
+1                db$CONGESTION + db$CLIMA       268   307.0001                                   
+2 db$CONGESTION + db$CLIMA + db$Semaforos       267   293.0129 1 vs 2     1 13.98726 0.0001840538
+Likelihood ratio tests of ordinal regression models
+
+Response: db$Velocidad
+                                                     Model Resid. df Resid. Dev   Test    Df
+1                  db$CONGESTION + db$CLIMA + db$Semaforos       267   293.0129             
+2 db$CONGESTION + db$CLIMA + db$Semaforos + db$HPICOHVALLE       266   291.3879 1 vs 2     1
+  LR stat.   Pr(Chi)
+1                   
+2 1.624973 0.2023998
+Likelihood ratio tests of ordinal regression models
+
+Response: db$Velocidad
+                                                   Model Resid. df Resid. Dev   Test    Df
+1                db$CONGESTION + db$CLIMA + db$Semaforos       267   293.0129             
+2 db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO       266   287.8550 1 vs 2     1
+  LR stat.    Pr(Chi)
+1                    
+2  5.15789 0.02314099
+Likelihood ratio tests of ordinal regression models
+
+Response: db$Velocidad
+                                                                    Model Resid. df Resid. Dev
+1                  db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO       266   287.8550
+2 db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO + db$HPICOHVALLE       265   285.0132
+    Test    Df LR stat.    Pr(Chi)
+1                                 
+2 1 vs 2     1  2.84182 0.09184016
+
+
+MODELO LOGISTICO
+
+Likelihood ratio tests of ordinal regression models
+
+Response: db$Velocidad
+                                                                  Model Resid. df Resid. Dev
+1                db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO       266   287.8550
+2 db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO + db$INCIDENTE       265   287.0526
+    Test    Df LR stat.   Pr(Chi)
+1                                
+2 1 vs 2     1 0.802373 0.3703848
+
+t test of coefficients:
+
+                  Estimate Std. Error t value  Pr(>|t|)    
+db$CONGESTION.L  -2.675257   0.484260 -5.5244 7.869e-08 ***
+db$CONGESTION.Q  -0.046716   0.428859 -0.1089  0.913340    
+db$CONGESTION.C  -1.491526   0.525174 -2.8401  0.004859 ** 
+db$CONGESTION^4  -0.351775   0.549040 -0.6407  0.522264    
+db$CONGESTION^5   0.547653   0.517593  1.0581  0.290981    
+db$CLIMALluvioso -0.897501   0.428282 -2.0956  0.037064 *  
+db$Semaforos     -0.721939   0.180346 -4.0031 8.114e-05 ***
+db$MERIDIANOPM   -0.814231   0.366123 -2.2239  0.026993 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Call:
+polr(formula = db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + 
+    db$MERIDIANO, data = db, Hess = TRUE, method = "logistic")
+
+Coefficients:
+                    Value Std. Error t value
+db$CONGESTION.L  -2.67526     0.4843 -5.5244
+db$CONGESTION.Q  -0.04672     0.4289 -0.1089
+db$CONGESTION.C  -1.49153     0.5252 -2.8401
+db$CONGESTION^4  -0.35177     0.5490 -0.6407
+db$CONGESTION^5   0.54765     0.5176  1.0581
+db$CLIMALluvioso -0.89750     0.4283 -2.0956
+db$Semaforos     -0.72194     0.1803 -4.0031
+db$MERIDIANOPM   -0.81423     0.3661 -2.2239
+
+Intercepts:
+           Value   Std. Error t value
+Baja|Media -4.2416  0.6049    -7.0115
+Media|Alta  1.6070  0.5200     3.0903
+
+Residual Deviance: 287.855 
+AIC: 307.855 
+
+INTERVALOS DE CONFIANZA
+                      2.5 %      97.5 %
+db$CONGESTION.L  -3.6535667 -1.74896523
+db$CONGESTION.Q  -0.8822087  0.80460730
+db$CONGESTION.C  -2.5877258 -0.50948542
+db$CONGESTION^4  -1.4632036  0.69944222
+db$CONGESTION^5  -0.4583581  1.57877746
+db$CLIMALluvioso -1.7513541 -0.06560428
+db$Semaforos     -1.0893918 -0.37630401
+db$MERIDIANOPM   -1.5517172 -0.10998507
+                         OR      2.5 %    97.5 %
+db$CONGESTION.L  0.06888914 0.02589859 0.1739539
+db$CONGESTION.Q  0.95435871 0.41386778 2.2358183
+db$CONGESTION.C  0.22502891 0.07519085 0.6008047
+db$CONGESTION^4  0.70343869 0.23149348 2.0126298
+db$CONGESTION^5  1.72918978 0.63232102 4.8490241
+db$CLIMALluvioso 0.40758713 0.17353879 0.9365014
+db$Semaforos     0.48580942 0.33642104 0.6863936
+db$MERIDIANOPM   0.44297992 0.21188382 0.8958475
+                       Value Std. Error    t value
+db$CONGESTION.L  -2.67525672  0.4842598 -5.5244249
+db$CONGESTION.Q  -0.04671567  0.4288586 -0.1089303
+db$CONGESTION.C  -1.49152640  0.5251738 -2.8400623
+db$CONGESTION^4  -0.35177456  0.5490400 -0.6407084
+db$CONGESTION^5   0.54765296  0.5175933  1.0580759
+db$CLIMALluvioso -0.89750054  0.4282816 -2.0955850
+db$Semaforos     -0.72193888  0.1803456 -4.0030856
+db$MERIDIANOPM   -0.81423083  0.3661228 -2.2239283
+Baja|Media       -4.24158686  0.6049462 -7.0115112
+Media|Alta        1.60702120  0.5200141  3.0903416
+                       Value Std. Error    t value      p value         OR
+db$CONGESTION.L  -2.67525672  0.4842598 -5.5244249 1.652833e-08 0.06888914
+db$CONGESTION.Q  -0.04671567  0.4288586 -0.1089303 4.566289e-01 0.95435871
+db$CONGESTION.C  -1.49152640  0.5251738 -2.8400623 2.255236e-03 0.22502891
+db$CONGESTION^4  -0.35177456  0.5490400 -0.6407084 2.608561e-01 0.70343869
+db$CONGESTION^5   0.54765296  0.5175933  1.0580759 1.450104e-01 1.72918978
+db$CLIMALluvioso -0.89750054  0.4282816 -2.0955850 1.805951e-02 0.40758713
+db$Semaforos     -0.72193888  0.1803456 -4.0030856 3.126083e-05 0.48580942
+db$MERIDIANOPM   -0.81423083  0.3661228 -2.2239283 1.307664e-02 0.44297992
+Baja|Media       -4.24158686  0.6049462 -7.0115112 1.178788e-12 0.06888914
+Media|Alta        1.60702120  0.5200141  3.0903416 9.996321e-04 0.95435871
+
+
+MATRIZ DE COMPARACION MODELO
+  
+       actual
+predicted Baja Media Alta
+    Baja    15     5    0
+    Media   26   207   23
+    Alta     0     0    0
+[1] 287.855
+'log Lik.' -143.9275 (df=10)
+[1] 307.855
+
+TEST CHI CUADRADO
+[1] 0.1706812
+[1] 22.37619
+
+
+TEST LIPSITZ
+
+	Lipsitz goodness of fit test for ordinal response models
+
+data:  formula:  db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO
+LR statistic = 9.2039, df = 9, p-value = 0.4187
+
+TEST HOSMER LEMESHOW
+	Hosmer and Lemeshow test (ordinal model)
+
+data:  db$Velocidad, fitted(modelo_log)
+X-squared = 22.865, df = 17, p-value = 0.1537
+
+TEST PULKSTENIS ROBINSON
+	Pulkstenis-Robinson chi-squared test
+
+data:  formula:  db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO
+X-squared = 13.237, df = 20, p-value = 0.867
+
+
+	Pulkstenis-Robinson chi-squared test
+
+data:  formula:  db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO
+X-squared = 2.8388, df = 4, p-value = 0.5852
+
+
+	Pulkstenis-Robinson chi-squared test
+
+data:  formula:  db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + db$MERIDIANO
+X-squared = 18.006, df = 4, p-value = 0.001231
+
+
+PSEUDO R CUADRADOS
+
+       McFadden        CoxSnell      Nagelkerke   AldrichNelson VeallZimmermann           Efron 
+      0.2474833       0.2903619       0.3871933              NA              NA              NA 
+McKelveyZavoina            Tjur             AIC             BIC          logLik         logLik0 
+             NA              NA     307.8549971     344.0590058    -143.9274986    -191.2615270 
+             G2 
+     94.6680569 
+[1] 0.2474833
+[1] 0.2045861
+[1] 0.2903619
+[1] 0.3871933
+              li      R2BL        ls
+[1,] -0.04182754 0.2056557 0.9581725
+                       R2H          
+[1,] -0.02091377 0.2265695 0.9790862
+            R2Md          
+[1,] 0 0.2903619 0.7499147
+'log Lik.' 0.3871933 (df=10)
+          R2MF   AdjR2MF      R2CS       R2N      R2BL      R2Md       R2H
+[1,] 0.2474833 0.2045861 0.2903619 0.3871933 0.2056557 0.2903619 0.2265695
+
+
+MATRIZ DE COMPARACION TESTING
+         actual
+predicted Baja Media Alta
+    Baja     3    13    0
+    Media    7    39    5
+    Alta     0     0    0

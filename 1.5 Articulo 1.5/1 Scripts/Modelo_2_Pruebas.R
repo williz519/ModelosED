@@ -24,7 +24,7 @@ library(ordinal)
 rm(list = ls())
 
 ## Semilla
-set.seed(1234)
+set.seed(1)
 
 
 # Cargar Base de datos
@@ -55,8 +55,8 @@ dt$Camaras <- relevel(dt$Camaras, ref = "No")
 ### Velocidad
 ## Baja <= 16.09, media <= 27.4
 
-dt$Velocidad <- (ifelse((dt$V_promedio < 19.308), 1,
-                        ifelse((dt$V_promedio < 32.18), 2,3)))
+dt$Velocidad <- (ifelse((dt$V_promedio < 19.75), 1,
+                        ifelse((dt$V_promedio < 32.75), 2,3)))
 
 dt$Velocidad <- factor(dt$Velocidad,
                        levels = 1:3,
@@ -98,11 +98,10 @@ dt$Camaras_No <- (ifelse((dt$Camaras == "No"),1,0))
 dt$Experiencia <- relevel(dt$Experiencia, ref = "Menos 2 años")
 
 ## TEST CHI CUADRADO VARIABLE CULITATIVAS
-tabla1 <-table(dt$Velocidad, dt$INCIDENTE)
-chisq.test(x=tabla1)
+tabla <-table(dt$Velocidad, dt$INCIDENTE)
+chisq.test(x=tabla)
 
-tabla2 <-table(dt$Velocidad, dt$Camaras)
-chisq.test(x=tabla2)
+
 
 ks.test(x = dt$Semaforos,"pnorm", mean(dt$Semaforos), sd(dt$Semaforos))
 histogram(dt$Semaforos)
@@ -122,9 +121,6 @@ db_test <- dt[-registros,]
 #           col.names = TRUE, row.names = TRUE, append = FALSE )
 
 # 
-
-#sink("Resultados_Metodologia.txt")
-
 
 # Regresión lineal Costo ~ duracion + distancia
 
@@ -162,36 +158,29 @@ modelo2 <- polr(db$Velocidad ~ db$CONGESTION + db$CLIMA,
 modelo3 <- polr(db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos, 
                 method = "logistic", Hess = TRUE, data = db)
 
-modelo4 <- polr(db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + 
+modelo4 <- polr(db$Velocidad ~ db$CONGESTION + db$Semaforos + 
                   db$HPICOHVALLE, 
                    method = "logistic", Hess = TRUE, data = db)
 
 modelo5 <- polr(db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + 
-                   db$MERIDIANO, 
-                method = "logistic", Hess = TRUE, data = db)
+                  db$HPICOHVALLE + db$MERIDIANO, 
+                method = "probit", Hess = TRUE, data = db)
 
-modelo6 <- polr(db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + 
-                  db$MERIDIANO + db$HPICOHVALLE, 
+modelo6 <- polr(db$Velocidad ~ db$CONGESTION + db$Semaforos + 
+                  db$HPICOHVALLE + db$MERIDIANO, 
                 method = "logistic", Hess = TRUE, data = db)
-
-modelo7 <- polr(db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + 
-                  db$MERIDIANO + db$INCIDENTE, 
-                method = "logistic", Hess = TRUE, data = db)
-
 
 anova(modelo0, modelo1, test = "Chisq")
 anova(modelo1, modelo2, test = "Chisq")
 anova(modelo2, modelo3, test = "Chisq")
-anova(modelo3, modelo4, test = "Chisq")
+anova(modelo4, modelo3, test = "Chisq")
 anova(modelo3, modelo5, test = "Chisq")
 anova(modelo5, modelo6, test = "Chisq")
-anova(modelo5, modelo7, test = "Chisq")
+anova(modelo4, modelo6, test = "Chisq")
 
 
 ### MODELO ESCOGIDO
-modelo_log <- modelo5
-
-coeftest(modelo_log)
+modelo_log <- modelo6
 
 
 
@@ -301,11 +290,15 @@ logitgof(db$Velocidad, fitted(modelo_log), g = 10, ord = TRUE)
 
 pulkrob.chisq(modelo_log, c("db$CONGESTION"))
 
-pulkrob.chisq(modelo_log, c("db$CLIMA"))
+#pulkrob.chisq(modelo_log, c("db$CLIMA"))
 
-#pulkrob.chisq(modelo_log, c("db$HPICOHVALLE"))
+pulkrob.chisq(modelo_log, c("db$HPICOHVALLE"))
 
 pulkrob.chisq(modelo_log, c("db$MERIDIANO"))
+
+pulkrob.chisq(modelo_log, c("db$INCIDENTE"))
+
+pulkrob.deviance(modelo_log, c("db$CONGESTION"))
 
 
 # Tasa de clasificaciones correctas
@@ -365,7 +358,7 @@ R2CUN <- (1-exp(-(2*(LLv-LLo)/N)))/(1-exp(2*LLo/N))
 R2CUN
 
 
-(ctable <- cbind(R2MF, AdjR2MF, R2CS, R2N, R2BL, R2Md, R2H))
+(ctable <- cbind(R2MF, AdjR2MF, R2CS, R2N, R2BL, R2M, R2H))
 
 
 
@@ -376,16 +369,13 @@ ce <- modelo_log$coefficients         # coefficients b1, b2
 ic <- modelo_log$zeta                 # intercepts b0.1, b0.2, b0.3
 
 ## Modelo 5
-#modelo5 <- polr(db$Velocidad ~ db$CONGESTION + db$CLIMA + db$Semaforos + 
-#                  db$MERIDIANO, 
-#                method = "logistic", Hess = TRUE, data = db)
 logit1 <- ic[1] - (ce[1]*db_test$CongB + ce[2]*db_test$CongC + ce[3]*db_test$CongD +
                      ce[4]*db_test$CongE + ce[5]*db_test$CongF + ce[6]*db_test$CLIMAlluvioso +
-                     ce[7]*db_test$Semaforos + ce[8]*db_test$PM)
+                     ce[7]*db_test$Semaforos + ce[8]*db_test$HPICO + ce[9]*db_test$PM)
 
 logit2 <- ic[2] - (ce[1]*db_test$CongB + ce[2]*db_test$CongC + ce[3]*db_test$CongD +
                      ce[4]*db_test$CongE + ce[5]*db_test$CongF + ce[6]*db_test$CLIMAlluvioso +
-                     ce[7]*db_test$Semaforos + ce[8]*db_test$PM)
+                     ce[7]*db_test$Semaforos + ce[8]*db_test$HPICO + ce[9]*db_test$PM)
 
 ## Modelo 6
 # modelo6 <- polr(db$Velocidad ~ db$CONGESTION + db$Semaforos + 
@@ -412,7 +402,7 @@ logit2 <- ic[2] - (ce[1]*db_test$CongB + ce[3]*db_test$CongD +
 pLeq1  <- 1 / (1 + exp(-logit1))   # p(Y <= 1)
 pLeq2  <- 1 / (1 + exp(-logit2))   # p(Y <= 2)
 pMat   <- cbind(P1 =pLeq1, P2 =pLeq2-pLeq1, P3 =1-pLeq2)
-#pMat
+pMat
 
 prediccion = array()
 
@@ -426,7 +416,7 @@ for (i in 1:nrow(db_test)){
 }
 
 prediccion <- factor(prediccion,
-                     levels = 1:3,
+                     levels = 1:6,
                      labels = c("Baja","Media","Alta"))
 
 prediccion <- ordered(prediccion, levels = c("Baja","Media","Alta"))
@@ -434,5 +424,3 @@ prediccion <- ordered(prediccion, levels = c("Baja","Media","Alta"))
 table(predicted = prediccion, actual = db_test$Velocidad)
 
 mean(factor(prediccion, ordered = TRUE) == db_test$Velocidad)
-
-#sink()

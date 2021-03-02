@@ -1,0 +1,1752 @@
+Model run using Apollo for R, version 0.1.0 
+www.ApolloChoiceModelling.com
+
+Model name                       : ICLV_MCond_3F_3Elecciones Art3 
+Model description                : ICLV Modo Conduccion de 3F_3Elecciones Art3
+Model run at                     : 2021-02-24 10:44:56
+Estimation method                : bfgs
+Model diagnosis                  : successful convergence 
+Number of individuals            : 240
+Number of observations           : 240
+
+Number of cores used             :  3 
+Number of inter-person draws     : 100 (halton)
+WARNING: Inter-person draws were used
+         without a panel data structure.
+
+LL(start)                        : -3651.404
+LL(0, whole model)               : Not applicable
+LL(final, whole model)           : -2297.787
+Rho-square (0)                   : Not applicable
+Adj.Rho-square (0)               : Not applicable
+AIC                              :  4751.57 
+BIC                              :  5023.06 
+  LL(0,indic_FRbr)               : Not applicable
+  LL(final,indic_FRbr)           : -303.057
+  LL(0,indic_AFrSem)             : Not applicable
+  LL(final,indic_AFrSem)         : -260.907
+  LL(0,indic_EnfCond)            : Not applicable
+  LL(final,indic_EnfCond)        : -286.0268
+  LL(0,indic_UsoPito)            : Not applicable
+  LL(final,indic_UsoPito)        : -312.0966
+  LL(0,indic_CulFr)              : Not applicable
+  LL(final,indic_CulFr)          : -345.5327
+  LL(0,indic_IgPare)             : Not applicable
+  LL(final,indic_IgPare)         : -244.9548
+  LL(0,indic_OmLmVel)            : Not applicable
+  LL(final,indic_OmLmVel)        : -260.8092
+  LL(0,indic_PasoPeaton)         : Not applicable
+  LL(final,indic_PasoPeaton)     : -369.5592
+  LL(0,indic_UsoDirec)           : Not applicable
+  LL(final,indic_UsoDirec)       : -307.9966
+  LL(0,choice)                   : -263.6669
+  LL(final,choice)               : -229.8825
+Estimated parameters             :  78
+Time taken (hh:mm:ss)            :  00:37:28.6 
+Iterations                       :  116 
+Min abs eigenvalue of hessian    :  0.002539 
+
+Estimates:
+                     Estimate Std.err. t.ratio(0) p-val(0) Rob.std.err. Rob.t.ratio(0)
+asc_ruta1             -0.1470   0.3372      -0.44    0.663       0.3209          -0.46
+asc_ruta2              0.0000       NA         NA       NA           NA             NA
+asc_ruta4             -0.0153   0.6737      -0.02    0.982       0.6880          -0.02
+b_tt                   0.3755   0.1305       2.88    0.004       0.1311           2.86
+b_dt                  -0.0325   0.3184      -0.10    0.919       0.3216          -0.10
+b_Sem                  0.2983   0.1572       1.90    0.058       0.1505           1.98
+b_ACC_0                0.0000       NA         NA       NA           NA             NA
+b_ACC_1               -0.7259   0.3488      -2.08    0.037       0.3514          -2.07
+b_ACC_2               -2.7650   1.2052      -2.29    0.022       0.8078          -3.42
+b_NO_CAMFD             0.0000       NA         NA       NA           NA             NA
+b_SI_CAMFD            -0.5081   0.3161      -1.61    0.108       0.3164          -1.61
+b_NO_PANEL             0.0000       NA         NA       NA           NA             NA
+b_SI_PANEL            -0.5328   0.2376      -2.24    0.025       0.2111          -2.52
+b_NO_ZER               0.0000       NA         NA       NA           NA             NA
+b_SI_ZER               0.0592   0.2947       0.20    0.841       0.2670           0.22
+b_No_MTRP              0.0000       NA         NA       NA           NA             NA
+b_Si_MTRP              0.3261   0.3661       0.89    0.373       0.3611           0.90
+b_No_Info             -0.3241   0.3849      -0.84    0.400       0.3845          -0.84
+b_Si_Info              0.0000       NA         NA       NA           NA             NA
+b_UsoCel_P             0.0000       NA         NA       NA           NA             NA
+b_UsoCel_F            -0.1129   0.4558      -0.25    0.804       0.4346          -0.26
+lambda1                0.2165   0.2054       1.05    0.292       0.2108           1.03
+lambda2               -0.6048   0.4522      -1.34    0.181       0.4461          -1.36
+lambda3                0.5922   0.2369       2.50    0.012       0.2513           2.36
+gamma_EDUBASICA_LV1   -0.1888   0.2821      -0.67    0.503       0.2725          -0.69
+gamma_EDUSUP_LV1      -0.8395   0.3452      -2.43    0.015       0.3420          -2.46
+gamma_HPICO_LV1       -0.4681   0.1804      -2.59    0.009       0.1771          -2.64
+gamma_CSECO_LV1        0.3262   0.2100       1.55    0.120       0.2024           1.61
+gamma_SININFOTRF_LV1  -0.2866   0.1897      -1.51    0.131       0.2228          -1.29
+gamma_LV2_LV1          1.7937   0.1312      13.67    0.000       0.1590          11.28
+gamma_ADULTO40_LV2     0.1042   0.0958       1.09    0.277       0.1188           0.88
+gamma_EXP_3_LV2       -0.6638   0.1766      -3.76    0.000       0.1414          -4.69
+gamma_EXP_4_LV2       -0.4315   0.1481      -2.91    0.004       0.2313          -1.87
+gamma_EXP_5_LV2       -0.3526   0.0877      -4.02    0.000       0.0990          -3.56
+gamma_HPICO_LV2        0.0752   0.0944       0.80    0.426       0.1104           0.68
+gamma_USODISPMOB_LV2   0.2806   0.0810       3.46    0.001       0.0716           3.92
+gamma_EDUBASICA_LV3   -0.4188   0.1968      -2.13    0.033       0.1959          -2.14
+gamma_JOVEN30_LV3     -0.6453   0.3788      -1.70    0.088       0.4494          -1.44
+gamma_ADULTO40_LV3    -0.5139   0.2193      -2.34    0.019       0.2504          -2.05
+gamma_EXP_2_LV3        0.7094   0.2847       2.49    0.013       0.3446           2.06
+gamma_USODISPMOB_LV3  -0.1601   0.1906      -0.84    0.401       0.2138          -0.75
+zeta_FRbr              2.3915   0.3695       6.47    0.000       0.4675           5.11
+zeta_EnfCond           1.7663   0.2310       7.65    0.000       0.3210           5.50
+zeta_AFrSem            2.7053   0.4407       6.14    0.000       0.5628           4.81
+zeta_CulFr             0.9532   0.1163       8.20    0.000       0.1258           7.58
+zeta_OmLmVel           3.5403   0.4069       8.70    0.000       0.5653           6.26
+zeta_IgPare           18.7721   7.6070       2.47    0.014       7.3946           2.54
+zeta_PasoPeaton        1.1478   0.2394       4.79    0.000       0.2699           4.25
+zeta_UsoDirec          1.7515   0.4344       4.03    0.000       0.5009           3.50
+zeta_UsoPito           1.2869   0.1510       8.52    0.000       0.1851           6.95
+tau_FRbr_1            -3.8696   1.1323      -3.42    0.001       1.1326          -3.42
+tau_FRbr_2             1.7197   1.0148       1.69    0.090       1.0062           1.71
+tau_FRbr_3             2.9466   1.0472       2.81    0.005       1.0315           2.86
+tau_FRbr_4             8.1756   1.4968       5.46    0.000       1.6262           5.03
+tau_EnfCond_1         -2.5442   0.7924      -3.21    0.001       0.8038          -3.17
+tau_EnfCond_2          2.1381   0.7709       2.77    0.006       0.7860           2.72
+tau_EnfCond_3          3.2934   0.8071       4.08    0.000       0.8245           3.99
+tau_EnfCond_4          6.1729   1.0265       6.01    0.000       1.0695           5.77
+tau_AFrSem_1          -3.9522   1.2956      -3.05    0.002       1.3771          -2.87
+tau_AFrSem_2           3.5755   1.1896       3.01    0.003       1.1554           3.09
+tau_AFrSem_3           4.3753   1.2195       3.59    0.000       1.1868           3.69
+tau_AFrSem_4          10.9936   2.0353       5.40    0.000       2.1933           5.01
+tau_CulFr_1           -3.1248   0.4842      -6.45    0.000       0.4506          -6.93
+tau_CulFr_2           -0.6234   0.4245      -1.47    0.142       0.4173          -1.49
+tau_CulFr_3            0.5369   0.4264       1.26    0.208       0.4216           1.27
+tau_CulFr_4            3.7735   0.5575       6.77    0.000       0.6270           6.02
+tau_OmLmVel_1         -1.5682   0.4183      -3.75    0.000       0.4230          -3.71
+tau_OmLmVel_2          3.7135   0.5275       7.04    0.000       0.6965           5.33
+tau_OmLmVel_3          4.6684   0.5930       7.87    0.000       0.6895           6.77
+tau_OmLmVel_4          6.7513   0.8252       8.18    0.000       0.9716           6.95
+tau_IgPare_1          -6.7853   3.5351      -1.92    0.055       3.5098          -1.93
+tau_IgPare_2          18.9663   7.4202       2.56    0.011       7.7443           2.45
+tau_IgPare_3          21.1979   8.2825       2.56    0.010       8.1757           2.59
+tau_IgPare_4          35.4891  14.4747       2.45    0.014      14.4383           2.46
+tau_PasoPeaton_1      -2.8884   0.3801      -7.60    0.000       0.3933          -7.34
+tau_PasoPeaton_2      -1.3989   0.2910      -4.81    0.000       0.3058          -4.58
+tau_PasoPeaton_3      -0.4143   0.2546      -1.63    0.104       0.2613          -1.59
+tau_PasoPeaton_4       1.5377   0.2732       5.63    0.000       0.2714           5.67
+tau_UsoDirec_1        -5.4745   0.8293      -6.60    0.000       0.9008          -6.08
+tau_UsoDirec_2        -3.4015   0.5908      -5.76    0.000       0.6090          -5.59
+tau_UsoDirec_3        -2.4604   0.4911      -5.01    0.000       0.5244          -4.69
+tau_UsoDirec_4         0.2430   0.3341       0.73    0.467       0.3227           0.75
+tau_UsoPito_1         -2.4619   0.6003      -4.10    0.000       0.6008          -4.10
+tau_UsoPito_2          1.2086   0.5619       2.15    0.031       0.5809           2.08
+tau_UsoPito_3          1.9371   0.5752       3.37    0.001       0.5999           3.23
+tau_UsoPito_4          3.9859   0.6685       5.96    0.000       0.7133           5.59
+                     Rob.p-val(0)
+asc_ruta1                   0.647
+asc_ruta2                      NA
+asc_ruta4                   0.982
+b_tt                        0.004
+b_dt                        0.920
+b_Sem                       0.047
+b_ACC_0                        NA
+b_ACC_1                     0.039
+b_ACC_2                     0.001
+b_NO_CAMFD                     NA
+b_SI_CAMFD                  0.108
+b_NO_PANEL                     NA
+b_SI_PANEL                  0.012
+b_NO_ZER                       NA
+b_SI_ZER                    0.825
+b_No_MTRP                      NA
+b_Si_MTRP                   0.366
+b_No_Info                   0.399
+b_Si_Info                      NA
+b_UsoCel_P                     NA
+b_UsoCel_F                  0.795
+lambda1                     0.305
+lambda2                     0.175
+lambda3                     0.018
+gamma_EDUBASICA_LV1         0.488
+gamma_EDUSUP_LV1            0.014
+gamma_HPICO_LV1             0.008
+gamma_CSECO_LV1             0.107
+gamma_SININFOTRF_LV1        0.198
+gamma_LV2_LV1               0.000
+gamma_ADULTO40_LV2          0.381
+gamma_EXP_3_LV2             0.000
+gamma_EXP_4_LV2             0.062
+gamma_EXP_5_LV2             0.000
+gamma_HPICO_LV2             0.496
+gamma_USODISPMOB_LV2        0.000
+gamma_EDUBASICA_LV3         0.033
+gamma_JOVEN30_LV3           0.151
+gamma_ADULTO40_LV3          0.040
+gamma_EXP_2_LV3             0.040
+gamma_USODISPMOB_LV3        0.454
+zeta_FRbr                   0.000
+zeta_EnfCond                0.000
+zeta_AFrSem                 0.000
+zeta_CulFr                  0.000
+zeta_OmLmVel                0.000
+zeta_IgPare                 0.011
+zeta_PasoPeaton             0.000
+zeta_UsoDirec               0.000
+zeta_UsoPito                0.000
+tau_FRbr_1                  0.001
+tau_FRbr_2                  0.087
+tau_FRbr_3                  0.004
+tau_FRbr_4                  0.000
+tau_EnfCond_1               0.002
+tau_EnfCond_2               0.007
+tau_EnfCond_3               0.000
+tau_EnfCond_4               0.000
+tau_AFrSem_1                0.004
+tau_AFrSem_2                0.002
+tau_AFrSem_3                0.000
+tau_AFrSem_4                0.000
+tau_CulFr_1                 0.000
+tau_CulFr_2                 0.135
+tau_CulFr_3                 0.203
+tau_CulFr_4                 0.000
+tau_OmLmVel_1               0.000
+tau_OmLmVel_2               0.000
+tau_OmLmVel_3               0.000
+tau_OmLmVel_4               0.000
+tau_IgPare_1                0.053
+tau_IgPare_2                0.014
+tau_IgPare_3                0.010
+tau_IgPare_4                0.014
+tau_PasoPeaton_1            0.000
+tau_PasoPeaton_2            0.000
+tau_PasoPeaton_3            0.113
+tau_PasoPeaton_4            0.000
+tau_UsoDirec_1              0.000
+tau_UsoDirec_2              0.000
+tau_UsoDirec_3              0.000
+tau_UsoDirec_4              0.451
+tau_UsoPito_1               0.000
+tau_UsoPito_2               0.037
+tau_UsoPito_3               0.001
+tau_UsoPito_4               0.000
+
+Overview of choices for model component "OL"
+                              1     2    3     4    5
+Times chosen              87.00 97.00 18.0 34.00 4.00
+Percentage chosen overall 36.25 40.42  7.5 14.17 1.67
+
+Overview of choices for model component "OL"
+                              1     2    3     4    5
+Times chosen              92.00 114.0 8.00 25.00 1.00
+Percentage chosen overall 38.33  47.5 3.33 10.42 0.42
+
+Overview of choices for model component "OL"
+                              1      2     3     4    5
+Times chosen              92.00 107.00 17.00 19.00 5.00
+Percentage chosen overall 38.33  44.58  7.08  7.92 2.08
+
+Overview of choices for model component "OL"
+                             1      2    3     4     5
+Times chosen              78.0 106.00 18.0 27.00 11.00
+Percentage chosen overall 32.5  44.17  7.5 11.25  4.58
+
+Overview of choices for model component "OL"
+                              1     2    3     4    5
+Times chosen              47.00 79.00 42.0 63.00 9.00
+Percentage chosen overall 19.58 32.92 17.5 26.25 3.75
+
+Overview of choices for model component "OL"
+                              1      2    3  4    5
+Times chosen              102.0 117.00 5.00 12 4.00
+Percentage chosen overall  42.5  48.75 2.08  5 1.67
+
+Overview of choices for model component "OL"
+                           1      2     3     4   5
+Times chosen              96 116.00 11.00 11.00 6.0
+Percentage chosen overall 40  48.33  4.58  4.58 2.5
+
+Overview of choices for model component "OL"
+                             1     2     3     4     5
+Times chosen              30.0 46.00 44.00 79.00 41.00
+Percentage chosen overall 12.5 19.17 18.33 32.92 17.08
+
+Overview of choices for model component "OL"
+                             1     2  3     4  5
+Times chosen              8.00 27.00 24 97.00 84
+Percentage chosen overall 3.33 11.25 10 40.42 35
+
+Overview of choices for model component "MNL"
+                                  ruta1  ruta2 rutaEC
+Times available                  240.00 240.00 240.00
+Times chosen                      92.00  50.00  98.00
+Percentage chosen overall         38.33  20.83  40.83
+Percentage chosen when available  38.33  20.83  40.83
+
+
+Classical covariance matrix:
+                                asc_ruta1            asc_ruta4                 b_tt
+asc_ruta1                          0.1137               0.1188              -0.0105
+asc_ruta4                          0.1188               0.4539              -0.0262
+b_tt                              -0.0105              -0.0262               0.0170
+b_dt                              -0.0452              -0.0370              -0.0083
+b_Sem                             -0.0382              -0.0437              -0.0007
+b_ACC_1                            0.0040               0.0140               0.0011
+b_ACC_2                           -0.0071              -0.0005               0.0032
+b_SI_CAMFD                         0.0056              -0.0144              -0.0024
+b_SI_PANEL                         0.0013               0.0023               0.0015
+b_SI_ZER                           0.0086               0.0043              -0.0020
+b_Si_MTRP                          0.0112               0.0191              -0.0036
+b_No_Info                          0.0032              -0.1075              -0.0037
+                                     b_dt                b_Sem              b_ACC_1
+asc_ruta1                         -0.0452              -0.0382               0.0040
+asc_ruta4                         -0.0370              -0.0437               0.0140
+b_tt                              -0.0083              -0.0007               0.0011
+b_dt                               0.1014               0.0096              -0.0084
+b_Sem                              0.0096               0.0247              -0.0042
+b_ACC_1                           -0.0084              -0.0042               0.1217
+b_ACC_2                           -0.0050               0.0000               0.0533
+b_SI_CAMFD                        -0.0077              -0.0021              -0.0010
+b_SI_PANEL                         0.0009              -0.0029              -0.0003
+b_SI_ZER                          -0.0095              -0.0025              -0.0005
+b_Si_MTRP                         -0.0147              -0.0043               0.0036
+b_No_Info                         -0.0042               0.0012              -0.0072
+                                  b_ACC_2           b_SI_CAMFD           b_SI_PANEL
+asc_ruta1                         -0.0071               0.0056               0.0013
+asc_ruta4                         -0.0005              -0.0144               0.0023
+b_tt                               0.0032              -0.0024               0.0015
+b_dt                              -0.0050              -0.0077               0.0009
+b_Sem                              0.0000              -0.0021              -0.0029
+b_ACC_1                            0.0533              -0.0010              -0.0003
+b_ACC_2                            1.4524              -0.0001               0.0172
+b_SI_CAMFD                        -0.0001               0.0999              -0.0057
+b_SI_PANEL                         0.0172              -0.0057               0.0565
+b_SI_ZER                           0.0068               0.0097               0.0014
+b_Si_MTRP                         -0.0102               0.0068              -0.0073
+b_No_Info                         -0.0078               0.0068               0.0060
+                                 b_SI_ZER            b_Si_MTRP            b_No_Info
+asc_ruta1                          0.0086               0.0112               0.0032
+asc_ruta4                          0.0043               0.0191              -0.1075
+b_tt                              -0.0020              -0.0036              -0.0037
+b_dt                              -0.0095              -0.0147              -0.0042
+b_Sem                             -0.0025              -0.0043               0.0012
+b_ACC_1                           -0.0005               0.0036              -0.0072
+b_ACC_2                            0.0068              -0.0102              -0.0078
+b_SI_CAMFD                         0.0097               0.0068               0.0068
+b_SI_PANEL                         0.0014              -0.0073               0.0060
+b_SI_ZER                           0.0868              -0.0031               0.0002
+b_Si_MTRP                         -0.0031               0.1340               0.0012
+b_No_Info                          0.0002               0.0012               0.1482
+                               b_UsoCel_F              lambda1              lambda2
+asc_ruta1                         -0.0056              -0.0016               0.0048
+asc_ruta4                         -0.1972               0.0080               0.0176
+b_tt                               0.0040               0.0011              -0.0021
+b_dt                               0.0099              -0.0077               0.0140
+b_Sem                             -0.0004               0.0025              -0.0062
+b_ACC_1                           -0.0052               0.0007               0.0076
+b_ACC_2                           -0.0050              -0.0138               0.0452
+b_SI_CAMFD                         0.0181              -0.0062               0.0076
+b_SI_PANEL                         0.0012              -0.0026               0.0073
+b_SI_ZER                           0.0055              -0.0064               0.0172
+b_Si_MTRP                         -0.0114               0.0020               0.0007
+b_No_Info                          0.0046               0.0084              -0.0152
+                                  lambda3  gamma_EDUBASICA_LV1     gamma_EDUSUP_LV1
+asc_ruta1                          0.0046              -0.0005              -0.0008
+asc_ruta4                          0.0437              -0.0161              -0.0167
+b_tt                              -0.0021               0.0000               0.0000
+b_dt                              -0.0098               0.0008               0.0008
+b_Sem                              0.0008               0.0001               0.0002
+b_ACC_1                           -0.0081               0.0001               0.0008
+b_ACC_2                           -0.0182               0.0012               0.0021
+b_SI_CAMFD                        -0.0064               0.0007               0.0011
+b_SI_PANEL                        -0.0007              -0.0005              -0.0004
+b_SI_ZER                          -0.0038               0.0003               0.0003
+b_Si_MTRP                          0.0066               0.0003              -0.0001
+b_No_Info                          0.0070              -0.0010              -0.0008
+                          gamma_HPICO_LV1      gamma_CSECO_LV1 gamma_SININFOTRF_LV1
+asc_ruta1                         -0.0008              -0.0002              -0.0003
+asc_ruta4                         -0.0091              -0.0091              -0.0056
+b_tt                               0.0003               0.0001               0.0001
+b_dt                               0.0006              -0.0006              -0.0004
+b_Sem                              0.0003               0.0002               0.0003
+b_ACC_1                            0.0001               0.0000               0.0002
+b_ACC_2                            0.0000              -0.0009               0.0001
+b_SI_CAMFD                        -0.0001              -0.0005              -0.0005
+b_SI_PANEL                         0.0001               0.0000               0.0000
+b_SI_ZER                          -0.0002               0.0000               0.0000
+b_Si_MTRP                         -0.0010              -0.0001              -0.0004
+b_No_Info                          0.0000              -0.0006              -0.0060
+                            gamma_LV2_LV1   gamma_ADULTO40_LV2      gamma_EXP_3_LV2
+asc_ruta1                          0.0002               0.0001              -0.0007
+asc_ruta4                          0.0037               0.0026              -0.0003
+b_tt                               0.0000              -0.0001               0.0002
+b_dt                              -0.0002               0.0000               0.0007
+b_Sem                             -0.0001               0.0000               0.0002
+b_ACC_1                           -0.0002              -0.0002               0.0006
+b_ACC_2                           -0.0006               0.0004               0.0004
+b_SI_CAMFD                        -0.0004               0.0001               0.0001
+b_SI_PANEL                         0.0002               0.0001               0.0001
+b_SI_ZER                          -0.0001               0.0002               0.0001
+b_Si_MTRP                          0.0002               0.0002              -0.0002
+b_No_Info                          0.0006               0.0010              -0.0003
+                          gamma_EXP_4_LV2      gamma_EXP_5_LV2      gamma_HPICO_LV2
+asc_ruta1                          0.0002              -0.0001               0.0001
+asc_ruta4                         -0.0004               0.0000               0.0015
+b_tt                               0.0002               0.0000              -0.0001
+b_dt                              -0.0006               0.0004               0.0000
+b_Sem                              0.0000              -0.0001               0.0000
+b_ACC_1                            0.0002               0.0002               0.0000
+b_ACC_2                           -0.0014              -0.0007               0.0011
+b_SI_CAMFD                        -0.0007               0.0001               0.0004
+b_SI_PANEL                        -0.0002               0.0000               0.0002
+b_SI_ZER                          -0.0001               0.0000               0.0002
+b_Si_MTRP                         -0.0001               0.0000              -0.0001
+b_No_Info                         -0.0016               0.0002               0.0002
+                     gamma_USODISPMOB_LV2  gamma_EDUBASICA_LV3    gamma_JOVEN30_LV3
+asc_ruta1                         -0.0001              -0.0008              -0.0030
+asc_ruta4                         -0.0012              -0.0154              -0.0145
+b_tt                              -0.0001               0.0004               0.0013
+b_dt                               0.0003               0.0005               0.0030
+b_Sem                              0.0000               0.0002               0.0006
+b_ACC_1                            0.0001               0.0000               0.0019
+b_ACC_2                           -0.0002              -0.0003               0.0031
+b_SI_CAMFD                         0.0003               0.0000               0.0018
+b_SI_PANEL                         0.0000               0.0000               0.0003
+b_SI_ZER                           0.0001               0.0000               0.0015
+b_Si_MTRP                         -0.0001               0.0004              -0.0037
+b_No_Info                         -0.0008              -0.0015              -0.0033
+                       gamma_ADULTO40_LV3      gamma_EXP_2_LV3 gamma_USODISPMOB_LV3
+asc_ruta1                         -0.0009               0.0016              -0.0003
+asc_ruta4                         -0.0105              -0.0004              -0.0034
+b_tt                               0.0005              -0.0004               0.0003
+b_dt                               0.0028              -0.0021              -0.0003
+b_Sem                             -0.0003              -0.0003               0.0001
+b_ACC_1                            0.0020              -0.0014               0.0001
+b_ACC_2                            0.0044               0.0007              -0.0022
+b_SI_CAMFD                        -0.0002              -0.0016              -0.0005
+b_SI_PANEL                         0.0001              -0.0005              -0.0005
+b_SI_ZER                          -0.0002              -0.0006              -0.0003
+b_Si_MTRP                         -0.0020              -0.0005               0.0004
+b_No_Info                         -0.0042               0.0021               0.0019
+                                zeta_FRbr         zeta_EnfCond          zeta_AFrSem
+asc_ruta1                          0.0003              -0.0001               0.0000
+asc_ruta4                         -0.0025              -0.0018              -0.0038
+b_tt                               0.0000              -0.0001              -0.0001
+b_dt                              -0.0003               0.0005               0.0004
+b_Sem                              0.0000               0.0000              -0.0001
+b_ACC_1                           -0.0001               0.0002               0.0002
+b_ACC_2                            0.0013               0.0010               0.0024
+b_SI_CAMFD                         0.0002               0.0004               0.0007
+b_SI_PANEL                         0.0000              -0.0001               0.0004
+b_SI_ZER                          -0.0001               0.0001               0.0008
+b_Si_MTRP                         -0.0002               0.0002              -0.0007
+b_No_Info                         -0.0014              -0.0006               0.0001
+                               zeta_CulFr         zeta_OmLmVel          zeta_IgPare
+asc_ruta1                          0.0000               0.0002               0.0085
+asc_ruta4                         -0.0011               0.0019              -0.0829
+b_tt                               0.0000              -0.0001               0.0006
+b_dt                              -0.0001              -0.0003              -0.0036
+b_Sem                              0.0000               0.0000              -0.0072
+b_ACC_1                            0.0001              -0.0003               0.0070
+b_ACC_2                            0.0003              -0.0009               0.0881
+b_SI_CAMFD                         0.0000              -0.0003               0.0028
+b_SI_PANEL                         0.0000               0.0000               0.0078
+b_SI_ZER                           0.0000               0.0000               0.0011
+b_Si_MTRP                          0.0000               0.0000               0.0050
+b_No_Info                         -0.0005               0.0007              -0.0075
+                          zeta_PasoPeaton        zeta_UsoDirec         zeta_UsoPito
+asc_ruta1                         -0.0010              -0.0017              -0.0001
+asc_ruta4                          0.0072              -0.0352              -0.0011
+b_tt                               0.0005              -0.0002               0.0000
+b_dt                               0.0013               0.0046               0.0001
+b_Sem                              0.0000              -0.0001               0.0000
+b_ACC_1                            0.0000               0.0051               0.0001
+b_ACC_2                           -0.0005               0.0066               0.0006
+b_SI_CAMFD                         0.0006               0.0010               0.0002
+b_SI_PANEL                        -0.0001               0.0013               0.0000
+b_SI_ZER                           0.0007               0.0001               0.0000
+b_Si_MTRP                          0.0016              -0.0051               0.0001
+b_No_Info                         -0.0001              -0.0086              -0.0002
+                               tau_FRbr_1           tau_FRbr_2           tau_FRbr_3
+asc_ruta1                         -0.0042              -0.0036              -0.0034
+asc_ruta4                         -0.0723              -0.0707              -0.0697
+b_tt                               0.0005               0.0005               0.0005
+b_dt                               0.0036               0.0028               0.0023
+b_Sem                              0.0014               0.0013               0.0013
+b_ACC_1                            0.0026               0.0018               0.0015
+b_ACC_2                            0.0017               0.0018               0.0017
+b_SI_CAMFD                         0.0017               0.0015               0.0012
+b_SI_PANEL                        -0.0006              -0.0008              -0.0008
+b_SI_ZER                           0.0018               0.0015               0.0012
+b_Si_MTRP                         -0.0017              -0.0019              -0.0019
+b_No_Info                         -0.0124              -0.0138              -0.0139
+                               tau_FRbr_4        tau_EnfCond_1        tau_EnfCond_2
+asc_ruta1                         -0.0023              -0.0026              -0.0029
+asc_ruta4                         -0.0701              -0.0537              -0.0520
+b_tt                               0.0006               0.0005               0.0004
+b_dt                               0.0008               0.0017               0.0023
+b_Sem                              0.0010               0.0010               0.0010
+b_ACC_1                            0.0011               0.0016               0.0014
+b_ACC_2                            0.0025               0.0012               0.0014
+b_SI_CAMFD                         0.0002               0.0009               0.0011
+b_SI_PANEL                        -0.0006              -0.0004              -0.0006
+b_SI_ZER                           0.0003               0.0011               0.0011
+b_Si_MTRP                         -0.0022              -0.0017              -0.0012
+b_No_Info                         -0.0156              -0.0098              -0.0098
+                            tau_EnfCond_3        tau_EnfCond_4         tau_AFrSem_1
+asc_ruta1                         -0.0029              -0.0027              -0.0043
+asc_ruta4                         -0.0516              -0.0517              -0.0807
+b_tt                               0.0003               0.0003               0.0006
+b_dt                               0.0023               0.0024               0.0032
+b_Sem                              0.0010               0.0009               0.0015
+b_ACC_1                            0.0014               0.0014               0.0024
+b_ACC_2                            0.0014               0.0016               0.0008
+b_SI_CAMFD                         0.0011               0.0008               0.0014
+b_SI_PANEL                        -0.0006              -0.0006              -0.0013
+b_SI_ZER                           0.0010               0.0008               0.0009
+b_Si_MTRP                         -0.0010              -0.0008              -0.0013
+b_No_Info                         -0.0098              -0.0102              -0.0163
+                             tau_AFrSem_2         tau_AFrSem_3         tau_AFrSem_4
+asc_ruta1                         -0.0041              -0.0041              -0.0034
+asc_ruta4                         -0.0791              -0.0792              -0.0836
+b_tt                               0.0006               0.0006               0.0005
+b_dt                               0.0030               0.0029               0.0032
+b_Sem                              0.0015               0.0015               0.0010
+b_ACC_1                            0.0020               0.0020               0.0024
+b_ACC_2                            0.0027               0.0030               0.0071
+b_SI_CAMFD                         0.0017               0.0016               0.0018
+b_SI_PANEL                        -0.0004              -0.0003               0.0009
+b_SI_ZER                           0.0022               0.0023               0.0034
+b_Si_MTRP                         -0.0026              -0.0028              -0.0043
+b_No_Info                         -0.0139              -0.0133              -0.0135
+                              tau_CulFr_1          tau_CulFr_2          tau_CulFr_3
+asc_ruta1                         -0.0016              -0.0015              -0.0015
+asc_ruta4                         -0.0283              -0.0284              -0.0285
+b_tt                               0.0003               0.0002               0.0002
+b_dt                               0.0013               0.0012               0.0012
+b_Sem                              0.0005               0.0005               0.0005
+b_ACC_1                            0.0008               0.0008               0.0008
+b_ACC_2                            0.0008               0.0008               0.0006
+b_SI_CAMFD                         0.0007               0.0006               0.0005
+b_SI_PANEL                        -0.0003              -0.0003              -0.0003
+b_SI_ZER                           0.0006               0.0006               0.0006
+b_Si_MTRP                         -0.0008              -0.0008              -0.0008
+b_No_Info                         -0.0048              -0.0052              -0.0053
+                              tau_CulFr_4        tau_OmLmVel_1        tau_OmLmVel_2
+asc_ruta1                         -0.0014              -0.0002               0.0000
+asc_ruta4                         -0.0285               0.0051               0.0070
+b_tt                               0.0002              -0.0002              -0.0004
+b_dt                               0.0008               0.0012               0.0014
+b_Sem                              0.0006              -0.0001              -0.0002
+b_ACC_1                            0.0008               0.0007               0.0005
+b_ACC_2                            0.0003               0.0011              -0.0004
+b_SI_CAMFD                         0.0002               0.0015               0.0015
+b_SI_PANEL                        -0.0003               0.0001               0.0001
+b_SI_ZER                           0.0004               0.0006               0.0009
+b_Si_MTRP                         -0.0007              -0.0001              -0.0001
+b_No_Info                         -0.0056               0.0006               0.0014
+                            tau_OmLmVel_3        tau_OmLmVel_4         tau_IgPare_1
+asc_ruta1                          0.0001               0.0002              -0.0040
+asc_ruta4                          0.0062               0.0029               0.0581
+b_tt                              -0.0003              -0.0003              -0.0016
+b_dt                               0.0014               0.0014               0.0055
+b_Sem                             -0.0003              -0.0004               0.0026
+b_ACC_1                            0.0007               0.0008               0.0006
+b_ACC_2                           -0.0004               0.0000              -0.0299
+b_SI_CAMFD                         0.0015               0.0015               0.0056
+b_SI_PANEL                         0.0001               0.0002              -0.0027
+b_SI_ZER                           0.0009               0.0009               0.0021
+b_Si_MTRP                         -0.0002              -0.0006              -0.0024
+b_No_Info                          0.0014               0.0010               0.0075
+                             tau_IgPare_2         tau_IgPare_3         tau_IgPare_4
+asc_ruta1                          0.0071               0.0083               0.0164
+asc_ruta4                         -0.0436              -0.0615              -0.1607
+b_tt                              -0.0012              -0.0005              -0.0004
+b_dt                               0.0054               0.0036               0.0002
+b_Sem                             -0.0080              -0.0089              -0.0152
+b_ACC_1                            0.0101               0.0116               0.0174
+b_ACC_2                            0.0826               0.0976               0.1738
+b_SI_CAMFD                         0.0119               0.0116               0.0124
+b_SI_PANEL                         0.0082               0.0093               0.0156
+b_SI_ZER                           0.0067               0.0067               0.0066
+b_Si_MTRP                          0.0047               0.0050               0.0067
+b_No_Info                          0.0008              -0.0060              -0.0153
+                         tau_PasoPeaton_1     tau_PasoPeaton_2     tau_PasoPeaton_3
+asc_ruta1                         -0.0001              -0.0004              -0.0007
+asc_ruta4                         -0.0315              -0.0270              -0.0239
+b_tt                               0.0002               0.0003               0.0004
+b_dt                               0.0000               0.0003               0.0007
+b_Sem                              0.0001               0.0001               0.0002
+b_ACC_1                            0.0010               0.0008               0.0005
+b_ACC_2                            0.0019               0.0016               0.0016
+b_SI_CAMFD                        -0.0010              -0.0007              -0.0006
+b_SI_PANEL                         0.0000              -0.0001              -0.0002
+b_SI_ZER                          -0.0009              -0.0007              -0.0005
+b_Si_MTRP                         -0.0027              -0.0018              -0.0011
+b_No_Info                         -0.0031              -0.0028              -0.0024
+                         tau_PasoPeaton_4       tau_UsoDirec_1       tau_UsoDirec_2
+asc_ruta1                         -0.0011               0.0004               0.0000
+asc_ruta4                         -0.0195               0.0248               0.0094
+b_tt                               0.0006               0.0016               0.0015
+b_dt                               0.0013              -0.0049              -0.0032
+b_Sem                              0.0002               0.0005               0.0003
+b_ACC_1                            0.0003              -0.0073              -0.0049
+b_ACC_2                            0.0012              -0.0090              -0.0061
+b_SI_CAMFD                        -0.0003              -0.0021              -0.0019
+b_SI_PANEL                        -0.0003              -0.0023              -0.0018
+b_SI_ZER                           0.0000               0.0000              -0.0001
+b_Si_MTRP                          0.0001               0.0077               0.0056
+b_No_Info                         -0.0017               0.0099               0.0065
+                           tau_UsoDirec_3       tau_UsoDirec_4        tau_UsoPito_1
+asc_ruta1                         -0.0002              -0.0014              -0.0019
+asc_ruta4                          0.0006              -0.0288              -0.0395
+b_tt                               0.0014               0.0010               0.0003
+b_dt                              -0.0023               0.0011               0.0015
+b_Sem                              0.0002               0.0002               0.0007
+b_ACC_1                           -0.0037               0.0003               0.0011
+b_ACC_2                           -0.0044               0.0013               0.0009
+b_SI_CAMFD                        -0.0016              -0.0006               0.0007
+b_SI_PANEL                        -0.0015              -0.0005              -0.0004
+b_SI_ZER                          -0.0002              -0.0002               0.0008
+b_Si_MTRP                          0.0043              -0.0002              -0.0014
+b_No_Info                          0.0044              -0.0021              -0.0074
+                            tau_UsoPito_2        tau_UsoPito_3        tau_UsoPito_4
+asc_ruta1                         -0.0021              -0.0021              -0.0020
+asc_ruta4                         -0.0383              -0.0380              -0.0372
+b_tt                               0.0003               0.0003               0.0003
+b_dt                               0.0016               0.0015               0.0013
+b_Sem                              0.0007               0.0007               0.0008
+b_ACC_1                            0.0010               0.0010               0.0010
+b_ACC_2                            0.0010               0.0010               0.0008
+b_SI_CAMFD                         0.0008               0.0008               0.0006
+b_SI_PANEL                        -0.0004              -0.0004              -0.0004
+b_SI_ZER                           0.0008               0.0008               0.0006
+b_Si_MTRP                         -0.0010              -0.0009              -0.0007
+b_No_Info                         -0.0072              -0.0071              -0.0069
+ [ reached getOption("max.print") -- omitted 66 rows ]
+
+Robust covariance matrix:
+                                asc_ruta1            asc_ruta4                 b_tt
+asc_ruta1                          0.1030               0.1249              -0.0102
+asc_ruta4                          0.1249               0.4733              -0.0288
+b_tt                              -0.0102              -0.0288               0.0172
+b_dt                              -0.0495              -0.0454              -0.0069
+b_Sem                             -0.0342              -0.0502               0.0002
+b_ACC_1                            0.0020               0.0139               0.0042
+b_ACC_2                            0.0006               0.0150               0.0087
+b_SI_CAMFD                         0.0075              -0.0186              -0.0119
+b_SI_PANEL                         0.0012               0.0107              -0.0008
+b_SI_ZER                          -0.0042              -0.0187              -0.0026
+b_Si_MTRP                          0.0159               0.0052              -0.0025
+b_No_Info                         -0.0050              -0.1184              -0.0003
+                                     b_dt                b_Sem              b_ACC_1
+asc_ruta1                         -0.0495              -0.0342               0.0020
+asc_ruta4                         -0.0454              -0.0502               0.0139
+b_tt                              -0.0069               0.0002               0.0042
+b_dt                               0.1034               0.0129              -0.0166
+b_Sem                              0.0129               0.0226              -0.0063
+b_ACC_1                           -0.0166              -0.0063               0.1235
+b_ACC_2                            0.0097              -0.0063               0.0324
+b_SI_CAMFD                         0.0041              -0.0010              -0.0192
+b_SI_PANEL                         0.0036               0.0002              -0.0057
+b_SI_ZER                           0.0007               0.0043              -0.0160
+b_Si_MTRP                         -0.0307              -0.0076               0.0147
+b_No_Info                         -0.0060               0.0025              -0.0143
+                                  b_ACC_2           b_SI_CAMFD           b_SI_PANEL
+asc_ruta1                          0.0006               0.0075               0.0012
+asc_ruta4                          0.0150              -0.0186               0.0107
+b_tt                               0.0087              -0.0119              -0.0008
+b_dt                               0.0097               0.0041               0.0036
+b_Sem                             -0.0063              -0.0010               0.0002
+b_ACC_1                            0.0324              -0.0192              -0.0057
+b_ACC_2                            0.6525              -0.0090              -0.0011
+b_SI_CAMFD                        -0.0090               0.1001              -0.0010
+b_SI_PANEL                        -0.0011              -0.0010               0.0446
+b_SI_ZER                           0.0058               0.0084              -0.0053
+b_Si_MTRP                         -0.0152               0.0057              -0.0074
+b_No_Info                         -0.0055               0.0079               0.0050
+                                 b_SI_ZER            b_Si_MTRP            b_No_Info
+asc_ruta1                         -0.0042               0.0159              -0.0050
+asc_ruta4                         -0.0187               0.0052              -0.1184
+b_tt                              -0.0026              -0.0025              -0.0003
+b_dt                               0.0007              -0.0307              -0.0060
+b_Sem                              0.0043              -0.0076               0.0025
+b_ACC_1                           -0.0160               0.0147              -0.0143
+b_ACC_2                            0.0058              -0.0152              -0.0055
+b_SI_CAMFD                         0.0084               0.0057               0.0079
+b_SI_PANEL                        -0.0053              -0.0074               0.0050
+b_SI_ZER                           0.0713              -0.0012               0.0008
+b_Si_MTRP                         -0.0012               0.1304               0.0033
+b_No_Info                          0.0008               0.0033               0.1479
+                               b_UsoCel_F              lambda1              lambda2
+asc_ruta1                         -0.0110               0.0028              -0.0024
+asc_ruta4                         -0.1802               0.0231              -0.0170
+b_tt                               0.0000               0.0008              -0.0007
+b_dt                               0.0189              -0.0113               0.0231
+b_Sem                              0.0076              -0.0005              -0.0031
+b_ACC_1                           -0.0012               0.0085              -0.0032
+b_ACC_2                            0.0010              -0.0050               0.0313
+b_SI_CAMFD                         0.0315              -0.0146               0.0267
+b_SI_PANEL                        -0.0019               0.0004              -0.0018
+b_SI_ZER                           0.0140              -0.0100               0.0200
+b_Si_MTRP                          0.0037               0.0048              -0.0079
+b_No_Info                         -0.0001               0.0058              -0.0111
+                                  lambda3  gamma_EDUBASICA_LV1     gamma_EDUSUP_LV1
+asc_ruta1                          0.0114              -0.0007               0.0033
+asc_ruta4                          0.0615              -0.0282              -0.0246
+b_tt                              -0.0026              -0.0002               0.0003
+b_dt                              -0.0205               0.0031              -0.0029
+b_Sem                             -0.0012              -0.0004              -0.0023
+b_ACC_1                           -0.0133              -0.0039              -0.0017
+b_ACC_2                           -0.0036              -0.0057              -0.0100
+b_SI_CAMFD                        -0.0090               0.0038               0.0042
+b_SI_PANEL                         0.0034              -0.0091              -0.0070
+b_SI_ZER                          -0.0024              -0.0010              -0.0024
+b_Si_MTRP                          0.0004               0.0098               0.0169
+b_No_Info                          0.0084               0.0043               0.0147
+                          gamma_HPICO_LV1      gamma_CSECO_LV1 gamma_SININFOTRF_LV1
+asc_ruta1                         -0.0063              -0.0045               0.0081
+asc_ruta4                         -0.0271              -0.0104               0.0056
+b_tt                               0.0005              -0.0002               0.0017
+b_dt                               0.0016               0.0028              -0.0057
+b_Sem                              0.0025               0.0011              -0.0052
+b_ACC_1                           -0.0021              -0.0021               0.0086
+b_ACC_2                           -0.0028              -0.0004               0.0114
+b_SI_CAMFD                        -0.0046              -0.0024              -0.0060
+b_SI_PANEL                         0.0010              -0.0011               0.0001
+b_SI_ZER                           0.0026              -0.0040              -0.0041
+b_Si_MTRP                         -0.0077              -0.0034               0.0028
+b_No_Info                          0.0028               0.0003               0.0009
+                            gamma_LV2_LV1   gamma_ADULTO40_LV2      gamma_EXP_3_LV2
+asc_ruta1                         -0.0045               0.0007               0.0042
+asc_ruta4                          0.0142               0.0127              -0.0005
+b_tt                              -0.0006              -0.0011              -0.0002
+b_dt                               0.0001              -0.0023              -0.0035
+b_Sem                              0.0031               0.0011              -0.0015
+b_ACC_1                           -0.0017               0.0005               0.0021
+b_ACC_2                            0.0081               0.0013              -0.0016
+b_SI_CAMFD                        -0.0014               0.0010              -0.0007
+b_SI_PANEL                         0.0037               0.0010              -0.0012
+b_SI_ZER                           0.0016               0.0006              -0.0015
+b_Si_MTRP                         -0.0060               0.0014               0.0031
+b_No_Info                         -0.0049              -0.0008               0.0001
+                          gamma_EXP_4_LV2      gamma_EXP_5_LV2      gamma_HPICO_LV2
+asc_ruta1                         -0.0078               0.0000               0.0027
+asc_ruta4                         -0.0211              -0.0058               0.0053
+b_tt                              -0.0014              -0.0001               0.0000
+b_dt                               0.0052              -0.0003              -0.0007
+b_Sem                              0.0014              -0.0007              -0.0004
+b_ACC_1                            0.0040               0.0005               0.0004
+b_ACC_2                           -0.0082               0.0001               0.0001
+b_SI_CAMFD                         0.0052               0.0020               0.0016
+b_SI_PANEL                         0.0013               0.0001              -0.0011
+b_SI_ZER                          -0.0005               0.0003              -0.0016
+b_Si_MTRP                          0.0053               0.0019              -0.0014
+b_No_Info                          0.0036               0.0031              -0.0010
+                     gamma_USODISPMOB_LV2  gamma_EDUBASICA_LV3    gamma_JOVEN30_LV3
+asc_ruta1                          0.0011              -0.0045              -0.0173
+asc_ruta4                          0.0008              -0.0134              -0.0556
+b_tt                               0.0005               0.0009               0.0014
+b_dt                              -0.0006               0.0020              -0.0031
+b_Sem                             -0.0007               0.0011               0.0061
+b_ACC_1                            0.0040              -0.0085               0.0011
+b_ACC_2                           -0.0014               0.0171               0.0052
+b_SI_CAMFD                        -0.0007               0.0074               0.0064
+b_SI_PANEL                        -0.0008              -0.0005              -0.0020
+b_SI_ZER                          -0.0021               0.0069              -0.0079
+b_Si_MTRP                          0.0012              -0.0002              -0.0062
+b_No_Info                         -0.0022               0.0007               0.0021
+                       gamma_ADULTO40_LV3      gamma_EXP_2_LV3 gamma_USODISPMOB_LV3
+asc_ruta1                         -0.0008               0.0085              -0.0036
+asc_ruta4                         -0.0173               0.0385              -0.0021
+b_tt                              -0.0013              -0.0024               0.0003
+b_dt                               0.0006               0.0021              -0.0076
+b_Sem                             -0.0016              -0.0050               0.0054
+b_ACC_1                            0.0028              -0.0101               0.0058
+b_ACC_2                            0.0001              -0.0145              -0.0094
+b_SI_CAMFD                         0.0038               0.0003               0.0010
+b_SI_PANEL                        -0.0036               0.0000              -0.0011
+b_SI_ZER                          -0.0040               0.0012              -0.0016
+b_Si_MTRP                          0.0036              -0.0100              -0.0068
+b_No_Info                         -0.0068              -0.0098               0.0010
+                                zeta_FRbr         zeta_EnfCond          zeta_AFrSem
+asc_ruta1                          0.0013               0.0097              -0.0152
+asc_ruta4                         -0.0237              -0.0165              -0.0309
+b_tt                              -0.0018               0.0012               0.0004
+b_dt                               0.0078              -0.0011               0.0151
+b_Sem                             -0.0007              -0.0058               0.0080
+b_ACC_1                            0.0190               0.0039               0.0013
+b_ACC_2                           -0.0028              -0.0067              -0.0160
+b_SI_CAMFD                         0.0017               0.0173              -0.0002
+b_SI_PANEL                         0.0009              -0.0112               0.0034
+b_SI_ZER                          -0.0020              -0.0005               0.0024
+b_Si_MTRP                          0.0273               0.0190               0.0076
+b_No_Info                         -0.0032               0.0156              -0.0041
+                               zeta_CulFr         zeta_OmLmVel          zeta_IgPare
+asc_ruta1                         -0.0010              -0.0055               0.3759
+asc_ruta4                         -0.0088               0.0207               0.7839
+b_tt                               0.0007              -0.0051              -0.1288
+b_dt                               0.0024              -0.0111              -0.4262
+b_Sem                             -0.0003               0.0042              -0.0698
+b_ACC_1                           -0.0036              -0.0046              -0.0207
+b_ACC_2                           -0.0072               0.0030               0.0117
+b_SI_CAMFD                         0.0006              -0.0074              -0.0393
+b_SI_PANEL                        -0.0050               0.0098               0.0505
+b_SI_ZER                           0.0009               0.0073               0.0860
+b_Si_MTRP                          0.0002               0.0170               0.3187
+b_No_Info                          0.0048               0.0160               0.0995
+                          zeta_PasoPeaton        zeta_UsoDirec         zeta_UsoPito
+asc_ruta1                         -0.0024              -0.0132               0.0035
+asc_ruta4                          0.0135              -0.0716              -0.0022
+b_tt                              -0.0010               0.0017               0.0002
+b_dt                              -0.0111               0.0139              -0.0001
+b_Sem                              0.0021               0.0058              -0.0025
+b_ACC_1                           -0.0004               0.0017               0.0039
+b_ACC_2                            0.0130               0.0171              -0.0073
+b_SI_CAMFD                         0.0000               0.0074              -0.0010
+b_SI_PANEL                        -0.0070              -0.0037              -0.0004
+b_SI_ZER                          -0.0026              -0.0024              -0.0029
+b_Si_MTRP                         -0.0004              -0.0040               0.0097
+b_No_Info                          0.0067              -0.0259               0.0094
+                               tau_FRbr_1           tau_FRbr_2           tau_FRbr_3
+asc_ruta1                          0.0016               0.0023               0.0148
+asc_ruta4                         -0.1014              -0.1128              -0.0882
+b_tt                               0.0044              -0.0023              -0.0033
+b_dt                              -0.0057               0.0007              -0.0025
+b_Sem                             -0.0058              -0.0094              -0.0146
+b_ACC_1                           -0.0020               0.0329               0.0423
+b_ACC_2                           -0.0220               0.0049               0.0041
+b_SI_CAMFD                        -0.0088               0.0030              -0.0044
+b_SI_PANEL                        -0.0254              -0.0173              -0.0129
+b_SI_ZER                          -0.0237              -0.0172              -0.0313
+b_Si_MTRP                         -0.0145               0.0426               0.0495
+b_No_Info                          0.0364               0.0229               0.0231
+                               tau_FRbr_4        tau_EnfCond_1        tau_EnfCond_2
+asc_ruta1                          0.0126              -0.0071               0.0090
+asc_ruta4                         -0.0789              -0.0702              -0.0819
+b_tt                              -0.0009               0.0009               0.0030
+b_dt                               0.0046               0.0027               0.0024
+b_Sem                             -0.0085               0.0000              -0.0104
+b_ACC_1                            0.0682               0.0157               0.0154
+b_ACC_2                            0.0279              -0.0060              -0.0022
+b_SI_CAMFD                         0.0126              -0.0255               0.0168
+b_SI_PANEL                        -0.0124              -0.0079              -0.0232
+b_SI_ZER                          -0.0236              -0.0185              -0.0101
+b_Si_MTRP                          0.0577              -0.0057               0.0333
+b_No_Info                         -0.0452               0.0042               0.0276
+                            tau_EnfCond_3        tau_EnfCond_4         tau_AFrSem_1
+asc_ruta1                          0.0162               0.0473               0.0315
+asc_ruta4                         -0.0798              -0.0313              -0.0839
+b_tt                               0.0023               0.0071               0.0027
+b_dt                              -0.0039              -0.0301              -0.0197
+b_Sem                             -0.0114              -0.0283              -0.0259
+b_ACC_1                            0.0218               0.0323               0.0198
+b_ACC_2                           -0.0011               0.0277              -0.0084
+b_SI_CAMFD                         0.0192               0.0429              -0.0071
+b_SI_PANEL                        -0.0273              -0.0336              -0.0210
+b_SI_ZER                          -0.0164              -0.0151              -0.0340
+b_Si_MTRP                          0.0335               0.0353               0.0201
+b_No_Info                          0.0339               0.0210               0.0466
+                             tau_AFrSem_2         tau_AFrSem_3         tau_AFrSem_4
+asc_ruta1                         -0.0116              -0.0070              -0.0687
+asc_ruta4                         -0.1186              -0.1006              -0.1779
+b_tt                               0.0029               0.0003              -0.0012
+b_dt                               0.0086               0.0051               0.0588
+b_Sem                              0.0006              -0.0007               0.0341
+b_ACC_1                            0.0205               0.0256               0.0010
+b_ACC_2                           -0.0013              -0.0060              -0.0529
+b_SI_CAMFD                        -0.0055              -0.0086              -0.0020
+b_SI_PANEL                        -0.0085              -0.0087              -0.0113
+b_SI_ZER                          -0.0119              -0.0220               0.0020
+b_Si_MTRP                          0.0150               0.0209               0.0260
+b_No_Info                          0.0098               0.0172              -0.0396
+                              tau_CulFr_1          tau_CulFr_2          tau_CulFr_3
+asc_ruta1                         -0.0019               0.0047               0.0022
+asc_ruta4                         -0.0611              -0.0414              -0.0372
+b_tt                               0.0034               0.0022               0.0023
+b_dt                              -0.0062              -0.0004               0.0016
+b_Sem                             -0.0015              -0.0059              -0.0057
+b_ACC_1                            0.0189               0.0126               0.0131
+b_ACC_2                            0.0067              -0.0137              -0.0183
+b_SI_CAMFD                        -0.0082              -0.0032              -0.0072
+b_SI_PANEL                        -0.0002              -0.0067              -0.0096
+b_SI_ZER                          -0.0094              -0.0110              -0.0132
+b_Si_MTRP                          0.0112               0.0078               0.0045
+b_No_Info                          0.0083               0.0106               0.0094
+                              tau_CulFr_4        tau_OmLmVel_1        tau_OmLmVel_2
+asc_ruta1                          0.0106               0.0015              -0.0057
+asc_ruta4                         -0.0391              -0.0115               0.0207
+b_tt                               0.0031               0.0006              -0.0082
+b_dt                              -0.0068               0.0022               0.0001
+b_Sem                             -0.0056              -0.0017               0.0034
+b_ACC_1                           -0.0006               0.0183               0.0064
+b_ACC_2                            0.0004              -0.0164               0.0027
+b_SI_CAMFD                         0.0063               0.0072               0.0038
+b_SI_PANEL                        -0.0145              -0.0064               0.0070
+b_SI_ZER                          -0.0076              -0.0124               0.0040
+b_Si_MTRP                         -0.0038               0.0005               0.0128
+b_No_Info                         -0.0038              -0.0020              -0.0001
+                            tau_OmLmVel_3        tau_OmLmVel_4         tau_IgPare_1
+asc_ruta1                         -0.0037               0.0005              -0.0943
+asc_ruta4                          0.0240               0.0288              -0.2694
+b_tt                              -0.0058              -0.0068               0.0420
+b_dt                              -0.0018              -0.0088               0.1273
+b_Sem                              0.0027               0.0045               0.0131
+b_ACC_1                            0.0139               0.0155               0.0998
+b_ACC_2                            0.0230               0.0191              -0.0849
+b_SI_CAMFD                        -0.0057              -0.0065               0.0429
+b_SI_PANEL                         0.0061               0.0099              -0.0253
+b_SI_ZER                           0.0085               0.0104              -0.0765
+b_Si_MTRP                          0.0090               0.0227              -0.0658
+b_No_Info                         -0.0003               0.0060              -0.0180
+                             tau_IgPare_2         tau_IgPare_3         tau_IgPare_4
+asc_ruta1                          0.4388               0.4665               0.7825
+asc_ruta4                          0.9110               0.8908               1.5873
+b_tt                              -0.1535              -0.1564              -0.2525
+b_dt                              -0.4720              -0.4864              -0.8412
+b_Sem                             -0.0821              -0.0872              -0.1309
+b_ACC_1                            0.0192               0.0462               0.0430
+b_ACC_2                           -0.0679              -0.0218               0.0324
+b_SI_CAMFD                        -0.0104               0.0036              -0.0663
+b_SI_PANEL                         0.0593               0.0486               0.0859
+b_SI_ZER                           0.0719               0.0539               0.1379
+b_Si_MTRP                          0.4057               0.4192               0.6190
+b_No_Info                          0.1329               0.1299               0.1096
+                         tau_PasoPeaton_1     tau_PasoPeaton_2     tau_PasoPeaton_3
+asc_ruta1                         -0.0025              -0.0016              -0.0022
+asc_ruta4                         -0.0534              -0.0244              -0.0166
+b_tt                               0.0025              -0.0007              -0.0008
+b_dt                               0.0073               0.0096               0.0069
+b_Sem                             -0.0002              -0.0001               0.0007
+b_ACC_1                           -0.0070              -0.0084              -0.0040
+b_ACC_2                           -0.0072              -0.0117              -0.0064
+b_SI_CAMFD                         0.0084               0.0076               0.0027
+b_SI_PANEL                         0.0005               0.0000              -0.0012
+b_SI_ZER                           0.0074               0.0033               0.0011
+b_Si_MTRP                          0.0015               0.0004              -0.0028
+b_No_Info                         -0.0153              -0.0111              -0.0138
+                         tau_PasoPeaton_4       tau_UsoDirec_1       tau_UsoDirec_2
+asc_ruta1                         -0.0006               0.0251               0.0109
+asc_ruta4                          0.0043               0.1097               0.0579
+b_tt                              -0.0028              -0.0061              -0.0021
+b_dt                              -0.0025              -0.0224              -0.0190
+b_Sem                              0.0019              -0.0153              -0.0064
+b_ACC_1                           -0.0082              -0.0091              -0.0174
+b_ACC_2                           -0.0171              -0.0121              -0.0116
+b_SI_CAMFD                         0.0042               0.0059               0.0047
+b_SI_PANEL                        -0.0040               0.0039              -0.0015
+b_SI_ZER                           0.0038               0.0104               0.0022
+b_Si_MTRP                         -0.0037               0.0157               0.0066
+b_No_Info                         -0.0105               0.0392               0.0302
+                           tau_UsoDirec_3       tau_UsoDirec_4        tau_UsoPito_1
+asc_ruta1                          0.0095              -0.0065              -0.0025
+asc_ruta4                          0.0466              -0.0182              -0.0689
+b_tt                              -0.0002               0.0017               0.0016
+b_dt                              -0.0187               0.0008              -0.0012
+b_Sem                             -0.0062               0.0012              -0.0010
+b_ACC_1                           -0.0141              -0.0075               0.0138
+b_ACC_2                           -0.0103              -0.0087               0.0029
+b_SI_CAMFD                         0.0047               0.0042              -0.0027
+b_SI_PANEL                         0.0021              -0.0034              -0.0111
+b_SI_ZER                           0.0028               0.0040              -0.0095
+b_Si_MTRP                         -0.0017              -0.0058               0.0024
+b_No_Info                          0.0250              -0.0004               0.0016
+                            tau_UsoPito_2        tau_UsoPito_3        tau_UsoPito_4
+asc_ruta1                          0.0113               0.0164               0.0366
+asc_ruta4                         -0.0370              -0.0355              -0.0056
+b_tt                               0.0017               0.0020               0.0001
+b_dt                              -0.0039              -0.0079              -0.0233
+b_Sem                             -0.0093              -0.0102              -0.0160
+b_ACC_1                            0.0190               0.0224               0.0140
+b_ACC_2                            0.0028               0.0021              -0.0050
+b_SI_CAMFD                        -0.0093              -0.0124              -0.0086
+b_SI_PANEL                        -0.0118              -0.0127              -0.0112
+b_SI_ZER                          -0.0162              -0.0196              -0.0183
+b_Si_MTRP                          0.0227               0.0181               0.0158
+b_No_Info                          0.0141               0.0181               0.0032
+ [ reached getOption("max.print") -- omitted 66 rows ]
+
+Classical correlation matrix:
+                                asc_ruta1            asc_ruta4                 b_tt
+asc_ruta1                          1.0000               0.5228              -0.2380
+asc_ruta4                          0.5228               1.0000              -0.2985
+b_tt                              -0.2380              -0.2985               1.0000
+b_dt                              -0.4208              -0.1727              -0.1989
+b_Sem                             -0.7203              -0.4130              -0.0348
+b_ACC_1                            0.0339               0.0597               0.0251
+b_ACC_2                           -0.0174              -0.0006               0.0205
+b_SI_CAMFD                         0.0524              -0.0679              -0.0585
+b_SI_PANEL                         0.0163               0.0145               0.0493
+b_SI_ZER                           0.0862               0.0218              -0.0509
+b_Si_MTRP                          0.0909               0.0773              -0.0758
+b_No_Info                          0.0244              -0.4146              -0.0741
+                                     b_dt                b_Sem              b_ACC_1
+asc_ruta1                         -0.4208              -0.7203               0.0339
+asc_ruta4                         -0.1727              -0.4130               0.0597
+b_tt                              -0.1989              -0.0348               0.0251
+b_dt                               1.0000               0.1921              -0.0760
+b_Sem                              0.1921               1.0000              -0.0774
+b_ACC_1                           -0.0760              -0.0774               1.0000
+b_ACC_2                           -0.0130               0.0001               0.1269
+b_SI_CAMFD                        -0.0763              -0.0413              -0.0090
+b_SI_PANEL                         0.0122              -0.0781              -0.0038
+b_SI_ZER                          -0.1018              -0.0549              -0.0052
+b_Si_MTRP                         -0.1263              -0.0749               0.0284
+b_No_Info                         -0.0340               0.0197              -0.0539
+                                  b_ACC_2           b_SI_CAMFD           b_SI_PANEL
+asc_ruta1                         -0.0174               0.0524               0.0163
+asc_ruta4                         -0.0006              -0.0679               0.0145
+b_tt                               0.0205              -0.0585               0.0493
+b_dt                              -0.0130              -0.0763               0.0122
+b_Sem                              0.0001              -0.0413              -0.0781
+b_ACC_1                            0.1269              -0.0090              -0.0038
+b_ACC_2                            1.0000              -0.0003               0.0601
+b_SI_CAMFD                        -0.0003               1.0000              -0.0765
+b_SI_PANEL                         0.0601              -0.0765               1.0000
+b_SI_ZER                           0.0192               0.1040               0.0201
+b_Si_MTRP                         -0.0230               0.0590              -0.0838
+b_No_Info                         -0.0167               0.0556               0.0657
+                                 b_SI_ZER            b_Si_MTRP            b_No_Info
+asc_ruta1                          0.0862               0.0909               0.0244
+asc_ruta4                          0.0218               0.0773              -0.4146
+b_tt                              -0.0509              -0.0758              -0.0741
+b_dt                              -0.1018              -0.1263              -0.0340
+b_Sem                             -0.0549              -0.0749               0.0197
+b_ACC_1                           -0.0052               0.0284              -0.0539
+b_ACC_2                            0.0192              -0.0230              -0.0167
+b_SI_CAMFD                         0.1040               0.0590               0.0556
+b_SI_PANEL                         0.0201              -0.0838               0.0657
+b_SI_ZER                           1.0000              -0.0285               0.0021
+b_Si_MTRP                         -0.0285               1.0000               0.0085
+b_No_Info                          0.0021               0.0085               1.0000
+                               b_UsoCel_F              lambda1              lambda2
+asc_ruta1                         -0.0362              -0.0227               0.0317
+asc_ruta4                         -0.6422               0.0579               0.0577
+b_tt                               0.0670               0.0397              -0.0353
+b_dt                               0.0684              -0.1172               0.0972
+b_Sem                             -0.0051               0.0761              -0.0869
+b_ACC_1                           -0.0328               0.0095               0.0481
+b_ACC_2                           -0.0090              -0.0558               0.0829
+b_SI_CAMFD                         0.1257              -0.0957               0.0534
+b_SI_PANEL                         0.0110              -0.0531               0.0683
+b_SI_ZER                           0.0409              -0.1061               0.1289
+b_Si_MTRP                         -0.0682               0.0260               0.0044
+b_No_Info                          0.0264               0.1059              -0.0872
+                                  lambda3  gamma_EDUBASICA_LV1     gamma_EDUSUP_LV1
+asc_ruta1                          0.0580              -0.0056              -0.0067
+asc_ruta4                          0.2738              -0.0845              -0.0720
+b_tt                              -0.0695               0.0001               0.0004
+b_dt                              -0.1293               0.0091               0.0076
+b_Sem                              0.0213               0.0020               0.0037
+b_ACC_1                           -0.0977               0.0012               0.0063
+b_ACC_2                           -0.0638               0.0034               0.0050
+b_SI_CAMFD                        -0.0856               0.0079               0.0102
+b_SI_PANEL                        -0.0123              -0.0072              -0.0055
+b_SI_ZER                          -0.0550               0.0038               0.0033
+b_Si_MTRP                          0.0763               0.0027              -0.0009
+b_No_Info                          0.0764              -0.0094              -0.0058
+                          gamma_HPICO_LV1      gamma_CSECO_LV1 gamma_SININFOTRF_LV1
+asc_ruta1                         -0.0136              -0.0024              -0.0047
+asc_ruta4                         -0.0745              -0.0640              -0.0437
+b_tt                               0.0108               0.0048               0.0056
+b_dt                               0.0102              -0.0092              -0.0069
+b_Sem                              0.0104               0.0060               0.0086
+b_ACC_1                            0.0018               0.0003               0.0033
+b_ACC_2                            0.0001              -0.0037               0.0005
+b_SI_CAMFD                        -0.0020              -0.0078              -0.0089
+b_SI_PANEL                         0.0022              -0.0005               0.0005
+b_SI_ZER                          -0.0042               0.0002              -0.0002
+b_Si_MTRP                         -0.0155              -0.0014              -0.0051
+b_No_Info                          0.0007              -0.0070              -0.0821
+                            gamma_LV2_LV1   gamma_ADULTO40_LV2      gamma_EXP_3_LV2
+asc_ruta1                          0.0046               0.0016              -0.0111
+asc_ruta4                          0.0420               0.0405              -0.0026
+b_tt                               0.0001              -0.0060               0.0068
+b_dt                              -0.0050              -0.0014               0.0124
+b_Sem                             -0.0040               0.0003               0.0063
+b_ACC_1                           -0.0042              -0.0050               0.0095
+b_ACC_2                           -0.0038               0.0036               0.0017
+b_SI_CAMFD                        -0.0088               0.0032               0.0010
+b_SI_PANEL                         0.0054               0.0025               0.0020
+b_SI_ZER                          -0.0030               0.0073               0.0011
+b_Si_MTRP                          0.0035               0.0048              -0.0025
+b_No_Info                          0.0121               0.0278              -0.0051
+                          gamma_EXP_4_LV2      gamma_EXP_5_LV2      gamma_HPICO_LV2
+asc_ruta1                          0.0042              -0.0035               0.0022
+asc_ruta4                         -0.0037               0.0004               0.0236
+b_tt                               0.0095               0.0034              -0.0090
+b_dt                              -0.0118               0.0142              -0.0011
+b_Sem                             -0.0004              -0.0042              -0.0012
+b_ACC_1                            0.0046               0.0064               0.0011
+b_ACC_2                           -0.0078              -0.0065               0.0098
+b_SI_CAMFD                        -0.0158               0.0021               0.0122
+b_SI_PANEL                        -0.0069              -0.0022               0.0073
+b_SI_ZER                          -0.0030               0.0012               0.0069
+b_Si_MTRP                         -0.0019              -0.0003              -0.0024
+b_No_Info                         -0.0287               0.0047               0.0051
+                     gamma_USODISPMOB_LV2  gamma_EDUBASICA_LV3    gamma_JOVEN30_LV3
+asc_ruta1                         -0.0027              -0.0122              -0.0233
+asc_ruta4                         -0.0212              -0.1160              -0.0570
+b_tt                              -0.0064               0.0174               0.0257
+b_dt                               0.0119               0.0087               0.0248
+b_Sem                              0.0010               0.0055               0.0106
+b_ACC_1                            0.0050               0.0006               0.0145
+b_ACC_2                           -0.0025              -0.0013               0.0068
+b_SI_CAMFD                         0.0100              -0.0002               0.0154
+b_SI_PANEL                        -0.0024              -0.0001               0.0031
+b_SI_ZER                           0.0036              -0.0001               0.0133
+b_Si_MTRP                         -0.0031               0.0058              -0.0270
+b_No_Info                         -0.0261              -0.0201              -0.0225
+                       gamma_ADULTO40_LV3      gamma_EXP_2_LV3 gamma_USODISPMOB_LV3
+asc_ruta1                         -0.0128               0.0168              -0.0053
+asc_ruta4                         -0.0709              -0.0023              -0.0267
+b_tt                               0.0162              -0.0099               0.0132
+b_dt                               0.0395              -0.0229              -0.0057
+b_Sem                             -0.0076              -0.0058               0.0041
+b_ACC_1                            0.0255              -0.0140               0.0015
+b_ACC_2                            0.0168               0.0022              -0.0095
+b_SI_CAMFD                        -0.0026              -0.0180              -0.0086
+b_SI_PANEL                         0.0028              -0.0068              -0.0117
+b_SI_ZER                          -0.0028              -0.0077              -0.0054
+b_Si_MTRP                         -0.0251              -0.0049               0.0057
+b_No_Info                         -0.0502               0.0193               0.0255
+                                zeta_FRbr         zeta_EnfCond          zeta_AFrSem
+asc_ruta1                          0.0023              -0.0019               0.0002
+asc_ruta4                         -0.0102              -0.0113              -0.0128
+b_tt                              -0.0008              -0.0027              -0.0011
+b_dt                              -0.0022               0.0065               0.0025
+b_Sem                             -0.0006               0.0002              -0.0008
+b_ACC_1                           -0.0008               0.0019               0.0012
+b_ACC_2                            0.0029               0.0036               0.0046
+b_SI_CAMFD                         0.0017               0.0052               0.0047
+b_SI_PANEL                        -0.0005              -0.0017               0.0036
+b_SI_ZER                          -0.0011               0.0013               0.0059
+b_Si_MTRP                         -0.0014               0.0021              -0.0044
+b_No_Info                         -0.0095              -0.0071               0.0004
+                               zeta_CulFr         zeta_OmLmVel          zeta_IgPare
+asc_ruta1                          0.0002               0.0017               0.0033
+asc_ruta4                         -0.0146               0.0068              -0.0162
+b_tt                              -0.0025              -0.0013               0.0006
+b_dt                              -0.0019              -0.0023              -0.0015
+b_Sem                              0.0018              -0.0002              -0.0060
+b_ACC_1                            0.0026              -0.0020               0.0027
+b_ACC_2                            0.0021              -0.0018               0.0096
+b_SI_CAMFD                         0.0007              -0.0021               0.0012
+b_SI_PANEL                        -0.0005               0.0003               0.0043
+b_SI_ZER                           0.0005              -0.0004               0.0005
+b_Si_MTRP                         -0.0002               0.0002               0.0018
+b_No_Info                         -0.0107               0.0045              -0.0026
+                          zeta_PasoPeaton        zeta_UsoDirec         zeta_UsoPito
+asc_ruta1                         -0.0123              -0.0115              -0.0019
+asc_ruta4                          0.0449              -0.1202              -0.0107
+b_tt                               0.0160              -0.0030              -0.0008
+b_dt                               0.0172               0.0335               0.0024
+b_Sem                              0.0002              -0.0020               0.0013
+b_ACC_1                           -0.0003               0.0339               0.0019
+b_ACC_2                           -0.0018               0.0125               0.0034
+b_SI_CAMFD                         0.0080               0.0071               0.0045
+b_SI_PANEL                        -0.0020               0.0126              -0.0004
+b_SI_ZER                           0.0104               0.0004               0.0011
+b_Si_MTRP                          0.0188              -0.0322               0.0024
+b_No_Info                         -0.0006              -0.0513              -0.0042
+                               tau_FRbr_1           tau_FRbr_2           tau_FRbr_3
+asc_ruta1                         -0.0111              -0.0106              -0.0097
+asc_ruta4                         -0.0948              -0.1034              -0.0987
+b_tt                               0.0036               0.0039               0.0036
+b_dt                               0.0101               0.0086               0.0069
+b_Sem                              0.0076               0.0083               0.0082
+b_ACC_1                            0.0065               0.0050               0.0042
+b_ACC_2                            0.0012               0.0015               0.0014
+b_SI_CAMFD                         0.0047               0.0046               0.0037
+b_SI_PANEL                        -0.0021              -0.0032              -0.0032
+b_SI_ZER                           0.0054               0.0049               0.0038
+b_Si_MTRP                         -0.0042              -0.0052              -0.0049
+b_No_Info                         -0.0284              -0.0354              -0.0345
+                               tau_FRbr_4        tau_EnfCond_1        tau_EnfCond_2
+asc_ruta1                         -0.0045              -0.0099              -0.0110
+asc_ruta4                         -0.0696              -0.1006              -0.1000
+b_tt                               0.0030               0.0046               0.0035
+b_dt                               0.0018               0.0069               0.0094
+b_Sem                              0.0044               0.0078               0.0083
+b_ACC_1                            0.0022               0.0056               0.0053
+b_ACC_2                            0.0014               0.0013               0.0015
+b_SI_CAMFD                         0.0005               0.0037               0.0047
+b_SI_PANEL                        -0.0017              -0.0020              -0.0033
+b_SI_ZER                           0.0008               0.0049               0.0049
+b_Si_MTRP                         -0.0041              -0.0060              -0.0042
+b_No_Info                         -0.0271              -0.0321              -0.0331
+                            tau_EnfCond_3        tau_EnfCond_4         tau_AFrSem_1
+asc_ruta1                         -0.0105              -0.0078              -0.0099
+asc_ruta4                         -0.0949              -0.0747              -0.0924
+b_tt                               0.0030               0.0022               0.0037
+b_dt                               0.0090               0.0074               0.0078
+b_Sem                              0.0080               0.0056               0.0075
+b_ACC_1                            0.0050               0.0040               0.0054
+b_ACC_2                            0.0014               0.0013               0.0005
+b_SI_CAMFD                         0.0041               0.0026               0.0033
+b_SI_PANEL                        -0.0032              -0.0026              -0.0041
+b_SI_ZER                           0.0042               0.0026               0.0022
+b_Si_MTRP                         -0.0036              -0.0021              -0.0028
+b_No_Info                         -0.0316              -0.0258              -0.0326
+                             tau_AFrSem_2         tau_AFrSem_3         tau_AFrSem_4
+asc_ruta1                         -0.0103              -0.0100              -0.0050
+asc_ruta4                         -0.0987              -0.0964              -0.0610
+b_tt                               0.0037               0.0035               0.0019
+b_dt                               0.0079               0.0076               0.0050
+b_Sem                              0.0082               0.0080               0.0033
+b_ACC_1                            0.0047               0.0046               0.0034
+b_ACC_2                            0.0019               0.0021               0.0029
+b_SI_CAMFD                         0.0044               0.0043               0.0028
+b_SI_PANEL                        -0.0015              -0.0011               0.0019
+b_SI_ZER                           0.0063               0.0063               0.0056
+b_Si_MTRP                         -0.0060              -0.0062              -0.0058
+b_No_Info                         -0.0303              -0.0284              -0.0173
+                              tau_CulFr_1          tau_CulFr_2          tau_CulFr_3
+asc_ruta1                         -0.0097              -0.0107              -0.0106
+asc_ruta4                         -0.0866              -0.0994              -0.0991
+b_tt                               0.0048               0.0044               0.0040
+b_dt                               0.0083               0.0091               0.0085
+b_Sem                              0.0067               0.0077               0.0080
+b_ACC_1                            0.0045               0.0054               0.0054
+b_ACC_2                            0.0014               0.0015               0.0012
+b_SI_CAMFD                         0.0047               0.0047               0.0041
+b_SI_PANEL                        -0.0028              -0.0029              -0.0030
+b_SI_ZER                           0.0043               0.0050               0.0047
+b_Si_MTRP                         -0.0045              -0.0049              -0.0048
+b_No_Info                         -0.0255              -0.0316              -0.0324
+                              tau_CulFr_4        tau_OmLmVel_1        tau_OmLmVel_2
+asc_ruta1                         -0.0074              -0.0018              -0.0002
+asc_ruta4                         -0.0759               0.0181               0.0196
+b_tt                               0.0027              -0.0041              -0.0051
+b_dt                               0.0042               0.0089               0.0083
+b_Sem                              0.0066              -0.0013              -0.0027
+b_ACC_1                            0.0043               0.0047               0.0030
+b_ACC_2                            0.0005               0.0022              -0.0007
+b_SI_CAMFD                         0.0014               0.0113               0.0092
+b_SI_PANEL                        -0.0023               0.0013               0.0005
+b_SI_ZER                           0.0026               0.0051               0.0059
+b_Si_MTRP                         -0.0035              -0.0007              -0.0004
+b_No_Info                         -0.0261               0.0040               0.0071
+                            tau_OmLmVel_3        tau_OmLmVel_4         tau_IgPare_1
+asc_ruta1                          0.0004               0.0008              -0.0033
+asc_ruta4                          0.0156               0.0051               0.0244
+b_tt                              -0.0045              -0.0030              -0.0034
+b_dt                               0.0074               0.0052               0.0049
+b_Sem                             -0.0033              -0.0031               0.0046
+b_ACC_1                            0.0032               0.0028               0.0005
+b_ACC_2                           -0.0005               0.0000              -0.0070
+b_SI_CAMFD                         0.0082               0.0056               0.0050
+b_SI_PANEL                         0.0009               0.0011              -0.0033
+b_SI_ZER                           0.0054               0.0035               0.0020
+b_Si_MTRP                         -0.0010              -0.0020              -0.0018
+b_No_Info                          0.0059               0.0032               0.0055
+                             tau_IgPare_2         tau_IgPare_3         tau_IgPare_4
+asc_ruta1                          0.0028               0.0030               0.0034
+asc_ruta4                         -0.0087              -0.0110              -0.0165
+b_tt                              -0.0013              -0.0005              -0.0002
+b_dt                               0.0023               0.0014               0.0001
+b_Sem                             -0.0069              -0.0068              -0.0067
+b_ACC_1                            0.0039               0.0040               0.0034
+b_ACC_2                            0.0092               0.0098               0.0100
+b_SI_CAMFD                         0.0051               0.0044               0.0027
+b_SI_PANEL                         0.0047               0.0047               0.0045
+b_SI_ZER                           0.0031               0.0027               0.0016
+b_Si_MTRP                          0.0017               0.0017               0.0013
+b_No_Info                          0.0003              -0.0019              -0.0027
+                         tau_PasoPeaton_1     tau_PasoPeaton_2     tau_PasoPeaton_3
+asc_ruta1                         -0.0010              -0.0044              -0.0083
+asc_ruta4                         -0.1230              -0.1379              -0.1396
+b_tt                               0.0037               0.0088               0.0126
+b_dt                               0.0001               0.0034               0.0084
+b_Sem                              0.0016               0.0027               0.0038
+b_ACC_1                            0.0074               0.0075               0.0061
+b_ACC_2                            0.0042               0.0046               0.0052
+b_SI_CAMFD                        -0.0081              -0.0076              -0.0070
+b_SI_PANEL                         0.0003              -0.0017              -0.0035
+b_SI_ZER                          -0.0084              -0.0078              -0.0062
+b_Si_MTRP                         -0.0194              -0.0167              -0.0113
+b_No_Info                         -0.0210              -0.0249              -0.0245
+                         tau_PasoPeaton_4       tau_UsoDirec_1       tau_UsoDirec_2
+asc_ruta1                         -0.0123               0.0015               0.0001
+asc_ruta4                         -0.1057               0.0444               0.0235
+b_tt                               0.0165               0.0151               0.0196
+b_dt                               0.0153              -0.0186              -0.0171
+b_Sem                              0.0037               0.0036               0.0029
+b_ACC_1                            0.0034              -0.0251              -0.0238
+b_ACC_2                            0.0037              -0.0090              -0.0085
+b_SI_CAMFD                        -0.0035              -0.0080              -0.0101
+b_SI_PANEL                        -0.0043              -0.0116              -0.0126
+b_SI_ZER                          -0.0002               0.0001              -0.0007
+b_Si_MTRP                          0.0009               0.0253               0.0258
+b_No_Info                         -0.0165               0.0311               0.0284
+                           tau_UsoDirec_3       tau_UsoDirec_4        tau_UsoPito_1
+asc_ruta1                         -0.0011              -0.0123              -0.0094
+asc_ruta4                          0.0017              -0.1280              -0.0976
+b_tt                               0.0216               0.0221               0.0036
+b_dt                              -0.0149               0.0102               0.0078
+b_Sem                              0.0027               0.0045               0.0072
+b_ACC_1                           -0.0216               0.0027               0.0054
+b_ACC_2                           -0.0074               0.0033               0.0012
+b_SI_CAMFD                        -0.0105              -0.0059               0.0037
+b_SI_PANEL                        -0.0131              -0.0069              -0.0025
+b_SI_ZER                          -0.0012              -0.0021               0.0047
+b_Si_MTRP                          0.0239              -0.0014              -0.0062
+b_No_Info                          0.0234              -0.0164              -0.0321
+                            tau_UsoPito_2        tau_UsoPito_3        tau_UsoPito_4
+asc_ruta1                         -0.0108              -0.0106              -0.0088
+asc_ruta4                         -0.1013              -0.0980              -0.0825
+b_tt                               0.0039               0.0036               0.0031
+b_dt                               0.0087               0.0084               0.0061
+b_Sem                              0.0083               0.0082               0.0072
+b_ACC_1                            0.0053               0.0049               0.0041
+b_ACC_2                            0.0014               0.0015               0.0010
+b_SI_CAMFD                         0.0044               0.0043               0.0029
+b_SI_PANEL                        -0.0030              -0.0028              -0.0024
+b_SI_ZER                           0.0050               0.0048               0.0033
+b_Si_MTRP                         -0.0047              -0.0042              -0.0027
+b_No_Info                         -0.0331              -0.0321              -0.0268
+ [ reached getOption("max.print") -- omitted 66 rows ]
+
+Robust correlation matrix:
+                                asc_ruta1            asc_ruta4                 b_tt
+asc_ruta1                          1.0000               0.5658              -0.2427
+asc_ruta4                          0.5658               1.0000              -0.3195
+b_tt                              -0.2427              -0.3195               1.0000
+b_dt                              -0.4799              -0.2052              -0.1647
+b_Sem                             -0.7093              -0.4854               0.0092
+b_ACC_1                            0.0178               0.0575               0.0905
+b_ACC_2                            0.0023               0.0270               0.0826
+b_SI_CAMFD                         0.0737              -0.0853              -0.2861
+b_SI_PANEL                         0.0180               0.0734              -0.0302
+b_SI_ZER                          -0.0492              -0.1017              -0.0756
+b_Si_MTRP                          0.1374               0.0210              -0.0523
+b_No_Info                         -0.0406              -0.4475              -0.0055
+                                     b_dt                b_Sem              b_ACC_1
+asc_ruta1                         -0.4799              -0.7093               0.0178
+asc_ruta4                         -0.2052              -0.4854               0.0575
+b_tt                              -0.1647               0.0092               0.0905
+b_dt                               1.0000               0.2661              -0.1471
+b_Sem                              0.2661               1.0000              -0.1193
+b_ACC_1                           -0.1471              -0.1193               1.0000
+b_ACC_2                            0.0374              -0.0520               0.1141
+b_SI_CAMFD                         0.0401              -0.0202              -0.1729
+b_SI_PANEL                         0.0536               0.0050              -0.0765
+b_SI_ZER                           0.0085               0.1069              -0.1703
+b_Si_MTRP                         -0.2643              -0.1402               0.1162
+b_No_Info                         -0.0489               0.0433              -0.1060
+                                  b_ACC_2           b_SI_CAMFD           b_SI_PANEL
+asc_ruta1                          0.0023               0.0737               0.0180
+asc_ruta4                          0.0270              -0.0853               0.0734
+b_tt                               0.0826              -0.2861              -0.0302
+b_dt                               0.0374               0.0401               0.0536
+b_Sem                             -0.0520              -0.0202               0.0050
+b_ACC_1                            0.1141              -0.1729              -0.0765
+b_ACC_2                            1.0000              -0.0353              -0.0067
+b_SI_CAMFD                        -0.0353               1.0000              -0.0155
+b_SI_PANEL                        -0.0067              -0.0155               1.0000
+b_SI_ZER                           0.0269               0.0996              -0.0944
+b_Si_MTRP                         -0.0520               0.0503              -0.0972
+b_No_Info                         -0.0178               0.0653               0.0619
+                                 b_SI_ZER            b_Si_MTRP            b_No_Info
+asc_ruta1                         -0.0492               0.1374              -0.0406
+asc_ruta4                         -0.1017               0.0210              -0.4475
+b_tt                              -0.0756              -0.0523              -0.0055
+b_dt                               0.0085              -0.2643              -0.0489
+b_Sem                              0.1069              -0.1402               0.0433
+b_ACC_1                           -0.1703               0.1162              -0.1060
+b_ACC_2                            0.0269              -0.0520              -0.0178
+b_SI_CAMFD                         0.0996               0.0503               0.0653
+b_SI_PANEL                        -0.0944              -0.0972               0.0619
+b_SI_ZER                           1.0000              -0.0122               0.0078
+b_Si_MTRP                         -0.0122               1.0000               0.0237
+b_No_Info                          0.0078               0.0237               1.0000
+                               b_UsoCel_F              lambda1              lambda2
+asc_ruta1                         -0.0786               0.0419              -0.0167
+asc_ruta4                         -0.6029               0.1595              -0.0554
+b_tt                               0.0006               0.0303              -0.0114
+b_dt                               0.1355              -0.1668               0.1607
+b_Sem                              0.1161              -0.0156              -0.0459
+b_ACC_1                           -0.0076               0.1146              -0.0204
+b_ACC_2                            0.0029              -0.0292               0.0869
+b_SI_CAMFD                         0.2292              -0.2194               0.1890
+b_SI_PANEL                        -0.0205               0.0085              -0.0186
+b_SI_ZER                           0.1209              -0.1781               0.1680
+b_Si_MTRP                          0.0236               0.0625              -0.0492
+b_No_Info                         -0.0006               0.0717              -0.0645
+                                  lambda3  gamma_EDUBASICA_LV1     gamma_EDUSUP_LV1
+asc_ruta1                          0.1416              -0.0079               0.0301
+asc_ruta4                          0.3554              -0.1502              -0.1044
+b_tt                              -0.0798              -0.0055               0.0063
+b_dt                              -0.2540               0.0357              -0.0268
+b_Sem                             -0.0308              -0.0108              -0.0440
+b_ACC_1                           -0.1501              -0.0403              -0.0141
+b_ACC_2                           -0.0175              -0.0260              -0.0363
+b_SI_CAMFD                        -0.1130               0.0445               0.0391
+b_SI_PANEL                         0.0634              -0.1588              -0.0973
+b_SI_ZER                          -0.0353              -0.0131              -0.0266
+b_Si_MTRP                          0.0046               0.0993               0.1370
+b_No_Info                          0.0865               0.0410               0.1116
+                          gamma_HPICO_LV1      gamma_CSECO_LV1 gamma_SININFOTRF_LV1
+asc_ruta1                         -0.1102              -0.0687               0.1136
+asc_ruta4                         -0.2220              -0.0745               0.0364
+b_tt                               0.0218              -0.0073               0.0588
+b_dt                               0.0286               0.0429              -0.0792
+b_Sem                              0.0944               0.0374              -0.1553
+b_ACC_1                           -0.0341              -0.0291               0.1100
+b_ACC_2                           -0.0196              -0.0022               0.0634
+b_SI_CAMFD                        -0.0819              -0.0376              -0.0846
+b_SI_PANEL                         0.0269              -0.0256               0.0017
+b_SI_ZER                           0.0559              -0.0743              -0.0696
+b_Si_MTRP                         -0.1209              -0.0460               0.0347
+b_No_Info                          0.0411               0.0040               0.0109
+                            gamma_LV2_LV1   gamma_ADULTO40_LV2      gamma_EXP_3_LV2
+asc_ruta1                         -0.0886               0.0184               0.0926
+asc_ruta4                          0.1301               0.1555              -0.0054
+b_tt                              -0.0311              -0.0724              -0.0087
+b_dt                               0.0028              -0.0596              -0.0767
+b_Sem                              0.1302               0.0619              -0.0726
+b_ACC_1                           -0.0306               0.0126               0.0427
+b_ACC_2                            0.0627               0.0137              -0.0137
+b_SI_CAMFD                        -0.0274               0.0273              -0.0148
+b_SI_PANEL                         0.1096               0.0418              -0.0418
+b_SI_ZER                           0.0366               0.0179              -0.0404
+b_Si_MTRP                         -0.1048               0.0326               0.0614
+b_No_Info                         -0.0800              -0.0169               0.0013
+                          gamma_EXP_4_LV2      gamma_EXP_5_LV2      gamma_HPICO_LV2
+asc_ruta1                         -0.1052               0.0001               0.0761
+asc_ruta4                         -0.1326              -0.0846               0.0703
+b_tt                              -0.0466              -0.0088               0.0008
+b_dt                               0.0704              -0.0080              -0.0189
+b_Sem                              0.0396              -0.0440              -0.0262
+b_ACC_1                            0.0496               0.0145               0.0101
+b_ACC_2                           -0.0438               0.0008               0.0010
+b_SI_CAMFD                         0.0713               0.0646               0.0467
+b_SI_PANEL                         0.0263               0.0063              -0.0462
+b_SI_ZER                          -0.0081               0.0113              -0.0538
+b_Si_MTRP                          0.0635               0.0535              -0.0344
+b_No_Info                          0.0403               0.0808              -0.0244
+                     gamma_USODISPMOB_LV2  gamma_EDUBASICA_LV3    gamma_JOVEN30_LV3
+asc_ruta1                          0.0485              -0.0722              -0.1200
+asc_ruta4                          0.0157              -0.0994              -0.1797
+b_tt                               0.0538               0.0359               0.0233
+b_dt                              -0.0279               0.0325              -0.0213
+b_Sem                             -0.0661               0.0361               0.0902
+b_ACC_1                            0.1610              -0.1239               0.0072
+b_ACC_2                           -0.0239               0.1078               0.0144
+b_SI_CAMFD                        -0.0305               0.1188               0.0450
+b_SI_PANEL                        -0.0521              -0.0113              -0.0211
+b_SI_ZER                          -0.1076               0.1312              -0.0659
+b_Si_MTRP                          0.0448              -0.0024              -0.0383
+b_No_Info                         -0.0789               0.0089               0.0124
+                       gamma_ADULTO40_LV3      gamma_EXP_2_LV3 gamma_USODISPMOB_LV3
+asc_ruta1                         -0.0103               0.0767              -0.0526
+asc_ruta4                         -0.1004               0.1626              -0.0144
+b_tt                              -0.0393              -0.0534               0.0105
+b_dt                               0.0074               0.0192              -0.1102
+b_Sem                             -0.0415              -0.0958               0.1690
+b_ACC_1                            0.0316              -0.0838               0.0768
+b_ACC_2                            0.0003              -0.0521              -0.0545
+b_SI_CAMFD                         0.0483               0.0031               0.0152
+b_SI_PANEL                        -0.0689              -0.0003              -0.0247
+b_SI_ZER                          -0.0598               0.0133              -0.0275
+b_Si_MTRP                          0.0397              -0.0804              -0.0880
+b_No_Info                         -0.0709              -0.0742               0.0124
+                                zeta_FRbr         zeta_EnfCond          zeta_AFrSem
+asc_ruta1                          0.0086               0.0940              -0.0839
+asc_ruta4                         -0.0737              -0.0747              -0.0798
+b_tt                              -0.0290               0.0284               0.0052
+b_dt                               0.0516              -0.0107               0.0834
+b_Sem                             -0.0097              -0.1192               0.0949
+b_ACC_1                            0.1156               0.0345               0.0065
+b_ACC_2                           -0.0075              -0.0257              -0.0352
+b_SI_CAMFD                         0.0118               0.1699              -0.0011
+b_SI_PANEL                         0.0091              -0.1652               0.0284
+b_SI_ZER                          -0.0156              -0.0059               0.0157
+b_Si_MTRP                          0.1619               0.1638               0.0374
+b_No_Info                         -0.0179               0.1268              -0.0189
+                               zeta_CulFr         zeta_OmLmVel          zeta_IgPare
+asc_ruta1                         -0.0245              -0.0301               0.1584
+asc_ruta4                         -0.1014               0.0531               0.1541
+b_tt                               0.0400              -0.0692              -0.1329
+b_dt                               0.0597              -0.0612              -0.1792
+b_Sem                             -0.0148               0.0492              -0.0628
+b_ACC_1                           -0.0804              -0.0230              -0.0080
+b_ACC_2                           -0.0709               0.0066               0.0020
+b_SI_CAMFD                         0.0147              -0.0415              -0.0168
+b_SI_PANEL                        -0.1892               0.0822               0.0323
+b_SI_ZER                           0.0265               0.0486               0.0436
+b_Si_MTRP                          0.0045               0.0831               0.1194
+b_No_Info                          0.0994               0.0735               0.0350
+                          zeta_PasoPeaton        zeta_UsoDirec         zeta_UsoPito
+asc_ruta1                         -0.0275              -0.0820               0.0596
+asc_ruta4                          0.0726              -0.2078              -0.0173
+b_tt                              -0.0272               0.0254               0.0063
+b_dt                              -0.1279               0.0864              -0.0024
+b_Sem                              0.0528               0.0765              -0.0914
+b_ACC_1                           -0.0040               0.0095               0.0595
+b_ACC_2                            0.0597               0.0422              -0.0489
+b_SI_CAMFD                         0.0002               0.0465              -0.0178
+b_SI_PANEL                        -0.1234              -0.0353              -0.0093
+b_SI_ZER                          -0.0365              -0.0181              -0.0591
+b_Si_MTRP                         -0.0039              -0.0224               0.1451
+b_No_Info                          0.0648              -0.1345               0.1317
+                               tau_FRbr_1           tau_FRbr_2           tau_FRbr_3
+asc_ruta1                          0.0045               0.0073               0.0447
+asc_ruta4                         -0.1302              -0.1630              -0.1242
+b_tt                               0.0296              -0.0174              -0.0245
+b_dt                              -0.0157               0.0022              -0.0075
+b_Sem                             -0.0339              -0.0624              -0.0944
+b_ACC_1                           -0.0051               0.0931               0.1168
+b_ACC_2                           -0.0240               0.0060               0.0049
+b_SI_CAMFD                        -0.0246               0.0095              -0.0136
+b_SI_PANEL                        -0.1062              -0.0816              -0.0593
+b_SI_ZER                          -0.0782              -0.0640              -0.1138
+b_Si_MTRP                         -0.0355               0.1172               0.1328
+b_No_Info                          0.0837               0.0592               0.0583
+                               tau_FRbr_4        tau_EnfCond_1        tau_EnfCond_2
+asc_ruta1                          0.0242              -0.0275               0.0357
+asc_ruta4                         -0.0705              -0.1269              -0.1514
+b_tt                              -0.0041               0.0086               0.0292
+b_dt                               0.0087               0.0105               0.0095
+b_Sem                             -0.0349               0.0002              -0.0878
+b_ACC_1                            0.1194               0.0556               0.0559
+b_ACC_2                            0.0213              -0.0093              -0.0035
+b_SI_CAMFD                         0.0245              -0.1002               0.0674
+b_SI_PANEL                        -0.0361              -0.0468              -0.1396
+b_SI_ZER                          -0.0545              -0.0863              -0.0481
+b_Si_MTRP                          0.0982              -0.0195               0.1174
+b_No_Info                         -0.0723               0.0135               0.0914
+                            tau_EnfCond_3        tau_EnfCond_4         tau_AFrSem_1
+asc_ruta1                          0.0613               0.1379               0.0712
+asc_ruta4                         -0.1408              -0.0426              -0.0885
+b_tt                               0.0209               0.0506               0.0148
+b_dt                              -0.0147              -0.0877              -0.0446
+b_Sem                             -0.0918              -0.1761              -0.1249
+b_ACC_1                            0.0752               0.0860               0.0409
+b_ACC_2                           -0.0017               0.0320              -0.0076
+b_SI_CAMFD                         0.0737               0.1269              -0.0164
+b_SI_PANEL                        -0.1566              -0.1488              -0.0723
+b_SI_ZER                          -0.0746              -0.0529              -0.0926
+b_Si_MTRP                          0.1126               0.0915               0.0404
+b_No_Info                          0.1070               0.0510               0.0879
+                             tau_AFrSem_2         tau_AFrSem_3         tau_AFrSem_4
+asc_ruta1                         -0.0313              -0.0184              -0.0977
+asc_ruta4                         -0.1492              -0.1232              -0.1179
+b_tt                               0.0194               0.0021              -0.0042
+b_dt                               0.0230               0.0133               0.0833
+b_Sem                              0.0036              -0.0037               0.1033
+b_ACC_1                            0.0505               0.0615               0.0013
+b_ACC_2                           -0.0014              -0.0062              -0.0298
+b_SI_CAMFD                        -0.0152              -0.0230              -0.0028
+b_SI_PANEL                        -0.0348              -0.0349              -0.0245
+b_SI_ZER                          -0.0385              -0.0694               0.0034
+b_Si_MTRP                          0.0359               0.0489               0.0329
+b_No_Info                          0.0220               0.0376              -0.0470
+                              tau_CulFr_1          tau_CulFr_2          tau_CulFr_3
+asc_ruta1                         -0.0135               0.0354               0.0160
+asc_ruta4                         -0.1970              -0.1444              -0.1284
+b_tt                               0.0572               0.0407               0.0416
+b_dt                              -0.0429              -0.0028               0.0119
+b_Sem                             -0.0216              -0.0939              -0.0905
+b_ACC_1                            0.1192               0.0859               0.0885
+b_ACC_2                            0.0184              -0.0406              -0.0537
+b_SI_CAMFD                        -0.0573              -0.0239              -0.0537
+b_SI_PANEL                        -0.0020              -0.0766              -0.1075
+b_SI_ZER                          -0.0780              -0.0991              -0.1177
+b_Si_MTRP                          0.0691               0.0517               0.0295
+b_No_Info                          0.0481               0.0662               0.0579
+                              tau_CulFr_4        tau_OmLmVel_1        tau_OmLmVel_2
+asc_ruta1                          0.0526               0.0111              -0.0254
+asc_ruta4                         -0.0905              -0.0394               0.0433
+b_tt                               0.0378               0.0113              -0.0902
+b_dt                              -0.0339               0.0164               0.0004
+b_Sem                             -0.0597              -0.0272               0.0323
+b_ACC_1                           -0.0028               0.1230               0.0262
+b_ACC_2                            0.0008              -0.0479               0.0047
+b_SI_CAMFD                         0.0320               0.0540               0.0172
+b_SI_PANEL                        -0.1097              -0.0721               0.0479
+b_SI_ZER                          -0.0453              -0.1095               0.0217
+b_Si_MTRP                         -0.0167               0.0034               0.0509
+b_No_Info                         -0.0158              -0.0124              -0.0003
+                            tau_OmLmVel_3        tau_OmLmVel_4         tau_IgPare_1
+asc_ruta1                         -0.0165               0.0015              -0.0837
+asc_ruta4                          0.0506               0.0430              -0.1116
+b_tt                              -0.0639              -0.0532               0.0913
+b_dt                              -0.0079              -0.0281               0.1128
+b_Sem                              0.0256               0.0309               0.0248
+b_ACC_1                            0.0574               0.0453               0.0810
+b_ACC_2                            0.0413               0.0244              -0.0300
+b_SI_CAMFD                        -0.0260              -0.0212               0.0386
+b_SI_PANEL                         0.0417               0.0481              -0.0341
+b_SI_ZER                           0.0461               0.0402              -0.0817
+b_Si_MTRP                          0.0363               0.0648              -0.0519
+b_No_Info                         -0.0012               0.0160              -0.0133
+                             tau_IgPare_2         tau_IgPare_3         tau_IgPare_4
+asc_ruta1                          0.1766               0.1778               0.1689
+asc_ruta4                          0.1710               0.1584               0.1598
+b_tt                              -0.1512              -0.1460              -0.1334
+b_dt                              -0.1895              -0.1850              -0.1812
+b_Sem                             -0.0704              -0.0709              -0.0603
+b_ACC_1                            0.0071               0.0161               0.0085
+b_ACC_2                           -0.0108              -0.0033               0.0028
+b_SI_CAMFD                        -0.0042               0.0014              -0.0145
+b_SI_PANEL                         0.0363               0.0282               0.0282
+b_SI_ZER                           0.0348               0.0247               0.0358
+b_Si_MTRP                          0.1451               0.1420               0.1187
+b_No_Info                          0.0446               0.0413               0.0197
+                         tau_PasoPeaton_1     tau_PasoPeaton_2     tau_PasoPeaton_3
+asc_ruta1                         -0.0195              -0.0164              -0.0265
+asc_ruta4                         -0.1974              -0.1160              -0.0921
+b_tt                               0.0485              -0.0186              -0.0241
+b_dt                               0.0575               0.0976               0.0827
+b_Sem                             -0.0036              -0.0025               0.0169
+b_ACC_1                           -0.0507              -0.0781              -0.0439
+b_ACC_2                           -0.0227              -0.0472              -0.0301
+b_SI_CAMFD                         0.0676               0.0782               0.0327
+b_SI_PANEL                         0.0056              -0.0004              -0.0221
+b_SI_ZER                           0.0705               0.0408               0.0162
+b_Si_MTRP                          0.0108               0.0039              -0.0297
+b_No_Info                         -0.1011              -0.0940              -0.1378
+                         tau_PasoPeaton_4       tau_UsoDirec_1       tau_UsoDirec_2
+asc_ruta1                         -0.0069               0.0870               0.0558
+asc_ruta4                          0.0228               0.1770               0.1382
+b_tt                              -0.0775              -0.0516              -0.0268
+b_dt                              -0.0291              -0.0774              -0.0972
+b_Sem                              0.0456              -0.1126              -0.0697
+b_ACC_1                           -0.0857              -0.0288              -0.0814
+b_ACC_2                           -0.0780              -0.0167              -0.0235
+b_SI_CAMFD                         0.0493               0.0208               0.0242
+b_SI_PANEL                        -0.0692               0.0204              -0.0118
+b_SI_ZER                           0.0525               0.0432               0.0135
+b_Si_MTRP                         -0.0378               0.0482               0.0298
+b_No_Info                         -0.1008               0.1133               0.1289
+                           tau_UsoDirec_3       tau_UsoDirec_4        tau_UsoPito_1
+asc_ruta1                          0.0565              -0.0625              -0.0128
+asc_ruta4                          0.1290              -0.0822              -0.1668
+b_tt                              -0.0032               0.0398               0.0202
+b_dt                              -0.1108               0.0077              -0.0062
+b_Sem                             -0.0786               0.0255              -0.0112
+b_ACC_1                           -0.0768              -0.0663               0.0655
+b_ACC_2                           -0.0243              -0.0335               0.0060
+b_SI_CAMFD                         0.0283               0.0416              -0.0141
+b_SI_PANEL                         0.0191              -0.0497              -0.0874
+b_SI_ZER                           0.0199               0.0468              -0.0590
+b_Si_MTRP                         -0.0088              -0.0497               0.0113
+b_No_Info                          0.1239              -0.0036               0.0070
+                            tau_UsoPito_2        tau_UsoPito_3        tau_UsoPito_4
+asc_ruta1                          0.0607               0.0853               0.1601
+asc_ruta4                         -0.0927              -0.0860              -0.0114
+b_tt                               0.0217               0.0260               0.0007
+b_dt                              -0.0211              -0.0409              -0.1017
+b_Sem                             -0.1059              -0.1135              -0.1492
+b_ACC_1                            0.0933               0.1063               0.0559
+b_ACC_2                            0.0060               0.0043              -0.0086
+b_SI_CAMFD                        -0.0504              -0.0651              -0.0382
+b_SI_PANEL                        -0.0959              -0.1006              -0.0743
+b_SI_ZER                          -0.1046              -0.1223              -0.0961
+b_Si_MTRP                          0.1084               0.0837               0.0613
+b_No_Info                          0.0629               0.0785               0.0115
+ [ reached getOption("max.print") -- omitted 66 rows ]
+
+ 20 worst outliers in terms of lowest average per choice prediction:
+ row Avg prob per choice
+ 227        6.975006e-11
+ 103        7.119066e-11
+  38        5.629477e-10
+ 231        7.943111e-10
+  94        8.204055e-10
+  68        9.391618e-10
+ 146        5.663401e-09
+  30        7.290575e-09
+ 195        8.965042e-09
+ 132        1.123606e-08
+   9        1.601558e-08
+  72        1.606571e-08
+   3        1.811362e-08
+  83        2.414211e-08
+  20        4.751001e-08
+  11        9.591604e-08
+ 235        1.853776e-07
+ 129        3.087631e-07
+ 116        3.209919e-07
+ 188        4.735894e-07
+
+Changes in parameter estimates from starting values:
+                     Initial Estimate Difference
+asc_ruta1              0.000  -0.1470    -0.1470
+asc_ruta2              0.000   0.0000     0.0000
+asc_ruta4              0.000  -0.0153    -0.0153
+b_tt                   0.000   0.3755     0.3755
+b_dt                   0.000  -0.0325    -0.0325
+b_Sem                  0.000   0.2983     0.2983
+b_ACC_0                0.000   0.0000     0.0000
+b_ACC_1                0.000  -0.7259    -0.7259
+b_ACC_2                0.000  -2.7650    -2.7650
+b_NO_CAMFD             0.000   0.0000     0.0000
+b_SI_CAMFD             0.000  -0.5081    -0.5081
+b_NO_PANEL             0.000   0.0000     0.0000
+b_SI_PANEL             0.000  -0.5328    -0.5328
+b_NO_ZER               0.000   0.0000     0.0000
+b_SI_ZER               0.000   0.0592     0.0592
+b_No_MTRP              0.000   0.0000     0.0000
+b_Si_MTRP              0.000   0.3261     0.3261
+b_No_Info              0.000  -0.3241    -0.3241
+b_Si_Info              0.000   0.0000     0.0000
+b_UsoCel_P             0.000   0.0000     0.0000
+b_UsoCel_F             0.000  -0.1129    -0.1129
+lambda1                1.000   0.2165    -0.7835
+lambda2                1.000  -0.6048    -1.6048
+lambda3                1.000   0.5922    -0.4078
+gamma_EDUBASICA_LV1   -0.217  -0.1888     0.0282
+gamma_EDUSUP_LV1      -0.423  -0.8395    -0.4165
+gamma_HPICO_LV1       -0.124  -0.4681    -0.3441
+gamma_CSECO_LV1        0.211   0.3262     0.1152
+gamma_SININFOTRF_LV1  -0.226  -0.2866    -0.0606
+gamma_LV2_LV1          0.982   1.7937     0.8117
+gamma_ADULTO40_LV2    -0.310   0.1042     0.4142
+gamma_EXP_3_LV2       -0.407  -0.6638    -0.2568
+gamma_EXP_4_LV2       -0.269  -0.4315    -0.1625
+gamma_EXP_5_LV2       -0.290  -0.3526    -0.0626
+gamma_HPICO_LV2        0.181   0.0752    -0.1058
+gamma_USODISPMOB_LV2   0.261   0.2806     0.0196
+gamma_EDUBASICA_LV3   -0.270  -0.4188    -0.1488
+gamma_JOVEN30_LV3     -0.565  -0.6453    -0.0803
+gamma_ADULTO40_LV3    -0.281  -0.5139    -0.2329
+gamma_EXP_2_LV3        0.431   0.7094     0.2784
+gamma_USODISPMOB_LV3  -0.285  -0.1601     0.1249
+zeta_FRbr              1.000   2.3915     1.3915
+zeta_EnfCond           1.000   1.7663     0.7663
+zeta_AFrSem            1.000   2.7053     1.7053
+zeta_CulFr             1.000   0.9532    -0.0468
+zeta_OmLmVel           1.000   3.5403     2.5403
+zeta_IgPare            1.000  18.7721    17.7721
+zeta_PasoPeaton        1.000   1.1478     0.1478
+zeta_UsoDirec          1.000   1.7515     0.7515
+zeta_UsoPito           1.000   1.2869     0.2869
+tau_FRbr_1            -2.000  -3.8696    -1.8696
+tau_FRbr_2            -1.000   1.7197     2.7197
+tau_FRbr_3             1.000   2.9466     1.9466
+tau_FRbr_4             2.000   8.1756     6.1756
+tau_EnfCond_1         -2.000  -2.5442    -0.5442
+tau_EnfCond_2         -1.000   2.1381     3.1381
+tau_EnfCond_3          1.000   3.2934     2.2934
+tau_EnfCond_4          2.000   6.1729     4.1729
+tau_AFrSem_1          -2.000  -3.9522    -1.9522
+tau_AFrSem_2          -1.000   3.5755     4.5755
+tau_AFrSem_3           1.000   4.3753     3.3753
+tau_AFrSem_4           2.000  10.9936     8.9936
+tau_CulFr_1           -2.000  -3.1248    -1.1248
+tau_CulFr_2           -1.000  -0.6234     0.3766
+tau_CulFr_3            1.000   0.5369    -0.4631
+tau_CulFr_4            2.000   3.7735     1.7735
+tau_OmLmVel_1         -2.000  -1.5682     0.4318
+tau_OmLmVel_2         -1.000   3.7135     4.7135
+tau_OmLmVel_3          1.000   4.6684     3.6684
+tau_OmLmVel_4          2.000   6.7513     4.7513
+tau_IgPare_1          -2.000  -6.7853    -4.7853
+tau_IgPare_2          -1.000  18.9663    19.9663
+tau_IgPare_3           1.000  21.1979    20.1979
+tau_IgPare_4           2.000  35.4891    33.4891
+tau_PasoPeaton_1      -2.000  -2.8884    -0.8884
+tau_PasoPeaton_2      -1.000  -1.3989    -0.3989
+tau_PasoPeaton_3       1.000  -0.4143    -1.4143
+tau_PasoPeaton_4       2.000   1.5377    -0.4623
+tau_UsoDirec_1        -2.000  -5.4745    -3.4745
+tau_UsoDirec_2        -1.000  -3.4015    -2.4015
+tau_UsoDirec_3         1.000  -2.4604    -3.4604
+tau_UsoDirec_4         2.000   0.2430    -1.7570
+tau_UsoPito_1         -2.000  -2.4619    -0.4619
+tau_UsoPito_2         -1.000   1.2086     2.2086
+tau_UsoPito_3          1.000   1.9371     0.9371
+tau_UsoPito_4          2.000   3.9859     1.9859
