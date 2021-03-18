@@ -32,7 +32,7 @@ apollo_control = list(
 #### CARGAR DATOS Y APLICAR CUALQUIER TRANSFORMACIÓN             ####
 # ################################################################# #
 
-database = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBMuestraArt3.csv",sep="\t", dec=".",header=TRUE)
+database = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBMuestraArt3_3Rutas.csv",sep="\t", dec=".",header=TRUE)
 
 
 # ################################################################# #

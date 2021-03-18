@@ -2,20 +2,28 @@
 #### LOAD LIBRARY AND DEFINE CORE SETTINGS                       ####
 # ################################################################# #
 
-#install.packages("apollo")
 ### Clear memory
+#library(dplyr)
 rm(list = ls())
 
-### Load Apollo library
+## Semilla
+set.seed(1234)
+
+
+workingDirectory="/Users/williz/Desktop/ModelosED/3. Articulo 3/4. Resultados/Prospectiva/3Rutas"
+setwd(workingDirectory)
+
+### Cargar libreria Apollo
 library(apollo)
+library(caret)
 
 ### Initialise code
 apollo_initialise()
 
 ## Establecer controles principales
 apollo_control = list(
-  modelName  = "Regret Simple",
-  modelDescr = "Modelos Regret en Eleccion de Ruta",
+  modelName  = "Modelo_1_Regret_3Rutas",
+  modelDescr = "Modelos de arrepentimiento en Eleccion de Ruta",
   indivID    = "ViajeId"
 )
 
@@ -24,20 +32,7 @@ apollo_control = list(
 #### CARGAR DATOS Y APLICAR CUALQUIER TRANSFORMACIÓN             ####
 # ################################################################# #
 
-database = read.csv("/Users/williz/Desktop/ModelosED/2. Articulo 2/2. Database/DBMuestra_ModeloLogitVL.csv",sep="\t", dec=".",header=TRUE)
-
-# Normalización de las variables tiempo
-database$T_Alt_1 = (database$TIEMPOAlt1- min(database$TIEMPOAlt1))/(max(database$TIEMPOAlt1)-min(database$TIEMPOAlt1))
-database$T_Alt_2 = (database$TIEMPOAlt2- min(database$TIEMPOAlt2))/(max(database$TIEMPOAlt2)-min(database$TIEMPOAlt2))
-database$T_Alt_3 = (database$TIEMPOAlt3- min(database$TIEMPOAlt3))/(max(database$TIEMPOAlt3)-min(database$TIEMPOAlt3))
-database$T_Alt_4 = (database$TIEMPOEC- min(database$TIEMPOEC))/(max(database$TIEMPOEC)-min(database$TIEMPOEC))
-
-# Normalización de la variable distancia
-database$D_Alt_1 = (database$DISTAlt1- min(database$DISTAlt1))/(max(database$DISTAlt1)-min(database$DISTAlt1))
-database$D_Alt_2 = (database$DISTAlt2- min(database$DISTAlt2))/(max(database$DISTAlt2)-min(database$DISTAlt2))
-database$D_Alt_3 = (database$DISTAlt3- min(database$DISTAlt3))/(max(database$DISTAlt3)-min(database$DISTAlt3))
-database$D_Alt_4 = (database$DISTEC- min(database$DISTEC))/(max(database$DISTEC)-min(database$DISTEC))
-
+database = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBMuestraArt3_3Rutas.csv",sep="\t", dec=".",header=TRUE)
 
 #summary(database)
 
@@ -46,40 +41,24 @@ database$D_Alt_4 = (database$DISTEC- min(database$DISTEC))/(max(database$DISTEC)
 # ################################################################# #
 
 ### Vector de parametros, incluidos los que se mantienen fijos en la estimación
-apollo_beta=c(asc_ruta1   = 0, asc_ruta2   = 0, asc_ruta3   = 0, asc_ruta4  = 0,
-              b_tt  = 0,  
+### Vector de parametros, incluidos los que se mantienen fijos en la estimación
+apollo_beta=c(asc_ruta1 = 0, asc_ruta2 = 0, asc_ruta4 = 0,
+              b_gain  = 0, b_loss = 0,
               b_dt  = 0,
-              b_Cong = 0, b_Sem = 0, b_Acc = 0, b_CamFd = 0,
-              b_CongAB_ruta1  = 0, b_CongCD_ruta1  = 0, b_CongEF_ruta1  = 0,
-              b_CongAB_ruta2  = 0, b_CongCD_ruta2  = 0, b_CongEF_ruta2  = 0,
-              b_CongAB_ruta3  = 0, b_CongCD_ruta3  = 0, b_CongEF_ruta3  = 0,
-              b_CongAB_ruta4  = 0, b_CongCD_ruta4  = 0, b_CongEF_ruta4  = 0,
-              
-              b_Sem_ruta1 = 0, b_Sem_ruta2 = 0, b_Sem_ruta3 = 0, b_Sem_ruta4 = 0,
-              
-              b_ACC_0_ruta1 = 0, b_ACC_0_ruta2 = 0, b_ACC_0_ruta3 = 0, b_ACC_0_ruta4 = 0,
-              b_ACC_1_ruta1 = 0, b_ACC_1_ruta2 = 0, b_ACC_1_ruta3 = 0, b_ACC_1_ruta4 = 0, 
-              b_ACC_2_ruta1 = 0, b_ACC_2_ruta2 = 0, b_ACC_2_ruta3 = 0, b_ACC_2_ruta4 = 0,
-              
-              b_NO_CAMFD_ruta1 = 0, b_NO_CAMFD_ruta2 = 0, b_NO_CAMFD_ruta3 = 0, b_NO_CAMFD_ruta4 = 0,
-              b_SI_CAMFD_ruta1 = 0, b_SI_CAMFD_ruta2 = 0, b_SI_CAMFD_ruta3 = 0, b_SI_CAMFD_ruta4 = 0, 
-              
-              b_NO_PANEL_ruta1 = 0, b_NO_PANEL_ruta2 = 0, b_NO_PANEL_ruta3 = 0, b_NO_PANEL_ruta4 = 0,
-              b_SI_PANEL_ruta1 = 0, b_SI_PANEL_ruta2 = 0, b_SI_PANEL_ruta3 = 0, b_SI_PANEL_ruta4 = 0,
-              
-              b_NO_ZER_r1 = 0, b_NO_ZER_r2 = 0, b_NO_ZER_r3 = 0, b_NO_ZER_r4 = 0,
-              b_SI_ZER_r1 = 0, b_SI_ZER_r2 = 0, b_SI_ZER_r3 = 0, b_SI_ZER_r4 = 0,
-               
-              b_No_MTRP_r1 = 0, b_No_MTRP_r2 = 0, b_No_MTRP_r3 = 0, b_No_MTRP_r4 = 0,
-              b_Si_MTRP_r1 = 0, b_Si_MTRP_r2 = 0, b_Si_MTRP_r3 = 0, b_Si_MTRP_r4 = 0)
+              b_Sem = 0,
+              b_ACC_0 = 0, b_ACC_1 = -1, b_ACC_2 = 0,
+              b_NO_CAMFD = 0, b_SI_CAMFD = 0, 
+              b_NO_PANEL = 0, b_SI_PANEL = -1, 
+              b_NO_ZER = 0, b_SI_ZER = 0, 
+              b_No_MTRP = 0, b_Si_MTRP = 0,
+              b_No_Info = 0, b_Si_Info = 0,
+              b_UsoCel_P = 0, #b_UsoCel_A = 0, 
+              b_UsoCel_F = 0)
+
 
 ### Vector con nombres (entre comillas) de los parámetros que se mantendrán fijos en su valor inicial en apollo_beta, use apollo_beta_fixed = c () si ninguno
-apollo_fixed = c("asc_ruta3", "b_CongAB_ruta1", "b_CongAB_ruta2", "b_CongAB_ruta3", "b_CongAB_ruta4", 
-                 "b_ACC_0_ruta1", "b_ACC_0_ruta2", "b_ACC_0_ruta3", "b_ACC_0_ruta4", 
-                 "b_NO_CAMFD_ruta1", "b_NO_CAMFD_ruta2", "b_NO_CAMFD_ruta3", "b_NO_CAMFD_ruta4",
-                 "b_NO_PANEL_ruta1", "b_NO_PANEL_ruta2", "b_NO_PANEL_ruta3", "b_NO_PANEL_ruta4",
-                 "b_NO_ZER_r1", "b_NO_ZER_r2", "b_NO_ZER_r3", "b_NO_ZER_r4",
-                 "b_No_MTRP_r1", "b_No_MTRP_r2", "b_No_MTRP_r3", "b_No_MTRP_r4")
+apollo_fixed = c("asc_ruta2", "b_ACC_0", "b_NO_CAMFD","b_NO_PANEL" ,"b_No_MTRP", "b_NO_ZER", 
+                 "b_Si_Info", "b_UsoCel_P")
 
 
 # ################################################################# #

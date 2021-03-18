@@ -5,9 +5,9 @@ library(readxl)
 #Cargas las Bases de Datos
 rm(list = ls())
 
-db = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBMuestraArt3.csv",sep="\t", dec=".",header=TRUE)
+db = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBMuestraArt3_3Rutas.csv",sep="\t", dec=".",header=TRUE)
 
-db_test = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBValidacion.csv",sep="\t", dec=".",header=TRUE)
+db_test = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBValidacion_3Rutas.csv",sep="\t", dec=".",header=TRUE)
 
 resultados <-  read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/4. Resultados/MNL/3 Rutas/MNL_Modelo Art3_3Rutas_estimates.csv",sep=",", dec=".",header=TRUE )
 
@@ -83,7 +83,7 @@ mean(factor(Eleccion, ordered = TRUE) == db$CHOICE)
 
 
 Umbral = array()
-err = 0.15
+err = 0.1
 
 for (i in 1:nrow(db)){
   if (db$CHOICE[i] != Eleccion[i]){
@@ -123,7 +123,7 @@ mean(factor(Umbral, ordered = TRUE) == db$CHOICE)
 
 ## Aciertos sobre la base de testeo
 
-db <-db_test
+db <- db_test
 
 VT_1 = array()
 VT_2 = array()
@@ -189,7 +189,7 @@ mean(factor(EleccionTest, ordered = TRUE) == db$CHOICE)
 
 
 UmbralTest = array()
-errT = 0.15
+errT = 0.1
 
 for (i in 1:nrow(db)){
   if (db$CHOICE[i] != EleccionTest[i]){
@@ -215,12 +215,12 @@ for (i in 1:nrow(db)){
   else
   {UmbralTest[i] = db$CHOICE[i]}}
 
-UmbralTest
-EleccionTest
+#UmbralTest
+#EleccionTest
 NewProbT <- cbind(PT_r1, PT_r2, PT_r4, db$CHOICE, EleccionTest, UmbralTest)
-NewProbT
+#NewProbT
 
-table(predicted = UmbralTest, Real = db$CHOICE)
+table(Real = db$CHOICE, predicted = UmbralTest)
 mean(factor(UmbralTest, ordered = TRUE) == db$CHOICE)
 
 

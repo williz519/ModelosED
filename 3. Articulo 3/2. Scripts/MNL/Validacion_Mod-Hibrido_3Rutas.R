@@ -6,9 +6,9 @@ rm(list = ls())
 
 #Cargas las Bases de Datos
 
-db = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBMuestraArt3.csv",sep="\t", dec=".",header=TRUE)
+db = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBMuestraArt3_3Rutas.csv",sep="\t", dec=".",header=TRUE)
 
-db_test = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBValidacion.csv",sep="\t", dec=".",header=TRUE)
+db_test = read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/3. Base de datos/DBValidacion_3Rutas.csv",sep="\t", dec=".",header=TRUE)
 
 resultados <-  read.csv("/Users/williz/Desktop/ModelosED/3. Articulo 3/4. Resultados/MNL/3 Rutas/ICLV_MCond_3F_3Elecciones Art3 _estimates.csv",sep=",", dec=".",header=TRUE )
 
@@ -98,7 +98,7 @@ mean(factor(Eleccion, ordered = TRUE) == db$CHOICE)
 
 
 Umbral = array()
-err = 0.125
+err = 0.01
 
 for (i in 1:nrow(db)){
   if (db$CHOICE[i] != Eleccion[i]){
@@ -125,10 +125,10 @@ for (i in 1:nrow(db)){
   {Umbral[i] = db$CHOICE[i]}}
 
 
-Umbral
-Eleccion
-NewProb <- cbind(P_r1, P_r2, P_r4, db$CHOICE, Eleccion, Umbral)
-NewProb
+#Umbral
+#Eleccion
+#NewProb <- cbind(P_r1, P_r2, P_r4, db$CHOICE, Eleccion, Umbral)
+#NewProb
 
 table(Real = db$CHOICE,predicted = Umbral)
 mean(factor(Umbral, ordered = TRUE) == db$CHOICE)
@@ -219,14 +219,14 @@ for (i in 1:nrow(db)){
       {EleccionTest[i] = 4
       }}}
 
-ProbT <- cbind(PT_r1, PT_r2, PT_r4)
-ProbT
+#ProbT <- cbind(PT_r1, PT_r2, PT_r4)
+#ProbT
 table(Real = db$CHOICE, predicted = EleccionTest)
 mean(factor(EleccionTest, ordered = TRUE) == db$CHOICE)
 
 
 UmbralTest = array()
-errT = 0.15
+errT = 0.1
 
 for (i in 1:nrow(db)){
   if (db$CHOICE[i] != EleccionTest[i]){
@@ -252,10 +252,10 @@ for (i in 1:nrow(db)){
   else
   {UmbralTest[i] = db$CHOICE[i]}}
 
-UmbralTest
-EleccionTest
-NewProbT <- cbind(PT_r1, PT_r2, PT_r4, db$CHOICE, EleccionTest, UmbralTest)
-NewProbT
+#UmbralTest
+#EleccionTest
+#NewProbT <- cbind(PT_r1, PT_r2, PT_r4, db$CHOICE, EleccionTest, UmbralTest)
+#NewProbT
 
 table(Real = db$CHOICE, predicted = UmbralTest)
 mean(factor(UmbralTest, ordered = TRUE) == db$CHOICE)
